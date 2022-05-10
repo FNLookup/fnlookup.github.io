@@ -48,7 +48,7 @@ if (params.get("search") != null) {
             main.appendChild(item_rarity);
             main.appendChild(item_desc);
 
-            if (jsondata.data.set.text != null) {
+            if (jsondata.data.set != null) {
                 var item_set = document.createElement("p");
                 item_set.innerHTML = jsondata.data.set.text;
                 item_set.style.fontWeight = "10px";
@@ -57,7 +57,7 @@ if (params.get("search") != null) {
                 main.appendChild(item_set);
             }
 
-            if (jsondata.data.introduction.text != null) {
+            if (jsondata.data.introduction != null) {
                 var item_intro = document.createElement("p");
                 item_intro.innerHTML = jsondata.data.introduction.text;
                 item_intro.style.fontWeight = "10px";
