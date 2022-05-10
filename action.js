@@ -1,3 +1,12 @@
+//if enter key is pressed call search function
+document.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        search();
+    }
+});
+
+
 var params = new URLSearchParams(window.location.search);
 if (params.get("search") != null) {
     var xhttp = new XMLHttpRequest();
@@ -169,7 +178,7 @@ if (params.get("search") != null) {
                         img.src = image;
 
                         div.style.width = 148 + "px";
-                        div.style.height = 148 + "px";
+                        //div.style.height = 148 + "px";
                         div.appendChild(img);
 
                         list.appendChild(div);
@@ -257,4 +266,14 @@ function search() {
     var url = window.location.href;
     url = url.split("?")[0];
     window.location.href = url + "?search=" + search;
+
+    if (search == "" || search == null) {
+        alert("Invalid search");
+    }
+}
+
+function home() {
+    var url = window.location.href;
+    url = url.split("?")[0];
+    window.location.href = url;
 }
