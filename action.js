@@ -258,7 +258,3 @@ function search() {
     url = url.split("?")[0];
     window.location.href = url + "?search=" + search;
 }
-
-//lines of shame
-// this is a collection of comments which count how many times github has failed to update the page
-// 1. :)
