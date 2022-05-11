@@ -1,35 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
-        <script src="action.js"></script>
 
-    </head>
-    <body style="font-family: Arial, Helvetica, sans-serif;">
-        <style type="text/css">
-            body{
-                margin: 0;
-                padding: 0;
-            }
-            @font-face {
-                font-family: 'Burbank';
-                src: url('burbank.otf');
-            }
-        </style>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="build.css">
 
-        <div style="left: 50%; height: 100px; background-color : rgb(65, 11, 65);
-            line-height: 100px; color: white; font-family: Burbank;
-            font-weight: 500; font-size: 40px">
-            <a style="text-align: left; padding-left: 30%;
-            cursor: pointer;" onclick="home()">FNLookup</a>
-            
-            <input style="width: 300px; float: right; margin-top: 35px; margin-right: 30%; border: none; border:5px solid black;" id="search" type="text" name="search" placeholder="Type a cosmetic, press enter to search">
-            
+</head>
+
+<body style="font-family: Arial, Helvetica, sans-serif;">
+    <div class=" nav-container container">
+        <div class="passive-container">
+            <a href="index.html" class="nav-brand">
+                <span class="logo-text">FNLookup</span>
+            </a>
+            <div class="navbar-toggler-container">
+                <button class="navbar-toggler nav-toggle ml-auto" type="button" data-toggle="collapse" data-target="#site-navbar" aria-controls="site-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </div>
         </div>
+        <nav class="navbar navbar-expand-lg top">
+                <ul class="navbar-nav">
+                    <a href="index.html" class="nav-link">
+                        Home
+                    </a>
+                    <a href="progress.html" class="nav-link" style="padding-left: 30px">
+                        Progress
+                    </a>
+                    <a href="shop.html" class="nav-link" style="padding-left: 30px">
+                        Shop
+                    </a>
+                </ul>
+                <ul class="navbar-nav ml-auto" style="padding-left: 40%;">
+                    <input type="text" id="search" placeholder="Search..." style="color: white; border-radius: 5px; border: solid 1px gray; background-color: black;">
 
-        <div id="items"></div>
-    </body>
+                    <a href="about.html" class="nav-link" style="padding-left: 30px">
+                            About</a>
+                    </li>
+
+                </ul>
+        </nav>
+
+            <main class="content item">
+                <div class="container primary item-page-container">
+                    <div class="item-container">
+                        <div class="row">
+                            <div class="col-md-3 col-12 item-side">
+                                <div class="item-display splash-card static" id="item-background">
+                                    <img id="item-image" src="assets/loading.gif" alt="item-image">
+                                </div>
+                                <a class="rarity-label" class="item-title" style="font-size: 30px; margin-top: 0%;" id="item-rarity-label">{rarity}</a>
+                            </div>
+                            <div class="col-md-9 col-12 item-full">
+                                <div class="col-md-7 col-12">
+                                    <p style="font-size: 20px" id="item-type">{type}</p>
+                                    <div id="item-detail-container">
+                                        <h1 id="item-title" class="item-title" style="font-size: 30px; margin-top: 0%;">
+                                            {name}
+                                        </h1>
+                                    </div>
+
+                                    <p class="item-description-heading" style="font-size: 25px">Description</p>
+                                    <p id="item-description" class="item-description" style="font-size: 15px;">{description}</p>
+                                    <p id="item-introduction" class="item-description" style="font-size: 20px;">Introduced in: {introduction date}</p>
+                                    <p id="item-set" class="item-description" style="font-size: 20px;">Set: {set}</p>
+                                    <p id="item-release" class="item-description" style="font-size: 20px;">Release: {date} ({ocurrences} ocurrences since)  </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+    </div>
+
+    <script src="action.js"></script>
+
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        @font-face {
+            font-family: 'Burbank';
+            src: url('burbank.otf');
+        }
+    </style>
+</body>
+
 </html>
