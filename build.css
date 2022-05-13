@@ -199,6 +199,20 @@ a {
     text-decoration: none
 }
 
+.shop-row-item {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+    width: 128px;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 a:hover,
 a:not(.btn):focus {
     color: #dfb515
