@@ -213,6 +213,29 @@ a {
     flex-wrap: wrap;
 }
 
+.scroll-horizontal {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.nav-news .item_shop_section {
+    display: flex;
+}
+
+.flex-wrap-default {
+    flex-wrap: wrap;
+}
+
+.nav-news-item {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+    width: 400px;
+}
+
 a:hover,
 a:not(.btn):focus {
     color: #dfb515

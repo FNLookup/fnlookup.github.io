@@ -44,6 +44,7 @@ function createItems() {
                     i_container.innerHTML = item.name;
                     var i_image = document.createElement("img");
                     i_image.src = item.images.smallIcon;
+                    i_image.setAttribute("title", item.name);
                     i_container.appendChild(i_image);
 
                     var name = item.name;
@@ -92,4 +93,44 @@ function item_rarity_convert(rarity) {
     } else if (rarity == "starwars") {
         return "star_wars";
     } else return "common";
+}
+
+function createNews() {
+    console.log("news loded!!")
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "https://fortnite-api.com/v2/news/br", true);
+    //xhttp.setRequestHeader("Authorization", "");
+    xhttp.send();
+
+    var jsondata;
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            jsondata = JSON.parse(xhttp.responseText);
+            console.log(jsondata);
+
+            var news_div = document.getElementById("group-news");
+            for (var i = 0; i < jsondata.data.motds.length; i++) {
+                var news = jsondata.data.motds[i];
+                var news_container = document.createElement("div");
+                news_container.classList.add("nav-news-item");
+                news_container.innerHTML = news.title;
+                news_container.setAttribute("data-id", news.id);
+
+                var news_image = document.createElement("img");
+
+                var resized_image = news.image.split("?")[0];
+                resized_image = resized_image + "?width=400";
+                news_image.src = resized_image;
+                news_image.setAttribute("title", news.title);
+                //make the image go below the text
+                news_image.style.display = "block";
+
+                news_container.appendChild(news_image);
+                news_div.appendChild(news_container);
+            }
+
+
+        }
+    }
 }

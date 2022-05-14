@@ -19,15 +19,26 @@ if (params.get("search") != null) {
             var item_title = document.getElementById("item-title");
             var item_description = document.getElementById("item-description");
             var item_set = document.getElementById("item-set");
+            var item_introduction = document.getElementById("item-introduction");
+            var item_release = document.getElementById("item-release");
 
             item_type.innerHTML = jsondata.data.type.displayValue;
             image_background.setAttribute("data-rarity", item_rarity_convert(jsondata.data.rarity.value));
             item_image.setAttribute("src", jsondata.data.images.icon);
+            item_introduction.innerHTML = "Introduced in: Chapter " + jsondata.data.introduction.chapter + ", Season " + jsondata.data.introduction.season;
             item_rarity.innerHTML = jsondata.data.rarity.displayValue;
             item_rarity.setAttribute("data-rarity", item_rarity_convert(jsondata.data.rarity.value));
             item_title.textContent = jsondata.data.name;
             item_description.innerHTML = jsondata.data.description;
 
+            var first_release = jsondata.data.shopHistory[0];
+            first_release = first_release.split("T")[0];
+            var ocurrences = jsondata.data.shopHistory.length - 1;
+            if (jsondata.data.shopHistory != null) {
+                item_release.innerHTML = "Release: " + first_release + " (" + ocurrences + " ocurrences since)";
+            } else {
+                item_release.style.display = "none";
+            }
             if (jsondata.data.set != null) {
                 item_set.innerHTML = "Set: " + jsondata.data.set.value;
             } else {

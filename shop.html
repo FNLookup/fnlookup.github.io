@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="build.css">
     <script src="shop-row.js"></script>
+    <script src="item-shop.js"></script>
 </head>
 
 <body style="font-family: Arial, Helvetica, sans-serif;">
@@ -52,41 +53,15 @@
                             <div class="col-md-9 col-12" style="width: 100%"> 
                                 <div class="col-md-7 col-12" style="width: 100%">
                                     <h1 id="item-title" class="item-title" style="font-size: 30px; margin-top: 0%;">
-                                        Welcome to FNLookup
+                                        Today's item shop
                                     </h1>
-                                    <p class="item-description-heading" id="description-heading" style="font-size: 20px">Feed</p>
 
+                                    <p class="item-description-heading" id="date-heading" style="font-size: 20px"></p>
+                                    <p class="item-description-heading" id="countdown" style="font-size: 20px"></p>
+                                    
                                     <hr>
-                                    <br>
-                                    <h1 id="item-title" class="item-title" style="font-size: 30px; margin-top: 0%;">
-                                        Item shop cosmetics
-                                    </h1> 
-                                    <select style="color: black" id="dropdown-shop-section" onchange="createItems()">
-                                        Section
-                                        <option value="daily" >Daily</option>
-                                        <option value="featured">Featured</option>
-                                    </select>
-                                    <br> <br>
-                                    <div class="row">
-                                        <div class="col-md-7 col-12" style="width: 100%">
-                                            <div id="group-items" class="flex-container">
-                                                <script>createItems()</script>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <hr> <br>
-                                    <h1 id="item-title" class="item-title" style="font-size: 30px; margin-top: 0%;">
-                                        News
-                                    </h1>
-                                    <div class="row">
-                                        <div class="col-md-7 col-12" style="width: 100%">
-                                            <div id="group-news" class="scroll-horizontal" style="display:flex;">
-                                                <script>createNews()</script>
-                                            </div>
-
-                                        </div>
+                                    <div class="col-md-7 col-12" style="width: 100%;" id="item-shop-content">
+                                        <script>createItems();</script>
                                     </div>
                                     
                                 </div>
@@ -101,6 +76,7 @@
     </div>
 
     <script src="main.js"></script>
+    
 
 
     <style type="text/css">
