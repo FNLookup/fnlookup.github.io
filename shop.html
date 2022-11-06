@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="build.css">
-    <script src="shop-row.js"></script>
-    <script src="item-shop.js"></script>
+    <link rel="stylesheet" href="css/build.css">
+    <script src="js/shop-row.js"></script>
+    <script src="js/item-shop.js"></script>
 </head>
 
 <body style="font-family: Arial, Helvetica, sans-serif;">
@@ -18,64 +18,75 @@
             <a href="index.html" class="nav-brand">
                 <span class="logo-text">FNLookup</span>
             </a>
-            <div class="navbar-toggler-container">
-                <button class="navbar-toggler nav-toggle ml-auto" type="button" data-toggle="collapse" data-target="#site-navbar" aria-controls="site-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        </div>
+        <div class="content-menu">
+            <div class="container">
+                <div class="row layout1">
+                    <div class="col-sm-8">
+                        <nav class="navbar navbar-nav top">
+                            <nav class="navbar primary">
+                                <ul class="navbar-nav" style="padding-top: 2.5%">
+                                    <li>
+                                        <a href="index.html" class="nav-link">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="progress.html" class="nav-link">Progress</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html" class="nav-link">Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html" class="nav-link">About</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </nav>
+                    </div>
+                    <div class="col-md-4">
+                        <nav class="navbar navbar-nav top">
+                            <nav class="navbar primary">
+                                <input type="text" id="search" placeholder="Search..." style="
+                                    color: white; border-radius: 5px; border: solid 1px gray; background-color: black;
+                                    width:100%;
+                                    height: 100%;">
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg top">
-                <ul class="navbar-nav">
-                    <a href="index.html" class="nav-link">
-                        Home
-                    </a>
-                    <a href="progress.html" class="nav-link" style="padding-left: 30px">
-                        Progress
-                    </a>
-                    <a href="shop.html" class="nav-link" style="padding-left: 30px">
-                        Shop
-                    </a>
-                </ul>
-                <ul class="navbar-nav ml-auto" style="padding-left: 40%;">
-                    <input type="text" id="search" placeholder="Search..." style="color: white; border-radius: 5px; border: solid 1px gray; background-color: black;">
 
-                    <a href="about.html" class="nav-link" style="padding-left: 30px">
-                            About</a>
-                    </li>
+        <main class="content item" id="page-content">
+            <div class="container primary item-page-container">
+                <div class="item-container">
+                    <div class="row">
+                        
+                        <div class="col-md-9 col-12" style="width: 100%"> 
+                            <div class="col-md-7 col-12" style="width: 100%">
+                                <h1 id="item-title" class="item-title" style="font-size: 30px; margin-top: 0%;">
+                                    Today's item shop
+                                </h1>
 
-                </ul>
-        </nav>
-
-            <main class="content item" id="page-content">
-                <div class="container primary item-page-container">
-                    <div class="item-container">
-                        <div class="row">
-                            
-                            <div class="col-md-9 col-12" style="width: 100%"> 
-                                <div class="col-md-7 col-12" style="width: 100%">
-                                    <h1 id="item-title" class="item-title" style="font-size: 30px; margin-top: 0%;">
-                                        Today's item shop
-                                    </h1>
-
-                                    <p class="item-description-heading" id="date-heading" style="font-size: 20px"></p>
-                                    <p class="item-description-heading" id="countdown" style="font-size: 20px"></p>
-                                    
-                                    <hr>
-                                    <div class="col-md-7 col-12" style="width: 100%;" id="item-shop-content">
-                                        <script>createItems();</script>
-                                    </div>
-                                    
+                                <p class="item-description-heading" id="date-heading" style="font-size: 20px"></p>
+                                <p class="item-description-heading" id="countdown" style="font-size: 20px"></p>
+                                
+                                <hr>
+                                <div class="col-md-7 col-12" style="width: 100%;" id="item-shop-content">
+                                    <script>createItems();</script>
                                 </div>
-
                                 
                             </div>
 
+                            
                         </div>
+
                     </div>
                 </div>
-            </main>
+            </div>
+        </main>
     </div>
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
     
 
 

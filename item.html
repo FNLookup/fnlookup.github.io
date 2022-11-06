@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="build.css">
-    <script src="shop-row.js"></script>
+    <link rel="stylesheet" href="css/build.css">
+    <script src="js/shop-row.js"></script>
 </head>
 
 <body style="font-family: Arial, Helvetica, sans-serif;">
@@ -17,72 +17,73 @@
             <a href="index.html" class="nav-brand">
                 <span class="logo-text">FNLookup</span>
             </a>
-            <div class="navbar-toggler-container">
-                <button class="navbar-toggler nav-toggle ml-auto" type="button" data-toggle="collapse" data-target="#site-navbar" aria-controls="site-navbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        </div>
+        <div class="content-menu">
+            <div class="container">
+                <div class="row layout1">
+                    <div class="col-sm-8">
+                        <nav class="navbar navbar-nav top">
+                            <nav class="navbar primary">
+                                <ul class="navbar-nav" style="padding-top: 2.5%">
+                                    <li>
+                                        <a href="index.html" class="nav-link">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="progress.html" class="nav-link">Progress</a>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html" class="nav-link">Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html" class="nav-link">About</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </nav>
+                    </div>
+                </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg top">
-                <ul class="navbar-nav">
-                    <a href="index.html" class="nav-link">
-                        Home
-                    </a>
-                    <a href="progress.html" class="nav-link" style="padding-left: 30px">
-                        Progress
-                    </a>
-                    <a href="shop.html" class="nav-link" style="padding-left: 30px">
-                        Shop
-                    </a>
-                </ul>
-                <ul class="navbar-nav ml-auto" style="padding-left: 40%;">
-                    <input type="text" id="search" placeholder="Search..." style="color: white; border-radius: 5px; border: solid 1px gray; background-color: black;">
 
-                    <a href="about.html" class="nav-link" style="padding-left: 30px">
-                            About</a>
-                    </li>
-
-                </ul>
-        </nav>
-
-            <main class="content item" id="page-content">
-                <div class="container primary item-page-container">
-                    <div class="item-container">
-                        <div class="row">
-                            <div class="col-md-3 col-12 item-side" id="main-leftcol">
-                                <div class="item-display splash-card static" id="item-background">
-                                    <img id="item-image" src="assets/loading.gif" alt="item-image">
-                                </div>
-                                <a class="rarity-label" class="item-title" style="font-size: 30px; margin-top: 0%;" id="item-rarity-label">{rarity}</a>
+        <main class="content item" id="page-content">
+            <div class="container primary item-page-container">
+                <div class="item-container">
+                    <div class="row">
+                        <div class="col-md-3 col-12 item-side" id="main-leftcol">
+                            <div class="item-display splash-card static" id="item-background">
+                                <img id="item-image" src="assets/loading.gif" alt="item-image">
                             </div>
-                            <div class="col-md-9 col-12 item-full">
-                                <div class="col-md-7 col-12">
-                                    <p style="font-size: 20px" id="item-type">{type}</p>
-                                    <div id="item-detail-container">
-                                        <h1 id="item-title" class="item-title" style="font-size: 30px; margin-top: 0%;">
-                                            {name}
-                                        </h1>
-                                    </div>
-                                    
-                                    <p class="item-description-heading" id="description-heading" style="font-size: 25px">Description</p>
-                                    <p id="item-description" class="item-description" style="font-size: 15px;">{description}</p>
-                                    <p id="item-introduction" class="item-description" style="font-size: 20px;">Introduced in: {introduction date}</p>
-                                    <p id="item-set" class="item-description" style="font-size: 20px;">Set: {set}</p>
-                                    <p id="item-release" class="item-description" style="font-size: 20px;">Release: {date} ({ocurrences} ocurrences since)  </p>
+                            <a class="rarity-label" class="item-title" style="font-size: 30px; margin-top: 0%;" id="item-rarity-label">{rarity}</a>
+                        </div>
+                        <div class="col-md-9 col-12 item-full">
+                            <div class="col-md-7 col-12">
+                                <p style="font-size: 20px" id="item-type">{type}</p>
+                                <div id="item-detail-container">
+                                    <h1 id="item-title" class="item-title" style="font-size: 30px; margin-top: 0%;">
+                                        {name}
+                                    </h1>
+                                </div>
+                                
+                                <p class="item-description-heading" id="description-heading" style="font-size: 25px">Description</p>
+                                <p id="item-description" class="item-description" style="font-size: 15px;">{description}</p>
+                                <p id="item-introduction" class="item-description" style="font-size: 20px;">Introduced in: {introduction date}</p>
+                                <p id="item-set" class="item-description" style="font-size: 20px;">Set: {set}</p>
+                                <p id="item-release" class="item-description" style="font-size: 20px;">Release: {date} ({ocurrences} ocurrences since)  </p>
 
-                                    <p id="item-shopHistory" class="item-description" style="font-size: 20px;">Shop history:</p>
-                                    <div id="shopHistory" class="scroll-vertical">
-                                        
-                                    </div>
+                                <p id="item-shopHistory" class="item-description" style="font-size: 20px;">Shop history:</p>
+                                <div id="shopHistory" class="scroll-vertical">
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </main>
+            </div>
+        </main>
     </div>
 
-    <script src="action.js"></script>
-    <script src="main.js"></script>
+    <script src="js/action.js"></script>
+    <script src="js/main.js"></script>
 
 
     <style type="text/css">
