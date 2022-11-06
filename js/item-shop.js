@@ -26,7 +26,16 @@ var x = setInterval(function() {
     // If the count down is finished, write some text
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("countdown").innerHTML = "Refresh the page to reset the shop!";
+        var secondsUntilRefresh = 5;
+        document.title = "Item shop refreshed!";
+        document.getElementById("countdown").innerHTML = "Refreshing automatically in 5 seconds";
+        var y = setInterval(function() {
+            secondsUntilRefresh -= 1;
+            if (secondsUntilRefresh == 0) {
+                document.location.reload();
+            }
+            document.getElementById("countdown").innerHTML = "Refreshing automatically in " + secondsUntilRefresh + " seconds";
+        }, 1000);
     }
 }, 1000);
 

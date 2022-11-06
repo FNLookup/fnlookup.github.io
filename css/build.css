@@ -1,3 +1,6 @@
+/**
+FNBR.CO build.css*/
+
 @font-face {
     font-family: luckiest guy;
     font-style: normal;
@@ -324,7 +327,6 @@ main.content>.container {
     margin-bottom: 2rem;
     padding: 1.3rem;
     background-color: #0a0f1a;
-    height: 100%;
     bottom: 0
 }
 
@@ -811,7 +813,6 @@ a.nav-link img.avatar {
 .nav-container.container nav.top {
     padding: 0;
     background-color: #0a0f1a;
-    height: 100%;
     bottom: 0
 }
 
@@ -838,7 +839,6 @@ a.nav-link img.avatar {
 
 .nav-container .passive-container .nav-brand img {
     vertical-align: middle;
-    height: 40px;
     margin-right: 8px
 }
 
@@ -864,7 +864,6 @@ a.nav-link img.avatar {
 .nav-container .passive-container .navbar-toggler-container {
     display: inline-block;
     /*float: right;*/
-    line-height: 52px
 }
 
 .nav-container .passive-container .navbar-toggler-container .navbar-toggler {
@@ -916,7 +915,6 @@ a.nav-link img.avatar {
     background-size: cover;
     display: inline-block;
     width: 20px;
-    height: 20px;
     margin-right: .5rem;
     vertical-align: middle;
     -webkit-transition: -webkit-transform 100ms ease-in-out;

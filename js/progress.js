@@ -1,5 +1,5 @@
-var endDate = "2022-12-05";
-var startDate = "2022-06-05";
+var endDate = "2022-12-03";
+var startDate = "2022-09-22";
 
 var end = new Date(endDate);
 var start = new Date(startDate);
