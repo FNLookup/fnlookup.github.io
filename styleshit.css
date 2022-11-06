@@ -1,0 +1,25 @@
+.countText {
+    color: white;
+    font-size: 40px;
+}
+
+.week {
+    color: white;
+    font-size: 30px;
+}
+
+#Progress {
+    width: 100%;    
+    background-color: black;
+    border-radius: 10px;
+}
+  
+#progressBar {
+    width: 1%;
+    height: 40px;
+    background-color: rgb(0, 18, 90);
+    text-align: center;
+    line-height: 40px;
+    color: white;
+    border-radius: 10px;
+}

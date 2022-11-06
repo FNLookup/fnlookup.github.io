@@ -219,6 +219,12 @@ a {
     white-space: nowrap;
 }
 
+.scroll-vertical {
+    padding: 10px;
+    overflow-y: scroll;
+    height: 200px;
+}
+
 .nav-news .item_shop_section {
     display: flex;
 }

@@ -89,7 +89,6 @@ function createItems() {
                 i_container.onclick = function() {
                     window.location.href = this.getAttribute("href");
                 };
-                console.log('abounda la kaka')
 
                 space_daily.appendChild(i_container);
             }
@@ -142,42 +141,67 @@ function createItems() {
                 i_container.onclick = function() {
                     window.location.href = this.getAttribute("href");
                 };
-                console.log('abounda la kaka')
 
                 space_featured.appendChild(i_container);
             }
 
             shop_items_div.appendChild(space_featured);
 
-            var hr = document.createElement("hr");
-            shop_items_div.appendChild(hr);
-
             //other sections
 
-            var other_title = document.createElement("h1");
-            other_title.style.marginTop = "0px";
-            other_title.style.fontSize = "30px";
-            other_title.innerHTML = "Other";
-            shop_items_div.appendChild(other_title);
-
-            var space_other = document.createElement("div");
-            space_other.style.display = "flex";
-            space_other.style.flexWrap = "wrap";
+            var registeredSections = [];
+            var usage_spaces = [];
+            var sections = [];
 
             for (var i = 0; i < jsondata.data.specialFeatured.entries.length; i++) {
                 var item = jsondata.data.specialFeatured.entries[i];
-                var section = item.section;
+                var section = item.section.name;
+
+                var space_use = document.createElement("div");
+
+                if (!registeredSections.includes(section)) {
+                    var section_use = document.createElement("div");
+                    section_use.name = "tab_" + section;
+                    sections.push(section_use);
+                    shop_items_div.append(section_use);
+
+                    var hr = document.createElement("hr");
+                    section_use.appendChild(hr);
+
+                    var other_title = document.createElement("h1");
+                    other_title.style.marginTop = "0px";
+                    other_title.style.fontSize = "30px";
+                    other_title.innerHTML = section;
+                    section_use.appendChild(other_title);
+
+                    var space_other = document.createElement("div");
+                    space_other.style.display = "flex";
+                    space_other.style.flexWrap = "wrap";
+                    space_other.id = section;
+                    section_use.appendChild(space_other);
+                    space_use = space_other;
+
+                    registeredSections.push(section);
+                } else {
+                    space_use = document.getElementById(section);
+                }
+
+                //console.log(section);
+                //console.log(space_use);
+
                 var price = item.finalPrice;
 
                 var name = "";
+                var image = "";
                 if (item.bundle != null) {
                     name = item.bundle.name;
+                    image = item.bundle.image;
                 } else {
                     name = item.items[0].name;
+                    image = item.items[0].images.smallIcon;
                 }
 
                 var section = item.section.name;
-                var image = item.items[0].images.smallIcon;
 
                 var i_container = document.createElement("div");
                 i_container.classList.add("shop-row-item");
@@ -186,10 +210,10 @@ function createItems() {
                 var item_rarity_converted = item_rarity_convert(item.items[0].rarity.value);
 
                 i_container.setAttribute("data-rarity", item_rarity_converted);
-                i_container.innerHTML = item.items[0].name + "<br>" + price;
+                i_container.innerHTML = name + "<br>" + price;
                 var i_image = document.createElement("img");
-                i_image.src = item.items[0].images.smallIcon;
-                i_image.setAttribute("title", item.name + " for " + price + " VBucks");
+                i_image.src = image;
+                i_image.setAttribute("title", name + " for " + price + " VBucks");
                 i_container.appendChild(i_image);
 
                 var name = item.items[0].name;
@@ -207,12 +231,10 @@ function createItems() {
                 i_container.onclick = function() {
                     window.location.href = this.getAttribute("href");
                 };
-                console.log('abounda la kaka')
 
-                space_other.appendChild(i_container);
+                space_use.append(i_container);
+                usage_spaces.push(space_use);
             }
-
-            shop_items_div.append(space_other);
         }
     }
 }
