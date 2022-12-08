@@ -1,0 +1,55 @@
+.countdown-parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 0;
+}
+
+.countdown-text {
+    color: #ffffff;
+    font-size: 50px;
+    border: 4px solid #ffffff;
+    border-radius: .32em;
+    padding: 1rem;
+    text-shadow: 0 5px 3px rgb(0 0 0 / 20%);
+}
+
+.clock-icon {
+    height: 30px;
+    width: 30px;
+}
+
+.percentage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar-bg {
+    width: 100%;    
+    background-color: rgb(16, 16, 16);
+    border-radius: 10px;
+}
+
+.progress-bar {
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+
+    width: 0%;
+    background-color: rgb(14, 28, 81);
+    color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 767px) {
+    .countdown-text {
+        font-size: 30px;
+    }
+}
+@media (max-width: 480px) {
+    .countdown-text {
+        border-width: 2px;
+        font-size: 20px;
+    }
+}

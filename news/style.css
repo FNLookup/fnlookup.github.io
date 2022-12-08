@@ -1,0 +1,85 @@
+@font-face {
+    font-family: burbank-big;
+    src: url(burbank.otf);
+}
+
+@font-face {
+    font-family: burbank-bold;
+    src: url(burbank-bold.otf);
+}
+
+body {
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+
+    /*Placeholder season image*/
+    background-image: url(https://cdn-live.prm.ol.epicgames.com/prod/8fecee4529a6706be12bf9a46551cfe481e9a969b67a7ba990cea07782c5ebd8ba43306a73f42f3a085042297993ef14-5f2e6d24-86fe-4dcf-be26-945c47d690eb.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.grid-nav-top {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30px, 2fr));
+    grid-auto-rows: 40px;
+    grid-gap: 2px;
+}
+
+.page-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: burbank-big;
+    backdrop-filter: blur(10px);
+    color: white;
+
+    background-color: rgba(0, 81, 255, 0.5);
+    transition: background-color .1s;
+}
+.page-header:hover {
+    background-color: rgba(51, 115, 255, 0.5);
+}
+.page-header[selected="true"] {
+    background-color: rgba(88, 88, 88, 0.5);
+}
+
+.news-item-info {
+    position: absolute;
+    bottom: 0;
+    margin: 1.7rem;
+    width: 60%;
+}
+
+.gradient {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 59, 251, 0.7), rgba(255, 255, 255, 0));
+}
+
+.title {
+    color: white;
+    font-family: burbank-big;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.transition-all {
+    transition: all .3s;
+}
+.transition-all-slow {
+    transition: all 1s;
+}
+
+.description {
+    color: #CCFFFF;
+    font-family: burbank-bold;
+    font-size: 17px;
+    margin: 0;
+}
