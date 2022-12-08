@@ -3,8 +3,24 @@
     font-family: poppins;
     font-style: normal;
     font-weight: 400;
-    src: url(/assets/fonts/poppins-regular.eot);
-    src: local(""), url(/assets/fonts/poppins-regular.eot?#iefix) format("embedded-opentype"), url(/assets/fonts/poppins-regular.woff2) format("woff2"), url(/assets/fonts/poppins-regular.woff) format("woff"), url(/assets/fonts/poppins-regular.ttf) format("truetype"), url(/assets/fonts/poppins-regular.svg#Poppins) format("svg")
+    src: url('assets/fonts/poppins-regular.eot');
+    src: url('assets/fonts/poppins-regular.eot?#iefix') format("embedded-opentype"), 
+    url('assets/fonts/poppins-regular.woff2') format("woff2"), 
+    url('assets/fonts/poppins-regular.woff') format("woff"), 
+    url('assets/fonts/poppins-regular.ttf') format("truetype"),
+    url('assets/fonts/poppins-regular.svg#Poppins') format("svg");
+}
+
+@font-face {
+    font-family: poppins;
+    font-style: normal;
+    font-weight: 700;
+    src: url('assets/fonts/poppins-700.eot');
+    src: url('assets/fonts/poppins-700.eot?#iefix') format("embedded-opentype"),
+    url('assets/fonts/poppins-700.woff2') format("woff2"), 
+    url('assets/fonts/poppins-700.woff') format("woff"), 
+    url('assets/fonts/poppins-700.ttf') format("truetype"), 
+    url('assets/fonts/poppins-700.svg#Poppins') format("svg");
 }
 
 body {
