@@ -1,27 +1,5 @@
 /*Font families*/
-@font-face {
-    font-family: poppins;
-    font-style: normal;
-    font-weight: 400;
-    src: url('assets/fonts/poppins-regular.eot');
-    src: url('assets/fonts/poppins-regular.eot?#iefix') format("embedded-opentype"), 
-    url('assets/fonts/poppins-regular.woff2') format("woff2"), 
-    url('assets/fonts/poppins-regular.woff') format("woff"), 
-    url('assets/fonts/poppins-regular.ttf') format("truetype"),
-    url('assets/fonts/poppins-regular.svg#Poppins') format("svg");
-}
-
-@font-face {
-    font-family: poppins;
-    font-style: normal;
-    font-weight: 700;
-    src: url('assets/fonts/poppins-700.eot');
-    src: url('assets/fonts/poppins-700.eot?#iefix') format("embedded-opentype"),
-    url('assets/fonts/poppins-700.woff2') format("woff2"), 
-    url('assets/fonts/poppins-700.woff') format("woff"), 
-    url('assets/fonts/poppins-700.ttf') format("truetype"), 
-    url('assets/fonts/poppins-700.svg#Poppins') format("svg");
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap');
 
 body {
     display: flex;
@@ -38,7 +16,7 @@ h1, h2, h3, h4, h5, h6 {
 
 body, h1, h2, h3, h4, h5, h6, html, li, p, ul {
     margin: 0;
-    font-family: poppins, calibri, helvetica, arial, sans-serif;
+    font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
     color: #fff;
 }
 

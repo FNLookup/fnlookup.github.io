@@ -125,9 +125,6 @@ function iS() {
                     title.innerHTML = bundle.name;
                     title.classList.add("item-title");
 
-                    if (title.style.width > hold.style.width) 
-                        hold.classList.add("marquee");
-
                     var price = document.createElement('a');
                     var vbuck = document.createElement('img');
                     vbuck.src = response.data.vbuckIcon;
@@ -160,7 +157,6 @@ function iS() {
 
                         var hold = document.createElement("div");
                         hold.classList.add("item-info");
-                        hold.classList.add("marquee");
     
                         var title = document.createElement('span');
                         title.innerHTML = item_obj.name;
