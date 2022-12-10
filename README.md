@@ -18,6 +18,9 @@
 ## Home view item shop
 ![Home Item Shop](https://cdn.discordapp.com/attachments/1050911269433118720/1050911932787458160/image.png)
 
+## Item Shop
+![Item Shop](https://cdn.discordapp.com/attachments/1050911269433118720/1050947159010312222/image.png)
+
 ## TODO: Predictions
 
 ## News
