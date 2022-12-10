@@ -1,4 +1,117 @@
 function i() {
+    let list = document.getElementById("nav-items");
+
+    let nav_items = [
+        {
+            name: 'Fortnite',
+            hasArrow: true,
+            alone: false,
+            dropdownContent: [
+                {
+                    href: null,
+                    name: 'Player Stats',
+                },
+                {
+                    href: null,
+                    name: 'Map'
+                },
+                {
+                    href: 'progress.html',
+                    name: 'Season Progress'
+                }
+            ]
+        },
+        {
+            name: 'Cosmetics',
+            hasArrow: true,
+            alone: false,
+            dropdownContent: [
+                {
+                    href: null,
+                    name: 'Newest added',
+                },
+                {
+                    href: null,
+                    name: 'Search'
+                }
+            ]
+        },
+        {
+            name: 'Item Shop',
+            hasArrow: true,
+            alone: false,
+            dropdownContent: [
+                {
+                    href: 'item-shop.html',
+                    name: 'Current Item Shop',
+                },
+                {
+                    href: null,
+                    name: 'Predictions'
+                }
+            ]
+        },
+        {
+            name: 'About',
+            alone: true,
+            href: 'https://github.com/tposejank/fnlookup/blob/main/README.md'
+        }
+    ]
+
+    for (let nav_option of nav_items) {
+        if (nav_option.href !== null && nav_option.alone) {
+            let li = document.createElement('li');
+            let a = document.createElement('a');
+            a.classList.add('nav-item');
+            a.innerHTML = nav_option.name + ' ';
+            a.href = nav_option.href;
+            li.append(a);
+
+            list.append(li);
+        } else {
+            let container = document.createElement('div');
+            container.classList.add('nav-item');
+            
+            let a = document.createElement('a');
+            a.innerHTML = nav_option.name + ' ';
+            container.append(a);
+
+            a.addEventListener('click', function() {
+                container.classList.toggle('toggled');
+            });
+
+            if (nav_option.hasArrow) {
+                let arrow = document.createElement('i');
+                arrow.classList.add('arrow');
+                container.appendChild(arrow);
+            }
+
+            let create_list = document.createElement('ul');
+            create_list.classList.add('nav-dropdown-menu');
+
+            container.appendChild(create_list);
+            let li = document.createElement('li');
+            li.append(container);
+
+            list.append(li);
+
+            for (let item of nav_option.dropdownContent) {
+                let item_context = document.createElement('li');
+                item_context.classList.add('dropdown-item');
+
+                create_list.appendChild(item_context);
+
+                let context = document.createElement('a');
+                if (item.href !== null) {
+                    context.href = item.href;
+                }
+                context.innerHTML = item.name;
+                
+                item_context.appendChild(context);
+            }
+        }
+    }
+
     document.getElementById('menu-btn').addEventListener('click', function() {
         document.getElementById('nav-elements').classList.toggle('hidden-media');
     });

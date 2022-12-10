@@ -14,6 +14,10 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
+ul {
+    list-style: none;
+}
+
 body, h1, h2, h3, h4, h5, h6, html, li, p, ul {
     margin: 0;
     font-family: 'Poppins', calibri, helvetica, arial, sans-serif;
@@ -61,6 +65,8 @@ a:-webkit-any-link:hover {
     background-color: black;
     border-radius: 5px;
     transition: background-color .3s;
+
+    font-family: 'Poppins', serif;
 }
 .item-search-container button {
     border: 1px solid gray;
@@ -69,6 +75,8 @@ a:-webkit-any-link:hover {
     border-radius: 5px;
     margin-left: 1rem;
     transition: background-color .3s;
+
+    font-family: 'Poppins', serif;
 }
 .item-search-container button:hover { background-color: rgb(50, 50, 50); }
 .item-search-container input[type=text]:focus { background-color: rgb(50, 50, 50); }
@@ -84,14 +92,67 @@ a:-webkit-any-link:hover {
 .nav-items {
     list-style: none;
     padding: 0;
+    display: flex;
 }
 .nav-item {
     margin-left: .5rem;
     margin-right: .5rem;
 }
+
+.nav-dropdown-menu {
+    position: absolute;
+    padding: .5rem;
+    border-radius: 10px;
+    background:rgb(47, 47, 47);
+
+    z-index: 100;
+    transition: .15s;
+    transition-property: transform,opacity, top;
+
+    display: none;
+}
+
+.dropdown-item {
+    margin: .5rem;
+}
+
+.arrow::after {
+    left: 50%;
+    transform: rotate(-45deg);
+}
+
+.arrow::before {
+    left: calc(50% - 1px);
+    transform: rotate(45deg);
+    height: 6px;
+    background: white;
+}
+
+.arrow::before, .arrow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 9px;
+    background: currentColor;
+    transform-origin: 50% 100%;
+    transition: transform .2s;
+}
+
+.arrow {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 11px;
+    height: 11px;
+}
+
 .navbar-top {
     align-items: center;
     display: flex;
+
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
 .menu-toggle {
@@ -534,11 +595,27 @@ a:-webkit-any-link:hover {
         height: 1rem;
     }
     .menu-toggle { display: none; }
-    .nav-items { display: flex; }
 
     .content {
         width: 750px;
-    }    
+    }
+
+    .nav-dropdown-menu {
+        transform: scale(.2);
+        top: -2rem;
+        pointer-events: none;
+        opacity: 0;
+
+        display: block;
+    }
+
+    .nav-item:hover .nav-dropdown-menu {
+        transform: scale(1);
+        opacity: 1;
+
+        pointer-events: auto;
+        top: 2.2rem;
+    }
 }
 
 @media (max-width: 992px) {
@@ -573,25 +650,45 @@ a:-webkit-any-link:hover {
     .content {
         margin: 6rem 3rem;
     }
-    .nav-content { height: 100%; }
-    .nav-logo { margin-left: 3.7rem; }
+    .nav-content {
+        padding: 1rem 3rem 5rem;
+    }
+    .nav-logo {
+        margin-left: 6.7rem; 
+    }
+    .menu-toggle {
+        margin-left: 3rem;
+    }
     .navbar-top { display: block; }
     .item-search-container input[type=text] { width: 100%; }
     .nav-container {
         left: 0;
-        padding-left: 3rem;
     }
-    .nav-item {
-        margin: .1rem 1rem;
-        font-size: 18px;
+    .nav-items {
+        flex-direction: column;
         width: 100%;
     }
-    .item-search-container {
-        position: relative;
-        display: flex;
-        margin-right: 3rem;
-        padding: 1rem 0 1rem;
+    .nav-items li {
+        flex: 2 1 auto;
     }
+    .nav-item {
+        font-size: 20px;
+    }
+    .nav-dropdown-menu {
+        position: relative;
+    }
+
+    /*What cAN I SAYYY*/
+    .nav-item:not(:not(.toggled)) .nav-dropdown-menu {
+        display: block;
+    }
+
+    .item-search-container input[type=text], .item-search-container button {
+        margin-top: 1rem;
+        font-size: 16px;
+        height: 3rem;
+    }
+
     .menu-toggle {
         position: absolute;
         top: .7rem;
