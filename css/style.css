@@ -136,6 +136,7 @@ a:-webkit-any-link:hover {
 .shop-items-display {
     width: 100%;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -147,6 +148,17 @@ a:-webkit-any-link:hover {
 .vbuck-icon {
     width: 25px;
     height: 25px;
+}
+
+.item-shop-countdown {
+    background:rgb(47, 47, 47);
+    border-radius: 10px;
+    padding: .5rem;
+}
+
+.shop-section-title {
+    margin-top: 2rem;
+    margin-bottom: .5rem;
 }
 
 .item-card {
@@ -177,6 +189,15 @@ a:-webkit-any-link:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.items-count {
+    color:rgb(150, 150, 150);
+    font-size: 15px;
+    margin-left: 1rem;
+    background:rgb(47, 47, 47);
+    padding: .5rem;
+    border-radius: 10px;
 }
 
 .item-card img:not(.vbuck-icon) {
@@ -323,7 +344,33 @@ a:-webkit-any-link:hover {
     color: #fff
 }
 
+.clock-icon {
+    width: 30px;
+    height: 30px;
+}
+
 .hidden { display:none; }
+.d-50 {
+    width: 50%;
+}
+
+.float-right {
+    float: right;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.right {
+    position: absolute;
+    right: 0;
+}
 
 .panning {
     display: inline-block;

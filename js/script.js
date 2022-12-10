@@ -31,6 +31,18 @@ function sameDay(a, b) {
     return a.getDay() === b.getDay() && a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
 }
 
+
+function getFormatDate(date) {
+    var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+
+    return weekDays[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+}
+
+function dateNow() {
+    document.getElementById('date').innerHTML = getFormatDate(new Date());
+}
+
 function iS() {
     // This number can modify the results DRASTICALLY
     // Cannot be negative because it will not do anything

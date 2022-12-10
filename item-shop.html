@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FNLookup</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/itemshop.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="nav-container">
@@ -35,13 +33,26 @@
     </div>
 
     <div class="content">
-        <div style="text-align:center;">
-            <h1>404 Not Found</h1>
-            <div style="display: flex; align-items: center; justify-content: center; height: 200px">
-                <img src="assets/images/ComputerError.png" title="404" width="200" height="200">
+        <div class="top">
+            <div class="flex">
+                <div class="d-50">
+                    <h1>Live Item Shop</h1>
+                    <p id="date"></p>
+                    <p>The current Fortnite Item Shop, updated daily at <a href="https://time.is/UTC">00:00 UTC</a></p>
+                    <script>dateNow()</script>
+                </div>
+                <div class="d-50 float-right">
+                    <div class="flex-center float-right item-shop-countdown">
+                        <img src="assets/images/ClockGraphic.png" class="clock-icon" title="Clock">
+                        <h3 id="item-timer"></h3>
+                    </div>
+                </div>
             </div>
-            <h2>Whoops!</h2>
-            <h3>The page you were looking for does not exist.</h3>
+        </div>
+        <hr>
+
+        <div class="shop-items-container" id="shop-container">
+            <script>createItems()</script>
         </div>
     </div>
 </body>

@@ -55,10 +55,3 @@ function trueRound(value, digits){
 function zeroBefore(num) {
     return (num < 10 ? '0' + num : num);
 }
-
-function getFormatDate(date) {
-    var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    var months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
-
-    return weekDays[date.getDay()] + ', ' + months[date.getMonth() + 1] + ' ' + date.getDate() + ', ' + date.getFullYear();
-}
