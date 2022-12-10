@@ -240,6 +240,19 @@ function iS() {
 
         var section_data;
 
+        if (response.status !== 200) {
+            let eTitle = document.createElement('h1');
+            let eText = document.createElement('h2');
+            let error = response.status + ': ' + response.error;
+            console.log(error);
+            eTitle.innerHTML = 'Error: ' + response.status;
+            eText.innerHTML = response.error;
+            document.getElementsByClassName('content')[0].append(eTitle);
+            document.getElementsByClassName('content')[0].append(eText);
+
+            return;
+        }
+
         var shop_row = document.getElementById("item-shop-section");
         while (shop_row.firstChild)
         shop_row.removeChild(shop_row.firstChild);
