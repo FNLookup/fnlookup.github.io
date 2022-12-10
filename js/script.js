@@ -114,7 +114,7 @@ function iS() {
                     
                     if (prevTime < todayNegTime && prevTime > todayTime &&
                         sameDay(lastAppearance, today) === false) {
-                        console.log(item.name + ' (days since last: ' + sinceLast + ', average: ' + average + ')');
+                        //console.log(item.name + ' (days since last: ' + sinceLast + ', average: ' + average + ')');
                     }
                 }
             }
@@ -234,5 +234,5 @@ function iS() {
         }
 
 
-    });
+    })
 }

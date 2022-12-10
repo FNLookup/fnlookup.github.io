@@ -179,6 +179,11 @@ function init() {
 
             content.append(main);
             content.append(bottom);
+        }).catch(error => {
+            let eText = document.createElement('h1');
+            console.error(error);
+            eText.innerHTML = error;
+            document.getElementById('page-content').append(eText);
         })
 
     }

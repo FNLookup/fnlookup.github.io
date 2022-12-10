@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/news-alt.js"></script>
 </head>
 <body>
     <div class="nav-container">
@@ -58,7 +59,10 @@
         <h1>In-game news</h1>
         <h2>Get updated from your browser</h2>
         
-        <iframe src="news/index.html" frameborder="0" title="News Visualizer" class="news-frame"></iframe>
+        <iframe src="news/index.html" frameborder="0" title="News Visualizer" class="news-frame hidden-media"></iframe>
+        <div class="news-mobile" id="news-mobile">
+            <script>newsAlt()</script>
+        </div>
     </div>
 </body>
 </html>
