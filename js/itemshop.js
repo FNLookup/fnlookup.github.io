@@ -28,13 +28,13 @@ var x = setInterval(function() {
         clearInterval(x);
         var secondsUntilRefresh = 5;
         document.title = "Item shop refreshed!";
-        document.getElementById("item-timer").innerHTML = "Auto-refresh: 5s";
+        document.getElementById("item-timer").innerHTML = "Refresh: 5s";
         var y = setInterval(function() {
             secondsUntilRefresh -= 1;
             if (secondsUntilRefresh == 0) {
                 document.location.reload();
             }
-            document.getElementById("item-timer").innerHTML = "Auto-refresh: " + secondsUntilRefresh + "s";
+            document.getElementById("item-timer").innerHTML = "Refresh: " + secondsUntilRefresh + "s";
         }, 1000);
     }
 }, 1000);
@@ -43,7 +43,7 @@ function createItems() {
     fetch("https://fortnite-api.com/v2/shop/br").then(response=>response.json()).then(response=>{
         console.log(response);
 
-        var sections = [
+        sections = [
             {
                 data: response.data.daily,
                 name: 'Daily',
@@ -114,7 +114,7 @@ function createItems() {
                         var img_src;
     
                         img_obj.src = bundle.image;
-                        img_obj.setAttribute("title", bundle.name);
+                        img_obj.setAttribute("title", bundle.name + ' for ' + data.entries[i].finalPrice + ' VBucks');
                         obj.appendChild(img_obj);
     
                         section_container.append(obj);
@@ -158,8 +158,12 @@ function createItems() {
                                 img_src = item_obj.images.smallIcon;
     
                             img_obj.src = img_src;
-                            img_obj.setAttribute("title", item_obj.name);
+                            img_obj.setAttribute("title", item_obj.name + ' for ' + data.entries[i].finalPrice + ' VBucks');
                             obj.appendChild(img_obj);
+
+                            obj.addEventListener("click", function() {
+                                window.location.href = 'item.html?q=' + item_obj.name.toLowerCase();
+                            });
     
                             section_container.append(obj);
                         }
@@ -234,7 +238,7 @@ function createItems() {
                         var img_src;
     
                         img_obj.src = bundle.image;
-                        img_obj.setAttribute("title", bundle.name);
+                        img_obj.setAttribute("title", bundle.name + ' for ' + data.entries[i].finalPrice + ' VBucks');
                         obj.appendChild(img_obj);
     
                         section_c.append(obj);
@@ -300,8 +304,12 @@ function createItems() {
                                 img_src = item_obj.images.smallIcon;
     
                             img_obj.src = img_src;
-                            img_obj.setAttribute("title", item_obj.name);
+                            img_obj.setAttribute("title", item_obj.name + ' for ' + data.entries[i].finalPrice + ' VBucks');
                             obj.appendChild(img_obj);
+
+                            obj.addEventListener("click", function() {
+                                window.location.href = 'item.html?q=' + item_obj.name.toLowerCase();
+                            });
     
                             section_c.append(obj);
                         }

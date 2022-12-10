@@ -150,10 +150,32 @@ a:-webkit-any-link:hover {
     height: 25px;
 }
 
-.item-shop-countdown {
+.item-shop-countdown, .shop-history-tag {
     background:rgb(47, 47, 47);
     border-radius: 10px;
     padding: .5rem;
+}
+
+.shop-history-tag {
+    margin-left: .5rem;
+}
+
+.variant-container {
+    background: rgb(47, 47, 47);
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    margin: .5rem;
+}
+
+/*The image*/
+.variant-container img {
+    height: 84px;
+    width: 84px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
 }
 
 .shop-section-title {
@@ -167,11 +189,14 @@ a:-webkit-any-link:hover {
     border: 1px solid rgba(0, 0, 0, .125);
     border-radius: 10px;
     overflow: hidden;
-    width: 182px;
     text-align: center;
 
     display: flex;
     flex-direction: column;
+}
+
+.item-card:not(.no-resize) {
+    width: 182px;
 }
 
 .item-info {
@@ -200,10 +225,55 @@ a:-webkit-any-link:hover {
     border-radius: 10px;
 }
 
-.item-card img:not(.vbuck-icon) {
+.item-card img:not(.vbuck-icon):not(.item-card-item-display) {
     border: 0;
     width: 182px;
     height: 182px;
+}
+
+.item-card-item-display {
+    width: 100%;
+}
+
+.item-info-right {
+    padding: 1rem;
+}
+
+.rarity-label {
+    font-size: 16px;
+    padding: .5rem;
+    background:rgb(47, 47, 47);
+    border-radius: 10px;
+    margin-left: .5rem;
+    color: black;
+}
+
+.item-type-label {
+    font-size: 16px;
+    padding: .5rem;
+    background:rgb(47, 47, 47);
+    border-radius: 10px;
+    margin-left: .5rem;
+    color: rgb(206, 206, 206);
+}
+
+.youtube-iframe {
+    margin-top: 1rem;
+    border-radius: 10px;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+.shop-history {
+    padding: 10px;
+    overflow-y: scroll;
+    height: 200px;
+    margin-top: 1rem;
+}
+
+.shop-history-element {
+    margin: .2rem;
+    font-size: 16px;
 }
 
 .item-card[data-rarity=legendary] {
@@ -213,7 +283,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=legendary] {
     background-color: #e67e22;
-    color: #fff
 }
 
 .item-card[data-rarity=epic] {
@@ -221,11 +290,17 @@ a:-webkit-any-link:hover {
     background: radial-gradient(#c359ff, #4c2483);
     border: 3px solid #ea5eff;
 }
+.rarity-label[data-rarity=epic] {
+    background-color: #c359ff;
+}
 
 .item-card[data-rarity=rare] {
     background: -o-radial-gradient(#2cc0ff, #143877);
     background: radial-gradient(#2cc0ff, #143877);
     border: 3px solid #37d0ff;
+}
+.rarity-label[data-rarity=rare] {
+    background-color: #37d0ff;
 }
 
 .item-card[data-rarity=uncommon] {
@@ -235,13 +310,15 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=uncommon] {
     background-color: #88e339;
-    color: #fff
 }
 
 .item-card[data-rarity=common] {
     background: -o-radial-gradient(#bebebe, #646464);
     background: radial-gradient(#bebebe, #646464);
     border: 3px solid #b1b1b1;
+}
+.rarity-label[data-rarity=common] {
+    background-color: #b1b1b1;
 }
 
 .item-card[data-rarity=lava] {
@@ -251,7 +328,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=lava] {
     background-color: #d19635;
-    color: #fff
 }
 
 .item-card[data-rarity=frozen] {
@@ -261,7 +337,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=frozen] {
     background-color: #c4dff7;
-    color: #fff
 }
 
 .item-card[data-rarity=dark] {
@@ -271,7 +346,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=dark] {
     background-color: #ff42e7;
-    color: #fff
 }
 
 .item-card[data-rarity=marvel] {
@@ -281,7 +355,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=marvel] {
     background-color: #ea3537;
-    color: #fff
 }
 
 .item-card[data-rarity=dc] {
@@ -291,7 +364,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=dc] {
     background-color: #6094ce;
-    color: #fff
 }
 
 .item-card[data-rarity=starwars] {
@@ -301,7 +373,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=starwars] {
     background-color: #e7c413;
-    color: #fff
 }
 
 .item-card[data-rarity=gaminglegends] {
@@ -311,7 +382,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=gaminglegends] {
     background-color: #9790ff;
-    color: #fff
 }
 
 .item-card[data-rarity=icon] {
@@ -321,7 +391,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=icon] {
     background-color: #32a7a7;
-    color: #fff
 }
 
 .item-card[data-rarity=slurp] {
@@ -331,7 +400,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=slurp] {
     background-color: #53f0ff;
-    color: #fff
 }
 
 .item-card[data-rarity=shadow] {
@@ -341,7 +409,6 @@ a:-webkit-any-link:hover {
 }
 .rarity-label[data-rarity=shadow] {
     background-color: #949494;
-    color: #fff
 }
 
 .clock-icon {
@@ -354,6 +421,24 @@ a:-webkit-any-link:hover {
     width: 50%;
 }
 
+.d-70 {
+    width: 70%;
+}
+.d-30 {
+    width: 30%;
+}
+
+.d-70-media {
+    width: 70%;
+}
+.d-30-media {
+    width: 30%;
+}
+
+.d-50-media {
+    width: 50%;
+}
+
 .float-right {
     float: right;
 }
@@ -362,9 +447,17 @@ a:-webkit-any-link:hover {
     display: flex;
 }
 
+.flex-media {
+    display: flex;
+}
+
 .flex-center {
     display: flex;
     align-items: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
 }
 
 .right {
@@ -461,7 +554,19 @@ a:-webkit-any-link:hover {
         position: absolute;
         top: .7rem;
     }
+    .d-50-media {
+        width: 100%;
+    }
+    .d-70-media {
+        width: 100%;
+    }
+    .d-30-media {
+        width: 100%;
+    }
 
+    .flex-media {
+        display: block;
+    }
 
     .hidden-media { display:none; }
 }

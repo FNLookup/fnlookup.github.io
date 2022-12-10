@@ -2,6 +2,27 @@ function i() {
     document.getElementById('menu-btn').addEventListener('click', function() {
         document.getElementById('nav-elements').classList.toggle('hidden-media');
     });
+
+    document.getElementById('search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            doSearch();
+        }
+    });
+
+    document.getElementById('search-button').addEventListener('click', function() {
+        doSearch();
+    });
+}
+
+function doSearch() {
+    var searchQuery = document.getElementById('search-input').value;
+
+    if (searchQuery === '' || searchQuery === null) {
+        return;
+    }
+
+    window.location.href = 'item.html?q=' + searchQuery;
 }
 
 function addToList() {
@@ -155,7 +176,7 @@ function iS() {
                     var img_src;
 
                     img_obj.src = bundle.image;
-                    img_obj.setAttribute("title", bundle.name);
+                    img_obj.setAttribute("title", bundle.name + ' for ' + section_data.entries[i].finalPrice + ' VBucks');
                     obj.appendChild(img_obj);
 
                     shop_row.append(obj);
@@ -199,8 +220,12 @@ function iS() {
                             img_src = item_obj.images.smallIcon;
 
                         img_obj.src = img_src;
-                        img_obj.setAttribute("title", item_obj.name);
+                        img_obj.setAttribute("title", item_obj.name + ' for ' + section_data.entries[i].finalPrice + ' VBucks');
                         obj.appendChild(img_obj);
+
+                        obj.addEventListener("click", function() {
+                            window.location.href = 'item.html?q=' + item_obj.name.toLowerCase();
+                        });
 
                         shop_row.append(obj);
                     }
