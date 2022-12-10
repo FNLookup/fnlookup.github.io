@@ -28,7 +28,7 @@ var x = setInterval(function() {
         clearInterval(x);
         var secondsUntilRefresh = 5;
         document.title = "Item shop refreshed!";
-        document.getElementById("item-timer").innerHTML = "Refreshing automatically in 5 seconds";
+        document.getElementById("item-timer").innerHTML = "Auto-refresh: 5s";
         var y = setInterval(function() {
             secondsUntilRefresh -= 1;
             if (secondsUntilRefresh == 0) {
