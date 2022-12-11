@@ -256,6 +256,7 @@ function searchPlayer() {
 
                         let stuff2 = stats.content;
 
+                        let lastUpdate = stuff2.lastModified !== null ? stuff2.lastModified : null;
                         let generate = [
                             {
                                 name: 'Score',
@@ -291,7 +292,7 @@ function searchPlayer() {
                                     },
                                     {
                                         name: 'Win Rate',
-                                        content: stuff2.winRate !== null ? stuff2.winRate : 0
+                                        content: stuff2.winRate !== null ? stuff2.winRate + '%' : 0 + '%'
                                     },
                                     {
                                         name: 'Minutes',
@@ -396,6 +397,13 @@ function searchPlayer() {
 
                             tab_contents.append(title);
                             tab_contents.append(holder);
+                        }
+
+                        if (lastUpdate !== null) {
+                            let laU = document.createElement('h4');
+                            laU.innerHTML = 'Last modified: ' + getFormatDate(new Date(lastUpdate.split('T')[0]));
+                            laU.innerHTML += ' ' + lastUpdate.split('T')[1].split('Z')[0] + ' (UTC)';
+                            tab_contents.append(laU);
                         }
                     }
                 }
