@@ -11,10 +11,12 @@ function initialize() {
         document.getElementById('fn-season-next').innerHTML = response.nextSeason.season;
         document.getElementById('start-date-next').innerHTML = 'Starts ' + getFormatDate(new Date(next_start));
 
+        slug = response.thisSeason.slug;
+
         doCalc(start, end);
-        var timer = setInterval(function() {
+        window.seasonTimer = setInterval(function() {
             doCalc(start, end);
-        }, 1000);
+        }, 500);
     });
 }
 
@@ -33,10 +35,18 @@ function doCalc(startDate, endDate) {
 
     var sp1 = (sS / fS) * 100;
     var ro = trueRound(sp1, 2);
-    var content = ro + "%";
 
-    document.getElementById("progress-bar").style.width = content;
-    document.getElementById("percentage").innerHTML = content;
+    document.title = 'FNLookup - ' + slug + ': ' + ro + '%';
+
+    if (ro >= 100) {
+        document.getElementById("countdown-text").innerHTML = 'Downtime';
+        document.getElementById("progress-bar").style.width = '100%';
+        document.getElementById("percentage").innerHTML = 'Season complete';
+        clearInterval(seasonTimer);
+    } else {
+        document.getElementById("progress-bar").style.width = ro + "%";
+        document.getElementById("percentage").innerHTML = ro + "%";
+    }
 }
 
 function formatTime(seconds)

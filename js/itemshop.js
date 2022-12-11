@@ -37,7 +37,7 @@ var x = setInterval(function() {
             document.getElementById("item-timer").innerHTML = "Refresh: " + secondsUntilRefresh + "s";
         }, 1000);
     }
-}, 1000);
+}, 500);
 
 function createItems() {
     fetch("https://fortnite-api.com/v2/shop/br").then(response=>response.json()).then(response=>{
