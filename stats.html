@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNLookup</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/playerstats.js"></script>
+</head>
+<body>
+    <div class="nav-container">
+        <nav class="navbar-top">
+            <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" width="25" height="25" title="Menu">
+            <a class="nav-logo" href="index.html">FNLookup</a>
+            <div class="nav-content hidden-media" id="nav-elements">
+                <ul class="nav-items" id="nav-items"></ul>
+
+                <div class="item-search-container">
+                    <input type="text" placeholder="Search for an item..." id="search-input">
+                    <button title="Search" id="search-button">Search</button>
+                </div>
+                <script>i()</script>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <h1>Player Stats</h1>
+        <h2>Get a Player's Stats</h2>
+        <h3>WARNING: This <a href="https://fortnite-api.com" class="links green">Fortnite-API.com</a> endpoint requires an API Key.
+        <h3>You can create one by logging into the <a href="https://dash.fortnite-api.com" class="green">API's dashboard</a>, log in with Discord
+        and create an API Key, then insert it here.</h3>
+
+        <p>Your API Key will be saved into the browser for further usage unless the checkbox below is checked.</p>
+        <div>
+            <input type="checkbox" id="dont-save-key" name="dont-save-key">
+            <label for="dont-save-key">Do not save my API Key</label>
+        </div>
+
+        <p><strong>DO NOT SHARE YOUR API KEY.</strong></p>
+        
+        <input type="text" placeholder="FNAPI API Key" id="api-key" title="FNAPI Authorization">
+        <script>autoLoadApiKey()</script>
+        
+        <p class="player-data">To look up a player, insert their <strong>user name</strong> or their <strong>Epic Games Account ID</strong>, select the <strong>account type</strong> (does not work with account IDs), select the <strong>time window</strong> then click the <a class="links green" href="#discover">Discover</a> button.</p>
+
+        <div class="flex flex-wrap player-data">
+            <input type="text" placeholder="Player Name" id="player-name" title="Player Name">
+            <input type="text" placeholder="Account ID" id="player-id" title="Epic Games Account ID">
+            <button id="discover" onclick="searchPlayer()">Discover</button>
+        </div>
+
+        <i>The first checkbox of these lists to be checked is the one used.</i>
+        <div class="flex-media">
+            <div class="d-50-media">
+                <h2 class="flex-hcenter">Account Type</h2>
+
+                <div>
+                    <input type="checkbox" id="acc-psn" name="psn">
+                    <label for="psn">PlayStation Network</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="acc-xbl" name="xbl">
+                    <label for="xbl">XBOX Live</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="acc-epic" name="epic" checked>
+                    <label for="epic">Epic Games</label>
+                </div>
+            </div>
+            <div class="d-50-media">
+                <h2 class="flex-hcenter">Time Window</h2>
+
+                <div>
+                    <input type="checkbox" id="ts-season" name="season">
+                    <label for="season">Season</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="ts-lifetime" name="lifetime" checked>
+                    <label for="lifetime">Lifetime</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="content"></div>
+    </div>
+</body>
+</html>

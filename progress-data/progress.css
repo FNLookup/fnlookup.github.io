@@ -19,29 +19,6 @@
     width: 30px;
 }
 
-.percentage {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.progress-bar-bg {
-    width: 100%;    
-    background-color: rgb(16, 16, 16);
-    border-radius: 10px;
-}
-
-.progress-bar {
-    height: 2rem;
-    line-height: 2rem;
-    text-align: center;
-
-    width: 0%;
-    background-color: rgb(14, 28, 81);
-    color: white;
-    border-radius: 10px;
-}
-
 @media (max-width: 767px) {
     .countdown-text {
         font-size: 30px;

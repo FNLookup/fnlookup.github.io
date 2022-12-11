@@ -1,6 +1,22 @@
 /*Font families*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap');
 
+@font-face {
+    font-family: burbank-big;
+    src: url(../news/burbank.otf);
+}
+
+@font-face {
+    font-family: burbank-bold;
+    src: url(../news/burbank-bold.otf);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
     display: flex;
     align-items: center;
@@ -51,6 +67,15 @@ a:-webkit-any-link:hover {
     text-decoration: underline;
 }
 
+.green {
+    color: green;
+}
+
+.player-data {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
 /*Top navbar*/
 .nav-container {
     position: fixed;
@@ -67,7 +92,7 @@ a:-webkit-any-link:hover {
     align-items: center;
 }
 
-.item-search-container input[type=text] {
+input[type=text] {
     border: 1px solid gray;
     color: white;
     background-color: black;
@@ -76,18 +101,27 @@ a:-webkit-any-link:hover {
 
     font-family: 'Poppins', serif;
 }
+
 .item-search-container button {
+    margin-left: 1rem;
+}
+
+button {
     border: 1px solid gray;
     color: white;
     background-color: black;
     border-radius: 5px;
-    margin-left: 1rem;
     transition: background-color .3s;
 
     font-family: 'Poppins', serif;
 }
-.item-search-container button:hover { background-color: rgb(50, 50, 50); }
-.item-search-container input[type=text]:focus { background-color: rgb(50, 50, 50); }
+button:hover { background-color: rgb(50, 50, 50); }
+input[type=text]:focus { background-color: rgb(50, 50, 50); }
+
+.player-data input:not(:first-child), .player-data button:not(:last-child) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
 
 /**Nav items*/
 .nav-logo {
@@ -201,6 +235,11 @@ a:-webkit-any-link:hover {
     cursor: pointer;
 }
 
+.flex-hcenter {
+    display: flex;
+    justify-content: center;
+}
+
 .predictions {
     display:flex;
     flex-wrap: wrap;
@@ -232,6 +271,30 @@ a:-webkit-any-link:hover {
 
 .filter-options:not(:not(.float-right)) .dropdown-menu {
     transform: translateX(-50%);
+}
+
+
+.percentage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-bar-bg {
+    width: 100%;    
+    background-color: rgb(16, 16, 16);
+    border-radius: 10px;
+}
+
+.progress-bar {
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+
+    width: 0%;
+    background-color: rgb(14, 28, 81);
+    color: white;
+    border-radius: 10px;
 }
 
 .dropdown-menu {
@@ -441,7 +504,7 @@ a:-webkit-any-link:hover {
     font-size: 16px;
 }
 
-.map-location-box {
+.map-location-box, .stat-box {
     margin-left: 2rem;
 }
 
@@ -449,7 +512,7 @@ a:-webkit-any-link:hover {
     font-size: 16px;
 }
 
-.map-location-type {
+.map-location-type, .stat-type {
     cursor: pointer;
 }
 
@@ -457,10 +520,40 @@ a:-webkit-any-link:hover {
     width: 100%;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+
+.stats-items {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 2fr));
+    grid-auto-rows: 5rem;
+    grid-gap: 2px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    border-radius: 10px;
+
+    background-color: rgb(16, 16, 16);
+    transition: background-color .25s;
+}
+
+.stat-item:hover {
+    background-color: rgb(47, 47, 47);
+}
+
+.stat-item-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: burbank-bold;
+}
+
+.stat-item-content {
+    font-size: 16px;
 }
 
 .toggle {

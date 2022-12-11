@@ -8,7 +8,7 @@ function i() {
             alone: false,
             dropdownContent: [
                 {
-                    href: null,
+                    href: 'stats.html',
                     name: 'Player Stats',
                 },
                 {
