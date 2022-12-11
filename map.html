@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" type="text/javascript"></script>
-    <script src="js/itemshop.js" type="text/javascript"></script>
+    <script src="js/map.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="nav-container">
@@ -30,28 +30,8 @@
         </nav>
     </div>
 
-    <div class="content">
-        <div class="top">
-            <div class="flex">
-                <div class="d-50">
-                    <h1>Live Item Shop</h1>
-                    <p id="date"></p>
-                    <p>The current Fortnite Item Shop, updated daily at <a href="https://time.is/UTC">00:00 UTC</a></p>
-                    <script>dateNow()</script>
-                </div>
-                <div class="d-50 float-right">
-                    <div class="flex-center float-right item-shop-countdown">
-                        <img src="assets/images/ClockGraphic.png" class="clock-icon" title="Clock">
-                        <h3 id="item-timer"></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr>
-
-        <div class="shop-items-container" id="shop-container">
-            <script>createItems()</script>
-        </div>
+    <div class="content">  
+        <script>generateMap()</script>
     </div>
 </body>
 </html>

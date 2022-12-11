@@ -12,7 +12,7 @@ function i() {
                     name: 'Player Stats',
                 },
                 {
-                    href: null,
+                    href: 'map.html',
                     name: 'Map'
                 },
                 {
@@ -27,7 +27,7 @@ function i() {
             alone: false,
             dropdownContent: [
                 {
-                    href: null,
+                    href: 'new-cosmetics.html',
                     name: 'Newest added',
                 },
                 {
@@ -46,7 +46,7 @@ function i() {
                     name: 'Current Item Shop',
                 },
                 {
-                    href: null,
+                    href: 'predictions.html',
                     name: 'Predictions'
                 }
             ]
@@ -178,62 +178,6 @@ function dateNow() {
 }
 
 function iS() {
-    // This number can modify the results DRASTICALLY
-    // Cannot be negative because it will not do anything
-    // If very low, it can show item shop items AND
-    // Items that have appeared the same number of average days ago
-        var fallbackDays = 5;
-
-    fetch('https://fortnite-api.com/v2/cosmetics/br').then(response => response.json()).then(response => {
-        for (let i = 0; i < response.data.length; i++) {
-            var item = response.data[i];
-
-            if (item.shopHistory != null) {
-                if (item.shopHistory.length > 1) {
-                    var days = [];
-
-                    for (let h = 0; h < item.shopHistory.length; h++) {
-
-                        if (h > 0) {
-                            var l = item.shopHistory[h - 1].split('T')[0];
-                            var t = item.shopHistory[h].split('T')[0];
-
-                            var lastDate = new Date(l);
-                            var thisDate = new Date(t);
-
-                            let difference = thisDate.getTime() - lastDate.getTime();
-                            let totalDays = Math.ceil(difference / (1000 * 3600 * 24));
-                            days.push(totalDays);
-                        }
-                    }
-
-                    var total = 0;
-                    var average = 0;
-                    for (let object of days) {
-                        total += object;
-                    }
-
-                    average = Math.floor(total / days.length);
-                    
-                    var la = item.shopHistory[item.shopHistory.length - 1].split('T')[0];
-                    var lastAppearance = new Date(la);
-                    var today = new Date();
-
-                    var prevTime = secsToDays(lastAppearance.getTime()) + average;
-                    var todayTime = secsToDays(today.getTime()) - fallbackDays;
-                    var todayNegTime = secsToDays(today.getTime()) + fallbackDays;
-
-                    var sinceLast = secsToDays(today.getTime() - lastAppearance.getTime())
-                    
-                    if (prevTime < todayNegTime && prevTime > todayTime &&
-                        sameDay(lastAppearance, today) === false) {
-                        //console.log(item.name + ' (days since last: ' + sinceLast + ', average: ' + average + ')');
-                    }
-                }
-            }
-        }
-    });
-
     fetch('https://fortnite-api.com/v2/shop/br').then(response => response.json()).then(response => {
         var dropdown_list = document.getElementById("shop-section-dropdown");
         var section = dropdown_list.value;
@@ -321,18 +265,7 @@ function iS() {
                         title.innerHTML = item_obj.name;
                         title.classList.add("item-title");
     
-                        var price = document.createElement('a');
-                        var vbuck = document.createElement('img');
-                        vbuck.src = response.data.vbuckIcon;
-                        vbuck.classList.add("vbuck-icon");
-    
-                        price.appendChild(vbuck);
-                        price.innerHTML += section_data.entries[i].finalPrice;
-                        price.classList.add('item-price');
-    
                         hold.appendChild(title);
-                        hold.appendChild(price);
-    
                         obj.appendChild(hold);
 
                         var img_obj = document.createElement("img");

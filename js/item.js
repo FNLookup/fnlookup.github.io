@@ -66,7 +66,7 @@ function init() {
                 name.classList.add('flex');
                 name.classList.add('flex-wrap');
 
-                if (response.outfit != null) {
+                if (response.type != null) {
                     let item_type = document.createElement('a');
                     item_type.classList.add('item-type-label');
                     item_type.innerHTML = response.type.displayValue;
@@ -159,7 +159,7 @@ function init() {
                     bottom.append(styleContainer);
 
                     let styles = document.createElement('h1');
-                    styles.innerHTML = 'STYLES';
+                    styles.innerHTML = 'Variants';
                     styleContainer.append(styles);
 
                     for (let i = 0; i < response.variants.length; i++) {
@@ -196,7 +196,7 @@ function init() {
                     bottom.append(ytContainer);
 
                     let ytIframe = document.createElement('iframe');
-                    ytIframe.src = 'https://www.youtube.com/embed/' + response.showcaseVideo;
+                    ytIframe.src = 'https://www.youtube.com/embed/' + response.showcaseVideo + '?loop=1';
                     ytIframe.title = response.name + ' Showcase Video';
                     ytIframe.setAttribute('frameborder', '0');
                     ytIframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
@@ -214,7 +214,6 @@ function init() {
             eText.innerHTML = error;
             document.getElementById('page-content').append(eText);
         })
-
     }
 }
 

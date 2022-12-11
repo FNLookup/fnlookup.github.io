@@ -43,6 +43,14 @@ a:-webkit-any-link:hover {
     text-decoration: underline;
 }
 
+.links {
+    transition: color .3s;
+}
+.links:hover {
+    color: #dfb515;
+    text-decoration: underline;
+}
+
 /*Top navbar*/
 .nav-container {
     position: fixed;
@@ -106,7 +114,7 @@ a:-webkit-any-link:hover {
     background:rgb(47, 47, 47);
 
     z-index: 100;
-    transition: .15s;
+    transition: .15s ease-in-out;
     transition-property: transform,opacity, top;
 
     display: none;
@@ -136,7 +144,10 @@ a:-webkit-any-link:hover {
     height: 9px;
     background: currentColor;
     transform-origin: 50% 100%;
-    transition: transform .2s;
+}
+
+.arrow.sideways {
+    transform: rotate(-90deg);
 }
 
 .arrow {
@@ -145,6 +156,7 @@ a:-webkit-any-link:hover {
     position: relative;
     width: 11px;
     height: 11px;
+    transition: transform .2s;
 }
 
 .navbar-top {
@@ -183,6 +195,86 @@ a:-webkit-any-link:hover {
 	border-radius: 10px;
 	background: black;
     color: white;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.predictions {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.predictions-cosmetic {
+    border-radius: 10px;
+    width: 100%;
+    display: flex;
+    margin: 1rem 0;
+}
+
+.predictions-item-context {
+    margin-left: 2rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.filter-options .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 12px;
+}
+
+.filter-options .dropdown-menu .dropdown-choice:not(.group):not(:last-child) {
+    border-bottom: 1px solid #39416b;
+}
+
+.filter-options:not(:not(.float-right)) .dropdown-menu {
+    transform: translateX(-50%);
+}
+
+.dropdown-menu {
+    position: absolute;
+    z-index: 1000;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: .9375rem;
+    color: #fff;
+    text-align: left;
+    list-style: none;
+    background-color: #222;
+    background-clip: padding-box;
+    border: 1px solid #444;
+    border-radius: .25rem;
+}
+
+.dropdown-choice {
+    cursor: pointer;
+    padding: 3px 10px;
+}
+
+.filter-options .dropdown-menu .dropdown-choice::before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-top: -3px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #fff;
+    margin-right: 6px;
+    vertical-align: middle;
+    transition: background-color .25s;
+}
+.filter-options .dropdown-menu .dropdown-choice:hover::before {
+    background-color: white;
+}
+
+.dropdown-label {
+    font-size: 16px;
 }
 
 .news-frame {
@@ -347,6 +439,76 @@ a:-webkit-any-link:hover {
 .shop-history-element {
     margin: .2rem;
     font-size: 16px;
+}
+
+.map-location-box {
+    margin-left: 2rem;
+}
+
+.map-location-item {
+    font-size: 16px;
+}
+
+.map-location-type {
+    cursor: pointer;
+}
+
+.map {
+    width: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.toggle h2 {
+    margin-left: 1rem;
+}
+
+.toggle-switch {
+    display: inline-block;
+    background: rgb(59, 59, 59);
+    border-radius: 16px;
+    width: 58px;
+    height: 32px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+}
+.toggle-switch:before, .toggle-switch:after {
+  content: "";
+}
+.toggle-switch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: left 0.25s;
+}
+.toggle:hover .toggle-switch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+}
+.toggle-checkbox:checked + .toggle-switch {
+    background: #20452f;
+}
+.toggle-checkbox:checked + .toggle-switch:before {
+    left: 30px;
+}
+
+.toggle-checkbox {
+    position: absolute;
+    visibility: hidden;
 }
 
 .item-card[data-rarity=legendary] {
