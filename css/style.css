@@ -973,6 +973,11 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     }
 }
 
+@media (max-width: 784px) {
+    .fn-dot-mask, .fn-season-video, .season-video {
+        display: none;
+    }
+}
 
 @media (max-width: 768px) {
     .content {
