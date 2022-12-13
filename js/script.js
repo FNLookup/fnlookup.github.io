@@ -55,7 +55,7 @@ function i() {
                     name: 'Newest added',
                 },
                 {
-                    href: null,
+                    href: 'search.html',
                     name: 'Search'
                 }
             ]
