@@ -1,4 +1,24 @@
 function i() {
+    //<!--Edit these for future seasons!-->
+    
+    let videoSrcs = [
+        "https://cdn2.unrealengine.com/221132-fnbr-c4s1-overview-gameplay-webheader-8daef2587fae.mp4",
+        "https://cdn2.unrealengine.com/221132-fnbr-c4s1-overview-gameplay-webheader-cf439b66d2a9.webm"
+    ];
+
+    let vid = document.getElementById("fn-video");
+    for (let src of videoSrcs) {
+        let i = document.createElement("source");
+        i.src = src;
+
+        vid.append(i);
+    }
+
+    window.addEventListener("resize", function() {
+        let w = document.body.clientWidth;
+        vid.style.width = w + 'px';
+    });
+
     let list = document.getElementById("nav-items");
 
     let nav_items = [
@@ -18,6 +38,10 @@ function i() {
                 {
                     href: 'progress.html',
                     name: 'Season Progress'
+                },
+                {
+                    href: 'augments.html',
+                    name: 'Reality Augments'
                 }
             ]
         },
