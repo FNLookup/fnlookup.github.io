@@ -319,3 +319,15 @@ function iS() {
 
     })
 }
+
+function marqueeCheck(obj) {
+    let text = obj.textContent;
+
+    let fullUppercase = text.toUpperCase() == text;
+
+    if (obj.textContent.length >= 20 && !fullUppercase) {
+        obj.classList.add('marquee');
+    } else if (obj.textContent.length >= 15 && fullUppercase) {
+        obj.classList.add('marquee');
+    }
+}

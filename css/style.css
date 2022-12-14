@@ -466,11 +466,39 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
 .item-info {
     font-weight: 600;
     background-color: rgba(0, 0, 0, 0.5);
+    border: 3px solid transparent;
     position: absolute;
     bottom: 0;
     width: 100%;
     font-size: 15px;
     display: block;
+}
+
+.item-banner {
+    font-size: 12px;
+    z-index: 9999;
+    position: absolute;
+    font-weight: 700;
+    padding: .2rem;
+    text-align: center;
+    pointer-events: none;
+
+    font-family: burbank-big;
+    text-transform: uppercase;
+
+    animation: scalebounce .5s ease-in-out infinite alternate;
+}
+
+.item-banner[intensity=High] {
+    background-color: #FFFF00;
+    color: #00072C;
+    border: 3px solid white;
+}
+
+.item-banner[intensity=Low] {
+    background-color: #CF0067;
+    border: 3px solid #FF2C78;
+    color: white;
 }
 
 .item-price {
@@ -661,6 +689,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: radial-gradient(#ea8d23, #78371d);
     border: 3px solid #e98d4b;
 }
+.item-info[data-rarity=legendary] {
+    border-top-color: #e98d4b;
+}
 .rarity-label[data-rarity=legendary] {
     background-color: #e67e22;
 }
@@ -669,6 +700,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#c359ff, #4c2483);
     background: radial-gradient(#c359ff, #4c2483);
     border: 3px solid #ea5eff;
+}
+.item-info[data-rarity=epic] {
+    border-top-color: #ea5eff;
 }
 .rarity-label[data-rarity=epic] {
     background-color: #c359ff;
@@ -679,6 +713,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: radial-gradient(#2cc0ff, #143877);
     border: 3px solid #37d0ff;
 }
+.item-info[data-rarity=rare] {
+    border-top-color: #37d0ff;
+}
 .rarity-label[data-rarity=rare] {
     background-color: #37d0ff;
 }
@@ -687,6 +724,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#6abb1e, #175117);
     background: radial-gradient(#6abb1e, #175117);
     border: 3px solid #88e339;
+}
+.item-info[data-rarity=uncommon] {
+    border-top-color: #88e339;
 }
 .rarity-label[data-rarity=uncommon] {
     background-color: #88e339;
@@ -697,6 +737,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: radial-gradient(#bebebe, #646464);
     border: 3px solid #b1b1b1;
 }
+.item-info[data-rarity=common] {
+    border-top-color: #b1b1b1;
+}
 .rarity-label[data-rarity=common] {
     background-color: #b1b1b1;
 }
@@ -705,6 +748,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#ea8d23, #6a0a31);
     background: radial-gradient(#ea8d23, #6a0a31);
     border: 3px solid #d19635;
+}
+.item-info[data-rarity=lava] {
+    border-top-color: #d19635;
 }
 .rarity-label[data-rarity=lava] {
     background-color: #d19635;
@@ -715,6 +761,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: radial-gradient(#94dfff, #269ed6);
     border: 3px solid #c4dff7;
 }
+.item-info[data-rarity=frozen] {
+    border-top-color: #c4dff7;
+}
 .rarity-label[data-rarity=frozen] {
     background-color: #c4dff7;
 }
@@ -723,6 +772,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#fb22df, #520c6f);
     background: radial-gradient(#fb22df, #520c6f);
     border: 3px solid #ff42e7;
+}
+.item-info[data-rarity=dark] {
+    border-top-color: #ff42e7;
 }
 .rarity-label[data-rarity=dark] {
     background-color: #ff42e7;
@@ -733,6 +785,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: radial-gradient(#c53333, #761b1b);
     border: 3px solid #ef3537;
 }
+.item-info[data-rarity=marvel] {
+    border-top-color: #ef3537;
+}
 .rarity-label[data-rarity=marvel] {
     background-color: #ea3537;
 }
@@ -741,6 +796,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#5475c7, #243461);
     background: radial-gradient(#5475c7, #243461);
     border: 3px solid #6094ce;
+}
+.item-info[data-rarity=dc] {
+    border-top-color: #6094ce;
 }
 .rarity-label[data-rarity=dc] {
     background-color: #6094ce;
@@ -751,6 +809,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: radial-gradient(#1b366e, #081737);
     border: 3px solid #e7c413;
 }
+.item-info[data-rarity=starwars] {
+    border-top-color: #e7c413;
+}
 .rarity-label[data-rarity=starwars] {
     background-color: #e7c413;
 }
@@ -759,6 +820,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#5447d4, #312497);
     background: radial-gradient(#5447d4, #312497);
     border: 3px solid #8078ff;
+}
+.item-info[data-rarity=gaminglegends] {
+    border-top-color: #8078ff;
 }
 .rarity-label[data-rarity=gaminglegends] {
     background-color: #9790ff;
@@ -769,6 +833,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: radial-gradient(#36b7b7, #256b6b);
     border: 3px solid #52e0e0;
 }
+.item-info[data-rarity=icon] {
+    border-top-color: #52e0e0;
+}
 .rarity-label[data-rarity=icon] {
     background-color: #32a7a7;
 }
@@ -778,6 +845,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: radial-gradient(#29f1a3, #12a9a4);
     border: 3px solid #53f0ff;
 }
+.item-info[data-rarity=slurp] {
+    border-top-color: #53f0ff;
+}
 .rarity-label[data-rarity=slurp] {
     background-color: #53f0ff;
 }
@@ -786,6 +856,9 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#717171, #191919);
     background: radial-gradient(#717171, #191919);
     border: 3px solid #949494;
+}
+.item-info[data-rarity=shadow] {
+    border-top-color: #949494;
 }
 .rarity-label[data-rarity=shadow] {
     background-color: #949494;
@@ -817,6 +890,7 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
 }
 
 .item-title {
+    line-height: 100%;
     text-shadow: 0 2px 2px #000;
 }
 
@@ -894,14 +968,14 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     box-sizing: border-box
 }
 
-.marquee>span {
+.marquee {
     display: inline-block;
     padding-left: 100%;
-    -webkit-animation: marquee 7s linear infinite alternate;
-    animation: marquee 7s linear infinite alternate;
+    -webkit-animation: marquee 6s linear infinite;
+    animation: marquee 6s linear infinite
 }
 
-.marquee span:hover {
+.marquee:hover {
     -webkit-animation-play-state: paused;
     animation-play-state: paused
 }
@@ -925,6 +999,15 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     100% {
         -webkit-transform: translate(-100%,0);
         transform: translate(-100%,0);
+    }
+}
+
+@keyframes scalebounce {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.025);
     }
 }
 
