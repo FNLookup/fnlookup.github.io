@@ -474,6 +474,11 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     display: block;
 }
 
+.item-card-parent:hover .item-banner {
+    margin-left: -8px;
+    margin-top: -8px;
+}
+
 .item-banner {
     font-size: 12px;
     z-index: 9999;
@@ -483,16 +488,19 @@ input[type=text]:focus { background-color: rgb(50, 50, 50); }
     text-align: center;
     pointer-events: none;
 
+    transition: .3s;
+    transition-property: margin-left, margin-top;
+
     font-family: burbank-big;
     text-transform: uppercase;
-
-    animation: scalebounce .5s ease-in-out infinite alternate;
 }
 
 .item-banner[intensity=High] {
     background-color: #FFFF00;
     color: #00072C;
     border: 3px solid white;
+
+    animation: scalebounce .5s ease-in-out infinite alternate;
 }
 
 .item-banner[intensity=Low] {

@@ -101,6 +101,7 @@ function createItems() {
                         }
 
                         let parent = document.createElement('div');
+                        parent.classList.add('item-card-parent');
     
                         var obj = document.createElement("div");
                         obj.classList.add("item-card");
@@ -186,6 +187,7 @@ function createItems() {
                             }
 
                             let parent = document.createElement('div');
+                            parent.classList.add('item-card-parent');
     
                             var obj = document.createElement("div");
                             obj.classList.add("item-card");
