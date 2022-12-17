@@ -71,7 +71,7 @@ function createItems() {
 
             for (let data of sec_datas) {
                 for (let i = 0; i < data.entries.length; i++) {
-                    console.log(data.entries[i].banner);
+                    console.log(data.entries[i]);
     
                     const items = data.entries[i].items;
                     const bundle  = data.entries[i].bundle;
@@ -118,12 +118,37 @@ function createItems() {
                         var vbuck = document.createElement('img');
                         vbuck.src = response.data.vbuckIcon;
                         vbuck.classList.add("vbuck-icon");
+
+                        let vbt = document.createElement('a');
+                        vbt.classList.add("item-price-vbp");
+
+                        let normalPrice = data.entries[i].regularPrice;
+                        let finalPrice = data.entries[i].finalPrice;
+
+                        vbuck.title = finalPrice +'/'+ normalPrice;
+
+                        if (finalPrice < normalPrice) {
+                            let bip = document.createElement('a');
+                            bip.classList.add("item-price-bip");
+
+                            bip.innerHTML = normalPrice;
+                            price.append(bip);
+                        }
+
+                        vbt.innerHTML = finalPrice;
+
+                        price.append(vbt);
     
                         price.appendChild(vbuck);
-                        price.innerHTML += data.entries[i].finalPrice;
                         price.classList.add('item-price');
     
                         hold.appendChild(title);
+
+                        let type = document.createElement('a');
+                        type.classList.add("item-type");
+                        type.innerHTML = bundle.info;
+                        hold.appendChild(type);
+
                         hold.appendChild(price);
                         hold.setAttribute('data-rarity', item_obj.rarity.value);
     
@@ -138,7 +163,10 @@ function createItems() {
                             banner_object.setAttribute('intensity', data.entries[i].banner.intensity);
                             parent.appendChild(banner_object);
                         }
-    
+                        
+                        let ic = document.createElement('div');
+                        ic.classList.add("item-image");
+
                         var img_obj = document.createElement("img");
                         var img_src;
     
@@ -153,7 +181,8 @@ function createItems() {
                         img_obj.src = img_src;
                         
                         img_obj.setAttribute("title", bundle.name + ' for ' + data.entries[i].finalPrice + ' VBucks');
-                        obj.appendChild(img_obj);
+                        ic.appendChild(img_obj);
+                        obj.append(ic);
 
                         parent.append(obj);
     
@@ -196,7 +225,7 @@ function createItems() {
                             var hold = document.createElement("div");
                             hold.classList.add("item-info");
     
-                            var title = document.createElement('span');
+                            var title = document.createElement('a');
                             title.innerHTML = item_obj.name;
                             title.classList.add("item-title");
     
@@ -205,17 +234,44 @@ function createItems() {
                             vbuck.src = response.data.vbuckIcon;
                             vbuck.classList.add("vbuck-icon");
     
+                            let vbt = document.createElement('a');
+                            vbt.classList.add("item-price-vbp");
+
+                            let normalPrice = data.entries[i].regularPrice;
+                            let finalPrice = data.entries[i].finalPrice;
+
+                            vbuck.title = finalPrice +'/'+ normalPrice;
+
+                            if (finalPrice < normalPrice) {
+                                let bip = document.createElement('a');
+                                bip.classList.add("item-price-bip");
+
+                                bip.innerHTML = normalPrice;
+                                price.append(bip);
+                            }
+
+                            vbt.innerHTML = finalPrice;
+
+                            price.append(vbt);
                             price.appendChild(vbuck);
-                            price.innerHTML += data.entries[i].finalPrice;
                             price.classList.add('item-price');
     
                             hold.appendChild(title);
+
+                            let type = document.createElement('a');
+                            type.classList.add("item-type");
+                            type.innerHTML = item_obj.type.displayValue;
+                            hold.appendChild(type);
+
                             hold.appendChild(price);
                             hold.setAttribute('data-rarity', item_obj.rarity.value);
     
                             marqueeCheck(title);
     
                             obj.appendChild(hold);
+
+                            let ic = document.createElement('div');
+                            ic.classList.add("item-image");
     
                             var img_obj = document.createElement("img");
                             var img_src;
@@ -248,7 +304,10 @@ function createItems() {
     
                             img_obj.src = img_src;
                             img_obj.setAttribute("title", item_obj.name + ' for ' + data.entries[i].finalPrice + ' VBucks');
-                            obj.appendChild(img_obj);
+                            img_obj.setAttribute('otype', item_obj.type.value);
+
+                            ic.appendChild(img_obj);
+                            obj.append(ic);
     
                             obj.addEventListener("click", function() {
                                 window.location.href = 'item.html?q=' + item_obj.name.toLowerCase();
