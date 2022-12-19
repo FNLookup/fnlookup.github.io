@@ -36,7 +36,7 @@ function generateMap() {
             arrowNP.classList.add('sideways');
 
             namedPois.append(arrowNP);
-            namedPois.innerHTML += ' Named POIs';
+            namedPois.innerHTML += ' POIs';
 
             content_body.appendChild(namedPois);
             content_body.appendChild(namedPOIItems);
@@ -61,7 +61,7 @@ function generateMap() {
             arrowUNP.classList.add('sideways');
 
             unnamedPois.append(arrowUNP);
-            unnamedPois.innerHTML += ' Unnamed POIs';
+            unnamedPois.innerHTML += ' Landmarks';
             
             content_body.appendChild(unnamedPois);
             content_body.appendChild(unnamedPOIItems);

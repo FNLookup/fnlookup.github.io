@@ -40,6 +40,10 @@ function i() {
                     name: 'Season Progress'
                 },
                 {
+                    href: 'news.html',
+                    name: 'In-game News'
+                },
+                {
                     href: 'augments.html',
                     name: 'Reality Augments'
                 }
@@ -239,6 +243,9 @@ function iS() {
                 const bundle  = section_data.entries[i].bundle;
                 
                 if (bundle !== null) {
+                    let b = document.createElement('div');
+                    b.classList.add('item-card-parent');
+
                     const item_obj = items[0];
 
                     var obj = document.createElement("div");
@@ -266,16 +273,26 @@ function iS() {
 
                     obj.appendChild(hold);
 
+                    let ic = document.createElement('div');
+                    ic.classList.add("item-image");
+
                     var img_obj = document.createElement("img");
                     var img_src;
 
                     img_obj.src = bundle.image;
                     img_obj.setAttribute("title", bundle.name + ' for ' + section_data.entries[i].finalPrice + ' VBucks');
-                    obj.appendChild(img_obj);
+                    ic.appendChild(img_obj);
 
-                    shop_row.append(obj);
+                    obj.appendChild(ic);
+
+                    b.append(obj);
+
+                    shop_row.append(b);
                 } else {
                     for (let j = 0; j < items.length; j++) {
+                        let b = document.createElement('div');
+                        b.classList.add('item-card-parent');
+
                         const item_obj = items[j];
 
                         var obj = document.createElement("div");
@@ -302,21 +319,33 @@ function iS() {
                         else if (item_obj.images.smallIcon != null)
                             img_src = item_obj.images.smallIcon;
 
+                        let ic = document.createElement('div');
+                        ic.classList.add("item-image");
+                        
                         img_obj.src = img_src;
                         img_obj.setAttribute("title", item_obj.name + ' for ' + section_data.entries[i].finalPrice + ' VBucks');
-                        obj.appendChild(img_obj);
+                        ic.appendChild(img_obj);
+
+                        obj.append(ic);
 
                         obj.addEventListener("click", function() {
                             window.location.href = 'item.html?q=' + item_obj.name.toLowerCase();
                         });
 
-                        shop_row.append(obj);
+                        b.append(obj);
+
+                        shop_row.append(b);
                     }
                 }
             }
+
+            for (let k = 0; k < shop_row.children.length; k++) {
+                let child = shop_row.children[k];
+                if (k >= 8) {
+                    shop_row.removeChild(child);
+                }
+            }
         }
-
-
     })
 }
 

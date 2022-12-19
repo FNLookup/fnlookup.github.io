@@ -1,3 +1,5 @@
+shopBasic = false;
+
 // Set the date we're counting down to
 var today = new Date();
 var countDownDate = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() + 1, 0, 0, 0).getTime();
@@ -19,23 +21,27 @@ var x = setInterval(function() {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Display the result in the element with id="demo"
-    document.getElementById("item-timer").innerHTML = hours + "h " +
+    if (!shopBasic) {
+        document.getElementById("item-timer").innerHTML = hours + "h " +
         minutes + "m " + seconds + "s";
 
-    // If the count down is finished, write some text
-    if (distance < 0) {
-        clearInterval(x);
-        var secondsUntilRefresh = 5;
-        document.title = "Item shop refreshed!";
-        document.getElementById("item-timer").innerHTML = "Refresh: 5s";
-        var y = setInterval(function() {
-            secondsUntilRefresh -= 1;
-            if (secondsUntilRefresh == 0) {
-                document.location.reload();
-            }
-            document.getElementById("item-timer").innerHTML = "Refresh: " + secondsUntilRefresh + "s";
-        }, 1000);
+        // If the count down is finished, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            var secondsUntilRefresh = 5;
+            document.title = "Item shop refreshed!";
+            document.getElementById("item-timer").innerHTML = "Refresh: 5s";
+            var y = setInterval(function() {
+                secondsUntilRefresh -= 1;
+                if (secondsUntilRefresh == 0) {
+                    document.location.reload();
+                }
+                document.getElementById("item-timer").innerHTML = "Refresh: " + secondsUntilRefresh + "s";
+            }, 1000);
+        }
+    } else {
+        document.getElementById("basic-is-timer").innerHTML = hours + "h " +
+        minutes + "m " + seconds + "s";
     }
 }, 500);
 

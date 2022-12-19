@@ -141,6 +141,19 @@ function downloadItems() {
             return;
         }
 
+        gameplayTags = [];
+        for (let item of response.data) {
+            if (item.gameplayTags !== null) {
+                for (let gtag of item.gameplayTags) {
+                    if (!gameplayTags.includes(gtag)) gameplayTags.push(gtag);
+                }
+            }
+
+            if (item === response.data[response.data.length - 1]) {
+                console.log('Gameplay Tags stored');
+            }
+        }
+
         items = response.data;
 
         generateItems();
@@ -238,6 +251,9 @@ function searchItems() {
 }
 
 function makeItemCard(item) {
+    let b = document.createElement('div');
+    b.classList.add('item-card-parent');
+
     var obj = document.createElement("div");
     obj.classList.add("item-card");
     obj.setAttribute('data-rarity', item.rarity.value);
@@ -262,13 +278,19 @@ function makeItemCard(item) {
     else if (item.images.smallIcon != null)
         img_src = item.images.smallIcon;
 
+    let ic = document.createElement('div');
+    ic.classList.add("item-image");
+    
     img_obj.src = img_src;
     img_obj.setAttribute("title", item.name);
-    obj.appendChild(img_obj);
+    ic.appendChild(img_obj);
+
+    obj.appendChild(ic);
 
     obj.addEventListener("click", function() {
         window.location.href = 'item.html?q=' + item.name.toLowerCase();
     });
 
-    document.getElementById('objects').append(obj);
+    b.append(obj);
+    document.getElementById('objects').append(b);
 }

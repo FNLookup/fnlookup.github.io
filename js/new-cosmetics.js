@@ -17,6 +17,9 @@ function init() {
             let items = response.data.items;
 
             for (let j = 0; j < items.length; j++) {
+                let b = document.createElement('div');
+                b.classList.add('item-card-parent');
+                    
                 const item_obj = items[j];
 
                 var obj = document.createElement("div");
@@ -43,15 +46,22 @@ function init() {
                 else if (item_obj.images.smallIcon != null)
                     img_src = item_obj.images.smallIcon;
 
+                let ic = document.createElement('div');
+                ic.classList.add("item-image");
+
                 img_obj.src = img_src;
                 img_obj.setAttribute("title", item_obj.name);
-                obj.appendChild(img_obj);
+
+                ic.appendChild(img_obj);
+                obj.appendChild(ic);
 
                 obj.addEventListener("click", function() {
                     window.location.href = 'item.html?q=' + item_obj.name.toLowerCase();
                 });
 
-                document.getElementById('items').append(obj);
+                b.append(obj);
+
+                document.getElementById('items').append(b);
             }
 
             var item_count = document.createElement('a');

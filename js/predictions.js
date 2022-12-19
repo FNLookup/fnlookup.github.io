@@ -97,6 +97,9 @@ function init() {
 }
 
 function makeItemCard(item, averageWait, currentWait, times) {
+    let b = document.createElement('div');
+    b.classList.add('item-card-parent');
+
     var card = document.createElement('div');
     card.classList.add('predictions-cosmetic');
     card.classList.add('d-50-media');
@@ -124,15 +127,23 @@ function makeItemCard(item, averageWait, currentWait, times) {
     else if (item.images.smallIcon != null)
         img_src = item.images.smallIcon;
 
+    let ic = document.createElement('div');
+    ic.classList.add("item-image");
+
     img_obj.src = img_src;
     img_obj.setAttribute("title", item.name);
-    obj.appendChild(img_obj);
+
+    ic.append(img_obj);
+
+    obj.appendChild(ic);
 
     obj.addEventListener("click", function() {
         window.location.href = 'item.html?q=' + item.name.toLowerCase();
     });
 
-    left.appendChild(obj);
+    b.append(obj);
+
+    left.appendChild(b);
 
     // end of image part
 
