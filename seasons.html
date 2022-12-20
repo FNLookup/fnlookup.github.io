@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/search.js"></script>
+    <script src="js/seasons.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -35,38 +35,11 @@
         </nav>
     </div>
 
-    <div class="content" id="content">
-        <h1>Search All Cosmetics</h1>
-        <h2>Search all Battle Royale cosmetics.</h2>
-        <p>Select filters, type in your item's name and find it.</p>
-        <hr>
+    <div class="content" id="seasons">
+        <h1>Seasons</h1>
+        <h2>See the past Fortnite seasons and the next season.</h2>
 
-        <div>
-            <div class="flex cosmetic-search-container">
-                <input type="text" id="iname" class="cosmetic-search" oninput="searchItems(null)" placeholder="Item name...">
-                <button onclick="searchItems(null)">Search</button>
-            </div>
-            <div class="filter-container flex flex-wrap">
-                <a class="filters-title">Filters</a>
-                <div class="filter-options flex flex-wrap" id="dropdown-object">
-                    <script>
-                    initFilter()
-                    downloadItems()
-                    </script>
-                </div>
-                <button id="btn-apply" onclick="searchItems(null)">Apply</button>
-            </div>
-        </div>
-
-        <div class="search-objects" id="objects">
-            <script>
-                resetItems()
-            </script>
-        </div>
-
-        <div class="flex-hcenter">
-            <button class="load-more-btn" onclick="generateMoreItems()">Load More</button>
-        </div>
+        <script>gets()</script>
     </div>
 </body>
 </html>
