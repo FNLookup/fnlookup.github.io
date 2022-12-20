@@ -14,6 +14,17 @@ function init() {
                 document.getElementById('page-content').append(eTitle);
                 document.getElementById('page-content').append(eText);
 
+                if (data.status === 404) {
+                    let tipText = document.createElement('h3');
+                    tipText.innerHTML = "Are you looking for a cosmetic you don't know the name of? Go to ";
+                    let link = document.createElement('a');
+                    link.href = 'search.html';
+                    link.innerHTML = 'search.';
+                    link.classList.add('green');
+                    tipText.append(link);
+                    document.getElementById('page-content').append(tipText);
+                }
+
                 return;
             }
 

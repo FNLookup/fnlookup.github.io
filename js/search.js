@@ -156,7 +156,14 @@ function downloadItems() {
 
         items = response.data;
 
-        generateItems();
+        let p = new URLSearchParams(document.location.search);
+        firstTime = false;
+        if (p.has('q') && firstTime === false) {
+            searchItems(p.get('q'));
+            firstTime = true;
+        } else {
+            generateItems();
+        }
     }).catch(error => {
         let eText = document.createElement('h1');
         console.error(error);
@@ -193,12 +200,13 @@ function resetItems () {
         o.removeChild(o.firstChild);
 }
 
-function searchItems() {
+function searchItems(urlname) {
     let types = [];
     let rarities = [];
     let seasons = [];; // int array
 
     let name = document.getElementById('iname').value;
+    if (urlname !== null) name = urlname;
     
     let tchbox = document.getElementsByName('type');
     let rchbox = document.getElementsByName('rarity');

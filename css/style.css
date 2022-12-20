@@ -332,14 +332,14 @@ button:hover { background-color: rgb(50, 50, 50); }
     flex-wrap: wrap;
 }
 
-.predictions-cosmetic {
+.predictions-cosmetic, .augment {
     border-radius: 10px;
     width: 100%;
     display: flex;
     margin: 1rem 0;
 }
 
-.predictions-item-context {
+.predictions-item-context, .augment-data {
     margin-left: 2rem;
     margin-right: 2rem;
     display: flex;
@@ -427,12 +427,12 @@ button:hover { background-color: rgb(50, 50, 50); }
     width: 100%;
 }
 
-.shop-section-title {
+.shop-section-title, .augment-section-title {
     margin-top: 2rem;
     margin-bottom: .5rem;
 }
 
-.shop-items-display, .search-objects{
+.shop-items-display, .search-objects, .augments-tab-content {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -835,6 +835,11 @@ button:hover { background-color: rgb(50, 50, 50); }
 .toggle-checkbox {
     position: absolute;
     visibility: hidden;
+}
+
+.season-date {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .item-card[data-rarity=legendary] {

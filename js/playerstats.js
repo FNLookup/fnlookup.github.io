@@ -1,19 +1,4 @@
-function autoLoadApiKey() {
-    if (localStorage.getItem('FortniteAPI-apiKey') !== null) {
-        document.getElementById('api-key').value = localStorage.getItem('FortniteAPI-apiKey');
-    }
-}
-
 function searchPlayer() {
-    var apiKey = document.getElementById('api-key');
-
-    var dSCheckbox = document.getElementById('dont-save-key');
-    if (!dSCheckbox.checked) {
-        localStorage.setItem('FortniteAPI-apiKey', apiKey.value);
-    } else {
-        localStorage.removeItem('FortniteAPI-apiKey');
-    }
-
     var uName = document.getElementById('player-name');
     var uID = document.getElementById('player-id');
 
@@ -58,8 +43,8 @@ function searchPlayer() {
     }
 
     fetch(reqURL, {
-        headers: 'string' === typeof apiKey.value ? {
-            "Authorization": apiKey.value
+        headers: 'string' === typeof localStorage.keyFNAPI ? {
+            "Authorization": localStorage.keyFNAPI
         } : {}
     }).then(res => res.json()).then(res => {
         while (content.firstChild) {

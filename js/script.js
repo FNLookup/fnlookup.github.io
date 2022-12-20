@@ -46,6 +46,10 @@ function i() {
                 {
                     href: 'augments.html',
                     name: 'Reality Augments'
+                },
+                {
+                    href: 'seasons.html',
+                    name: 'Seasons'
                 }
             ]
         },
