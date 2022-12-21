@@ -1,3 +1,7 @@
+function gne(e) {
+    return document.createElement(e);
+}
+
 function i() {
     //<!--Edit these for future seasons!-->
     
@@ -27,6 +31,10 @@ function i() {
             hasArrow: true,
             alone: false,
             dropdownContent: [
+                {
+                    href: 'battle-pass.html',
+                    name: 'Battle Pass'
+                },
                 {
                     href: 'stats.html',
                     name: 'Player Stats',
