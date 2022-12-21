@@ -1,5 +1,5 @@
 function generateMap() {
-    fetch('https://fortnite-api.com/v1/map').then(response => response.json()).then(response => {
+    fetch(geturllang('https://fortnite-api.com/v1/map', 0)).then(response => response.json()).then(response => {
         if (response.status !== 200) {
             let eTitle = document.createElement('h1');
             let eText = document.createElement('h2');

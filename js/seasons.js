@@ -1,5 +1,5 @@
 function gets() {
-    fetch('https://fortniteapi.io/v1/seasons/list?lang=en', {
+    fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
         headers: {'Authorization': localStorage.keyFNAPIIo}
     }).then(r => r.json()).then(r => {
         console.log(r);

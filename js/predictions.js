@@ -18,7 +18,7 @@ function init() {
     dateFirst.innerHTML = getFormatDate(new Date(times[0]));
     dateSecond.innerHTML = getFormatDate(new Date(times[1]));
 
-    fetch('https://fortnite-api.com/v2/cosmetics/br').then(response => response.json()).then(response => {
+    fetch(geturllang('https://fortnite-api.com/v2/cosmetics/br', 0)).then(response => response.json()).then(response => {
         if (response.status !== 200) {
             let eTitle = document.createElement('h1');
             let eText = document.createElement('h2');

@@ -139,6 +139,17 @@ a:-webkit-any-link:not(.nav-logo, .no-link):hover {
     transform: scale(1.15);
 }
 
+.nav-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-content .item-search-container {
+    position: absolute;
+    right: 0;
+    padding-right: 3rem;
+}
+
 .nav-items {
     list-style: none;
     padding: 0;
@@ -215,9 +226,9 @@ a:-webkit-any-link:not(.nav-logo, .no-link):hover {
 
 /**Item search*/
 .item-search-container {
-    position: absolute;
     display: flex;
     align-items: center;
+    float: right;
 }
 
 .item-search-container button, .cosmetic-search-container button {
@@ -1227,11 +1238,6 @@ button:hover { background-color: rgb(50, 50, 50); }
     .news-item {
         flex: 0 1 31%;
     }
-    .item-search-container {
-        right: 3rem; 
-        top: 1.3rem;
-        height: 1rem;
-    }
     .menu-toggle { display: none; }
 
     .content {
@@ -1328,8 +1334,15 @@ button:hover { background-color: rgb(50, 50, 50); }
         display: block;
     }
 
+    .nav-content {
+        display: block;
+    }
+
+    .nav-content .item-search-container {
+        position: static;
+    }
+
     .item-search-container input[type=text], .item-search-container button {
-        margin-top: 1rem;
         font-size: 16px;
         height: 3rem;
     }
