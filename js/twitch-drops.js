@@ -13,8 +13,6 @@ function getdrops() {
 }
 
 function makeTwitchDropCard(dropObject) {
-    console.log(dropObject);
-
     let drop = document.createElement('div');
     drop.classList.add('twitch-drop');
 
@@ -30,7 +28,7 @@ function makeTwitchDropCard(dropObject) {
     left.classList.add('d-70-media');
 
     let name = document.createElement('h2');
-    name.innerHTML = dropObject.name
+    name.innerHTML = dropObject.name + ' (' + dropObject.status + ')'
 
     let desc = document.createElement('p');
     desc.innerHTML = dropObject.description;
