@@ -842,6 +842,65 @@ button:hover { background-color: rgb(50, 50, 50); }
     margin-bottom: 2rem;
 }
 
+.twitch-drop {
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.twitch-drop img {
+    width: 120px;
+    height: 160px;
+}
+
+.twitch-drop-info {
+    margin-left: 1.5rem;
+}
+
+.twitch-drop-ca {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.twitch-channel {
+    display: flex;
+    align-items: center;
+}
+
+.twitch-drops-ca .twitch-channel:not(:last-child) {
+    border-bottom: 1px solid rgb(47, 47, 47);
+}
+
+.twitch-channel img {
+    width: 25px;
+    height: 25px;
+}
+
+.item-card[data-rarity=trascendent],
+.item-card[data-rarity=exotic] {
+    background: -o-radial-gradient(#00FF69, #2E85FF);
+    background: radial-gradient(#00FF69, #2E85FF);
+}
+.item-info[data-rarity=trascendent],
+.item-info[data-rarity=exotic] {
+    border-top-color: #00B5F6;
+}
+.rarity-label[data-rarity=trascendent],
+.rarity-label[data-rarity=exotic] {
+    background-color: #00B5F6;
+}
+
+.item-card[data-rarity=mythic] {
+    background: -o-radial-gradient(#FFDE61, #C89214);
+    background: radial-gradient(#FFDE61, #C89214);
+}
+.item-info[data-rarity=mythic] {
+    border-top-color: #e98d4b;
+}
+.rarity-label[data-rarity=mythic] {
+    background-color: #e67e22;
+}
+
 .item-card[data-rarity=legendary] {
     background: -o-radial-gradient(#ea8d23, #78371d);
     background: radial-gradient(#ea8d23, #78371d);
@@ -900,6 +959,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=lava] {
     background: -o-radial-gradient(#ea8d23, #6a0a31);
     background: radial-gradient(#ea8d23, #6a0a31);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Bg.png');
+    background-size: cover;
 }
 .item-info[data-rarity=lava] {
     border-top-color: #d19635;
@@ -911,6 +972,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=frozen] {
     background: -o-radial-gradient(#94dfff, #269ed6);
     background: radial-gradient(#94dfff, #269ed6);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Frozen.png');
+    background-size: cover;
 }
 .item-info[data-rarity=frozen] {
     border-top-color: #c4dff7;
@@ -922,6 +985,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=dark] {
     background: -o-radial-gradient(#fb22df, #520c6f);
     background: radial-gradient(#fb22df, #520c6f);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/T-Cube-Background.png');
+    background-size: cover;
 }
 .item-info[data-rarity=dark] {
     border-top-color: #ff42e7;
@@ -933,6 +998,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=marvel] {
     background: -o-radial-gradient(#c53333, #761b1b);
     background: radial-gradient(#c53333, #761b1b);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/Marvel.png');
+    background-size: cover;
 }
 .item-info[data-rarity=marvel] {
     border-top-color: #ef3537;
@@ -944,6 +1011,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=dc] {
     background: -o-radial-gradient(#5475c7, #243461);
     background: radial-gradient(#5475c7, #243461);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/T-BlackMonday-Background.png');
+    background-size: cover;
 }
 .item-info[data-rarity=dc] {
     border-top-color: #6094ce;
@@ -955,6 +1024,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=starwars] {
     background: -o-radial-gradient(#1b366e, #081737);
     background: radial-gradient(#1b366e, #081737);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/ColumbusSeries.png');
+    background-size: cover;
 }
 .item-info[data-rarity=starwars] {
     border-top-color: #e7c413;
@@ -966,6 +1037,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=gaminglegends] {
     background: -o-radial-gradient(#5447d4, #312497);
     background: radial-gradient(#5447d4, #312497);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/platformseries.png');
+    background-size: cover;
 }
 .item-info[data-rarity=gaminglegends] {
     border-top-color: #8078ff;
@@ -975,8 +1048,11 @@ button:hover { background-color: rgb(50, 50, 50); }
 }
 
 .item-card[data-rarity=icon] {
-    background: -o-radial-gradient(#36b7b7, #256b6b);
-    background: radial-gradient(#36b7b7, #256b6b);
+    background: -o-radial-gradient(#3fb9b9, #51fbfb);
+    background: radial-gradient(#3fb9b9, #51fbfb);
+    /*it looks bad wth lol
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/T_Ui_CreatorsCollab_Bg.png');
+    background-size: cover;*/
 }
 .item-info[data-rarity=icon] {
     border-top-color: #52e0e0;
@@ -988,6 +1064,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=slurp] {
     background: -o-radial-gradient(#29f1a3, #12a9a4);
     background: radial-gradient(#29f1a3, #12a9a4);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/Slurp.png');
+    background-size: cover;
 }
 .item-info[data-rarity=slurp] {
     border-top-color: #53f0ff;
@@ -999,6 +1077,8 @@ button:hover { background-color: rgb(50, 50, 50); }
 .item-card[data-rarity=shadow] {
     background: -o-radial-gradient(#717171, #191919);
     background: radial-gradient(#717171, #191919);
+    background-image: url('https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Shadow.png');
+    background-size: cover;
 }
 .item-info[data-rarity=shadow] {
     border-top-color: #949494;
@@ -1073,6 +1153,10 @@ button:hover { background-color: rgb(50, 50, 50); }
 
 .text-center {
     text-align: center;
+}
+
+.text-right {
+    text-align: right;
 }
 
 .panning {

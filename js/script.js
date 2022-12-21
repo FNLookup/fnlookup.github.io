@@ -50,6 +50,10 @@ function i() {
                 {
                     href: 'seasons.html',
                     name: 'Seasons'
+                },
+                {
+                    href: 'twitch-drops.html',
+                    name: 'Twitch Drops'
                 }
             ]
         },
