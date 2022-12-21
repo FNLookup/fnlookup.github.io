@@ -2,7 +2,7 @@ function init() {
     var params = new URLSearchParams(window.location.search);
     if (params.has('q')) {
 
-        fetch('https://fortnite-api.com/v2/cosmetics/br/search?name=' + params.get('q')).then(data => data.json()).then(data => {
+        fetch(otherargument(geturllang('https://fortnite-api.com/v2/cosmetics/br/search?name=' + params.get('q'), 0), 'searchLanguage')).then(data => data.json()).then(data => {
 
             if (data.status !== 200) {
                 let eTitle = document.createElement('h1');

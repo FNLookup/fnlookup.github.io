@@ -3,7 +3,7 @@ newsBasic = false;
 function newsAlt() {
     let parent = document.getElementById('news-mobile');
     
-    fetch('https://fortnite-api.com/v2/news/br').then(response => response.json()).then(response => {
+    fetch(geturllang('https://fortnite-api.com/v2/news/br', 0)).then(response => response.json()).then(response => {
         if (response.status !== 200) {
             let eTitle = document.createElement('h1');
             let eText = document.createElement('h2');

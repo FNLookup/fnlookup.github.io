@@ -176,7 +176,10 @@ function doSearch() {
 
 function addToList() {
     var sections = [];
-    fetch('https://fortnite-api.com/v2/shop/br').then(response => response.json()).then(response => {
+    fetch(geturllang('https://fortnite-api.com/v2/shop/br', 0)).then(response => response.json()).then(response => {
+        sections.push(response.data.daily.entries[0].section.name);
+        sections.push(response.data.featured.entries[0].section.name);
+
         for (var i = 0; i < response.data.specialFeatured.entries.length; i++) {
             var item = response.data.specialFeatured.entries[i];
             var section = item.section.name;
@@ -214,7 +217,7 @@ function dateNow() {
 }
 
 function iS() {
-    fetch('https://fortnite-api.com/v2/shop/br').then(response => response.json()).then(response => {
+    fetch(geturllang('https://fortnite-api.com/v2/shop/br', 0)).then(response => response.json()).then(response => {
         var dropdown_list = document.getElementById("shop-section-dropdown");
         var section = dropdown_list.value;
 
