@@ -44,7 +44,7 @@ View the End Of Season countdown and a progress bar.
 
 # Item Search
 Look up items with a [Search Bar](https://tposejank.github.io/fnlookup/search.html).  
-![Season Progress](https://cdn.discordapp.com/attachments/1050911269433118720/1055330235677167626/image.png)
+![Season Progress](https://cdn.discordapp.com/attachments/1050911269433118720/1055334013503545344/image.png)
 
 # New Cosmetics
 See the cosmetic items that have been recently added to Fortnite.  
