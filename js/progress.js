@@ -1,17 +1,25 @@
+let seasonSlug = '';
+
 function initialize() {
-    fetch('progress-data/seasonData.json').then(response=>response.json()).then(response => {
-        document.getElementById('season-name').innerHTML = response.thisSeason.seasonName;
-        document.getElementById('fn-season').innerHTML = response.thisSeason.season;
-        var start = response.thisSeason.startDate;
-        var end = response.thisSeason.endDate;
-        var next_start = response.nextSeason.startDate;
+    fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
+        headers: {'Authorization': localStorage.keyFNAPIIo}
+    }).then(response=>response.json()).then(response => {
+        let seasons = [
+            response.seasons[response.seasons.length - 2],
+            response.seasons[response.seasons.length - 1]
+        ]
+
+        document.getElementById('fn-season').innerHTML = seasons[0].displayName;
+        var start = seasons[0].startDate;
+        var end = seasons[0].endDate;
+        var next_start = seasons[1].startDate;
 
         document.getElementById('end-date').innerHTML = 'Ends ' + getFormatDate(new Date(end));
 
-        document.getElementById('fn-season-next').innerHTML = response.nextSeason.season;
+        document.getElementById('fn-season-next').innerHTML = seasons[1].displayName;
         document.getElementById('start-date-next').innerHTML = 'Starts ' + getFormatDate(new Date(next_start));
 
-        slug = response.thisSeason.slug;
+        seasonSlug = 'C' + seasons[0].chapter + 'S' + seasons[0].seasonInChapter;
 
         doCalc(start, end);
         window.seasonTimer = setInterval(function() {
@@ -36,7 +44,7 @@ function doCalc(startDate, endDate) {
     var sp1 = (sS / fS) * 100;
     var ro = trueRound(sp1, 2);
 
-    document.title = 'FNLookup - ' + slug + ': ' + ro + '%';
+    document.title = 'FNLookup - ' + seasonSlug + ': ' + ro + '%';
 
     if (ro >= 100) {
         document.getElementById("countdown-text").innerHTML = 'Downtime';

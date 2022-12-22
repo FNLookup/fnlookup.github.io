@@ -336,6 +336,19 @@ function sameDay(a, b) {
     return a.getDay() === b.getDay() && a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
 }
 
+function sameDayUTC(day, now) {
+    var theday = [ day.getUTCDate(),
+        day.getUTCMonth(),
+        day.getUTCFullYear() ];
+    var today = [ now.getUTCDate(),
+        now.getUTCMonth(),
+        now.getUTCFullYear() ];
+
+    return theday[0] == today[0] &&
+    theday[1] == today[1] &&
+    theday[2] == today[2];
+}
+
 
 function getFormatDate(date) {
     var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

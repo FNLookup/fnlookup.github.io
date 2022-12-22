@@ -227,20 +227,3 @@ function init() {
         })
     }
 }
-
-function sameDayUTC(day, now) {
-    var theday = [ day.getUTCDate(),
-        day.getUTCMonth(),
-        day.getUTCFullYear() ];
-    var today = [ now.getUTCDate(),
-        now.getUTCMonth(),
-        now.getUTCFullYear() ];
-    
-    if (
-        theday[0] == today[0] &&
-        theday[1] == today[1] &&
-        theday[2] == today[2]
-    ) {
-        return true;
-    }
-}

@@ -81,7 +81,7 @@ function init() {
                         var sinceLast = secsToDays(today.getTime() - lastAppearance.getTime())
                         
                         if (prevTime < todayNegTime && prevTime > todayTime &&
-                            sameDay(lastAppearance, today) === false) {
+                            sameDayUTC(lastAppearance, today) === false) {
                             makeItemCard(item, average, sinceLast, dayTimes);
                         }
                     }
