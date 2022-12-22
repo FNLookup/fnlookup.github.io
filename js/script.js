@@ -3,24 +3,25 @@ function gne(e) {
 }
 
 function i() {
-    //<!--Edit these for future seasons!-->
-    
-    let videoSrcs = [
-        "https://cdn2.unrealengine.com/221132-fnbr-c4s1-overview-gameplay-webheader-8daef2587fae.mp4",
-        "https://cdn2.unrealengine.com/221132-fnbr-c4s1-overview-gameplay-webheader-cf439b66d2a9.webm"
-    ];
 
     let vid = document.getElementById("fn-video");
-    for (let src of videoSrcs) {
-        let i = document.createElement("source");
-        i.src = src;
+    
+    fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=current', 1), {
+        headers: { 'Authorization': localStorage.keyFNAPIIo }
+    }).then(r => r.json()).then(r => {
 
-        vid.append(i);
-    }
+        for (let src of r.videos) {
+            let i = document.createElement("source");
+            i.src = src.url;
+            vid.append(i);
+        }
+
+        vid.muted = true;
+        vid.style.width = document.body.clientWidth + 'px';
+    }).catch(err => { console.error(err); });
 
     window.addEventListener("resize", function() {
-        let w = document.body.clientWidth;
-        vid.style.width = w + 'px';
+        vid.style.width = document.body.clientWidth + 'px';
     });
 
     let list = document.getElementById("nav-items");
@@ -306,28 +307,6 @@ function doSearch() {
     window.location.href = 'item.html?q=' + searchQuery;
 }
 
-function addToList() {
-    var sections = [];
-    fetch(geturllang('https://fortnite-api.com/v2/shop/br', 0)).then(response => response.json()).then(response => {
-        sections.push(response.data.daily.entries[0].section.name);
-        sections.push(response.data.featured.entries[0].section.name);
-
-        for (var i = 0; i < response.data.specialFeatured.entries.length; i++) {
-            var item = response.data.specialFeatured.entries[i];
-            var section = item.section.name;
-
-            if (!sections.includes(section)) 
-                sections.push(section);
-        }
-
-        for (let sec of sections) {
-            var ob = document.createElement('option');
-            ob.innerHTML = sec;
-            document.getElementById("shop-section-dropdown").append(ob);
-        }
-    });
-}
-
 function secsToDays(secs) {
     return Math.ceil(secs / (1000 * 3600 * 24));
 }
@@ -359,6 +338,40 @@ function getFormatDate(date) {
 
 function dateNow() {
     document.getElementById('date').innerHTML = getFormatDate(new Date());
+}
+
+function addToList() {
+    var sections = [];
+    fetch(geturllang('https://fortnite-api.com/v2/shop/br', 0)).then(response => response.json()).then(response => {
+        sections.push(response.data.daily.entries[0].section.name);
+        sections.push(response.data.featured.entries[0].section.name);
+
+        for (var i = 0; i < response.data.specialFeatured.entries.length; i++) {
+            var item = response.data.specialFeatured.entries[i];
+            var section = item.section.name;
+
+            if (!sections.includes(section)) 
+                sections.push(section);
+        }
+
+        for (let sec of sections) {
+            var ob = document.createElement('option');
+            ob.innerHTML = sec;
+            document.getElementById("shop-section-dropdown").append(ob);
+        }
+    });
+}
+
+function marqueeCheck(obj) {
+    let text = obj.textContent;
+
+    let fullUppercase = text.toUpperCase() == text;
+
+    if (obj.textContent.length >= 20 && !fullUppercase) {
+        obj.classList.add('marquee');
+    } else if (obj.textContent.length >= 15 && fullUppercase) {
+        obj.classList.add('marquee');
+    }
 }
 
 function iS() {
@@ -503,16 +516,4 @@ function iS() {
             }
         }
     })
-}
-
-function marqueeCheck(obj) {
-    let text = obj.textContent;
-
-    let fullUppercase = text.toUpperCase() == text;
-
-    if (obj.textContent.length >= 20 && !fullUppercase) {
-        obj.classList.add('marquee');
-    } else if (obj.textContent.length >= 15 && fullUppercase) {
-        obj.classList.add('marquee');
-    }
 }
