@@ -1,89 +1,44 @@
 function generateMap() {
-    fetch(geturllang('https://fortnite-api.com/v1/map', 0)).then(response => response.json()).then(response => {
-        if (response.status !== 200) {
-            let eTitle = document.createElement('h1');
-            let eText = document.createElement('h2');
-            let error = response.status + ': ' + response.error;
-            console.log(error);
-            eTitle.innerHTML = 'Error: ' + response.status;
-            eText.innerHTML = response.error;
-            document.getElementsByClassName('content')[0].append(eTitle);
-            document.getElementsByClassName('content')[0].append(eText);
-
-            return;
-        }
-
-        if (response.data !== null) {
-            let data = response.data;
-
+    fetch(geturllang('https://fortniteapi.io/v2/game/poi', 1),{
+        headers: {'Authorization': localStorage.keyFNAPIIo}
+    }).then(r => r.json()).then(r => {
+        if (r.data !== null) {
             setMapFunctions();
             addMapElements();
 
-            let content_body = document.getElementById('map-info');
+            for (let poi of r.list) {
+                console.log(poi);
 
-            let namedPOIItems = document.createElement('div');
-            namedPOIItems.classList.add('map-location-box');
-            namedPOIItems.classList.add('hidden');
+                let a = gne('a');
+                a.addEventListener('click', function() {
+                    openMapView(poi);
+                });
 
-            let namedPois = document.createElement('h2');
-            namedPois.classList.add('map-location-type');
-            namedPois.classList.add('links');
+                let pName = gne('h1');
+                pName.innerHTML = poi.name;
 
-            var arrowNP = document.createElement('i');
-            arrowNP.classList.add('arrow');
-
-            arrowNP.id = 'named-poi-arrow';
-            arrowNP.classList.add('sideways');
-
-            namedPois.append(arrowNP);
-            namedPois.innerHTML += ' POIs';
-
-            content_body.appendChild(namedPois);
-            content_body.appendChild(namedPOIItems);
-
-            namedPois.addEventListener('click', function() {
-                document.getElementById('named-poi-arrow').classList.toggle('sideways');
-                namedPOIItems.classList.toggle('hidden');
-            });
-
-            let unnamedPOIItems = document.createElement('div');
-            unnamedPOIItems.classList.add('map-location-box');
-            unnamedPOIItems.classList.add('hidden');
-
-            let unnamedPois = document.createElement('h2');
-            unnamedPois.classList.add('map-location-type');
-            unnamedPois.classList.add('links');
-
-            var arrowUNP = document.createElement('i');
-            arrowUNP.classList.add('arrow');
-
-            arrowUNP.id = 'unnamed-poi-arrow';
-            arrowUNP.classList.add('sideways');
-
-            unnamedPois.append(arrowUNP);
-            unnamedPois.innerHTML += ' Landmarks';
-            
-            content_body.appendChild(unnamedPois);
-            content_body.appendChild(unnamedPOIItems);
-
-            unnamedPois.addEventListener('click', function() {
-                document.getElementById('unnamed-poi-arrow').classList.toggle('sideways');
-                unnamedPOIItems.classList.toggle('hidden');
-            });
-
-            for (let poi of data.pois) {
-                let name = document.createElement('p');
-                name.innerHTML = poi.name;
-                if (poi.id.startsWith('Athena.Location.UnNamedPOI')) { //unnamed
-                    unnamedPOIItems.append(name);
-                } else {
-                    namedPOIItems.append(name);
-                }
+                a.append(pName);
+                document.getElementById('map-info').append(a);
             }
         }
-
-        console.log(response);
     });
+}
+
+function openMapView(poi) {
+    console.log(poi);
+
+    let pName = document.getElementById('poi-name');
+    pName.innerHTML = poi.name;
+
+    let pView = document.getElementById('poi-view-dialog');
+    pView.classList.add('open')
+    
+    let pX = document.getElementById('close-map-btn');
+    pX.onclick = function() {
+        pView.classList.remove('open');
+    }
+
+    document.getElementById('poi-image').src = poi.images[0].url;
 }
 
 function setMapFunctions() {
@@ -103,7 +58,11 @@ function setMapFunctions() {
 
     swi.addEventListener('click', function () {
         var value = document.getElementById('map-image').classList.toggle('no-poi');
-        document.getElementById('map-image').src = 'https://fortnite-api.com/images/map' + (!value ? '_en' : '') + '.png'
+
+        let img_src = geturllang('https://media.fortniteapi.io/images/map.png?showPOI=true', 1);
+        let img_src_np = geturllang('https://media.fortniteapi.io/images/map.png', 1);
+
+        document.getElementById('map-image').src = value ? img_src_np : img_src;
     })
 
     let label = document.createElement('h2');
@@ -131,7 +90,7 @@ function addMapElements() {
     img.title = 'Map';
     img.id = 'map-image';
     img.classList.add('map');
-    img.src = 'https://fortnite-api.com/images/map_en.png';
+    img.src = geturllang('https://media.fortniteapi.io/images/map.png?showPOI=true', 1);
     imgContainer.append(img);
     
     content.append(mapInfo);

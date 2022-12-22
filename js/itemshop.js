@@ -46,294 +46,160 @@ var x = setInterval(function() {
 }, 500);
 
 function createItems() {
-    fetch(geturllang("https://fortnite-api.com/v2/shop/br", 0)).then(response=>response.json()).then(response=>{
-        if (response.status !== 200) {
-            let eTitle = document.createElement('h1');
-            let eText = document.createElement('h2');
-            let error = response.status + ': ' + response.error;
-            console.log(error);
-            eTitle.innerHTML = 'Error: ' + response.status;
-            eText.innerHTML = response.error;
-            document.getElementsByClassName('content')[0].append(eTitle);
-            document.getElementsByClassName('content')[0].append(eText);
+    fetch(geturllang("https://fortniteapi.io/v2/shop", 1), {
+        headers: { 'Authorization': localStorage.keyFNAPIIo}
+    }).then(response=>response.json()).then(response=>{
 
-            return;
-        }
-
-        sections = [
-            {
-                data: [response.data.daily, response.data.featured, response.data.specialFeatured]
-            }
-        ]
+        console.log(response);
 
         var shop_items = document.getElementById("shop-container");
+        let registeredSections = [];
     
-        
-        for (let h = 0; h < sections.length; h++) {
-            var sec_datas = sections[h].data;
+        for (let i = 0; i < response.shop.length; i++) {
+            let item = response.shop[i];
 
-            var registeredSections = [];
-            var sections = [];
+            console.log(item);
 
-            for (let data of sec_datas) {
-                for (let i = 0; i < data.entries.length; i++) {
-                    console.log(data.entries[i]);
-    
-                    const items = data.entries[i].items;
-                    const bundle  = data.entries[i].bundle;
-    
-                    if (bundle !== null) {
-                        const item_obj = items[0];
-                        const section_name = data.entries[i].section.name;
-                        var section_c;
-                        if (!registeredSections.includes(section_name)) {
-                            var section_title = document.createElement('h1');
-                            section_title.innerHTML = section_name;
-                            section_title.classList.add('flex-center');
-                            section_title.classList.add('shop-section-title');
-                            section_title.id = 'title_' + section_name;
-    
-                            var section_container = document.createElement('div');
-                            section_container.classList.add("shop-items-display");
-                            section_container.setAttribute('name', section_name);
-    
-                            shop_items.append(section_title);
-                            shop_items.append(section_container);
-    
-                            registeredSections.push(section_name);
-                            section_c = section_container;
-                        } else {
-                            section_c = document.getElementsByName(section_name)[0];
-                        }
+            const section_name = item.section.name + '_' + item.section.landingPriority;
+            var section_c;
+            if (!registeredSections.includes(section_name)) {
+                var section_title = document.createElement('h1');
+                section_title.innerHTML = item.section.name;
+                section_title.classList.add('flex-center');
+                section_title.classList.add('shop-section-title');
+                section_title.id = 'title_' + section_name;
 
-                        let parent = document.createElement('div');
-                        parent.classList.add('item-card-parent');
-    
-                        var obj = document.createElement("div");
-                        obj.classList.add("item-card");
-                        obj.setAttribute('data-rarity', item_obj.rarity.value);
-                        
-                        var hold = document.createElement("div");
-                        hold.classList.add("item-info");
-    
-                        var title = document.createElement('span');
-                        title.innerHTML = bundle.name;
-                        title.classList.add("item-title");
-    
-                        var price = document.createElement('a');
-                        var vbuck = document.createElement('img');
-                        vbuck.src = response.data.vbuckIcon;
-                        vbuck.classList.add("vbuck-icon");
+                var section_container = document.createElement('div');
+                section_container.classList.add("shop-items-display");
+                section_container.setAttribute('name', section_name)
 
-                        let vbt = document.createElement('a');
-                        vbt.classList.add("item-price-vbp");
+                shop_items.append(section_title);
+                shop_items.append(section_container);
 
-                        let normalPrice = data.entries[i].regularPrice;
-                        let finalPrice = data.entries[i].finalPrice;
+                registeredSections.push(section_name);
+                section_c = section_container;
+            } else {
+                section_c = document.getElementsByName(section_name)[0];
+            }
 
-                        vbuck.title = finalPrice +'/'+ normalPrice;
+            let parent = document.createElement('div');
+            parent.classList.add('item-card-parent');
 
-                        if (finalPrice < normalPrice) {
-                            let bip = document.createElement('a');
-                            bip.classList.add("item-price-bip");
+            var obj = document.createElement("div");
+            obj.classList.add("item-card");
+            obj.setAttribute('data-rarity', item.rarity.id.toLowerCase());
+            obj.setAttribute('data-type', item.mainType);
 
-                            bip.innerHTML = normalPrice;
-                            price.append(bip);
-                        }
+            var hold = document.createElement("div");
+            hold.classList.add("item-info");
 
-                        vbt.innerHTML = finalPrice;
+            var title = document.createElement('a');
+            title.innerHTML = item.displayName;
+            title.classList.add("item-title");
 
-                        price.append(vbt);
-    
-                        price.appendChild(vbuck);
-                        price.classList.add('item-price');
-    
-                        hold.appendChild(title);
+            var price = document.createElement('a');
+            var vbuck = document.createElement('img');
+            vbuck.src = 'https://media.fortniteapi.io/images/652b99f7863db4ba398c40c326ac15a9/transparent.png';
+            vbuck.classList.add("vbuck-icon");
 
-                        let type = document.createElement('a');
-                        type.classList.add("item-type");
-                        type.innerHTML = bundle.info;
-                        hold.appendChild(type);
+            let vbt = document.createElement('a');
+            vbt.classList.add("item-price-vbp");
 
-                        hold.appendChild(price);
-                        hold.setAttribute('data-rarity', item_obj.rarity.value);
-    
-                        marqueeCheck(title);
-    
-                        obj.appendChild(hold);
+            let normalPrice = item.price.regularPrice;
+            let finalPrice = item.price.finalPrice;
 
-                        if (data.entries[i].banner !== null) {
-                            let banner_object = document.createElement('i');
-                            banner_object.classList.add('item-banner');
-                            banner_object.innerHTML = data.entries[i].banner.value;
-                            banner_object.setAttribute('intensity', data.entries[i].banner.intensity);
-                            parent.appendChild(banner_object);
-                        }
-                        
-                        let ic = document.createElement('div');
-                        ic.classList.add("item-image");
+            vbuck.title = finalPrice +'/'+ normalPrice;
 
-                        var img_obj = document.createElement("img");
-                        var img_src;
-    
-                        img_src = bundle.image;
-    
-                        if (data.entries[i].newDisplayAsset != null) {
-                            if (data.entries[i].newDisplayAsset.materialInstances != null) {
-                                img_src = data.entries[i].newDisplayAsset.materialInstances[0].images.Background;
-                            }
-                        }
-    
-                        img_obj.src = img_src;
-                        
-                        img_obj.setAttribute("title", bundle.name + ' for ' + data.entries[i].finalPrice + ' VBucks');
-                        ic.appendChild(img_obj);
-                        obj.append(ic);
+            if (finalPrice < normalPrice) {
+                let bip = document.createElement('a');
+                bip.classList.add("item-price-bip");
 
-                        parent.append(obj);
-    
-                        section_c.append(parent);
-                    } else {
-                        let firstItem = items[0];
+                bip.innerHTML = normalPrice;
+                price.append(bip);
+            }
 
-                        for (let j = 0; j < items.length; j++) {
-                            const item_obj = items[j];
-    
-                            const section_name = data.entries[i].section.name;
-                            var section_c;
-                            if (!registeredSections.includes(section_name)) {
-                                var section_title = document.createElement('h1');
-                                section_title.innerHTML = section_name;
-                                section_title.classList.add('flex-center');
-                                section_title.classList.add('shop-section-title');
-                                section_title.id = 'title_' + section_name;
-    
-                                var section_container = document.createElement('div');
-                                section_container.classList.add("shop-items-display");
-                                section_container.setAttribute('name', section_name)
-    
-                                shop_items.append(section_title);
-                                shop_items.append(section_container);
-    
-                                registeredSections.push(section_name);
-                                section_c = section_container;
-                            } else {
-                                section_c = document.getElementsByName(section_name)[0];
-                            }
+            vbt.innerHTML = finalPrice;
 
-                            let parent = document.createElement('div');
-                            parent.classList.add('item-card-parent');
-    
-                            var obj = document.createElement("div");
-                            obj.classList.add("item-card");
-                            obj.setAttribute('data-rarity', item_obj.rarity.value);
-    
-                            var hold = document.createElement("div");
-                            hold.classList.add("item-info");
-    
-                            var title = document.createElement('a');
-                            title.innerHTML = item_obj.name;
-                            title.classList.add("item-title");
-    
-                            var price = document.createElement('a');
-                            var vbuck = document.createElement('img');
-                            vbuck.src = response.data.vbuckIcon;
-                            vbuck.classList.add("vbuck-icon");
-    
-                            let vbt = document.createElement('a');
-                            vbt.classList.add("item-price-vbp");
+            price.append(vbt);
+            price.appendChild(vbuck);
+            price.classList.add('item-price');
 
-                            let normalPrice = data.entries[i].regularPrice;
-                            let finalPrice = data.entries[i].finalPrice;
+            hold.appendChild(title);
 
-                            vbuck.title = finalPrice +'/'+ normalPrice;
+            let type = document.createElement('a');
+            type.classList.add("item-type");
+            type.innerHTML = item.displayType;
+            hold.appendChild(type);
 
-                            if (finalPrice < normalPrice) {
-                                let bip = document.createElement('a');
-                                bip.classList.add("item-price-bip");
+            hold.appendChild(price);
+            hold.setAttribute('data-rarity', item.rarity.id.toLowerCase());
 
-                                bip.innerHTML = normalPrice;
-                                price.append(bip);
-                            }
+            marqueeCheck(title);
 
-                            vbt.innerHTML = finalPrice;
+            obj.appendChild(hold);
 
-                            price.append(vbt);
-                            price.appendChild(vbuck);
-                            price.classList.add('item-price');
+            let ic = document.createElement('div');
+            ic.classList.add("item-image");
+
+            let images = [];
+            let currentImage = 0;
+
+            for (let i = 0; i < item.displayAssets.length; i++) {
+                let displayAsset = item.displayAssets[i];
+
+                var img_obj = document.createElement("img");
+                var img_src;
+
+                if (displayAsset.url !== null)
+                    img_src = displayAsset.url;
+                if (displayAsset.background !== null)
+                    img_src = displayAsset.background;
     
-                            hold.appendChild(title);
+                img_obj.src = img_src;
+                img_obj.setAttribute("title", item.displayName + ' for ' + item.price.finalPrice + ' VBucks');
+                img_obj.setAttribute('otype', item.mainType);
+                
+                if (i === 0) img_obj.classList.add('current-style');
 
-                            let type = document.createElement('a');
-                            type.classList.add("item-type");
-                            type.innerHTML = item_obj.type.displayValue;
-                            hold.appendChild(type);
+                images.push(img_obj);
+                ic.appendChild(img_obj);
+            }
+            obj.append(ic);
 
-                            hold.appendChild(price);
-                            hold.setAttribute('data-rarity', item_obj.rarity.value);
-    
-                            marqueeCheck(title);
-    
-                            obj.appendChild(hold);
+            setInterval(function() {
+                currentImage ++;
+                if (currentImage > images.length - 1) currentImage = 0;
 
-                            let ic = document.createElement('div');
-                            ic.classList.add("item-image");
-    
-                            var img_obj = document.createElement("img");
-                            var img_src;
-    
-                            if (item_obj.images.featured != null)
-                                img_src = item_obj.images.featured;
-                            else if (item_obj.images.icon != null)
-                                img_src = item_obj.images.icon;
-                            else if (item_obj.images.smallIcon != null)
-                                img_src = item_obj.images.smallIcon;
-    
-                            if (j < 1) {
-                                if (data.entries[i].newDisplayAsset != null) {
-                                    if (data.entries[i].newDisplayAsset.materialInstances != null) {
-                                        img_src = data.entries[i].newDisplayAsset.materialInstances[0].images.Background;
-                                    }
-                                }
-
-                                if (data.entries[i].banner !== null) {
-                                    let banner_object = document.createElement('i');
-                                    banner_object.classList.add('item-banner');
-                                    banner_object.innerHTML = data.entries[i].banner.value;
-                                    banner_object.setAttribute('intensity', data.entries[i].banner.intensity);
-                                    parent.appendChild(banner_object);
-                                }
-                            } else {
-                                price.innerHTML = 'From ' + firstItem.name;
-                                marqueeCheck(price);
-                            }
-    
-                            img_obj.src = img_src;
-                            img_obj.setAttribute("title", item_obj.name + ' for ' + data.entries[i].finalPrice + ' VBucks');
-                            img_obj.setAttribute('otype', item_obj.type.value);
-
-                            ic.appendChild(img_obj);
-                            obj.append(ic);
-    
-                            obj.addEventListener("click", function() {
-                                window.location.href = 'item.html?q=' + item_obj.name.toLowerCase();
-                            });
-
-                            parent.appendChild(obj);
-    
-                            section_c.append(parent);
-                        }
-                    }
+                images[currentImage].classList.add('current-style');
+                for (let i = 0; i < images.length; i++) {
+                    if (i !== currentImage) 
+                        images[i].classList.remove('current-style');
                 }
+            }, 5000);
+
+            if (item.banner !== null) {
+                let banner_object = document.createElement('i');
+                banner_object.classList.add('item-banner');
+                banner_object.innerHTML = item.banner.name;
+                banner_object.setAttribute('intensity', item.banner.intensity);
+                parent.appendChild(banner_object);
             }
 
-            for (const obj of registeredSections) {
-                var item_count = document.createElement('a');
-                item_count.innerHTML = document.getElementsByName(obj)[0].children.length + ' items';
-                item_count.classList.add('items-count');
+            obj.addEventListener("click", function() {
+                window.location.href = 'item.html?q=' + item.displayName.toLowerCase();
+            });
 
-                document.getElementById('title_' + obj).append(item_count);
-            }
+            parent.appendChild(obj);
+
+            section_c.append(parent);
+        }
+
+        for (const obj of registeredSections) {
+            var item_count = document.createElement('a');
+            item_count.innerHTML = document.getElementsByName(obj)[0].children.length + ' items';
+            item_count.classList.add('items-count');
+
+            document.getElementById('title_' + obj).append(item_count);
         }
     })
 }

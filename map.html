@@ -39,7 +39,19 @@
     </div>
 
     <div class="content">  
+
         <script>generateMap()</script>
+
+        <div class="poi-view" id="poi-view-dialog">
+            <div class="flex map-controls">
+                <h1 id="poi-name"></h1>
+                <svg class="pointer" id="close-map-btn" width="30" height="30" viewBox="0 0 130 130">
+                    <line x1="10" y1="10" x2="120" y2="120" stroke-width="10" stroke="White" />
+                    <line x1="10" y1="120" x2="120" y2="10" stroke-width="10" stroke="White" />
+                </svg>
+            </div>
+            <img alt="POI" class="poi-image" id="poi-image">
+        </div>
     </div>
 </body>
 </html>
