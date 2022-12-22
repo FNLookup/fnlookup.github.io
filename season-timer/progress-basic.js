@@ -1,18 +1,22 @@
 function initialize() {
-    fetch('../seasonData.json').then(response=>response.json()).then(response => {
-        var start = response.thisSeason.startDate;
-        var end = response.thisSeason.endDate;
-
+    fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
+        headers: {'Authorization': '***REMOVED***'}
+    }).then(response=>response.json()).then(response => {
+        let seasons = [
+            response.seasons[response.seasons.length - 2],
+            response.seasons[response.seasons.length - 1]
+        ]
+        var start = seasons[0].startDate;
+        var end = seasons[0].endDate;
         doCalc(start, end);
-        var timer = setInterval(function() {
+        window.seasonTimer = setInterval(function() {
             doCalc(start, end);
-        }, 1000);
+        }, 500);
     });
 }
 
 function doCalc(startDate, endDate) {
     var end = new Date(endDate);
-    var start = new Date(startDate);
     var now = new Date();
     var dif = end.getTime() - now.getTime();
     
