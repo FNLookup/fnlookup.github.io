@@ -36,10 +36,6 @@ function i() {
                     name: 'Battle Pass'
                 },
                 {
-                    href: 'stats.html',
-                    name: 'Player Stats',
-                },
-                {
                     href: 'map.html',
                     name: 'Map'
                 },
@@ -48,12 +44,23 @@ function i() {
                     name: 'Season Progress'
                 },
                 {
-                    href: 'news.html',
-                    name: 'In-game News'
-                },
-                {
                     href: 'augments.html',
                     name: 'Reality Augments'
+                },
+                {
+                    href: 'news.html',
+                    name: 'In-game News'
+                }
+            ]
+        },
+        {
+            name: 'Extras',
+            hasArrow: true,
+            alone: false,
+            dropdownContent: [
+                {
+                    href: 'stats.html',
+                    name: 'Player Stats',
                 },
                 {
                     href: 'seasons.html',
@@ -170,6 +177,123 @@ function i() {
     document.getElementById('search-button').addEventListener('click', function() {
         doSearch();
     });
+
+    let translatorIcon = document.createElement('img');
+    translatorIcon.src = 'assets/icons/multilingual.png';
+    translatorIcon.classList.add('multilingual-btn');
+
+    let languages = [
+        {
+            name: 'English',
+            title: 'English',
+            backend: 'en'
+        },
+        {
+            name: 'العربية',
+            title: 'Arabic',
+            backend: 'ar'
+        },
+        {
+            name: 'Deutsch',
+            title: 'German',
+            backend: 'de'
+        },
+        {
+            name: 'Español',
+            title: 'Spanish',
+            backend: 'es'
+        },
+        {
+            name: 'Español (Latinoamérica)',
+            title: 'Spanish (Latin American)',
+            backend: 'es-419'
+        },
+        {
+            name: 'Français',
+            title: 'French',
+            backend: 'fr'
+        },
+        {
+            name: 'Italiano',
+            title: 'Italian',
+            backend: 'it'
+        },
+        {
+            name: '日本',
+            title: 'Japanese',
+            backend: 'ja'
+        },
+        {
+            name: '한국인',
+            title: 'Korean',
+            backend: 'ko'
+        },
+        {
+            name: 'Polski',
+            title: 'Polish',
+            backend: 'pl'
+        },
+        {
+            name: 'Português (Brasil)',
+            title: 'Portuguese (Brazilian)',
+            backend: 'pt-BR'
+        },
+        {
+            name: 'Русский',
+            title: 'Russian',
+            backend: 'ru'
+        },
+        {
+            name: 'Türkçe',
+            title: 'Turkish',
+            backend: 'tr'
+        },
+        {
+            name: '中國人',
+            title: 'Chinese',
+            backend: 'zh-CN'
+        },
+        {
+            name: '中国人',
+            title: 'Chinese (Simplified)',
+            backend: 'zh-Hant'
+        }
+    ];
+
+    let langs = gne('div');
+    langs.classList.add('nav-item');
+
+    translatorIcon.addEventListener('click', function() {
+        langs.classList.toggle('toggled');
+    });
+
+    langs.append(translatorIcon);
+
+    let langList = document.createElement('ul');
+    langList.classList.add('nav-dropdown-menu', 'right-dmenu', 'language-dropdown');
+
+    langs.append(langList);
+
+    for (let language of languages) {
+        let item_context = document.createElement('li');
+        item_context.classList.add('dropdown-item');
+
+        langList.appendChild(item_context);
+
+        let context = document.createElement('a');
+        context.innerHTML = language.name;
+        context.title = language.title;
+        context.setAttribute('backend-value', language.backend);
+        context.classList.add('link-underline', 'pointer');
+
+        context.addEventListener('click', function() {
+            switchLanguage(context.getAttribute('backend-value'));
+        });
+        
+        item_context.appendChild(context);
+    }
+
+    document.getElementsByClassName('item-search-container')[0].append(langs);
 }
 
 function doSearch() {

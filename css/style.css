@@ -61,6 +61,10 @@ a:-webkit-any-link:not(.nav-logo, .no-link):hover {
     text-decoration: underline;
 }
 
+a.link-underline:hover {
+    text-decoration: underline;
+}
+
 .fn-dot-mask {
     background: rgba(0, 0, 0, 0.12);
 }
@@ -124,7 +128,7 @@ a:-webkit-any-link:not(.nav-logo, .no-link):hover {
 
 /**Nav items*/
 .nav-logo {
-    font-size: 27px;
+    font-size: 20px;
     font-weight: 700;
     margin-left: 3rem;
     margin-right: 3rem;
@@ -137,6 +141,11 @@ a:-webkit-any-link:not(.nav-logo, .no-link):hover {
 }
 .nav-logo:hover {
     transform: scale(1.15);
+}
+
+.nav-main-buttons {
+    display: flex;
+    align-items: center;
 }
 
 .nav-content {
@@ -231,16 +240,6 @@ a:-webkit-any-link:not(.nav-logo, .no-link):hover {
     float: right;
 }
 
-.item-search-container button, .cosmetic-search-container button {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left-color: transparent;
-}
-.item-search-container input, .cosmetic-search-container input {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
 input[type=text] {
     border: 1px solid gray;
     color: white;
@@ -262,6 +261,22 @@ button {
     font-family: 'Poppins', serif;
 }
 button:hover { background-color: rgb(50, 50, 50); }
+
+.item-search-container button, .cosmetic-search-container button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-color: transparent;
+}
+.item-search-container input, .cosmetic-search-container input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.multilingual-btn {
+    width: 20px;
+    cursor: pointer;
+    margin-left: 1rem;
+}
 
 .load-more-btn {
     font-size: 18px;
@@ -295,7 +310,8 @@ button:hover { background-color: rgb(50, 50, 50); }
     border-bottom: 1px solid #39416b;
 }
 
-.filter-options:not(:not(.float-right)) .dropdown-menu {
+.filter-options.float-right .dropdown-menu,
+.right-dmenu {
     transform: translateX(-50%);
 }
 
@@ -1228,7 +1244,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 785px) {
     .flex-omedia {
         display: block;
     }
@@ -1295,9 +1311,6 @@ button:hover { background-color: rgb(50, 50, 50); }
     .fn-dot-mask, .fn-season-video, .season-video {
         display: none;
     }
-}
-
-@media (max-width: 768px) {
     .content {
         margin: 6rem 3rem;
     }
@@ -1305,7 +1318,7 @@ button:hover { background-color: rgb(50, 50, 50); }
         padding: 1rem 3rem 5rem;
     }
     .nav-logo {
-        margin-left: 6.7rem; 
+        margin-left: 1rem; 
     }
     .menu-toggle {
         margin-left: 3rem;
@@ -1334,6 +1347,11 @@ button:hover { background-color: rgb(50, 50, 50); }
         display: block;
     }
 
+    .language-dropdown {
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+
     .nav-content {
         display: block;
     }
@@ -1347,10 +1365,6 @@ button:hover { background-color: rgb(50, 50, 50); }
         height: 3rem;
     }
 
-    .menu-toggle {
-        position: absolute;
-        top: .7rem;
-    }
     .d-50-media {
         width: 100%;
     }
