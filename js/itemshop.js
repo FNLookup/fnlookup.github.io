@@ -46,152 +46,15 @@ var x = setInterval(function() {
 }, 500);
 
 function createItems() {
+    let registeredSections = [];
+
     fetch(geturllang("https://fortniteapi.io/v2/shop", 1), {
         headers: { 'Authorization': localStorage.keyFNAPIIo}
     }).then(response=>response.json()).then(response=>{
-
-        console.log(response);
-
-        var shop_items = document.getElementById("shop-container");
-        let registeredSections = [];
     
         for (let i = 0; i < response.shop.length; i++) {
             let item = response.shop[i];
-
-            console.log(item);
-
-            const section_name = item.section.name + '_' + item.section.landingPriority;
-            var section_c;
-            if (!registeredSections.includes(section_name)) {
-                var section_title = document.createElement('h1');
-                section_title.innerHTML = item.section.name;
-                section_title.classList.add('flex-center');
-                section_title.classList.add('shop-section-title');
-                section_title.id = 'title_' + section_name;
-
-                var section_container = document.createElement('div');
-                section_container.classList.add("shop-items-display");
-                section_container.setAttribute('name', section_name)
-
-                shop_items.append(section_title);
-                shop_items.append(section_container);
-
-                registeredSections.push(section_name);
-                section_c = section_container;
-            } else {
-                section_c = document.getElementsByName(section_name)[0];
-            }
-
-            let parent = document.createElement('div');
-            parent.classList.add('item-card-parent');
-
-            var obj = document.createElement("div");
-            obj.classList.add("item-card");
-            obj.setAttribute('data-rarity', item.rarity.id.toLowerCase());
-            obj.setAttribute('data-type', item.mainType);
-
-            var hold = document.createElement("div");
-            hold.classList.add("item-info");
-
-            var title = document.createElement('a');
-            title.innerHTML = item.displayName;
-            title.classList.add("item-title");
-
-            var price = document.createElement('a');
-            var vbuck = document.createElement('img');
-            vbuck.src = 'https://media.fortniteapi.io/images/652b99f7863db4ba398c40c326ac15a9/transparent.png';
-            vbuck.classList.add("vbuck-icon");
-
-            let vbt = document.createElement('a');
-            vbt.classList.add("item-price-vbp");
-
-            let normalPrice = item.price.regularPrice;
-            let finalPrice = item.price.finalPrice;
-
-            vbuck.title = finalPrice +'/'+ normalPrice;
-
-            if (finalPrice < normalPrice) {
-                let bip = document.createElement('a');
-                bip.classList.add("item-price-bip");
-
-                bip.innerHTML = normalPrice;
-                price.append(bip);
-            }
-
-            vbt.innerHTML = finalPrice;
-
-            price.append(vbt);
-            price.appendChild(vbuck);
-            price.classList.add('item-price');
-
-            hold.appendChild(title);
-
-            let type = document.createElement('a');
-            type.classList.add("item-type");
-            type.innerHTML = item.displayType;
-            hold.appendChild(type);
-
-            hold.appendChild(price);
-            hold.setAttribute('data-rarity', item.rarity.id.toLowerCase());
-
-            marqueeCheck(title);
-
-            obj.appendChild(hold);
-
-            let ic = document.createElement('div');
-            ic.classList.add("item-image");
-
-            let images = [];
-            let currentImage = 0;
-
-            for (let i = 0; i < item.displayAssets.length; i++) {
-                let displayAsset = item.displayAssets[i];
-
-                var img_obj = document.createElement("img");
-                var img_src;
-
-                if (displayAsset.url !== null)
-                    img_src = displayAsset.url;
-                if (displayAsset.background !== null)
-                    img_src = displayAsset.background;
-    
-                img_obj.src = img_src;
-                img_obj.setAttribute("title", item.displayName + ' for ' + item.price.finalPrice + ' VBucks');
-                img_obj.setAttribute('otype', item.mainType);
-                
-                if (i === 0) img_obj.classList.add('current-style');
-
-                images.push(img_obj);
-                ic.appendChild(img_obj);
-            }
-            obj.append(ic);
-
-            setInterval(function() {
-                currentImage ++;
-                if (currentImage > images.length - 1) currentImage = 0;
-
-                images[currentImage].classList.add('current-style');
-                for (let i = 0; i < images.length; i++) {
-                    if (i !== currentImage) 
-                        images[i].classList.remove('current-style');
-                }
-            }, 5000);
-
-            if (item.banner !== null) {
-                let banner_object = document.createElement('i');
-                banner_object.classList.add('item-banner');
-                banner_object.innerHTML = item.banner.name;
-                banner_object.setAttribute('intensity', item.banner.intensity);
-                parent.appendChild(banner_object);
-            }
-
-            obj.addEventListener("click", function() {
-                window.location.href = 'item.html?q=' + item.displayName.toLowerCase();
-            });
-
-            parent.appendChild(obj);
-
-            section_c.append(parent);
+            makeShopCard(item, registeredSections);
         }
 
         for (const obj of registeredSections) {
@@ -201,5 +64,197 @@ function createItems() {
 
             document.getElementById('title_' + obj).append(item_count);
         }
+
+        fetch(geturllang('https://fortniteapi.io/v2/crew', 1), {
+        headers: {'Authorization': localStorage.keyFNAPIIo}
+        }).then(r=>r.json()).then(r=> {
+            console.log(r);
+
+            let crew = r.currentCrew;
+
+            let images = [];
+            let crewItems = crew.rewards;
+
+            for (let reward of crewItems) {
+                images.push({
+                    background: reward.item.images.icon
+                })
+            }
+
+            makeShopCard({
+                section: {
+                    name: crew.descriptions.title,
+                    landingPriority: 0
+                },
+                rarity: {
+                    id: 'exotic'
+                },
+                mainType: 'bundle',
+                displayName: crew.descriptions.title,
+                price: {
+                    finalPrice: '$ 11.99',
+                    regularPrice: '$ 11.99'
+                },
+                ignoreVbuck: true,
+                displayType: getFormatDate(new Date(crew.date)),
+                banner: {
+                    name: crew.descriptions.vbucksTitle,
+                    intensity: 'Low'
+                },
+                ignoreClicks: true,
+                displayAssets: images
+            }, registeredSections);
+
+        }).catch(err => {
+            console.error(err);
+        })
     })
+}
+
+function makeShopCard(item, registeredSections) {
+    var shop_items = document.getElementById("shop-container");
+
+    const section_name = item.section.name + '_' + item.section.landingPriority;
+    var section_c;
+    if (!registeredSections.includes(section_name)) {
+        var section_title = document.createElement('h1');
+        section_title.innerHTML = item.section.name;
+        section_title.classList.add('flex-center');
+        section_title.classList.add('shop-section-title');
+        section_title.id = 'title_' + section_name;
+
+        var section_container = document.createElement('div');
+        section_container.classList.add("shop-items-display");
+        section_container.setAttribute('name', section_name)
+
+        shop_items.append(section_title);
+        shop_items.append(section_container);
+
+        registeredSections.push(section_name);
+        section_c = section_container;
+    } else {
+        section_c = document.getElementsByName(section_name)[0];
+    }
+
+    let parent = document.createElement('div');
+    parent.classList.add('item-card-parent');
+
+    var obj = document.createElement("div");
+    obj.classList.add("item-card");
+    obj.setAttribute('data-rarity', item.rarity.id.toLowerCase());
+    obj.setAttribute('data-type', item.mainType);
+
+    var hold = document.createElement("div");
+    hold.classList.add("item-info");
+
+    var title = document.createElement('a');
+    title.innerHTML = item.displayName;
+    title.classList.add("item-title");
+
+    var price = document.createElement('a');
+    var vbuck = document.createElement('img');
+    vbuck.src = 'https://media.fortniteapi.io/images/652b99f7863db4ba398c40c326ac15a9/transparent.png';
+    vbuck.classList.add("vbuck-icon");
+
+    let vbt = document.createElement('a');
+    vbt.classList.add("item-price-vbp");
+
+    let normalPrice = item.price.regularPrice;
+    let finalPrice = item.price.finalPrice;
+
+    vbuck.title = finalPrice +'/'+ normalPrice;
+
+    if (typeof(normalPrice) !== "string" && typeof(finalPrice) !== "string") {
+        if (finalPrice < normalPrice) {
+            let bip = document.createElement('a');
+            bip.classList.add("item-price-bip");
+    
+            bip.innerHTML = normalPrice;
+            price.append(bip);
+        }
+    }
+
+    vbt.innerHTML = finalPrice;
+
+    price.append(vbt);
+    
+    if (item.ignoreVbuck === undefined) {
+        price.appendChild(vbuck);   
+    }
+
+    price.classList.add('item-price');
+
+    hold.appendChild(title);
+
+    let type = document.createElement('a');
+    type.classList.add("item-type");
+    type.innerHTML = item.displayType;
+    hold.appendChild(type);
+
+    hold.appendChild(price);
+    hold.setAttribute('data-rarity', item.rarity.id.toLowerCase());
+
+    marqueeCheck(title);
+
+    obj.appendChild(hold);
+
+    let ic = document.createElement('div');
+    ic.classList.add("item-image");
+
+    let images = [];
+    let currentImage = 0;
+
+    for (let i = 0; i < item.displayAssets.length; i++) {
+        let displayAsset = item.displayAssets[i];
+
+        var img_obj = document.createElement("img");
+        var img_src;
+
+        if (displayAsset.url !== null)
+            img_src = displayAsset.url;
+        if (displayAsset.background !== null)
+            img_src = displayAsset.background;
+
+        img_obj.src = img_src;
+        img_obj.setAttribute("title", item.displayName + ' for ' + item.price.finalPrice + ' VBucks');
+        img_obj.setAttribute('otype', item.mainType);
+        img_obj.classList.add("style-picture");
+        
+        if (i === 0) img_obj.classList.add('current-style');
+
+        images.push(img_obj);
+        ic.appendChild(img_obj);
+    }
+    obj.append(ic);
+
+    if (item.displayAssets.length > 1) {
+        setInterval(function() {
+            currentImage ++;
+            if (currentImage > images.length - 1) currentImage = 0;
+
+            images[currentImage].classList.add('current-style');
+            for (let i = 0; i < images.length; i++) {
+                if (i !== currentImage) 
+                    images[i].classList.remove('current-style');
+            }
+        }, 5000);
+    }
+
+    if (item.banner !== null) {
+        let banner_object = document.createElement('i');
+        banner_object.classList.add('item-banner');
+        banner_object.innerHTML = item.banner.name;
+        banner_object.setAttribute('intensity', item.banner.intensity);
+        parent.appendChild(banner_object);
+    }
+
+    if (item.ignoreClicks === undefined) {
+        obj.addEventListener("click", function() {
+            window.location.href = 'item.html?q=' + item.displayName.toLowerCase();
+        });
+    }
+
+    parent.appendChild(obj);
+
+    section_c.append(parent);
 }
