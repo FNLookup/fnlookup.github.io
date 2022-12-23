@@ -70,6 +70,10 @@ function i() {
                 {
                     href: 'twitch-drops.html',
                     name: 'Twitch Drops'
+                },
+                {
+                    href: 'crew-pack.html',
+                    name: 'Fortnite Crew'
                 }
             ]
         },
@@ -333,7 +337,7 @@ function getFormatDate(date) {
     var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
-    return weekDays[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+    return weekDays[date.getUTCDay()] + ', ' + months[date.getUTCMonth()] + ' ' + date.getUTCDate() + ', ' + date.getUTCFullYear();
 }
 
 function dateNow() {
