@@ -52,6 +52,17 @@ function createItems() {
         headers: { 'Authorization': localStorage.keyFNAPIIo}
     }).then(response=>response.json()).then(response=>{
     
+        if (response.customBackground !== null) {
+            let p = document.getElementsByClassName("season-video")[0]
+            p.innerHTML = '';
+
+            let img = gne('img');
+            img.classList.add('fn-season-video');
+            img.id = 'fn-video';
+            img.src = response.customBackground;
+            p.append(img);
+        }
+
         for (let i = 0; i < response.shop.length; i++) {
             let item = response.shop[i];
             makeShopCard(item, registeredSections);
@@ -102,7 +113,10 @@ function createItems() {
                     intensity: 'Low'
                 },
                 ignoreClicks: true,
-                displayAssets: images
+                displayAssets: images,
+                backgroundColors: [
+                    '#' + crew.colors.C, '#' + crew.colors.B, '#' + crew.colors.A
+                ]
             }, registeredSections);
 
         }).catch(err => {
@@ -252,6 +266,12 @@ function makeShopCard(item, registeredSections) {
         obj.addEventListener("click", function() {
             window.location.href = 'item.html?q=' + item.displayName.toLowerCase();
         });
+    }
+
+    if (item.backgroundColors !== undefined) {
+        let colorStr = item.backgroundColors.join(',');
+
+        obj.style.background = 'radial-gradient(' + colorStr + ')';
     }
 
     parent.appendChild(obj);
