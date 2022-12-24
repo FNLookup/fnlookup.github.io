@@ -116,7 +116,8 @@ function createItems() {
                 displayAssets: images,
                 backgroundColors: [
                     '#' + crew.colors.C, '#' + crew.colors.B, '#' + crew.colors.A
-                ]
+                ],
+                href: 'crew-pack.html'
             }, registeredSections);
 
         }).catch(err => {
@@ -265,6 +266,11 @@ function makeShopCard(item, registeredSections) {
     if (item.ignoreClicks === undefined) {
         obj.addEventListener("click", function() {
             window.location.href = 'item.html?q=' + item.displayName.toLowerCase();
+        });
+    }
+    if (item.href !== undefined) {
+        obj.addEventListener("click", function() {
+            window.location.href = item.href;
         });
     }
 
