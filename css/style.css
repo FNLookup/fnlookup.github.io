@@ -11,6 +11,10 @@
     src: url(../news/burbank-bold.otf);
 }
 
+:root {
+    --season-accent-1: #FA9E00;
+}
+
 body {
     display: flex;
     align-items: center;
@@ -864,6 +868,123 @@ button:hover { background-color: rgb(50, 50, 50); }
     flex: 0 1 100%;
 }
 
+.achievements {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.achievements::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+  
+.achievements::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255);
+    border-radius: 0;
+}
+  
+.achievements::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+}
+
+.achievement-item {
+    background: linear-gradient(#0086CF, #006ACF);
+    margin: 2rem .5rem;
+    text-align: center;
+    height: 300px;
+    position: relative;
+}
+
+.achievement-inner {
+    z-index: 10;
+    position: relative;
+    padding: 2rem;
+}
+
+.achievement-inner img.achievement-icon {
+    width: 90px;
+    border: 7px solid var(--season-accent-1); 
+    margin-bottom: 1.5rem;
+    transition: margin-top .1s ease-in, scale .1s ease-in;
+    transform: skew(-6deg, -1.5deg);
+}
+
+.achievement-item:hover .achievement-inner img.achievement-icon {
+    margin-top: -5rem;
+    scale: 1.1;
+}
+
+.achievement-inner .achievement-title {
+    font-family: burbank-bold;
+    font-style:italic;
+    font-size: 24px;
+    text-transform: uppercase;
+    width: 230px;
+}
+
+.achievement-inner .achievement-description {
+    font-family: burbank-bold;
+    font-size: 18px;
+    display: block;
+    width: 230px;
+    color: #80D4FF;
+    letter-spacing: 1px;
+    max-height: 0px;
+    transition: max-height .1s ease-out;
+    overflow: hidden;
+}
+
+.achievement-item:hover .achievement-inner .achievement-description {
+    max-height: 300px;
+}
+
+.achievement-item .decoration-1 {
+    position: absolute;
+    width: 100%;
+    height: 3rem;
+    top: 0px;
+    overflow: hidden;
+}
+
+.decoration-1 .decoration-top {
+    background: #FA9E00;
+    position: relative;
+    width: 100%;
+    height: 2rem;
+    transform: rotate(-1deg);
+    bottom: 0.625rem;
+    transition: .1s;
+    transition-property: height, transform;
+}
+
+.achievement-item:hover .decoration-top {
+    transform: rotate(1.5deg);
+    height: 3rem;
+}
+
+.achievement-item .decoration-2 {
+    position: absolute;
+    width: 100%;
+    height: 4rem;
+    bottom: 0px;
+    overflow: hidden;
+}
+
+.decoration-2 .decoration-bottom {
+    background: rgb(53, 167, 251);
+    width: 100%;
+    height: 4rem;
+    position: absolute;
+    transform: rotate(-2deg);
+    top: 5rem;
+    transition: top .1s;
+}
+
+.achievement-item:hover .decoration-2 .decoration-bottom {
+    top: 1rem;
+}
+
 .challenge-category {
     border: 3px solid rgba(0, 0, 0, .25);
     display: flex;
@@ -933,6 +1054,8 @@ button:hover { background-color: rgb(50, 50, 50); }
     justify-content: center;
     flex-wrap: wrap;
     background: #001c649d;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .challenge-reward .reward-quantity {

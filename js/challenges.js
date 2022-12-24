@@ -109,8 +109,11 @@ function getchs() {
     
                                 let rewardicon = gne('img');
                                 rewardicon.src = item.images.icon;
-                                rewardicon.classList.add('reward-icon');
+                                rewardicon.classList.add('reward-icon', 'pointer');
                                 rewardicon.title = item.name;
+                                rewardicon.addEventListener('click', function() {
+                                    document.location.href = 'item.html?q=' + item.name
+                                });
     
                                 rewardobj.append(rewardicon);
                                 questRewards.append(rewardobj);
