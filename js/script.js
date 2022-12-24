@@ -78,6 +78,10 @@ function i() {
                 {
                     href: 'crew-pack.html',
                     name: 'Fortnite Crew'
+                },
+                {
+                    href: 'achievements.html',
+                    name: 'Achievements'
                 }
             ]
         },
