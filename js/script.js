@@ -41,6 +41,10 @@ function i() {
                     name: 'Map'
                 },
                 {
+                    href: 'challenges.html',
+                    name: 'Challenges',
+                },
+                {
                     href: 'progress.html',
                     name: 'Season Progress'
                 },
