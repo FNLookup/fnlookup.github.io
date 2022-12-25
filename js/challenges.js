@@ -124,7 +124,7 @@ function getchs() {
                                 rewardobj.classList.add('challenge-reward');
     
                                 let rewardicon = gne('img');
-                                rewardicon.src = 'https://cdn.discordapp.com/emojis/1036788611925950504.gif?size=96&quality=lossless';
+                                rewardicon.src = localStorage.marioDancing;
                                 rewardicon.classList.add('reward-icon');
                                 rewardicon.title = 'No Rewards';
     
