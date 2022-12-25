@@ -82,6 +82,10 @@ function i() {
                 {
                     href: 'achievements.html',
                     name: 'Achievements'
+                },
+                {
+                    href: 'tournaments.html',
+                    name: 'Competitive'
                 }
             ]
         },

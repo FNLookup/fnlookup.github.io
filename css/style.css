@@ -61,7 +61,7 @@ a {
 }
 
 a:-webkit-any-link:not(.nav-logo, .no-link):hover {
-    color: #dfb515;
+    color: var(--season-accent-1);
     text-decoration: underline;
 }
 
@@ -503,7 +503,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     cursor: pointer;
 }
 
-.vbuck-icon {
+.vbuck-icon, .vbuck-icon-item {
     width: 25px;
     height: 25px;
 }
@@ -664,7 +664,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     width: 100%;
     height: 200%;
 }
-.item-card:hover img:not(.vbuck-icon):not(.item-card-item-display) {
+.item-card:hover .item-image:not(.item-card-item-display) :not(.vbuck-icon):not(.item-card-item-display) {
     transform: scale(1.08);
 }
 .item-card:hover .item-price img {
@@ -830,6 +830,14 @@ button:hover { background-color: rgb(50, 50, 50); }
     border-radius: 10px;
     margin-left: .5rem;
     color: rgb(206, 206, 206);
+}
+
+.copyrighted-audio-warning {
+    color: rgb(243, 76, 76);
+}
+
+.upcoming-notice {
+    color: lightgreen;
 }
 
 .youtube-iframe {
@@ -1443,6 +1451,44 @@ button:hover { background-color: rgb(50, 50, 50); }
     margin: 3rem 0;
 }
 
+.tournament-box-viewer {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    box-sizing: content-box;
+}
+
+.event-poster {
+    position: relative;
+    margin: 3rem;
+    width: 375px;
+    height: 540px;
+}
+
+.event-poster .event-img img {
+    width: 375px;
+}
+
+.event-text-line1, .event-text-line2 {
+    font-family: burbank-bold;
+    text-transform: uppercase;
+}
+
+.event-text {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 3rem;
+    text-align: center;
+    width: 100%;
+}
+.event-text-line1 {
+    font-size: 35px;
+}
+.event-text-line2 {
+    font-size: 33px;
+}
+
 .countdown-text {
     color: #ffffff;
     font-size: 50px;
@@ -1624,7 +1670,7 @@ button:hover { background-color: rgb(50, 50, 50); }
 
 @media (max-width: 992px) {
     /*Item card change size*/
-    .item-card img:not(.vbuck-icon):not(.item-card-item-display) {
+    .item-card:not(.no-resize) img:not(.vbuck-icon):not(.item-card-item-display) {
         border: 0;
         width: 200px;
     }
