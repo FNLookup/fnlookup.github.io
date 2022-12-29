@@ -567,12 +567,11 @@ function makeCard(item) {
 
 function newYearPayloads(christmas) {
     let delay = christmas ? 300 : 600;
+    const styleSheet = document.createElement('link');
+    styleSheet.rel = 'stylesheet';
+    styleSheet.href = 'css/snowflakes.css';
+    document.head.append(styleSheet)
     setInterval(function() {
-        const styleSheet = document.createElement('link');
-        styleSheet.rel = 'stylesheet';
-        styleSheet.href = 'css/snowflakes.css';
-        document.head.append(styleSheet)
-
         // Imported from local education website. Undisclosed.
         const snow = document.createElement("div");
         snow.innerHTML = "<img src='assets/images/snowflake.svg'>";
