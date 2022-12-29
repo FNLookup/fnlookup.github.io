@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
-    <script src="js/tournaments.js" type="text/javascript"></script>
+    <script src="js/vehicles.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -38,21 +38,9 @@
         </nav>
     </div>
 
-    <div class="content flex-media">
-        <div class="tournament-box-viewer d-30-media" id="main">
-            <script>getcompetitive()</script>
-        </div>
-        <div class="d-70-media tournament-details" id="tournament-details">
-            <h2 id="region-title"></h2>
-            <h1 id="tournament-name"></h1>
-            <h2 id="tournament-desc"></h2>
-            <h3 id="tournament-short-desc"></h3>
-            <h3 id="begin-end-times"></h3>
-
-            <h2 id="event-platforms"></h2>
-            <div id="free-event-details"></div>
-            <div id="tournament-windows" class="tournament-windows"></div>
-            <div id="tournament-scoring"></div>
+    <div class="content">
+        <div class="flex flex-wrap" id="vehicle-wrapper">
+            <script>getstat()</script>
         </div>
     </div>
 </body>

@@ -5,16 +5,34 @@ localStorage.marioDancing = 'https://cdn.discordapp.com/emojis/10367886119259505
 window.supportedLanguages = [
     'en', 'ar', 'de', 'es', 'es-419', 'fr', 'it', 'ja', 'ko', 'pl', 'pt-BR', 'ru', 'tr', 'zh-CN', 'zh-Hant'
 ];
+window.defaultLanguage = 'en';
 
 if (localStorage.requestLanguage === undefined) {
-    if (window.supportedLanguages.includes(window.navigator.language)) {
-        localStorage.requestLanguage = window.navigator.language;
+    if (typeof(window.navigator.language) == 'string') {
+        if (window.supportedLanguages.includes(window.navigator.language)) {
+            localStorage.requestLanguage = window.navigator.language;
+        } else {
+            localStorage.requestLanguage = window.defaultLanguage;
+        }
+    } else {
+        localStorage.requestLanguage = window.defaultLanguage;
     }
 }
 
+function debugFetch(url, oauth) {
+    fetch(url, {headers: { 'Authorization': oauth }}).then(r => r.json()).then(r => {
+        console.log('DebugFetch done\n', r)
+    });
+}
+
 function switchLanguage(to) {
-    localStorage.requestLanguage = to;
-    document.location.reload();
+    if (window.supportedLanguages.includes(to)) {
+        localStorage.requestLanguage = to;
+        document.location.reload();
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function geturllang(url, type) {
@@ -24,7 +42,7 @@ function geturllang(url, type) {
     }
 
     switch (type) {
-        case 0: // Fortnite-API
+        case 0: // Fortnite-API.com
             return url + t + 'language=' + localStorage.requestLanguage
         case 1: // FortniteAPI.io
             return url + t + 'lang=' + localStorage.requestLanguage
@@ -38,4 +56,12 @@ function otherargument(url, arg) {
     }
 
     return url + t + arg + '=' + localStorage.requestLanguage
+}
+function oac(url, arg, value) {
+    let t = '?';
+    if (url.split('?').length > 1) {
+        t = '&';
+    }
+
+    return url + t + arg + '=' + value
 }
