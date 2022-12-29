@@ -70,6 +70,7 @@ a.link-underline:hover {
 }
 
 .fn-dot-mask {
+    backdrop-filter: blur(3px);
     background: rgba(0, 0, 0, 0.12);
 }
 .fn-season-video, .fn-dot-mask {
@@ -104,7 +105,7 @@ a.link-underline:hover {
     transition: color .3s;
 }
 .links:hover {
-    color: #dfb515;
+    color: var(--season-accent-1);
     text-decoration: underline;
 }
 
@@ -114,6 +115,12 @@ a.link-underline:hover {
 
 .green {
     color: green;
+}
+
+.about {
+    border: none;
+    height: 100vh;
+    width: 100%;
 }
 
 .player-data {
@@ -155,6 +162,7 @@ a.link-underline:hover {
 .nav-content {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .nav-content .item-search-container {
@@ -340,7 +348,6 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-color: rgba(31, 25, 49, .9);
     padding: 2rem;
     border-radius: 10px;
-    z-index: 25;
     width: 100%;
 }
 
@@ -896,6 +903,55 @@ button:hover { background-color: rgb(50, 50, 50); }
     background: rgba(0, 0, 0, 0);
 }
 
+.vehicle-item {
+    background: linear-gradient(#0086CF, #006ACF);
+    margin: 2rem .5rem;
+    text-align: center;
+    height: 256px;
+    width: 256px;
+    position: relative;
+}
+.vehicle-image {
+    width: 150px;
+    height: 150px;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    transition: margin-top .1s, transform .1s;
+    border: 7px solid var(--season-accent-1);
+    border-radius: 10px;
+    background: radial-gradient(#00FF69, #003a8b);
+}
+.vehicle-item:hover .vehicle-image {
+    transform: scale(1.08);
+    margin-top: -1rem;
+}
+.vehicle-name {
+    font-family: burbank-bold;
+    font-style:italic;
+    font-size: 24px;
+    text-transform: uppercase;
+    transition: transform .1s;
+}
+
+.vehicle-decoration {
+    position: absolute;
+    width: 100%;
+    height: 4rem;
+    bottom: 0px;
+    overflow: hidden;
+}
+
+.vehicle-decoration .deco-b {
+    background: rgba(2, 231, 252, 0.95);
+    border-top: 8px solid rgb(2, 255, 255);
+    width: 100%;
+    height: 4rem;
+    position: absolute;
+    transform: rotate(-2deg);
+    top: 1rem;
+    transition: top .1s;
+}
+
 .achievement-item {
     background: linear-gradient(#0086CF, #006ACF);
     margin: 2rem .5rem;
@@ -971,7 +1027,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     height: 3rem;
 }
 
-.achievement-item .decoration-2 {
+.decoration-2 {
     position: absolute;
     width: 100%;
     height: 4rem;
@@ -1451,28 +1507,53 @@ button:hover { background-color: rgb(50, 50, 50); }
     margin: 3rem 0;
 }
 
-.tournament-box-viewer {
+.tournament-container {
     width: 100%;
+}
+
+.tournament-box-viewer {
     height: 100%;
     z-index: 1;
+}
+
+.tournament-details {
+    padding: 2rem;
+}
+
+.tournament-window {
+    background: #00072C;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.tournament-rule {
+    background: #00072C;
+    padding: 1rem;
+    width: 50%;
+    border: 3px solid gray;
+}
+
+.tournament-rules {
+    padding: 1rem;
     display: flex;
-    box-sizing: content-box;
+    flex-wrap: wrap;
 }
 
 .event-poster {
     position: relative;
-    margin: 3rem;
-    width: 375px;
-    height: 540px;
+    width: 100%;
 }
 
 .event-poster .event-img img {
-    width: 375px;
+    width: 100%;
 }
 
 .event-text-line1, .event-text-line2 {
     font-family: burbank-bold;
+    text-overflow: ellipsis;
     text-transform: uppercase;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .event-text {
@@ -1486,7 +1567,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     font-size: 35px;
 }
 .event-text-line2 {
-    font-size: 33px;
+    font-size: 30px;
 }
 
 .countdown-text {
@@ -1498,9 +1579,15 @@ button:hover { background-color: rgb(50, 50, 50); }
     text-shadow: 0 5px 3px rgb(0 0 0 / 20%);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 785px) {
     .countdown-text {
         font-size: 30px;
+    }
+    .event-poster {
+        margin: .5rem;
+    }
+    .event-poster:not(:last-child) {
+        border-bottom: 1px solid rgb(47, 47, 47);
     }
 }
 @media (max-width: 480px) {

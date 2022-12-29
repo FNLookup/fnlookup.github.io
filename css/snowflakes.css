@@ -1,0 +1,9 @@
+.snow {
+  position: fixed;
+  top: 0;
+  transform: translateY(0);
+  transform: rotate(180deg);
+  animation: fall 7s linear forwards;
+}
+.snow img {  width: 20px; }
+@keyframes fall { to { transform: translateY(105vh); } }
