@@ -669,7 +669,6 @@ button:hover { background-color: rgb(50, 50, 50); }
     z-index: -1;
     border: 0;
     width: 100%;
-    height: 200%;
 }
 .item-card:hover .item-image:not(.item-card-item-display) :not(.vbuck-icon):not(.item-card-item-display) {
     transform: scale(1.08);
@@ -950,6 +949,66 @@ button:hover { background-color: rgb(50, 50, 50); }
     transform: rotate(-2deg);
     top: 1rem;
     transition: top .1s;
+}
+
+.weapons {
+    justify-content: space-evenly;
+}
+
+.weapon {
+    background: linear-gradient(#0086CF, #006ACF);
+    margin: 2rem .5rem;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.weapon-img {
+    position: absolute;
+    width: 100%;
+}
+.weapon .weapon-img img {
+    mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+    margin-left: 10%;
+    width: 130%;
+}
+.weapon .weapon-details {
+    z-index: 1;
+    padding: .5rem;
+}
+.weapon-name, .weapon-desc{
+    font-family: burbank-big;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+.weapon-stats {
+    padding: 1rem;
+    margin-top: 1rem;
+    max-height: 200px;
+    overflow: auto;
+}
+.weapon-stat-item {
+    margin: .5rem 0;
+    display: flex;
+}
+.weapon-stat-item:hover {
+    background: rgba(0, 0, 0, .25);
+}
+.weapon-stat-label, .weapon-stat-num {
+    font-family: burbank-big;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: 700;
+    font-size: 20px;
+}
+.weapon-stat-label {
+    width: 70%;
+    text-align: left;
+}
+.weapon-stat-num {
+    width: 30%;
+    text-align: right;
 }
 
 .achievement-item {

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FNLookup</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/backend.js" type="text/javascript"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/weapons.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="season-video">
+        <video autoplay loop playsinline class="fn-season-video" id="fn-video"></video>
+        <div class="fn-dot-mask"></div>
+    </div>
+
+    <div class="nav-container">
+        <nav class="navbar-top">
+            <div class="nav-main-buttons">
+                <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" width="25" height="25" title="Menu">
+                <a class="nav-logo" href="index.html">FNLookup</a>
+            </div>
+            <div class="nav-content hidden-media" id="nav-elements">
+                <ul class="nav-items" id="nav-items"></ul>
+
+                <div class="item-search-container">
+                    <input type="text" placeholder="Search for an item..." id="search-input">
+                    <button title="Search" id="search-button">Search</button>
+                </div>
+                <script>i()</script>
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="flex flex-wrap weapons" id="weapon-container">
+            <script>getWeapons()</script>
+        </div>
+    </div>
+</body>
+</html>
