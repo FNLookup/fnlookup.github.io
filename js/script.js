@@ -59,6 +59,10 @@ function i() {
                     name: 'Reality Augments'
                 },
                 {
+                    href: 'weapons.html',
+                    name: 'Loot/Weapons'
+                },
+                {
                     href: 'vehicles.html',
                     name: 'Vehicles'
                 }
@@ -111,6 +115,10 @@ function i() {
                 {
                     href: 'search.html',
                     name: 'Search'
+                },
+                {
+                    href: 'random-cosmetics.html',
+                    name: 'Locker Generator'
                 }
             ]
         },

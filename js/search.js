@@ -16,9 +16,12 @@ function initFilter() {
                 {name: 'Outfit', backend: 'outfit'},
                 {name: 'Pickaxe', backend: 'pickaxe'},
                 {name: 'Contrail', backend: 'contrail'},
+                {name: 'Style', backend: 'cosmeticvariant'},
+                {name: 'Bundle', backend: 'bundle'},
                 {name: 'Spray', backend: 'spray'},
                 {name: 'Toy', backend: 'toy'},
-                {name: 'Pet', backend: 'petcarrier'}
+                {name: 'Pet', backend: 'pet'},
+                {name: 'Music Pack', backend: 'music'}
             ]
         }
     ]
@@ -114,10 +117,31 @@ function makeFc(filters) {
 }
 
 function downloadItems() {
-    fetch(geturllang('https://fortniteapi.io/v2/items/list', 1), {
+    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=introduction,images,name,type,rarity', 1), {
         headers: {'Authorization': localStorage.keyFNAPIIo}
     }).then(response => response.json()).then(response => {
         items = response.items;
+
+        let seasons = [];
+        for (let item of response.items) {
+            if (item.introduction !== null) {
+                if (!seasons.includes(item.introduction.text)) {
+                    seasons.push(item.introduction.text);
+                }
+            }
+        }
+
+        let stuff = [];
+        for (let season of seasons) {
+            stuff.push({
+                name: season,
+                backend: season
+            })
+        }
+
+        makeFc([
+            {name: 'Season', backend: 'season', objects:stuff}
+        ])
 
         let p = new URLSearchParams(document.location.search);
         firstTime = false;
@@ -166,7 +190,7 @@ function resetItems () {
 function searchItems(urlname) {
     let types = [];
     let rarities = [];
-    let seasons = [];; // int array
+    let seasons = [];
 
     let name = document.getElementById('iname').value;
     if (urlname !== null) name = urlname;
@@ -189,7 +213,7 @@ function searchItems(urlname) {
 
     for (let checkbox of schbox) {
         if (checkbox.checked) {
-            seasons.push(parseInt(checkbox.getAttribute('backend-value')));
+            seasons.push(checkbox.getAttribute('backend-value'));
         }
     }
 
@@ -203,6 +227,10 @@ function searchItems(urlname) {
     
                     let typematch = types.includes(item.type.id)
                     let raritymatch = rarities.includes(item.rarity.id.toLowerCase());
+                    let seasonmatch = true;
+                    if (item.introduction !== null) {
+                        seasonmatch = seasons.includes(item.introduction.text);
+                    }
                     if (types.length < 1) typematch = true;
                     if (rarities.length < 1) raritymatch = true;
                     if (seasons.length < 1) seasonmatch = true;
