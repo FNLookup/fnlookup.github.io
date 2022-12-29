@@ -570,7 +570,7 @@ function newYearPayloads(christmas) {
     const styleSheet = document.createElement('link');
     styleSheet.rel = 'stylesheet';
     styleSheet.href = 'css/snowflakes.css';
-    document.head.append(styleSheet)
+    document.head.append(styleSheet);
     setInterval(function() {
         // Imported from local education website. Undisclosed.
         const snow = document.createElement("div");
