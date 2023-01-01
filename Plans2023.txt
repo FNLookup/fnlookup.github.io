@@ -1,0 +1,34 @@
+Hype Leaderboards can be obtained from EPIC GAMES API. (NO Auth)
+
+https://www.epicgames.com/fortnite/competitive/api/leaderboard/floating/Hype_S23/undefined
+
+Must have "undefined" in the end.
+Apparently, changing "Hype_S23" to "Hype_(any season)" could give previous season hype leaderboards, as these reset.
+
+----------------------------------------------------------------
+
+Blog Posts can be obtained from EPIC GAMES API. (NO Auth) too.
+
+https://www.epicgames.com/fortnite/api/blog/getPosts?category=&postsPerPage=0&offset=0&locale={Language}&rootPageSlug=blog
+
+Same as Competitive blog posts!
+https://www.epicgames.com/fortnite/competitive/api/blog/getPosts?postsPerPage=0&offset=0&locale={Language}&rootPageSlug=news
+
+Change {Language} to a 'locale-COUNTRYCODE' code.
+Offset 0 = 16 first blog posts
+Offset 16 and so on (acumulative) = 8 more blog posts
+
+- View set items, enter an item and get a link for a set in the Part of {set} part, or go to a set page. "https://fortniteapi.io/v2/items/sets?lang=en"
+
+- Fortnite Crew List and History "https://fortniteapi.io/v2/crew/history?lang=en"
+
+- Fish "https://fortniteapi.io/v1/loot/fish?lang=en"
+
+- Creator code "https://fortniteapi.io/v1/creator?code=ninja"
+
+- Creative island "https://fortniteapi.io/v1/creative/island?code=1787-6243-5207"
+
+- Featured creative islands "https://fortniteapi.io/v1/creative/featured"
+
+- Maps "https://fortniteapi.io/v1/maps/list"
+

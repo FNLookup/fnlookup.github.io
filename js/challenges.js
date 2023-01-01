@@ -5,8 +5,6 @@ function getchs() {
     
         for (let bundle of response.bundles) {
             if (bundle.tag === null) continue
-            
-            console.log(bundle);
 
             let main = document.getElementById('quest-category-picker');
 
@@ -112,7 +110,7 @@ function getchs() {
                                 rewardicon.classList.add('reward-icon', 'pointer');
                                 rewardicon.title = item.name;
                                 rewardicon.addEventListener('click', function() {
-                                    document.location.href = 'item.html?q=' + item.name
+                                    openItem(item.name.toLowerCase())
                                 });
     
                                 rewardobj.append(rewardicon);

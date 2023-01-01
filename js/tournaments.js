@@ -2,9 +2,6 @@ function getcompetitive() {
     fetch(geturllang('https://fortniteapi.io/v1/events/list?region=NAE', 1), {
         headers: {'Authorization': localStorage.keyFNAPIIo}
     }).then(r => r.json()).then(r => {
-
-        console.log(r);
-
         let main = document.getElementById('main');
 
         let region = document.getElementById('region-title');

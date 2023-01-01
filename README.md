@@ -73,7 +73,7 @@ See the past seasons and their start and end dates.
 # Other
 ## Credits
 
-Item cards are based on [Fortnite](https://fn.gg)
+Item cards are based on [Fortnite](https://fn.gg)'s actual item shop cards.
 
 APIs used are 
 1. [Fortnite-API.com](https://www.Fortnite-API.com)

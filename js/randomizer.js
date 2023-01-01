@@ -51,88 +51,54 @@ function loadRandomPicker() {
     }).then(response => response.json()).then(response => {
         items = response.items;
 
-        for (let modal of rowOneLockerTypes.objects) {
-
-            let allFirstItems = [];
-            let randomFirstItems = [];
-
-            for (let item of items) {
-                if (item.type.id == modal.backend)
-                    allFirstItems.push(item);
+        for (let object of [rowOneLockerTypes, wrapTypes, menuObjectTypes]) {
+            for (let modal of object.objects) {
+                let things = askForReroll([modal.backend])
+                let randomFirstItems = things[0];
+                let chosenItem = things[1];
+    
+                let card = getCard(randomFirstItems, chosenItem, 'Tap to reveal', modal.name, [modal.backend]);
+                document.getElementById(object.parentID).append(card);
             }
-
-            let chosenItem = allFirstItems[Math.floor(Math.random()*allFirstItems.length)];
-            for (let j = 0; j<10;j++) {
-                randomFirstItems.push(allFirstItems[Math.floor(Math.random()*allFirstItems.length)])
-            }
-            let card = getCard(randomFirstItems, chosenItem, 'Tap to reveal', modal.name);
-            document.getElementById(rowOneLockerTypes.parentID).append(card);
         }
 
         document.getElementById('generate-emotes').onclick = function() {
             for (let modal of emoteTypes.objects) {
-
-                let allFirstItems = [];
-                let randomFirstItems = [];
-    
-                let allowedTypes = [];
+                allowedEmoteTypes = [];
                 for (let backend of emoteTypes.backends) {
                     if (document.getElementById(backend + '-checkbox').checked) {
-                        allowedTypes.push(backend);
+                        allowedEmoteTypes.push(backend);
                     }
                 }
+
+                let things = askForReroll(allowedEmoteTypes)
+                let randomFirstItems = things[0];
+                let chosenItem = things[1];
     
-                for (let item of items) {
-                    if (allowedTypes.includes(item.type.id))
-                        allFirstItems.push(item);
-                }
-    
-                let chosenItem = allFirstItems[Math.floor(Math.random()*allFirstItems.length)];
-                for (let j = 0; j<10;j++) {
-                    randomFirstItems.push(allFirstItems[Math.floor(Math.random()*allFirstItems.length)])
-                }
-                let card = getCard(randomFirstItems, chosenItem, 'Tap to reveal', modal.name);
+                let card = getCard(randomFirstItems, chosenItem, 'Tap to reveal', modal.name, allowedEmoteTypes);
                 document.getElementById(emoteTypes.parentID).append(card);
             }
             document.getElementById('emote-pickers').style.display = 'none';
         }
-
-        for (let modal of wrapTypes.objects) {
-
-            let allFirstItems = [];
-            let randomFirstItems = [];
-
-            for (let item of items) {
-                if (item.type.id == modal.backend)
-                    allFirstItems.push(item);
-            }
-
-            let chosenItem = allFirstItems[Math.floor(Math.random()*allFirstItems.length)];
-            for (let j = 0; j<10;j++) {
-                randomFirstItems.push(allFirstItems[Math.floor(Math.random()*allFirstItems.length)])
-            }
-            let card = getCard(randomFirstItems, chosenItem, 'Tap to reveal', modal.name);
-            document.getElementById(wrapTypes.parentID).append(card);
-        }
-
-        for (let modal of menuObjectTypes.objects) {
-
-            let allFirstItems = [];
-            let randomFirstItems = [];
-
-            for (let item of items) {
-                if (item.type.id == modal.backend)
-                    allFirstItems.push(item);
-            }
-
-            let chosenItem = allFirstItems[Math.floor(Math.random()*allFirstItems.length)];
-            for (let j = 0; j<10;j++) {
-                randomFirstItems.push(allFirstItems[Math.floor(Math.random()*allFirstItems.length)])
-            }
-            let card = getCard(randomFirstItems, chosenItem, 'Tap to reveal', modal.name);
-            document.getElementById(menuObjectTypes.parentID).append(card);
-        }
     }).catch(e=>{console.error(e)})
+}
+
+function askForReroll(ids, ammount = 10) {
+    let ret = [];
+    
+    let allFirstItems = [];
+
+    for (let item of items) {
+        if (ids.includes(item.type.id))
+            allFirstItems.push(item);
+    }
+
+    let chosenItem = allFirstItems[Math.floor(Math.random()*allFirstItems.length)];
+    for (let j = 0; j<ammount;j++) {
+        ret.push(allFirstItems[Math.floor(Math.random()*allFirstItems.length)])
+    }
+    
+    return [ret, chosenItem];
 }
 
 // Array<Item Enum>,
@@ -140,7 +106,7 @@ function loadRandomPicker() {
 // Top String,
 // Bottom String
 
-function getCard(rollEventItems, item, top, bottom) {
+function getCard(rollEventItems, item, top, bottom, backends) {
     let parent = document.createElement('div');
     parent.classList.add('item-card-parent');
 
@@ -207,7 +173,7 @@ function getCard(rollEventItems, item, top, bottom) {
     ic.append(endPic)
 
     let clicked = false;
-    obj.onclick = function() {
+    obj.addEventListener('click', function() {
         if (!clicked) {
             defaultImage.classList.remove("current-style");
             let times = 0;
@@ -234,8 +200,47 @@ function getCard(rollEventItems, item, top, bottom) {
             }, 100)
 
             clicked = true;
+        } else {
+            for (let img of itemImages)
+                img.remove();
+
+            let things = askForReroll(backends, 5)
+            let randomFirstItems = things[0];
+            let chosenItem = things[1];
+            let endSrc = '';
+            if (chosenItem.images.icon != null) endSrc = chosenItem.images.icon;
+            if (chosenItem.images.featured != null) endSrc = chosenItem.images.featured;
+            if (chosenItem.images.background != null) endSrc = chosenItem.images.background;  
+            endPic.src = endSrc;
+
+            title.innerHTML = 'Rerolling...';
+
+            for (let exampleItem of randomFirstItems) {
+                let exampleSrc = '';
+                if (exampleItem.images.icon != null) exampleSrc = exampleItem.images.icon;
+                if (exampleItem.images.featured != null) exampleSrc = exampleItem.images.featured;
+                if (exampleItem.images.background != null) exampleSrc = exampleItem.images.background;   
+                var examplePic = document.createElement("img");
+                examplePic.src = exampleSrc;
+                examplePic.setAttribute("title", exampleItem.name);
+                examplePic.classList.add("style-picture");
+                ic.append(examplePic);
+                itemImages.push(examplePic); }
+
+            endPic.classList.remove('current-style');
+
+            var times = 0;
+            let timer = setInterval(function() {
+                for (let img of itemImages) img.classList.remove("current-style");
+                itemImages[times].classList.add('current-style');
+                times++;
+                if (times == 5) {
+                    clearInterval(timer);
+                    for (let img of itemImages) img.classList.remove("current-style");
+                    endPic.classList.add('current-style');
+                    title.innerHTML = chosenItem.name; }}, 100)
         }
-    }
+    })
     obj.append(ic);
 
     return obj;

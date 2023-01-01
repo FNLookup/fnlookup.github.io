@@ -116,7 +116,7 @@ function start() {
             obj.append(ic);
 
             obj.addEventListener("click", function() {
-                window.location.href = 'item.html?q=' + item.name.toLowerCase();
+                openItem(item.name.toLowerCase());
             });
 
             parent.appendChild(obj);
@@ -131,5 +131,7 @@ function start() {
 
             document.getElementById('title_' + obj).append(item_count);
         }
+    }).catch(e => {
+        console.error(e)
     });
 }

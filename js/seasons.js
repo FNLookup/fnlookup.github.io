@@ -2,8 +2,6 @@ function gets() {
     fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
         headers: {'Authorization': localStorage.keyFNAPIIo}
     }).then(r => r.json()).then(r => {
-        console.log(r);
-
         for (let season of r.seasons) {
             let p = document.createElement('div');
             p.classList.add('season-date');
@@ -12,7 +10,6 @@ function gets() {
             title.innerHTML = season.displayName;
         
             let sDate = new Date(season.startDate.split(' ')[0]);
-            console.log(sDate);
 
             let startDate = document.createElement('p');
             startDate.innerHTML = 'Started ' + getFormatDate(sDate);

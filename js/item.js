@@ -1,10 +1,16 @@
 function init() {
     var params = new URLSearchParams(window.location.search);
     if (params.has('q')) {
+        let content = document.getElementById('page-content');
+
+        content.innerHTML = '<h1>Loading...</h1><h3>Loading cosmetic list...</h3><img src="assets/images/loading.gif">';
 
         fetch(geturllang('https://fortniteapi.io/v2/items/list', 1), {
             headers: {'Authorization': localStorage.keyFNAPIIo}
         }).then(data => data.json()).then(data => {
+            clearChildren(content);
+            content.innerHTML = '<h1>Loading...</h1><h3>Searching for ' + params.get('q') + '</h3><img src="assets/images/loading.gif">';
+
             let items = [];
 
             for (let item of data.items) {
@@ -15,14 +21,13 @@ function init() {
 
             const response = items;
             if (response.length > 0) {
+                clearChildren(content);
+
                 for (let preitem of response) {
                     fetch(geturllang('https://fortniteapi.io/v2/items/get?id=' + preitem.id, 1), {
                         headers: {'Authorization': localStorage.keyFNAPIIo}
                     }).then(data => data.json()).then(data => {
                         let item = data.item;
-                        console.log(item);
-
-                        let content = document.getElementById('page-content');
 
                         let mainObject = gne('div');
 
@@ -110,6 +115,8 @@ function init() {
 
                         name.classList.add('flex');
                         name.classList.add('flex-wrap');
+
+                        document.title = item.name + ' - FNLookup';
 
                         if (item.type != null) {
                             let item_type = document.createElement('a');
@@ -311,7 +318,7 @@ function init() {
                             fetch(otherargument(geturllang('https://fortnite-api.com/v2/cosmetics/br/search?id=' + item.id, 0), 'searchLanguage')).then(data => data.json()).then(data => {
                                 if (data.status !== 200) {
                                     let eTitle = document.createElement('h1'); let eText = document.createElement('h2'); let error = data.status + ': ' + data.error;
-                                    console.log(error); eTitle.innerHTML = 'Error: ' + data.status; eText.innerHTML = data.error; document.getElementById('page-content').append(eTitle);
+                                    console.error(error); eTitle.innerHTML = 'Error: ' + data.status; eText.innerHTML = data.error; document.getElementById('page-content').append(eTitle);
                                 } else {
                                     if (data.data.showcaseVideo != null) {
                                         let ytContainer = document.createElement('div');
@@ -352,7 +359,7 @@ function init() {
                                 parent.innerHTML = grant.name;
                                 parent.append(image);
 
-                                parent.href = 'item.html?q=' + grant.name.toLowerCase()
+                                parent.href = getItemLink(grant.name.toLowerCase())
 
                                 grantModal.append(parent);
                             }
@@ -383,7 +390,7 @@ function init() {
                                 portrait.classList.add('item-card', 'no-resize', 'pointer')
                                 portrait.setAttribute('data-rarity', granted.rarity.id.toLowerCase());
                                 portrait.addEventListener('click', function() {
-                                    window.location.href = 'item.html?q=' + granted.name.toLowerCase();
+                                    openItem(granted.name.toLowerCase());
                                 });
     
                                 var img_src;
@@ -458,7 +465,7 @@ function init() {
                             portrait.classList.add('item-card', 'no-resize', 'pointer')
                             portrait.setAttribute('data-rarity', emote.rarity.id.toLowerCase());
                             portrait.addEventListener('click', function() {
-                                window.location.href = 'item.html?q=' + emote.name.toLowerCase();
+                                openItem('item.html?q=' + emote.name.toLowerCase());
                             });
 
                             var img_src;
@@ -518,17 +525,13 @@ function init() {
                     })
                 }
             } else {
+                clearChildren(content);
+
                 let eText = document.createElement('h1');
                 eText.innerHTML = 'No cosmetics were found!';
-                document.getElementById('page-content').append(eText);
                 let tipText = document.createElement('h3');
-                tipText.innerHTML = "Are you looking for a cosmetic you don't know the name of? Go to ";
-                let link = document.createElement('a');
-                link.href = 'search.html?q=' + params.get('q');
-                link.innerHTML = 'search.';
-                link.classList.add('green');
-                tipText.append(link);
-                document.getElementById('page-content').append(tipText);
+                tipText.innerHTML = 'Are you looking for a cosmetic you don\'t know the name of? Go to <a class="green" href="search.html?q=' + params.get('q') + '">cosmetic search</a> and try again.';
+                content.append(eText, tipText);
             }
         }).catch(error => {
             let eText = document.createElement('h1');

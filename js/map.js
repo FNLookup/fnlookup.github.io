@@ -7,8 +7,6 @@ function generateMap() {
             addMapElements();
 
             for (let poi of r.list) {
-                console.log(poi);
-
                 let a = gne('a');
                 a.addEventListener('click', function() {
                     openMapView(poi);
@@ -21,12 +19,12 @@ function generateMap() {
                 document.getElementById('map-info').append(a);
             }
         }
+    }).catch(e => {
+        console.error(e);
     });
 }
 
 function openMapView(poi) {
-    console.log(poi);
-
     let pName = document.getElementById('poi-name');
     pName.innerHTML = poi.name;
 

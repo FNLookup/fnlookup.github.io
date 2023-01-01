@@ -47,9 +47,7 @@ function searchPlayer() {
             "Authorization": localStorage.keyFNAPI
         } : {}
     }).then(res => res.json()).then(res => {
-        while (content.firstChild) {
-            content.removeChild(content.firstChild);
-        }
+        clearChildren(content);
 
         if (res.status !== 200) {
             let eTitle = document.createElement('h1');
@@ -63,8 +61,6 @@ function searchPlayer() {
 
             return;
         }
-
-        console.log(res);
 
         let data = res.data;
 

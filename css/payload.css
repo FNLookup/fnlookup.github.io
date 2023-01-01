@@ -1,0 +1,30 @@
+.snow {
+  position: fixed;
+  top: 0;
+  transform: translateY(0);
+  transform: rotate(180deg);
+  animation: fall 7s linear forwards;
+  pointer-events: none;
+}
+.snow img {  width: 20px; }
+
+.firework {
+  position: fixed;
+  animation: explode 1s linear forwards;
+  pointer-events: none;
+}
+.firework img { width: 300px; }
+
+@keyframes explode {
+  0% {
+    transform: scale(0);
+  }
+  20% {
+    transform: scale(1.8);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes fall { to { transform: translateY(105vh); } }
