@@ -286,7 +286,7 @@ function makeItemCard(item) {
     obj.appendChild(ic);
 
     obj.addEventListener("click", function() {
-        window.location.href = 'item.html?q=' + item.name.toLowerCase();
+        openItem(item.name.toLowerCase());
     });
 
     b.append(obj);

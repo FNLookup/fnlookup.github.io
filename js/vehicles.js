@@ -5,7 +5,6 @@ function getstat() {
 
         let main = document.getElementById('vehicle-wrapper');
 
-        console.log(data);
         for (let vehicle of data.vehicles) {
             let parent = gne('div');
             parent.classList.add('vehicle-item');

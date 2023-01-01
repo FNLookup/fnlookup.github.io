@@ -347,7 +347,16 @@ function doSearch() {
         return;
     }
 
-    window.location.href = 'item.html?q=' + searchQuery;
+    openItem(searchQuery);
+}
+
+function openItem(q) {
+    console.log('Browsing item ' + q);
+    window.location.href = 'item.html?q=' + q;
+}
+
+function getItemLink(q) {
+    return 'item.html?q=' + q;
 }
 
 function secsToDays(secs) {
@@ -553,7 +562,7 @@ function makeCard(item) {
 
     if (item.ignoreClicks === undefined) {
         obj.addEventListener("click", function() {
-            window.location.href = 'item.html?q=' + item.displayName.toLowerCase();
+            openItem(item.displayName.toLowerCase());
         });
     }
     if (item.href !== undefined) {
@@ -573,12 +582,15 @@ function makeCard(item) {
     shop_row.append(parent);
 }
 
-function newYearPayloads(christmas) {
-    let delay = christmas ? 300 : 600;
+function payloadTriggered() {
     const styleSheet = document.createElement('link');
     styleSheet.rel = 'stylesheet';
-    styleSheet.href = 'css/snowflakes.css';
+    styleSheet.href = 'css/payload.css';
     document.head.append(styleSheet);
+}
+
+function christmasPayload(christmas) {
+    let delay = christmas ? 300 : 600;
     setInterval(function() {
         // Imported from local education website. Undisclosed.
         const snow = document.createElement("div");
@@ -586,16 +598,35 @@ function newYearPayloads(christmas) {
         snow.classList.add("snow");
         snow.style.left = Math.random() * 100 + "vw";
         snow.style.animationDuration = Math.random() * 5 + 8 + "s";
-        //document.getElementsByClassName('fn-dot-mask')[0].append(snow);
         document.body.appendChild(snow);
         setTimeout(() => { snow.remove(); }, 7000);
     }, delay);
 }
 
+function newYearPayloads() {
+    setInterval(function() {
+        for(let o in [0,1,2]) {
+            const firework = document.createElement("div");
+            firework.innerHTML = "<img src='assets/images/firework.png'>";
+            firework.classList.add("firework");
+            firework.style.left = Math.random() * 100 + "vw";
+            firework.style.top = Math.random() * 50 + "vh";
+            document.getElementsByClassName('fn-dot-mask')[0].append(firework);
+            setTimeout(() => {
+                firework.remove();
+            }, 1000);
+        }
+    }, 500);
+}
+
 loadPayloads();
 function loadPayloads() {
-    let distances = [0, 0];
     var now = new Date();
+    var anyPayloadTriggered = false;
+
+    // 1st payload: Christmas and new years eve
+
+    let distances = [0, 0];
     var lastYear = new Date(now.getFullYear() - 1, 11, 31);
     var thisYear = new Date(now.getFullYear(), 11, 31);
     distances[0] =  Math.floor(calcDays(now.getTime() - lastYear.getTime()))
@@ -603,6 +634,18 @@ function loadPayloads() {
     
     if (distances[0] <= 10 || distances[1] <= 10) {
         const christmas = sameDay(now, new Date(now.getFullYear(), 12, 25))
-        newYearPayloads(christmas);
+        christmasPayload(christmas);
+        anyPayloadTriggered = true;
+    }
+
+    // 2nd payload: new years
+
+    if (sameDay(now, new Date(now.getFullYear(), 11, 31))) {
+        newYearPayloads();
+        anyPayloadTriggered = true;
+    }
+
+    if (anyPayloadTriggered) {
+        payloadTriggered();
     }
 }

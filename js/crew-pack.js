@@ -5,8 +5,6 @@ function getcpackdata() {
         document.getElementById('crew-pack-image').src = r.currentCrew.images.itemShopTile;
 
         let iCs = document.getElementById('crew-pack-items');
-    
-        //// Details part
 
         let itemDetails = document.getElementById('pack-item-details');
 
@@ -25,6 +23,11 @@ function getcpackdata() {
         let description = gne('a');
         description.classList.add('crew-pack-item-description')
         description.innerHTML = r.currentCrew.rewards[0].item.description;
+
+        
+        image.addEventListener('click', function() {
+            openItem(itemTitle.innerHTML.toLowerCase())
+        })
 
         itemDetails.appendChild(description);
 
@@ -70,6 +73,10 @@ function getcpackdata() {
             let idesc = gne('a');
             idesc.innerHTML = reward.item.description;
             item_mobile.append(idesc);
+
+            iimg.addEventListener('click', function() {
+                openItem(reward.item.name.toLowerCase());
+            })
 
             mobileItems.append(item_mobile)
         }

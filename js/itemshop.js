@@ -79,8 +79,6 @@ function createItems() {
         fetch(geturllang('https://fortniteapi.io/v2/crew', 1), {
         headers: {'Authorization': localStorage.keyFNAPIIo}
         }).then(r=>r.json()).then(r=> {
-            console.log(r);
-
             let crew = r.currentCrew;
 
             let images = [];
@@ -265,7 +263,7 @@ function makeShopCard(item, registeredSections) {
 
     if (item.ignoreClicks === undefined) {
         obj.addEventListener("click", function() {
-            window.location.href = 'item.html?q=' + item.displayName.toLowerCase();
+            openItem(item.displayName.toLowerCase());
         });
     }
     if (item.href !== undefined) {

@@ -18,23 +18,11 @@ function init() {
     dateFirst.innerHTML = getFormatDate(new Date(times[0]));
     dateSecond.innerHTML = getFormatDate(new Date(times[1]));
 
-    fetch(geturllang('https://fortnite-api.com/v2/cosmetics/br', 0)).then(response => response.json()).then(response => {
-        if (response.status !== 200) {
-            let eTitle = document.createElement('h1');
-            let eText = document.createElement('h2');
-            let error = response.status + ': ' + response.error;
-            console.log(error);
-            eTitle.innerHTML = 'Error: ' + response.status;
-            eText.innerHTML = response.error;
-            document.getElementsByClassName('content')[0].append(eTitle);
-            document.getElementsByClassName('content')[0].append(eText);
-
-            return;
-        }
-
-        if (response.data !== null) {
-            for (let i = 0; i < response.data.length; i++) {
-                var item = response.data[i];
+    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=images,name,description,rarity,type,shopHistory', 1), {
+        headers: {'Authorization': localStorage.keyFNAPIIo}
+    }).then(response => response.json()).then(response => {
+        if (response.items !== null) {
+            for (let item of response.items) {
     
                 if (item.shopHistory != null) {
                     if (item.shopHistory.length > 1) {
@@ -108,7 +96,7 @@ function makeItemCard(item, averageWait, currentWait, times) {
 
     var obj = document.createElement("div");
     obj.classList.add("item-card");
-    obj.setAttribute('data-rarity', item.rarity.value);
+    obj.setAttribute('data-rarity', item.rarity.id.toLowerCase());
     obj.classList.add('pointer');
 
     var title = document.createElement('span');
@@ -120,12 +108,12 @@ function makeItemCard(item, averageWait, currentWait, times) {
     var img_obj = document.createElement("img");
     var img_src;
 
+    if (item.images.icon != null)
+        img_src = item.images.icon;
     if (item.images.featured != null)
         img_src = item.images.featured;
-    else if (item.images.icon != null)
-        img_src = item.images.icon;
-    else if (item.images.smallIcon != null)
-        img_src = item.images.smallIcon;
+    if (item.images.background != null)
+        img_src = item.images.background;
 
     let ic = document.createElement('div');
     ic.classList.add("item-image");
@@ -138,7 +126,7 @@ function makeItemCard(item, averageWait, currentWait, times) {
     obj.appendChild(ic);
 
     obj.addEventListener("click", function() {
-        window.location.href = 'item.html?q=' + item.name.toLowerCase();
+        openItem(item.name.toLowerCase());
     });
 
     b.append(obj);
@@ -158,15 +146,15 @@ function makeItemCard(item, averageWait, currentWait, times) {
     if (item.type != null) {
         let item_type = document.createElement('a');
         item_type.classList.add('item-type-label');
-        item_type.innerHTML = item.type.displayValue;
+        item_type.innerHTML = item.type.name;
         name.appendChild(item_type);
     }
     
     if (item.rarity != null) {
         let rarity = document.createElement('a');
         rarity.classList.add('rarity-label');
-        rarity.setAttribute('data-rarity', item.rarity.value);
-        rarity.innerHTML = item.rarity.displayValue;
+        rarity.setAttribute('data-rarity', item.rarity.id.toLowerCase());
+        rarity.innerHTML = item.rarity.name;
         name.appendChild(rarity);
     }
 
