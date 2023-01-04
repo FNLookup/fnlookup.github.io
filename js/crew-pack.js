@@ -1,29 +1,34 @@
 function getcpackdata() {
-    fetch(geturllang('https://fortniteapi.io/v2/crew', 1), {
+    let crewID = 0;
+    let params = new URLSearchParams(window.location.search);
+    if (params.has('crewID')) crewID = params.get('crewID');
+
+    fetch(geturllang('https://fortniteapi.io/v2/crew/history', 1), {
         headers: {'Authorization': localStorage.keyFNAPIIo}
     }).then(r=>r.json()).then(r=> {
-        document.getElementById('crew-pack-image').src = r.currentCrew.images.itemShopTile;
+        let crew = r.history[crewID];
+
+        document.getElementById('crew-pack-image').src = crew.images.itemShopTile;
 
         let iCs = document.getElementById('crew-pack-items');
 
         let itemDetails = document.getElementById('pack-item-details');
 
         let image = document.createElement('img');
-        image.classList.add('crew-pack-item-image');
-        image.src = r.currentCrew.rewards[0].item.images.icon;
+        image.classList.add('crew-pack-item-image', 'floating');
+        image.src = crew.rewards[0].item.images.icon;
 
         itemDetails.append(image);
 
         let itemTitle = gne('a');
         itemTitle.classList.add('crew-pack-item-title');
-        itemTitle.innerHTML = r.currentCrew.rewards[0].item.name;
+        itemTitle.innerHTML = crew.rewards[0].item.name;
 
         itemDetails.appendChild(itemTitle);
 
         let description = gne('a');
         description.classList.add('crew-pack-item-description')
-        description.innerHTML = r.currentCrew.rewards[0].item.description;
-
+        description.innerHTML = crew.rewards[0].item.description;
         
         image.addEventListener('click', function() {
             openItem(itemTitle.innerHTML.toLowerCase())
@@ -31,18 +36,9 @@ function getcpackdata() {
 
         itemDetails.appendChild(description);
 
-        ///////
-
-        let prices = '';
-        for (let priceTag of r.prices) {
-            prices += priceTag.paymentCurrencyCode + ': ' + priceTag.paymentCurrencySymbol + ' ' + priceTag.paymentCurrencyAmountNatural + (priceTag !== r.prices[r.prices.length - 1] ? ' - ' : '');
-        }
-
-        document.getElementById('crew-pack-price').innerHTML = prices;
-
         let mobileItems = document.getElementById('items-mobile');
 
-        for (let reward of r.currentCrew.rewards) {
+        for (let reward of crew.rewards) {
             let c = document.createElement('div');
             c.classList.add('crew-pack-item');
 
