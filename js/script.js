@@ -10,25 +10,47 @@ function calcDays(v) {
     return v / (1000 * 3600 * 24)
 }
 
+enableAutoplayPromotionals = true;
 function i() {
-
-    let vid = document.getElementById("fn-video");
+    vid = document.getElementById("fn-video");
     
-    fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=current', 1), {
-        headers: { 'Authorization': localStorage.keyFNAPIIo }
-    }).then(r => r.json()).then(r => {
-        for (let src of r.videos) {
-            let i = document.createElement("source");
-            i.src = src.url;
-            vid.append(i);
-        }
+    if (enableAutoplayPromotionals) {
+        fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=current', 1), {
+            headers: { 'Authorization': localStorage.keyFNAPIIo }
+        }).then(r => r.json()).then(r => {
+            let sources = [];
+            let curSource = 0;
+    
+            for (let src of r.videos) {
+                sources.push(src.url);
+            }
+    
+            let testVideoEnabled = false;
+            if (testVideoEnabled) sources = [];
+    
+            vid.muted = true;
+            if (sources.length > 0) {
+                vid.src = sources[curSource];
+                vid.loop = false;
+    
+                vid.addEventListener('ended', function () {
+                    curSource += 1;
+                    if (curSource >= sources.length) curSource = 0;
+    
+                    vid.src = sources[curSource];
+                }, false);
+            } else {
+                vid.src = 'assets/old-school-anthem.mp4';
+                vid.muted = false;
+                vid.volume = 0.15;
+            }
+        }).catch(err => { console.error(err); });
+    }
 
-        vid.muted = true;
+    vid.style.width = document.body.clientWidth + 'px';
+    window.addEventListener("resize", function() {
         vid.style.width = document.body.clientWidth + 'px';
-        window.addEventListener("resize", function() {
-            vid.style.width = document.body.clientWidth + 'px';
-        });
-    }).catch(err => { console.error(err); });
+    });
 
     let list = document.getElementById("nav-items");
 
@@ -43,20 +65,16 @@ function i() {
                     name: 'Battle Pass'
                 },
                 {
-                    href: 'map.html',
-                    name: 'Map'
-                },
-                {
                     href: 'challenges.html',
                     name: 'Challenges',
                 },
                 {
-                    href: 'progress.html',
-                    name: 'Season Progress'
+                    href: 'augments.html',
+                    name: 'Augments'
                 },
                 {
-                    href: 'augments.html',
-                    name: 'Reality Augments'
+                    href: 'map.html',
+                    name: 'Map'
                 },
                 {
                     href: 'weapons.html',
@@ -65,6 +83,24 @@ function i() {
                 {
                     href: 'vehicles.html',
                     name: 'Vehicles'
+                },
+                {
+                    href: null,
+                    name: 'Seasons',
+                    dropdownContent: [
+                        {
+                            href: 'progress.html',
+                            name: 'Season Progress',
+                        },
+                        {
+                            href: 'seasons.html',
+                            name: 'All Seasons'
+                        },
+                        {
+                            href: 'promotionalvideos.html',
+                            name: 'Season Promotional Videos'
+                        }
+                    ]
                 }
             ]
         },
@@ -78,47 +114,77 @@ function i() {
                     name: 'Player Stats',
                 },
                 {
-                    href: 'seasons.html',
-                    name: 'Seasons'
+                    href: 'achievements.html',
+                    name: 'Legacy Achievements'
                 },
                 {
                     href: 'twitch-drops.html',
                     name: 'Twitch Drops'
                 },
                 {
-                    href: 'crew-pack.html',
-                    name: 'Fortnite Crew'
-                },
-                {
-                    href: 'achievements.html',
-                    name: 'Achievements'
-                },
-                {
-                    href: 'tournaments.html',
-                    name: 'Competitive'
-                },
-                {
                     href: 'news.html',
                     name: 'In-game News'
+                },
+                {
+                    href: 'fish.html',
+                    name: 'Fish'
+                },
+                {
+                    href: null,
+                    name: 'Fortnite Crew',
+                    dropdownContent: [
+                        {
+                            name: 'Fortnite Crew',
+                            href: 'crew-pack.html'
+                        },
+                        {
+                            name: 'Crew History',
+                            href: 'crew-history.html'
+                        }
+                    ]
+                },
+                {
+                    href: null,
+                    name: 'Competitive',
+                    dropdownContent: [
+                        {
+                            name: 'Tournaments',
+                            href: 'tournaments.html'
+                        },
+                        {
+                            name: 'Hype Leaderboard',
+                            href: 'hype-leaderboard.html'
+                        }
+                    ]
                 }
             ]
         },
         {
-            name: 'Cosmetics',
+            name: 'Community',
             hasArrow: true,
             alone: false,
             dropdownContent: [
                 {
-                    href: 'new-cosmetics.html',
-                    name: 'Newest added',
+                    href: null,
+                    name: 'Cosmetics',
+                    dropdownContent: [
+                        {
+                            href: 'new-cosmetics.html',
+                            name: 'Newest added',
+                        },
+                        {
+                            href: 'search.html',
+                            name: 'Search'
+                        },
+                        {
+                            href: 'random-cosmetics.html',
+                            name: 'Locker Generator'
+                        }
+                    ]
                 },
                 {
-                    href: 'search.html',
-                    name: 'Search'
-                },
-                {
-                    href: 'random-cosmetics.html',
-                    name: 'Locker Generator'
+                    href: 'sac-codes.html',
+                    name: 'SAC Codes'
                 }
             ]
         },
@@ -191,7 +257,31 @@ function i() {
                 if (item.href !== null) {
                     context.href = item.href;
                 }
+
                 context.innerHTML = item.name;
+
+                if (item.dropdownContent !== undefined) {
+                    context.classList.add('nav-item');
+                    context.innerHTML += '<i class="arrow"></i>';
+
+                    let item_list = document.createElement('ul');
+                    item_list.classList.add("nav-dropdown-menu", "side-drop-menu");
+                    
+                    for (let object of item.dropdownContent) {
+                        let option = document.createElement('li');
+                        option.classList.add('dropdown-item');
+                        item_list.append(option);
+
+                        let text = gne('a');
+                        text.innerHTML = object.name;
+
+                        if (object.href !== null) {
+                            text.href = object.href;
+                        }
+                        option.append(text);
+                    }
+                    context.append(item_list);
+                }
                 
                 item_context.appendChild(context);
             }

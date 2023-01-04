@@ -1,3 +1,5 @@
+SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED
+
 Hype Leaderboards can be obtained from EPIC GAMES API. (NO Auth)
 
 https://www.epicgames.com/fortnite/competitive/api/leaderboard/floating/Hype_S23/undefined
@@ -18,11 +20,14 @@ Change {Language} to a 'locale-COUNTRYCODE' code.
 Offset 0 = 16 first blog posts
 Offset 16 and so on (acumulative) = 8 more blog posts
 
+SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED
+-------------------------------------------------------------------------------------------------------------------------
+
 - View set items, enter an item and get a link for a set in the Part of {set} part, or go to a set page. "https://fortniteapi.io/v2/items/sets?lang=en"
 
-- Fortnite Crew List and History "https://fortniteapi.io/v2/crew/history?lang=en"
+- Fortnite Crew List and History "https://fortniteapi.io/v2/crew/history?lang=en" --- DONE
 
-- Fish "https://fortniteapi.io/v1/loot/fish?lang=en"
+- Fish "https://fortniteapi.io/v1/loot/fish?lang=en" --- DONE
 
 - Creator code "https://fortniteapi.io/v1/creator?code=ninja"
 

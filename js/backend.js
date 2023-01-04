@@ -65,3 +65,7 @@ function oac(url, arg, value) {
 
     return url + t + arg + '=' + value
 }
+
+function getFlag(code) {
+    return 'https://laendercode.net/img/flag-icon-css/flags/4x3/' + code.toLowerCase() + '.svg'
+}
