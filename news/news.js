@@ -16,6 +16,8 @@ function create() {
             return;
         }
 
+        document.getElementsByClassName('text-wait')[0].setAttribute('done', 'true');
+
         var data = response.data.motds;
 
         for (let i = 0; i < data.length; i++) {
