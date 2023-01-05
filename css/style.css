@@ -25,13 +25,14 @@ body {
     font-family: poppins, 'Franklin Gothic Medium', 'Arial Narrow', sans-serif, Arial;
     color: white;
     overflow: overlay;
+    text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-ul {
+ul:not(.classified) {
     list-style: none;
 }
 
@@ -114,10 +115,7 @@ a.link-underline:hover {
 ::-webkit-scrollbar-thumb {
     background: rgba(127, 127, 127, .5);
     border-radius: 10px;
-}
-  
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
+    transition: background .5s ease-in-out;
 }
 
 *,
@@ -144,10 +142,10 @@ a.link-underline:hover {
     color: green;
 }
 
-.about {
-    border: none;
-    height: 100vh;
+.about-markdown img {
     width: 100%;
+    padding: 1rem;
+    border-radius: 20px;
 }
 
 .player-data {
@@ -165,30 +163,12 @@ a.link-underline:hover {
     transition: transform .15s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
-.nav-container::before {
-    background: var(--season-accent-1);
-    content: "";
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    display: block;
-    position: absolute;
-    height: 0px;
-    opacity: 0;
-    transition: height 0.2s ease-out 0s, opacity 0.15s ease-out 0s;
-    z-index: -1;
-}
-.nav-container:hover::before {
-    height: 5px;
-    opacity: 1;
-}
-
 /**Nav items*/
 .nav-logo {
     font-size: 20px;
     font-weight: 700;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     color: white;
 
     transform: scale(1);
@@ -395,13 +375,17 @@ button:hover { background-color: rgb(50, 50, 50); }
 
 /*Page contents*/
 .content {
+    --side-margin: 1rem;
+    --top-margin: 5rem;
+    --bottom-margin: 2rem;
+
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
-    margin: 6rem 0 3rem;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    margin: var(--top-margin) 0 var(--bottom-margin);
+    margin-left: var(--side-margin);
+    margin-right: var(--side-margin);
     background-color: rgba(31, 25, 49, .9);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 10px;
     width: 100%;
 }
@@ -561,7 +545,7 @@ button:hover { background-color: rgb(50, 50, 50); }
 }
 
 .shop-items-display .item-card, .search-objects .item-card {
-    margin: .5rem;
+    margin: .3rem;
     cursor: pointer;
 }
 
@@ -677,28 +661,51 @@ button:hover { background-color: rgb(50, 50, 50); }
     font-family: burbank-big;
 }
 
+.item-card-parent {
+    position: relative;
+}
+
 .item-banner {
-    font-size: 12px;
-    z-index: 9999;
+    font-size: 13px;
+    z-index: 1;
     position: absolute;
     font-weight: 700;
     padding: .2rem;
     text-align: center;
     pointer-events: none;
 
-    transition: .3s;
-    transition-property: margin-left, margin-top;
+    transition: .15s;
+    transition-property: top;
 
     font-family: burbank-big;
     text-transform: uppercase;
+
+    top: -.25rem;
+    left: -.25rem;
+}
+
+.item-card-parent:hover .item-banner {
+    top: -.5rem;
 }
 
 .item-banner[intensity=High] {
-    background-color: #FFFF00;
+    --color-1: #FFFF00;
+    --color-2: #ffffff;
+    background: linear-gradient(to right, 
+    var(--color-1), 
+    var(--color-1), 
+    /*White shines*/
+    var(--color-2), 
+    var(--color-1), 
+    var(--color-2), 
+    var(--color-1), 
+    var(--color-2), 
+    var(--color-1));
+    background-size:3000px;
     color: #00072C;
     border: 3px solid white;
 
-    animation: scalebounce .5s ease-in-out infinite alternate;
+    animation: highbanner 5s ease-in-out infinite;
 }
 
 .item-banner[intensity=Low] {
@@ -769,6 +776,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     position: relative;
     display: flex;
     justify-content: center;
+    z-index: 0;
 }
 .item-image img.style-picture.current-style {
     display: block;
@@ -784,12 +792,25 @@ button:hover { background-color: rgb(50, 50, 50); }
     text-transform: uppercase;
     background-color: #1E1E1E;
     transition: background-color .05s;
-    border-top: 3px solid transparent;
     position: absolute;
     padding-top: .5rem;
     bottom: 0;
     width: 100%;
     display: block;
+    z-index: 1;
+}
+
+.item-info::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    top: -2px;
+    left: 0;
+    border-top: 4px solid transparent;
+    transform: rotate(-1deg);
+
+    position: absolute;
+    z-index: -1;
 }
 
 .item-title {
@@ -1442,8 +1463,8 @@ button:hover { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#00FF69, #2E85FF);
     background: radial-gradient(#00FF69, #2E85FF);
 }
-.item-info[data-rarity=trascendent],
-.item-info[data-rarity=exotic] {
+.item-info[data-rarity=trascendent]::before,
+.item-info[data-rarity=exotic]::before {
     border-top-color: #00B5F6;
 }
 .rarity-label[data-rarity=trascendent],
@@ -1455,7 +1476,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#FFDE61, #C89214);
     background: radial-gradient(#FFDE61, #C89214);
 }
-.item-info[data-rarity=mythic] {
+.item-info[data-rarity=mythic]::before {
     border-top-color: #e98d4b;
 }
 .rarity-label[data-rarity=mythic] {
@@ -1466,7 +1487,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#ea8d23, #78371d);
     background: radial-gradient(#ea8d23, #78371d);
 }
-.item-info[data-rarity=legendary] {
+.item-info[data-rarity=legendary]::before {
     border-top-color: #e98d4b;
 }
 .rarity-label[data-rarity=legendary] {
@@ -1477,7 +1498,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#c359ff, #4c2483);
     background: radial-gradient(#c359ff, #4c2483);
 }
-.item-info[data-rarity=epic] {
+.item-info[data-rarity=epic]::before {
     border-top-color: #ea5eff;
 }
 .rarity-label[data-rarity=epic] {
@@ -1488,7 +1509,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#2cc0ff, #143877);
     background: radial-gradient(#2cc0ff, #143877);
 }
-.item-info[data-rarity=rare] {
+.item-info[data-rarity=rare]::before {
     border-top-color: #37d0ff;
 }
 .rarity-label[data-rarity=rare] {
@@ -1499,7 +1520,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#6abb1e, #175117);
     background: radial-gradient(#6abb1e, #175117);
 }
-.item-info[data-rarity=uncommon] {
+.item-info[data-rarity=uncommon]::before {
     border-top-color: #88e339;
 }
 .rarity-label[data-rarity=uncommon] {
@@ -1510,7 +1531,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background: -o-radial-gradient(#bebebe, #646464);
     background: radial-gradient(#bebebe, #646464);
 }
-.item-info[data-rarity=common] {
+.item-info[data-rarity=common]::before {
     border-top-color: #b1b1b1;
 }
 .rarity-label[data-rarity=common] {
@@ -1523,7 +1544,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Bg.png');
     background-size: cover;
 }
-.item-info[data-rarity=lava] {
+.item-info[data-rarity=lava]::before {
     border-top-color: #d19635;
 }
 .rarity-label[data-rarity=lava] {
@@ -1536,7 +1557,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Frozen.png');
     background-size: cover;
 }
-.item-info[data-rarity=frozen] {
+.item-info[data-rarity=frozen]::before {
     border-top-color: #c4dff7;
 }
 .rarity-label[data-rarity=frozen] {
@@ -1549,7 +1570,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/T-Cube-Background.png');
     background-size: cover;
 }
-.item-info[data-rarity=dark] {
+.item-info[data-rarity=dark]::before {
     border-top-color: #ff42e7;
 }
 .rarity-label[data-rarity=dark] {
@@ -1562,7 +1583,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/Marvel.png');
     background-size: cover;
 }
-.item-info[data-rarity=marvel] {
+.item-info[data-rarity=marvel]::before {
     border-top-color: #ef3537;
 }
 .rarity-label[data-rarity=marvel] {
@@ -1575,7 +1596,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/T-BlackMonday-Background.png');
     background-size: cover;
 }
-.item-info[data-rarity=dc] {
+.item-info[data-rarity=dc]::before {
     border-top-color: #6094ce;
 }
 .rarity-label[data-rarity=dc] {
@@ -1588,7 +1609,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/ColumbusSeries.png');
     background-size: cover;
 }
-.item-info[data-rarity=starwars] {
+.item-info[data-rarity=starwars]::before {
     border-top-color: #e7c413;
 }
 .rarity-label[data-rarity=starwars] {
@@ -1601,7 +1622,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/platformseries.png');
     background-size: cover;
 }
-.item-info[data-rarity=gaminglegends] {
+.item-info[data-rarity=gaminglegends]::before {
     border-top-color: #8078ff;
 }
 .rarity-label[data-rarity=gaminglegends] {
@@ -1615,7 +1636,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/T_Ui_CreatorsCollab_Bg.png');
     background-size: cover;*/
 }
-.item-info[data-rarity=icon] {
+.item-info[data-rarity=icon]::before {
     border-top-color: #52e0e0;
 }
 .rarity-label[data-rarity=icon] {
@@ -1628,7 +1649,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/Slurp.png');
     background-size: cover;
 }
-.item-info[data-rarity=slurp] {
+.item-info[data-rarity=slurp]::before {
     border-top-color: #53f0ff;
 }
 .rarity-label[data-rarity=slurp] {
@@ -1641,7 +1662,7 @@ button:hover { background-color: rgb(50, 50, 50); }
     background-image: url('https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Shadow.png');
     background-size: cover;
 }
-.item-info[data-rarity=shadow] {
+.item-info[data-rarity=shadow]::before {
     border-top-color: #949494;
 }
 .rarity-label[data-rarity=shadow] {
@@ -2004,17 +2025,6 @@ tr .player-name {
     animation-play-state: paused
 }
 
-@-webkit-keyframes marquee {
-    0% {
-        -webkit-transform: translate(0, 0);
-        transform: translate(0, 0)
-    }
-    100% {
-        -webkit-transform: translate(-100%, 0);
-        transform: translate(-100%, 0)
-    }
-}
-
 @keyframes marquee {
     0% {
         -webkit-transform: translate(0,0);
@@ -2026,12 +2036,12 @@ tr .player-name {
     }
 }
 
-@keyframes scalebounce {
+@keyframes highbanner {
     0% {
-        transform: scale(1);
+        background-position: 0px;
     }
-    100% {
-        transform: scale(1.025);
+    40%, 100% {
+        background-position: 3000px;
     }
 }
 
@@ -2106,7 +2116,8 @@ tr .player-name {
         display: none;
     }
     .content {
-        margin: 6rem 3rem;
+        border-radius: 0;
+        margin: 6rem 0;
     }
     .nav-content {
         padding: 1rem 3rem 5rem;

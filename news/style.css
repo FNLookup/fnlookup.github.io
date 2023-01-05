@@ -1,19 +1,18 @@
 @font-face {
     font-family: burbank-big;
-    src: url(burbank.otf);
+    src: url(../assets/fonts/burbank.otf);
 }
 
 @font-face {
     font-family: burbank-bold;
-    src: url(burbank-bold.otf);
+    src: url(../assets/fonts/burbank-bold.otf);
 }
 
 body {
     margin: 0;
     background-color: rgb(255, 255, 255);
 
-    /*Placeholder season image*/
-    background-image: url(https://cdn-live.prm.ol.epicgames.com/prod/8fecee4529a6706be12bf9a46551cfe481e9a969b67a7ba990cea07782c5ebd8ba43306a73f42f3a085042297993ef14-5f2e6d24-86fe-4dcf-be26-945c47d690eb.jpeg);
+    background-image: url(https://repository-images.githubusercontent.com/490444433/3cae59ee-46bf-4471-a978-64dc2e618fa7);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -82,4 +81,29 @@ body {
     font-family: burbank-bold;
     font-size: 17px;
     margin: 0;
+}
+
+.text-wait {
+    margin-top: 10rem;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    animation: wait-text 2s ease-in-out infinite;
+    font-family: burbank-big;
+    color: white;
+    text-align: center;
+}
+.text-wait[done=true] {
+    display: none;
+    animation:none;
+}
+
+@keyframes wait-text {
+    0% {
+        letter-spacing: 0px;
+    }
+    50% {
+        letter-spacing: 10px;
+    }
+    100% {
+        letter-spacing: 0px;
+    }
 }
