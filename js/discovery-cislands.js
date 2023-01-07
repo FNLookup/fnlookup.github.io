@@ -2,14 +2,17 @@ function declareFuncs() {
     let params = new URLSearchParams(window.location.search);
     if (params.has('code')) {
         document.getElementById('island-input').value = params.get('code');
-        doStuff();
+        doStuff(params.get('code'));
     }
 
     document.getElementById("i-button").onclick = doStuff;
 }
 
-function doStuff() {
+function doStuff(code) {
     let iID = document.getElementById('island-input').value;
+    if (code !== undefined) {
+        iID = code;
+    }
 
     let code = document.getElementById('code-label');
     let publish = document.getElementById('island-published');
