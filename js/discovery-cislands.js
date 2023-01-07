@@ -5,12 +5,14 @@ function declareFuncs() {
         doStuff(params.get('code'));
     }
 
-    document.getElementById("i-button").onclick = doStuff;
+    document.getElementById("i-button").onclick = function() {
+        doStuff(null);
+    }
 }
 
 function doStuff(iCode) {
     let iID = document.getElementById('island-input').value;
-    if (iCode !== undefined) {
+    if (iCode !== null) {
         iID = iCode;
     }
 
