@@ -1,7 +1,7 @@
 function declareFuncs() {
     let params = new URLSearchParams(window.location.search);
     if (params.has('code')) {
-        document.getElementById('island-input').innerHTML = params.get('code');
+        document.getElementById('island-input').value = params.get('code');
         doStuff();
     }
 
