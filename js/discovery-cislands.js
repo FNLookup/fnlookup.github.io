@@ -75,7 +75,7 @@ function doStuff() {
 
             let visitLink = 'tposejank.github.io/fnlookup/island?code=' + i.code;
             link.innerHTML = visitLink;
-            link.href = visitLink;
+            link.href = 'https://' + visitLink;
         }
 
     }).catch(e => {
