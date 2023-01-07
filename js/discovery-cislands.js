@@ -25,8 +25,6 @@ function doStuff() {
     fetch('https://fortniteapi.io/v1/creative/island?code=' + iID, {
         headers: { 'Authorization': localStorage.keyFNAPIIo }
     }).then(r => r.json()).then(r => {
-        console.log(r);
-
         if (r.island !== undefined) {
             document.getElementById('island-data').classList.remove('hidden');
 
@@ -38,6 +36,8 @@ function doStuff() {
             publish.innerHTML = getFormatDate(new Date(d))
             user.innerHTML = i.creator;
             name.innerHTML = i.title;
+
+            document.title = i.title + ' - ' + i.code + ' - FNLookup';
             
             let introStr = '';
             for (let t of i.introduction.split('\n')) {
