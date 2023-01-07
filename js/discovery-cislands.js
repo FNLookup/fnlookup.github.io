@@ -8,10 +8,10 @@ function declareFuncs() {
     document.getElementById("i-button").onclick = doStuff;
 }
 
-function doStuff(code) {
+function doStuff(iCode) {
     let iID = document.getElementById('island-input').value;
-    if (code !== undefined) {
-        iID = code;
+    if (iCode !== undefined) {
+        iID = iCode;
     }
 
     let code = document.getElementById('code-label');
