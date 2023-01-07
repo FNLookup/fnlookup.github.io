@@ -263,7 +263,7 @@ function makeShopCard(item, registeredSections) {
 
     if (item.ignoreClicks === undefined) {
         obj.addEventListener("click", function() {
-            openItem(item.displayName.toLowerCase());
+            openItemByID(item.mainId);
         });
     }
     if (item.href !== undefined) {

@@ -126,7 +126,7 @@ function makeItemCard(item, averageWait, currentWait, times) {
     obj.appendChild(ic);
 
     obj.addEventListener("click", function() {
-        openItem(item.name.toLowerCase());
+        openItemByID(item.id);
     });
 
     b.append(obj);

@@ -69,3 +69,23 @@ function oac(url, arg, value) {
 function getFlag(code) {
     return 'https://laendercode.net/img/flag-icon-css/flags/4x3/' + code.toLowerCase() + '.svg'
 }
+
+function getAllowedTournamentDevice(device) {
+    switch(device) {
+        case 'XboxOneGDK': return 'Xbox One Game Development Kit';
+        case 'XCloud': return 'Xbox Cloud Gaming (DEV)';
+        case 'XCloudMobile': return 'Xbox Cloud Gaming Mobile (DEV)';
+        case 'Helios': return 'Xbox Cloud Gaming';
+        case 'HeliosMobile': return 'Xbox Cloud Gaming Mobile';
+        case 'XboxOne': return 'Xbox One';
+        case 'XSX': return 'Xbox Series X';
+        case 'Android': return 'Android (Mobile)';
+        case 'GFN': return 'GeForce NOW';
+        case 'Switch': return 'Nintendo Switch';
+        case 'GFNMobile': return 'GeForce NOW Mobile';
+        case 'Windows': return 'Windows PCs';
+        case 'PS4': return 'PS4';
+        case 'PS5': return 'PS5';
+        default: return 'Unknown device (' + device + ')';
+    }
+}

@@ -29,9 +29,10 @@ SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED
 
 - Fish "https://fortniteapi.io/v1/loot/fish?lang=en" --- DONE
 
-- Creator code "https://fortniteapi.io/v1/creator?code=ninja"
+- Creator code "https://fortniteapi.io/v1/creator?code=ninja" -- DONE
 
-- Creative island "https://fortniteapi.io/v1/creative/island?code=1787-6243-5207"
+- Creative island "https://fortniteapi.io/v1/creative/island?code=1787-6243-5207" -- DONE
+designated test url 'https://tposejank.github.io/fnlookup/island?code=3819-8434-1705'
 
 - Featured creative islands "https://fortniteapi.io/v1/creative/featured"
 

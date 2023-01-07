@@ -1,20 +1,30 @@
 function init() {
     var params = new URLSearchParams(window.location.search);
-    if (params.has('q')) {
+    if (params.has('q') || params.has('id')) {
         let content = document.getElementById('page-content');
 
         content.innerHTML = '<h1>Loading...</h1><h3>Loading cosmetic list...</h3><img src="assets/images/loading.gif">';
 
-        fetch(geturllang('https://fortniteapi.io/v2/items/list', 1), {
+        fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=name,id,set,images', 1), {
             headers: {'Authorization': localStorage.keyFNAPIIo}
         }).then(data => data.json()).then(data => {
             clearChildren(content);
             content.innerHTML = '<h1>Loading...</h1><h3>Searching for ' + params.get('q') + '</h3><img src="assets/images/loading.gif">';
 
             let items = [];
+            let allItems = data.items;
+
+            var itemName = '';
+            var itemID = '';
+            if (params.has('q')) {
+                itemName = params.get('q');
+            }
+            if (params.has('id')) {
+                itemID = params.get('id');
+            }
 
             for (let item of data.items) {
-                if (item.name.toLowerCase() === params.get('q').toLowerCase()) {
+                if ((params.has('q') && item.name.toLowerCase() === itemName.toLowerCase()) || (params.has('id') && item.id.toLowerCase() === itemID.toLowerCase())) {
                     items.push(item);
                 }
             }
@@ -27,9 +37,12 @@ function init() {
                     fetch(geturllang('https://fortniteapi.io/v2/items/get?id=' + preitem.id, 1), {
                         headers: {'Authorization': localStorage.keyFNAPIIo}
                     }).then(data => data.json()).then(data => {
+                        let setItems = [];
+
                         let item = data.item;
 
                         let mainObject = gne('div');
+                        mainObject.classList.add('item');
 
                         let main = document.createElement('div');
                         main.classList.add('flex-media');
@@ -44,7 +57,7 @@ function init() {
 
                         // image part
                         let portrait = document.createElement('div');
-                        portrait.classList.add('item-card');
+                        portrait.classList.add('item-card', 'item-card-item-view');
                         portrait.classList.add('no-resize');
                         portrait.setAttribute('data-rarity', item.rarity.id.toLowerCase());
 
@@ -67,7 +80,7 @@ function init() {
                                     img_src = displayAsset.background;
                         
                                 img_obj.src = img_src;
-                                img_obj.setAttribute("title", item.name + ' (style ' + (i + 1) + ' out of ' + item.displayAssets.length + ')');
+                                img_obj.setAttribute("title", item.name + (item.displayAssets.length > 1 ? ' (style ' + (i + 1) + ' out of ' + item.displayAssets.length + ')' : ''));
                                 img_obj.setAttribute('otype', item.mainType);
                                 img_obj.classList.add("style-picture");
                                 
@@ -89,6 +102,10 @@ function init() {
                                             images[i].classList.remove('current-style');
                                     }
                                 }, 5000);
+                            }
+
+                            if (item.displayAssets.length > 1) {
+                                portrait.classList.add('mt1s'); //more-than-one-style
                             }
                         } else {
                             var img_src;
@@ -133,7 +150,7 @@ function init() {
                             name.appendChild(rarity);
 
                             if (item.series != null) {
-                                rarity.innerHTML = item.series.name;
+                                rarity.innerHTML += ' - ' + item.series.name;
                             }
                         }
 
@@ -179,7 +196,7 @@ function init() {
                         if (item.battlepass != null) {
                             let pass = document.createElement('a');
                             let bp = item.battlepass;
-                            pass.innerHTML = bp.displayText.chapterSeason + ': ' + bp.battlePassName + ' - ' + bp.page + ' (' + bp.type + ')';
+                            pass.innerHTML = bp.displayText.chapterSeason + ': ' + bp.battlePassName + (bp.page !== null ? ' - ' + bp.page : '' ) + ' (' + bp.type + ')';
                             right.appendChild(pass);
                         }
                         
@@ -194,6 +211,14 @@ function init() {
                             let set = document.createElement('h3');
                             set.innerHTML = item.set.partOf;
                             right.appendChild(set);
+
+                            for (let i of allItems) {
+                                if (i.set !== null) {
+                                    if (i.set.name == item.set.name) {
+                                        setItems.push(i);
+                                    }
+                                }
+                            }
                         }
 
                         if (item.releaseDate != null) {
@@ -216,7 +241,9 @@ function init() {
                             let hlist = document.createElement('div');
                             hlist.classList.add('shop-history');
             
-                            for (let appearanceDate of item.shopHistory) {
+                            for (let j = item.shopHistory.length - 1; j >= 0; j--) {
+                                let appearanceDate = item.shopHistory[j];
+
                                 let row = gne('div');
                                 let left = gne('div');
                                 let right = gne('div');
@@ -255,6 +282,13 @@ function init() {
                             }
             
                             right.append(hlist);
+                        }
+
+                        if (item.id !== null) {
+                            let id = document.createElement('p');
+                            id.innerHTML = 'ID: ' + item.id;
+                            id.title = 'ID: ' + item.id;
+                            right.append(id);
                         }
 
                         mainObject.append(main);
@@ -359,7 +393,7 @@ function init() {
                                 parent.innerHTML = grant.name;
                                 parent.append(image);
 
-                                parent.href = getItemLink(grant.name.toLowerCase())
+                                parent.href = getItemLinkByID(grant.id)
 
                                 grantModal.append(parent);
                             }
@@ -373,150 +407,74 @@ function init() {
                             title.innerHTML = 'Granted by';
                             bottom2.append(title);
 
+                            let grantModal = document.createElement('div');
+                            grantModal.classList.add('flex');
+                            grantModal.classList.add('flex-wrap');
+                            bottom2.append(grantModal);
+
                             for (granted of item.grantedBy) {
-                                let left = document.createElement('div');
-                                left.classList.add('d-50-media');
-                                let right = document.createElement('div');
-                                right.classList.add('d-50-media', 'item-info-right');
-    
-                                bottom2.append(left);
-    
-                                let econtent = document.createElement('div');
-                                econtent.classList.add('flex-media');
-                                econtent.append(left, right);
-                                bottom2.append(econtent);
-    
-                                let portrait = document.createElement('div');
-                                portrait.classList.add('item-card', 'no-resize', 'pointer')
-                                portrait.setAttribute('data-rarity', granted.rarity.id.toLowerCase());
-                                portrait.addEventListener('click', function() {
-                                    openItem(granted.name.toLowerCase());
-                                });
-    
-                                var img_src;
-                                if (granted.images.icon != null)
-                                    img_src = granted.images.icon;
-                                if (granted.images.featured != null)
-                                    img_src = granted.images.featured;
-                                if (granted.images.background != null)
-                                    img_src = granted.images.background;
-    
-                                var img_obj = document.createElement("img");
-                                img_obj.src = img_src;
-                                img_obj.setAttribute("title", granted.name);
-                                img_obj.classList.add("item-card-item-display");
-                                portrait.appendChild(img_obj);
-    
-                                left.appendChild(portrait);
-    
-                                let ename = document.createElement('h1');
-                                if (granted.name != null) {
-                                    ename.innerHTML = granted.name;
-                                }
-    
-                                ename.classList.add('flex');
-                                ename.classList.add('flex-wrap');
-    
-                                if (item.type != null) {
-                                    let item_type = document.createElement('a');
-                                    item_type.classList.add('item-type-label');
-                                    item_type.innerHTML = granted.type.name;
-                                    ename.appendChild(item_type);
-                                }
-                                
-                                if (item.rarity != null) {
-                                    let rarity = document.createElement('a');
-                                    rarity.classList.add('rarity-label');
-                                    rarity.setAttribute('data-rarity', granted.rarity.id.toLowerCase());
-                                    rarity.innerHTML = granted.rarity.name;
-                                    ename.appendChild(rarity);
-                                }
-    
-                                right.append(ename);
-    
-                                if (granted.description !== null) {
-                                    let description = document.createElement('h2');
-                                    description.innerHTML = granted.description;
-                                    right.append(description);
-                                }
+                                let parent = document.createElement('a');
+                                parent.classList.add('variant-container');
+
+                                let image = document.createElement('img');
+                                image.src = granted.images.icon;
+                                image.title = granted.name;
+                                parent.innerHTML = granted.name;
+                                parent.append(image);
+
+                                parent.href = getItemLinkByID(granted.id)
+
+                                grantModal.append(parent);
                             }
                         }
 
                         if (item.builtInEmote != null) {
                             let emote = item.builtInEmote;
                             
-                            let left = document.createElement('div');
-                            left.classList.add('d-50-media');
-                            let right = document.createElement('div');
-                            right.classList.add('d-50-media', 'item-info-right');
-
                             let title = gne('h1');
-                            title.innerHTML = 'Built-in Emote';
+                            title.innerHTML = 'Built-In Emote';
                             bottom2.append(title);
 
-                            bottom2.append(left);
+                            let grantModal = document.createElement('div');
+                            grantModal.classList.add('flex');
+                            grantModal.classList.add('flex-wrap');
+                            bottom2.append(grantModal);
 
-                            let econtent = document.createElement('div');
-                            econtent.classList.add('flex-media');
-                            econtent.append(left, right);
-                            bottom2.append(econtent);
+                            let parent = document.createElement('a');
+                            parent.classList.add('variant-container');
 
-                            let portrait = document.createElement('div');
-                            portrait.classList.add('item-card', 'no-resize', 'pointer')
-                            portrait.setAttribute('data-rarity', emote.rarity.id.toLowerCase());
-                            portrait.addEventListener('click', function() {
-                                openItem('item.html?q=' + emote.name.toLowerCase());
-                            });
+                            let image = document.createElement('img');
+                            image.src = emote.images.icon;
+                            image.title = emote.name;
+                            parent.innerHTML = emote.name;
+                            parent.append(image);
+                            parent.href = getItemLinkByID(emote.id)
+                            grantModal.append(parent);
+                        }
 
-                            var img_src;
-                            if (emote.images.icon != null)
-                                img_src = emote.images.icon;
-                            if (emote.images.featured != null)
-                                img_src = emote.images.featured;
-                            if (emote.images.background != null)
-                                img_src = emote.images.background;
+                        if (setItems.length > 0) {
+                            let title = gne('h1');
+                            title.innerHTML = item.set.partOf;
+                            bottom2.append(title);
 
-                            var img_obj = document.createElement("img");
-                            img_obj.src = img_src;
-                            img_obj.setAttribute("title", emote.name);
-                            img_obj.classList.add("item-card-item-display");
-                            portrait.appendChild(img_obj);
+                            let grantModal = document.createElement('div');
+                            grantModal.classList.add('flex');
+                            grantModal.classList.add('flex-wrap');
+                            bottom2.append(grantModal);
 
-                            left.appendChild(portrait);
+                            for (setItem of setItems) {
+                                let parent = document.createElement('a');
+                                parent.classList.add('variant-container');
 
-                            let ename = document.createElement('h1');
-                            if (emote.name != null) {
-                                ename.innerHTML = emote.name;
-                            }
+                                let image = document.createElement('img');
+                                image.src = setItem.images.icon;
+                                image.title = setItem.name;
+                                parent.innerHTML = setItem.name;
+                                parent.append(image);
 
-                            ename.classList.add('flex');
-                            ename.classList.add('flex-wrap');
+                                parent.href = getItemLinkByID(setItem.id)
 
-                            if (item.type != null) {
-                                let item_type = document.createElement('a');
-                                item_type.classList.add('item-type-label');
-                                item_type.innerHTML = emote.type.name;
-                                ename.appendChild(item_type);
-                            }
-                            
-                            if (item.rarity != null) {
-                                let rarity = document.createElement('a');
-                                rarity.classList.add('rarity-label');
-                                rarity.setAttribute('data-rarity', emote.rarity.id.toLowerCase());
-                                rarity.innerHTML = emote.rarity.name;
-                                ename.appendChild(rarity);
-
-                                if (item.series != null) {
-                                    rarity.innerHTML = item.series.name;
-                                }
-                            }
-
-                            right.append(ename);
-
-                            if (emote.description !== null) {
-                                let description = document.createElement('h2');
-                                description.innerHTML = emote.description;
-                                right.append(description);
+                                grantModal.append(parent);
                             }
                         }
                         
