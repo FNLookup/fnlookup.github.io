@@ -76,7 +76,11 @@ function doStuff(iCode) {
             }
 
             description.innerHTML = desc;
-            live.innerHTML = i.status.toUpperCase();
+            if (i.status !== undefined) {
+                live.innerHTML = i.status.toUpperCase();
+            } else {
+                live.innerHTML = 'Unknown';
+            }
 
             let visitLink = 'tposejank.github.io/fnlookup/island?code=' + i.code;
             link.innerHTML = visitLink;
