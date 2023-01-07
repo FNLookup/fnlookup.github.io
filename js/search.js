@@ -117,7 +117,7 @@ function makeFc(filters) {
 }
 
 function downloadItems() {
-    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=introduction,images,name,type,rarity', 1), {
+    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=id,introduction,images,name,type,rarity', 1), {
         headers: {'Authorization': localStorage.keyFNAPIIo}
     }).then(response => response.json()).then(response => {
         items = response.items;
@@ -286,7 +286,7 @@ function makeItemCard(item) {
     obj.appendChild(ic);
 
     obj.addEventListener("click", function() {
-        openItem(item.name.toLowerCase());
+        openItemByID(item.id);
     });
 
     b.append(obj);

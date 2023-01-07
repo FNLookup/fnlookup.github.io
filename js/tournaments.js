@@ -1,5 +1,18 @@
+function reloadWithRegion() {
+    window.location.href = 'tournaments.html?region=' + document.getElementById('region-dropdown').value;
+}
+
 function getcompetitive() {
-    fetch(geturllang('https://fortniteapi.io/v1/events/list?region=NAE', 1), {
+    let region = 'NAE';
+    let params = new URLSearchParams(window.location.search)
+
+    if (params.has('region')) {
+        region = params.get('region');
+    }
+
+    document.getElementById('cur-reg').innerHTML = 'Current region: ' + region
+
+    fetch(geturllang('https://fortniteapi.io/v1/events/list?region=' + region, 1), {
         headers: {'Authorization': localStorage.keyFNAPIIo}
     }).then(r => r.json()).then(r => {
         let main = document.getElementById('main');
@@ -14,7 +27,7 @@ function getcompetitive() {
         let windows = document.getElementById('tournament-windows');
         let scoring = document.getElementById('tournament-scoring');
     
-        for (let i = r.events.length - 19; i < r.events.length; i++) {
+        for (let i = r.events.length - 24; i < r.events.length; i++) {
             let event = r.events[i];
 
             let parent = gne('a')
@@ -50,7 +63,16 @@ function getcompetitive() {
                 desc.textContent = event.long_description;
                 shortDesc.textContent = event.short_description;
                 times.innerHTML = getFormatDate(new Date(event.beginTime)) + ' - ' + getFormatDate(new Date(event.endTime));
-                platforms.innerHTML = 'This event is available for players that use the following devices:<br>' + event.platforms.join(', ');
+
+                let platformStr = [], platformHTML = '';
+                for (let pf of event.platforms) {
+                    platformStr.push(getAllowedTournamentDevice(pf));
+                }
+                for (let fpf of platformStr) {
+                    platformHTML += '<li>' + fpf + '</li>';
+                }
+
+                platforms.innerHTML = 'This event is available for players that use the following devices:<ul class="classified">' + platformHTML + '</ul>';
 
                 clearChildren(otherDetails);
                 if (event.cumulative)
@@ -79,7 +101,6 @@ function getcompetitive() {
                             headers: {'Authorization': localStorage.keyFNAPIIo}
                         }).then(r => r.json()).then(r => {
                             clearChildren(scoring)
-                            
                             let session = r.session
 
                             scoring.innerHTML += '<h1>' + session.region + '</h1>'

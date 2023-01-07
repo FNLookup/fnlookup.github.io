@@ -56,7 +56,7 @@ function init() {
                 obj.appendChild(ic);
 
                 obj.addEventListener("click", function() {
-                    openItem(item_obj.name.toLowerCase());
+                    openItemByID(item_obj.id);
                 });
 
                 b.append(obj);

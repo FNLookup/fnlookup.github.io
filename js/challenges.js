@@ -110,7 +110,7 @@ function getchs() {
                                 rewardicon.classList.add('reward-icon', 'pointer');
                                 rewardicon.title = item.name;
                                 rewardicon.addEventListener('click', function() {
-                                    openItem(item.name.toLowerCase())
+                                    openItemByID(item.id)
                                 });
     
                                 rewardobj.append(rewardicon);

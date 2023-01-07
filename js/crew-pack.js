@@ -61,7 +61,7 @@ function getcpackdata() {
             let iimg = gne('img');
             iimg.src = reward.item.images.icon;
             iimg.title = reward.item.name;
-            iimg.classList.add('full-size', 'news-item-image');
+            iimg.classList.add('full-size', 'news-item-image', 'pointer');
             item_mobile.append(iimg);
             let ititle = gne('h2');
             ititle.innerHTML = reward.item.name;
@@ -71,7 +71,7 @@ function getcpackdata() {
             item_mobile.append(idesc);
 
             iimg.addEventListener('click', function() {
-                openItem(reward.item.name.toLowerCase());
+                openItemByID(reward.id);
             })
 
             mobileItems.append(item_mobile)
