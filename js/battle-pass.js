@@ -1,5 +1,9 @@
 function start() {
-    fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=current', 1), {
+    let season = 'current';
+    var p = new URLSearchParams(window.location.search);
+    if (p.has('season')) season = p.get('season');
+
+    fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=' + season, 1), {
         headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
 
@@ -14,12 +18,19 @@ function start() {
         pc.append(pages);
 
         for (let reward of r.rewards) {
+            console.log(reward);
 
-            const page = reward.page;
+            let page = reward.page;
             var section_c;
             if (!registeredPages.includes(page)) {
                 var section_title = document.createElement('h1');
-                section_title.innerHTML = 'PAGE ' + page;
+
+                if (page !== null) {
+                    section_title.innerHTML = 'PAGE ' + page;
+                } else {
+                    section_title.innerHTML = 'Battle Pass';
+                }
+
                 section_title.classList.add('flex-center');
                 section_title.classList.add('shop-section-title');
                 section_title.id = 'title_' + page;
@@ -58,19 +69,29 @@ function start() {
             }
 
             var price = document.createElement('a');
-            var vbuck = document.createElement('img');
-            vbuck.src = 'assets/images/star.png';
-            vbuck.classList.add("vbuck-icon");
 
-            let vbt = document.createElement('a');
-            vbt.classList.add("item-price-vbp");
+            if (reward.price != null) {
+                var vbuck = document.createElement('img');
+                vbuck.src = 'assets/images/star.png';
+                vbuck.classList.add("vbuck-icon");
+    
+                let vbt = document.createElement('a');
+                vbt.classList.add("item-price-vbp");
+    
+                let fprice = reward.price.amount;
+                vbuck.title = fprice + ' Battle Stars';
+                vbt.innerHTML = fprice;
+    
+                price.append(vbt);
+                price.appendChild(vbuck);
+            } else {
+                let fprice = 'Tier ' + reward.tier;
+                let vbt = document.createElement('a');
+                vbt.classList.add("item-price-vbp");
+                vbt.innerHTML = fprice;
+                price.append(vbt);
+            }
 
-            let fprice = reward.price.amount;
-            vbuck.title = fprice + ' Battle Stars';
-            vbt.innerHTML = fprice;
-
-            price.append(vbt);
-            price.appendChild(vbuck);
             price.classList.add('item-price');
 
             hold.appendChild(otitle);
@@ -109,7 +130,7 @@ function start() {
             }
 
             img_obj.src = img_src;
-            img_obj.setAttribute("title", item.name + ' for ' + fprice + ' Battle Stars');
+            img_obj.setAttribute("title", item.name);
             img_obj.setAttribute('otype', item.type.id);
 
             ic.appendChild(img_obj);

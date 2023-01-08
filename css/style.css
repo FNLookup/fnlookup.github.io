@@ -290,7 +290,7 @@ input[type=text]:not(.sac-code-box) {
     border: 1px solid gray;
     color: white;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: background-color .3s;
 
     font-family: 'Poppins', serif;
@@ -301,7 +301,7 @@ button {
     border: 1px solid gray;
     color: white;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: background-color .3s;
 
     font-family: 'Poppins', serif;
@@ -884,17 +884,19 @@ button.fn-button {
 
 /*The strike through price that is shown if there is a discount*/
 .item-price-bip {
-    transform: scale(0.7);
-    text-decoration: line-through;
     opacity: .4;
+    font-size: 8px;
+    margin-right: .3rem;
+    text-decoration:line-through;
 }
 
 .item-price-vbp {
-    transform: scale(0.7);
     opacity: .5;
+    font-size: 10px;
+    margin-right: .15rem;
 }
 
-.item-price-bip, .item-prive-vbp {
+.item-price-bip, .item-price-vbp {
     transition: color .05s;
 }
 
@@ -2259,12 +2261,7 @@ tr .player-name {
 }
 
 @media (min-width: 992px) {
-    .item-price-vbp {
-        transform: scale(.9);
-    }
-    .item-price-bip {
-        transform: scale(.75);
-    }
+
 }
 
 @media (max-width: 784px) {

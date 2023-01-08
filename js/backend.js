@@ -15,7 +15,7 @@ if (localStorage.requestLanguage === undefined) {
         } else
             localStorage.requestLanguage = window.defaultLanguage;
         
-        if (window.navigator.language.toLowerCase() === 'es-mx') {
+        if (window.navigator.language.toLowerCase().startsWith('es-')) {
             console.log(window.navigator.language + ' changed to es-419');
             localStorage.requestLanguage = 'es-419';
         }
@@ -32,11 +32,9 @@ function debugFetch(url, oauth) {
 function switchLanguage(to) {
     if (window.supportedLanguages.includes(to)) {
         localStorage.requestLanguage = to;
-        document.location.reload();
+        window.location.reload();
         return true;
-    } else {
-        return false;
-    }
+    } else return false;
 }
 
 function geturllang(url, type) {
