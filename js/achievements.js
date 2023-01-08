@@ -1,6 +1,6 @@
 function getach() {
     fetch(geturllang('https://fortniteapi.io/v1/achievements', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
         let content = document.getElementsByClassName('content')[0];
 

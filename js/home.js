@@ -1,7 +1,7 @@
 function addToList() {
     sections = [];
     fetch(geturllang("https://fortniteapi.io/v2/shop", 1), {
-        headers: { 'Authorization': localStorage.keyFNAPIIo}
+        headers: { 'Authorization': keyFNAPIIo}
     }).then(shop => shop.json()).then(data => {
         shopItems = data.shop; // save api key requests
 

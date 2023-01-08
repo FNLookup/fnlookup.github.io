@@ -28,7 +28,7 @@ function doStuff(iCode) {
     let link = document.getElementById('link-visit');
 
     fetch('https://fortniteapi.io/v1/creative/island?code=' + iID, {
-        headers: { 'Authorization': localStorage.keyFNAPIIo }
+        headers: { 'Authorization': keyFNAPIIo }
     }).then(r => r.json()).then(r => {
         if (r.island !== undefined) {
             document.getElementById('island-data').classList.remove('hidden');

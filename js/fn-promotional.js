@@ -1,7 +1,7 @@
 enableAutoplayPromotionals = false;
 
 fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=current', 1), {
-    headers: { 'Authorization': localStorage.keyFNAPIIo }
+    headers: { 'Authorization': keyFNAPIIo }
 }).then(r => r.json()).then(r => {
     sources = [];
     curSource = 0;

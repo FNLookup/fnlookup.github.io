@@ -18,8 +18,8 @@ function init() {
     dateFirst.innerHTML = getFormatDate(new Date(times[0]));
     dateSecond.innerHTML = getFormatDate(new Date(times[1]));
 
-    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=images,name,description,rarity,type,shopHistory', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=images,name,description,rarity,type,shopHistory,id', 1), {
+        headers: {'Authorization': keyFNAPIIo}
     }).then(response => response.json()).then(response => {
         if (response.items !== null) {
             for (let item of response.items) {

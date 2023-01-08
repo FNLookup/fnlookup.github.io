@@ -1,6 +1,6 @@
 function geta() {
     fetch(geturllang('https://fortniteapi.io/v1/game/augments', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
         let createdTabs = [];
         for (let augment of r.augments) {

@@ -3,7 +3,7 @@ function declareFuncs() {
         let enterCode = document.getElementById('sac-input').value;
 
         fetch('https://fortniteapi.io/v1/creator?code=' + enterCode, {
-            headers: { 'Authorization': localStorage.keyFNAPIIo }
+            headers: { 'Authorization': keyFNAPIIo }
         }).then(r => r.json()).then(r => {
             if (typeof(r.code) !== 'string') {
                 document.getElementById('sac-player').classList.remove('hidden');

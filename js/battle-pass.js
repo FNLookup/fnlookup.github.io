@@ -1,6 +1,6 @@
 function start() {
     fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=current', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
 
         let pc = document.getElementById('page-content');

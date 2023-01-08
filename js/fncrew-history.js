@@ -1,6 +1,6 @@
 function loadHistory() {
     fetch(geturllang('https://fortniteapi.io/v2/crew/history', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r=>r.json()).then(r=> {
 
         for (let i in r.history) {
