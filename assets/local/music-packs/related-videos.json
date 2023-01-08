@@ -1,0 +1,137 @@
+{
+    "Item_Enum": {
+        "id": "MUSIC PACK ID",
+        "urls": ["ARRAY YOUTUBE IDs"]
+    },
+    "items": [
+        {
+            "id": "MusicPack_164_RedPepper_Winterfest",
+            "urls": [
+                "U-3kJcBfQ9w",
+                "zZMg9ryeWOw"
+            ]
+        },
+        {
+            "id": "MusicPack_156_Radish_Event",
+            "urls": [
+                "w2SSlhEq8W4"
+            ]
+        },
+        {
+            "id": "MusicPack_163_Winterfest_2022",
+            "urls": [
+                "kF6KNXODqcw"
+            ]
+        },
+        {
+            "id": "MusicPack_158_VampireHunters",
+            "urls": [
+                "ElQivCLl0-g"
+            ]
+        },
+        {
+            "id": "MusicPack_154_Invitational_Album",
+            "urls": [
+                "INa-B-kOa9c",
+                "dX3q8g_QnQg&t",
+                "iLHy5pKxCZE"
+            ]
+        },
+        {
+            "id": "MusicPack_153_Fortnitemares_FreakyBoss",
+            "urls": [
+                "-23660L8hAY"
+            ]
+        },
+        {
+            "id": "MusicPack_151_CrewLobby_Instrumental",
+            "urls": [
+                "QA6qNy18tcU"
+            ]
+        },
+        {
+            "id": "MusicPack_150_CrewLobby",
+            "urls": [
+                "QA6qNy18tcU"
+            ]
+        },
+        {
+            "id": "MusicPack_139_BG",
+            "urls": [
+                "_JZom_gVfuw"
+            ]
+        },
+        {
+            "id":"MusicPack_133_Armadillo",
+            "urls":[
+                "3grDht7-kK0"
+            ]
+        },
+        {
+            "id": "MusicPack_134_FNCS20",
+            "urls":[
+                "VmxRmoRuMK8"
+            ]
+        },
+        {
+            "id": "MusicPack_137_NightNight",
+            "urls": [
+                "GuojXGdw8sA"
+            ]
+        },
+        {
+            "id": "MusicPack_132_MayCrew",
+            "urls":[
+                "VvAIW4tseds"
+            ]
+        },
+        {
+            "id": "MusicPack_132_MayCrew_Instrumental",
+            "urls":[
+                "VvAIW4tseds"
+            ]
+        },
+        {
+            "id": "MusicPack_131_MC",
+            "urls":[
+                "yZt5foFpvEk"
+            ]
+        },
+        {
+            "id": "MusicPack_124_Zest",
+            "urls": [
+                "DFEnAJASSQ8"
+            ]
+        },
+        {
+            "id": "MusicPack_126_Woman",
+            "urls": [
+                "uaGM5SRStQo"
+            ]
+        },
+        {
+            "id": "MusicPack_125_S19_FNCS",
+            "urls":[
+                "J4gul7aQHyE"
+            ]
+        },
+        {
+            "id": "MusicPack_122_Sleek_3ST6M",
+            "urls":[
+                "IQQ-87RSCRM"
+            ]
+        },
+        {
+            "id": "MusicPack_120_MonkeySS",
+            "urls":[
+                "_o0irv7ofhg"
+            ]
+        },
+        {
+            "id": "MusicPack_065_FortlishRap",
+            "urls": [
+                "YzDcHDKKr4U"
+            ]
+        }
+    ]
+}

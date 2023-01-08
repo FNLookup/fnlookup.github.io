@@ -43,6 +43,8 @@ function init() {
 
                         let mainObject = gne('div');
                         mainObject.classList.add('item');
+                        mainObject.setAttribute('item', item.name);
+                        mainObject.setAttribute('type', item.type.name);
 
                         let main = document.createElement('div');
                         main.classList.add('flex-media');
@@ -240,7 +242,19 @@ function init() {
 
                             let hlist = document.createElement('div');
                             hlist.classList.add('shop-history');
+
+                            let tableHeader = gne('div');
+                            let leftRow = gne('div');
+                            let rightRow = gne('div');
+                            tableHeader.classList.add('flex');
+                            leftRow.classList.add('d-70');
+                            rightRow.classList.add('d-30', 'flex', 'flex-center', 'flex-hcenter');
+                            leftRow.innerHTML = '<h4>Date</h4>';
+                            rightRow.innerHTML = '<h4>Days Since</h4>';
+                            tableHeader.append(leftRow, rightRow);
+                            hlist.append(tableHeader);
             
+                            let avgTable = [];
                             for (let j = item.shopHistory.length - 1; j >= 0; j--) {
                                 let appearanceDate = item.shopHistory[j];
 
@@ -253,6 +267,7 @@ function init() {
                                 right.classList.add('d-30', 'flex', 'flex-center', 'flex-hcenter');
 
                                 row.append(left, right);
+                                hlist.append(row);
 
                                 let date = document.createElement('p');
                                 var hdate = new Date(appearanceDate);
@@ -277,11 +292,25 @@ function init() {
                                 ds.innerHTML = dsince + 'd';
                                 if (dsince == 0) ds.innerHTML = '<a href="item-shop.html">Item Shop</a>';
                                 right.append(ds);
-            
-                                hlist.append(row);
+
+                                if (j !== item.shopHistory.length-1) {
+                                    var nextAppearance = new Date(item.shopHistory[j + 1]);
+                                    var thisAppearance = new Date(item.shopHistory[j]);
+
+                                    var dsinceta = Math.floor((nextAppearance.getTime() - thisAppearance.getTime()) / (1000 * 3600 * 24));
+                                    avgTable.push(dsinceta);
+                                }
                             }
+
+                            let sum = 0;
+                            for (let num of avgTable) sum += num;
+                            let avg = sum / avgTable.length;
             
                             right.append(hlist);
+
+                            let avgWaitPerA = document.createElement('p');
+                            avgWaitPerA.innerHTML = 'Average Wait: ' + avg + 'd';
+                            right.append(avgWaitPerA);
                         }
 
                         if (item.id !== null) {
@@ -368,6 +397,27 @@ function init() {
                                     }
                                 }
                             }).catch(error => { console.error(error) })
+                        }
+
+                        if (item.type.id == 'music') {
+                            fetch('assets/local/music-packs/related-videos.json').then(r => r.json()).then(r => {
+                                for (let packID of r.items) {
+                                    if (packID.id === item.id) {
+                                        for (let url of packID.urls) {
+                                            let ytContainer = document.createElement('div');
+                                            ytContainer.classList.add('d-50-media');
+                                            bottom.append(ytContainer);
+                                            let ytIframe = document.createElement('iframe');
+                                            ytIframe.src = 'https://www.youtube.com/embed/' + url + '?loop=1';
+                                            ytIframe.setAttribute('frameborder', '0');
+                                            ytIframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+                                            ytIframe.setAttribute('allowfullscreen', 'true')
+                                            ytIframe.classList.add('youtube-iframe');
+                                            ytContainer.append(ytIframe);
+                                        }
+                                    }
+                                }
+                            })
                         }
 
                         let bottom1 = document.createElement('div');
