@@ -4,7 +4,7 @@ function getcpackdata() {
     if (params.has('crewID')) crewID = params.get('crewID');
 
     fetch(geturllang('https://fortniteapi.io/v2/crew/history', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r=>r.json()).then(r=> {
         let crew = r.history[crewID];
 
@@ -29,16 +29,18 @@ function getcpackdata() {
         let description = gne('a');
         description.classList.add('crew-pack-item-description')
         description.innerHTML = crew.rewards[0].item.description;
-        
-        image.addEventListener('click', function() {
-            openItem(itemTitle.innerHTML.toLowerCase())
-        })
 
         itemDetails.appendChild(description);
 
         let mobileItems = document.getElementById('items-mobile');
 
         for (let reward of crew.rewards) {
+            if (reward == crew.rewards[0]) {
+                image.onclick = function() {
+                    openItemByID(reward.item.id);
+                }
+            }
+
             let c = document.createElement('div');
             c.classList.add('crew-pack-item');
 
@@ -50,6 +52,10 @@ function getcpackdata() {
                 image.src = reward.item.images.icon;
                 itemTitle.innerHTML = reward.item.name;
                 description.innerHTML = reward.item.description;
+
+                image.onclick = function() {
+                    openItemByID(reward.item.id);
+                }
             })
 
             c.append(img);
@@ -71,7 +77,7 @@ function getcpackdata() {
             item_mobile.append(idesc);
 
             iimg.addEventListener('click', function() {
-                openItemByID(reward.id);
+                openItemByID(reward.item.id);
             })
 
             mobileItems.append(item_mobile)

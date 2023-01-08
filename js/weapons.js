@@ -1,6 +1,6 @@
 function getWeapons() {
     fetch(geturllang('https://fortniteapi.io/v1/loot/list', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
         let content = document.getElementById('weapon-container');
 

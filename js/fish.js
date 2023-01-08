@@ -1,6 +1,6 @@
 function getfish() {
     fetch(geturllang('https://fortniteapi.io/v1/loot/fish', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
 
         console.log(r);

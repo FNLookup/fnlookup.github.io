@@ -47,7 +47,7 @@ let menuObjectTypes = {
 
 function loadRandomPicker() {
     fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=images,name,type', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(response => response.json()).then(response => {
         items = response.items;
 

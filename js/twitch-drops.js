@@ -1,7 +1,7 @@
 function getdrops() {
     fetch('https://fortniteapi.io/v1/twitch/drops', {
         headers: {
-            'Authorization': localStorage.keyFNAPIIo
+            'Authorization': keyFNAPIIo
         }
     }).then(r => r.json()).then(r => {
         for (drop of r.drops) {

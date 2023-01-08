@@ -1,6 +1,6 @@
 function getstat() {
     fetch(geturllang("https://fortniteapi.io/v2/game/vehicles", 1), {
-        headers: { 'Authorization': localStorage.keyFNAPIIo}
+        headers: { 'Authorization': keyFNAPIIo}
     }).then(shop => shop.json()).then(data => {
 
         let main = document.getElementById('vehicle-wrapper');

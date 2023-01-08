@@ -6,7 +6,7 @@ function init() {
         content.innerHTML = '<h1>Loading...</h1><h3>Loading cosmetic list...</h3><img src="assets/images/loading.gif">';
 
         fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=name,id,set,images', 1), {
-            headers: {'Authorization': localStorage.keyFNAPIIo}
+            headers: {'Authorization': keyFNAPIIo}
         }).then(data => data.json()).then(data => {
             clearChildren(content);
             content.innerHTML = '<h1>Loading...</h1><h3>Searching for ' + params.get('q') + '</h3><img src="assets/images/loading.gif">';
@@ -35,7 +35,7 @@ function init() {
 
                 for (let preitem of response) {
                     fetch(geturllang('https://fortniteapi.io/v2/items/get?id=' + preitem.id, 1), {
-                        headers: {'Authorization': localStorage.keyFNAPIIo}
+                        headers: {'Authorization': keyFNAPIIo}
                     }).then(data => data.json()).then(data => {
                         let setItems = [];
 
@@ -337,7 +337,7 @@ function init() {
                                     if (style.image !== null) {
                                         image.src = style.image;
                                     } else {
-                                        image.src = localStorage.marioDancing;
+                                        image.src = marioDancing;
                                     }
                                     image.title = style.name + ' (' + style.channelName + ')';
                                     parent.innerHTML = style.name;

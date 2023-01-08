@@ -13,7 +13,7 @@ function getcompetitive() {
     document.getElementById('cur-reg').innerHTML = 'Current region: ' + region
 
     fetch(geturllang('https://fortniteapi.io/v1/events/list?region=' + region, 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
         let main = document.getElementById('main');
 
@@ -95,10 +95,10 @@ function getcompetitive() {
 
                     element.onclick = function() {
                         clearChildren(scoring);
-                        scoring.innerHTML = 'Please wait...<br><img src="' + localStorage.marioDancing + '" alt="Mario">';
+                        scoring.innerHTML = 'Please wait...<br><img src="' + marioDancing + '" alt="Mario">';
 
                         fetch('https://fortniteapi.io/v1/events/window?windowId=' + twindow.windowId, {
-                            headers: {'Authorization': localStorage.keyFNAPIIo}
+                            headers: {'Authorization': keyFNAPIIo}
                         }).then(r => r.json()).then(r => {
                             clearChildren(scoring)
                             let session = r.session

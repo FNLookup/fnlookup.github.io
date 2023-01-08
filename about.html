@@ -49,7 +49,7 @@
 
         <h2>Personal Information</h2>
         <p>FNLookup does NOT collect any information about the user, however Fortnite APIs collect the country of residence of the user for analytics.</p>
-        Here are any types of information that is NOT collected by FNLookup
+        <p>Here are any types of information that is NOT collected by FNLookup</p>
         <ul class="classified">
             <li>IP Address</li>
             <li>Browser type</li>
@@ -60,8 +60,14 @@
         <p>Information may or may not be as well collected by GitHub's free page hosting service: GitHub Pages.</p>
 
         <h2>Saved Data</h2>
-        <p>Only data that is stored locally is your request language and important values for this page to function correctly.</p>
+        <p>Only data that is stored locally is your request language.</p>
         <p>Languages are independent from each machine and do not carry on with Google Accounts or any other type of account.</p>
+
+        <h2>Deleting your data</h2>
+        <p>You have an option to delete your data: Right below with this button. This will delete everything that is saved currently, like your language.</p>
+        <div class="flex flex-hcenter">
+            <button class="fn-button" onclick="localStorage.clear(); document.getElementById('del-data-btn').innerHTML = 'DATA DELETED'; console.log('Data deleted by force')" id="del-data-btn">DELETE MY DATA</button>
+        </div>
 
         <h2>Language Specifications</h2>
         <p>You are able to use a total of <a id="lang-length"></a> languages, of those being the following:</p>

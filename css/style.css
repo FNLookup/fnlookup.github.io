@@ -318,6 +318,18 @@ button:hover { background-color: rgb(50, 50, 50); }
     border-bottom-right-radius: 0;
 }
 
+button.fn-button {
+    background: rgb(255, 255, 0);
+    color: black;
+    font-family: burbank-big;
+    font-size: 23px;
+    border-radius: 0;
+    cursor: pointer;
+    clip-path: polygon(0% 16%, 100% 6%, 98% 100%, 2% 90%);
+    margin: 0px;
+    padding: 0.9em 1em 0.6em;
+}
+
 .multilingual-btn {
     width: 20px;
     cursor: pointer;
@@ -1060,6 +1072,8 @@ button:hover { background-color: rgb(50, 50, 50); }
     font-size: 24px;
     text-transform: uppercase;
     transition: transform .1s;
+    position: relative;
+    z-index: 3;
 }
 .fish-desc {
     font-family: burbank-bold;

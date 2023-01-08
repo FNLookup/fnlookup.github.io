@@ -1,6 +1,6 @@
 function getchs() {
     fetch(geturllang("https://fortniteapi.io/v3/challenges?season=current", 1), {
-        headers: { 'Authorization': localStorage.keyFNAPIIo}
+        headers: { 'Authorization': keyFNAPIIo}
     }).then(response=>response.json()).then(response=>{
     
         for (let bundle of response.bundles) {
@@ -122,7 +122,7 @@ function getchs() {
                                 rewardobj.classList.add('challenge-reward');
     
                                 let rewardicon = gne('img');
-                                rewardicon.src = localStorage.marioDancing;
+                                rewardicon.src = marioDancing;
                                 rewardicon.classList.add('reward-icon');
                                 rewardicon.title = 'No Rewards';
     

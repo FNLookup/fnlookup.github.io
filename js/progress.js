@@ -2,7 +2,7 @@ let seasonSlug = '';
 
 function initialize() {
     fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(response=>response.json()).then(response => {
         let seasons = [
             response.seasons[response.seasons.length - 2],

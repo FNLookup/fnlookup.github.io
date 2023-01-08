@@ -49,7 +49,7 @@ function createItems() {
     let registeredSections = [];
 
     fetch(geturllang("https://fortniteapi.io/v2/shop", 1), {
-        headers: { 'Authorization': localStorage.keyFNAPIIo}
+        headers: { 'Authorization': keyFNAPIIo}
     }).then(response=>response.json()).then(response=>{
     
         if (response.customBackground !== null) {
@@ -77,7 +77,7 @@ function createItems() {
         }
 
         fetch(geturllang('https://fortniteapi.io/v2/crew', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
         }).then(r=>r.json()).then(r=> {
             let crew = r.currentCrew;
 

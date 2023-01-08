@@ -29,7 +29,7 @@ function initFilter() {
     makeFc(filters);
 
     fetch(geturllang("https://fortniteapi.io/v2/rarities", 1), {
-        headers: { 'Authorization': localStorage.keyFNAPIIo}
+        headers: { 'Authorization': keyFNAPIIo}
     }).then(r=>r.json()).then(r=>{
         
         let stuff = [];
@@ -118,7 +118,7 @@ function makeFc(filters) {
 
 function downloadItems() {
     fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=id,introduction,images,name,type,rarity', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(response => response.json()).then(response => {
         items = response.items;
 

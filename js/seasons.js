@@ -1,6 +1,6 @@
 function gets() {
     fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
-        headers: {'Authorization': localStorage.keyFNAPIIo}
+        headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
         for (let season of r.seasons) {
             let p = document.createElement('div');

@@ -43,8 +43,8 @@ function searchPlayer() {
     }
 
     fetch(reqURL, {
-        headers: 'string' === typeof localStorage.keyFNAPI ? {
-            "Authorization": localStorage.keyFNAPI
+        headers: 'string' === typeof keyFNAPI ? {
+            "Authorization": keyFNAPI
         } : {}
     }).then(res => res.json()).then(res => {
         clearChildren(content);
