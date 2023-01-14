@@ -320,6 +320,27 @@ function init() {
                             right.append(id);
                         }
 
+                        if (item.type.id == 'music') {
+                            fetch('assets/local/music-packs/ResourceIDs.json').then(r => r.json()).then(r => {
+
+                                if (r.items[item.id] !== undefined) {
+                                    if (r.items[item.id] !== null) {
+                                        right.innerHTML += '<h3>Listen</h3>';
+
+                                        let audio = gne('audio');
+                                        audio.controls = true;
+                                        right.append(audio);
+
+                                        let sourceAudio = 'https://fortnite.gg/img/items/' + r.items[item.id] + '/audio.mp3';
+                                        console.log('this music pack (' + item.id + ') has a source audio file provided by fortnite.gg: ' + sourceAudio);
+
+                                        audio.src = sourceAudio;
+                                        audio.load();
+                                    }
+                                }
+                            })
+                        }
+
                         mainObject.append(main);
                         content.append(mainObject);
 
@@ -397,27 +418,6 @@ function init() {
                                     }
                                 }
                             }).catch(error => { console.error(error) })
-                        }
-
-                        if (item.type.id == 'music') {
-                            fetch('assets/local/music-packs/related-videos.json').then(r => r.json()).then(r => {
-                                for (let packID of r.items) {
-                                    if (packID.id === item.id) {
-                                        for (let url of packID.urls) {
-                                            let ytContainer = document.createElement('div');
-                                            ytContainer.classList.add('d-50-media');
-                                            bottom.append(ytContainer);
-                                            let ytIframe = document.createElement('iframe');
-                                            ytIframe.src = 'https://www.youtube.com/embed/' + url + '?loop=1';
-                                            ytIframe.setAttribute('frameborder', '0');
-                                            ytIframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-                                            ytIframe.setAttribute('allowfullscreen', 'true')
-                                            ytIframe.classList.add('youtube-iframe');
-                                            ytContainer.append(ytIframe);
-                                        }
-                                    }
-                                }
-                            })
                         }
 
                         let bottom1 = document.createElement('div');
@@ -528,6 +528,69 @@ function init() {
                             }
                         }
                         
+                        let titlei = gne('h1');
+                        titlei.innerHTML = 'Images';
+                        bottom2.append(titlei);
+
+                        let imageModal = document.createElement('div');
+                        imageModal.classList.add('flex');
+                        imageModal.classList.add('flex-wrap');
+                        bottom2.append(imageModal);
+
+                        let allAvailable = Object.getOwnPropertyNames(item.images);
+
+                        for (let imageField of allAvailable) {
+                            if (item.images[imageField] !== null) {
+                                let parent = document.createElement('a');
+                                parent.classList.add('variant-container');
+    
+                                let image = document.createElement('img');
+                                image.src = item.images[imageField];
+                                image.title = imageField;
+                                parent.innerHTML = imageField;
+                                parent.href = item.images[imageField];
+                                parent.target = '_blank';
+                                parent.append(image);
+                                imageModal.append(parent);
+                            }
+                        }
+
+                        if (item.displayAssets !== null) {
+                            let titlei = gne('h1');
+                            titlei.innerHTML = 'Display Assets';
+                            bottom2.append(titlei);
+    
+                            let imageModal = document.createElement('div');
+                            imageModal.classList.add('flex');
+                            imageModal.classList.add('flex-wrap');
+                            bottom2.append(imageModal);
+                            
+                            for (let displayAsset of item.displayAssets) {
+                                let allAvailable = Object.getOwnPropertyNames(displayAsset);
+
+                                function validURL(string) {
+                                    let url;
+                                    try { url = new URL(string); } catch (_) { return false; }
+                                    return url.protocol === "http:" || url.protocol === "https:";
+                                }
+
+                                for (let imageField of allAvailable) {
+                                    if (displayAsset[imageField] !== null && validURL(displayAsset[imageField])) {
+                                        let parent = document.createElement('a');
+                                        parent.classList.add('variant-container');
+            
+                                        let image = document.createElement('img');
+                                        image.src = displayAsset[imageField];
+                                        image.title = imageField;
+                                        parent.innerHTML = imageField;
+                                        parent.append(image);
+                                        parent.href = displayAsset[imageField];
+                                        parent.target = '_blank';
+                                        imageModal.append(parent);
+                                    }
+                                }
+                            }
+                        }
                     }).catch(err => {
                         console.error(err);
                     })

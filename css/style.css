@@ -590,11 +590,10 @@ button.fn-button {
 
 /*The image*/
 .variant-container img {
-    height: 100px;
-    width: 100px;
+    height: 110px;
+    width: 110px;
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
 }
 
 .crew-content {
