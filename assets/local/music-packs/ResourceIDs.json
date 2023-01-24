@@ -6,6 +6,7 @@
         "URL_Resource": "https://fortnite.gg/img/items/{Item_Enum.MUSIC_PACK_ID}/audio.mp3"
     },
     "items": {
+        "MusicPack_167_SunBurst3": 9047,
         "MusicPack_164_RedPepper_Winterfest": 8931,
         "MusicPack_163_Winterfest_2022": 8930,
         "MusicPack_162_S23Default": 8844,
