@@ -57,8 +57,8 @@ function setMapFunctions() {
     swi.addEventListener('click', function () {
         var value = document.getElementById('map-image').classList.toggle('no-poi');
 
-        let img_src = geturllang('https://media.fortniteapi.io/images/map.png?showPOI=true', 1);
-        let img_src_np = geturllang('https://media.fortniteapi.io/images/map.png', 1);
+        let img_src = 'https://fortnite-api.com/images/map_' + localStorage.requestLanguage + '.png'
+        let img_src_np = 'https://fortnite-api.com/images/map.png'
 
         document.getElementById('map-image').src = value ? img_src_np : img_src;
     })
@@ -88,7 +88,7 @@ function addMapElements() {
     img.title = 'Map';
     img.id = 'map-image';
     img.classList.add('map');
-    img.src = geturllang('https://media.fortniteapi.io/images/map.png?showPOI=true', 1);
+    img.src = 'https://fortnite-api.com/images/map_' + localStorage.requestLanguage + '.png'
     imgContainer.append(img);
     
     content.append(mapInfo);

@@ -17,7 +17,7 @@ function init() {
             let items = response.data.items;
 
             for (let j = 0; j < items.length; j++) {
-                let b = document.createElement('div');
+                let b = document.createElement('a');
                 b.classList.add('item-card-parent');
                     
                 const item_obj = items[j];
@@ -55,9 +55,7 @@ function init() {
                 ic.appendChild(img_obj);
                 obj.appendChild(ic);
 
-                obj.addEventListener("click", function() {
-                    openItemByID(item_obj.id);
-                });
+                b.href = getItemLinkByID(item_obj.id);
 
                 b.append(obj);
 

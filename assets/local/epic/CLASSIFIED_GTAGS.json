@@ -1,0 +1,4829 @@
+[
+    {
+        "value": "Cosmetics",
+        "children": [
+            {
+                "value": "Filter",
+                "children": [
+                    {
+                        "value": "Season",
+                        "children": [
+                            {
+                                "value": "23"
+                            },
+                            {
+                                "value": "21"
+                            },
+                            {
+                                "value": "12"
+                            },
+                            {
+                                "value": "22"
+                            },
+                            {
+                                "value": "4"
+                            },
+                            {
+                                "value": "7"
+                            },
+                            {
+                                "value": "5"
+                            },
+                            {
+                                "value": "20"
+                            },
+                            {
+                                "value": "19"
+                            },
+                            {
+                                "value": "14"
+                            },
+                            {
+                                "value": "18"
+                            },
+                            {
+                                "value": "17"
+                            },
+                            {
+                                "value": "16"
+                            },
+                            {
+                                "value": "11"
+                            },
+                            {
+                                "value": "15"
+                            },
+                            {
+                                "value": "13"
+                            },
+                            {
+                                "value": "8"
+                            },
+                            {
+                                "value": "6"
+                            },
+                            {
+                                "value": "10"
+                            },
+                            {
+                                "value": "9"
+                            },
+                            {
+                                "value": "3"
+                            },
+                            {
+                                "value": "1"
+                            },
+                            {
+                                "value": "2"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Event",
+                        "children": [
+                            {
+                                "value": "SaveTheWorld",
+                                "children": [
+                                    {
+                                        "value": "HitTheRoad",
+                                        "children": [
+                                            {
+                                                "value": "2019"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Dungeons",
+                                        "children": [
+                                            {
+                                                "value": "2019"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Frostnite",
+                                        "children": [
+                                            {
+                                                "value": "2019"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Fortnitemares2019"
+                            },
+                            {
+                                "value": "Fortnitemares2018"
+                            },
+                            {
+                                "value": "14DaysofSummer"
+                            },
+                            {
+                                "value": "14DaysofFortnite"
+                            },
+                            {
+                                "value": "Birthday2019"
+                            },
+                            {
+                                "value": "Fortbytes"
+                            },
+                            {
+                                "value": "WorldCup2019"
+                            },
+                            {
+                                "value": "Unvaulting"
+                            },
+                            {
+                                "value": "SquishyConcert"
+                            },
+                            {
+                                "value": "Birthday2018"
+                            },
+                            {
+                                "value": "WinterOlympics2018"
+                            },
+                            {
+                                "value": "IceStorm"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Granted",
+                        "children": [
+                            {
+                                "value": "Founders"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "Set",
+                "children": [
+                    {
+                        "value": "TruthTenant"
+                    },
+                    {
+                        "value": "WeirdMessages"
+                    },
+                    {
+                        "value": "FNCS"
+                    },
+                    {
+                        "value": "ChaseMonster"
+                    },
+                    {
+                        "value": "FadeGuard"
+                    },
+                    {
+                        "value": "PowerLight"
+                    },
+                    {
+                        "value": "SeatRelax"
+                    },
+                    {
+                        "value": "GildedFame"
+                    },
+                    {
+                        "value": "BurnFinal"
+                    },
+                    {
+                        "value": "FlockCherry"
+                    },
+                    {
+                        "value": "FabledStrength"
+                    },
+                    {
+                        "value": "ColderCompete"
+                    },
+                    {
+                        "value": "MileWild"
+                    },
+                    {
+                        "value": "RememberDeath"
+                    },
+                    {
+                        "value": "DecliningImp"
+                    },
+                    {
+                        "value": "InnerGlow"
+                    },
+                    {
+                        "value": "AvidSpeed"
+                    },
+                    {
+                        "value": "FairyDance"
+                    },
+                    {
+                        "value": "TinLake"
+                    },
+                    {
+                        "value": "PriceDish"
+                    },
+                    {
+                        "value": "HeroAct"
+                    },
+                    {
+                        "value": "DouseIt"
+                    },
+                    {
+                        "value": "KindaAhead"
+                    },
+                    {
+                        "value": "LateGroove"
+                    },
+                    {
+                        "value": "OldThreat"
+                    },
+                    {
+                        "value": "JobAdjust"
+                    },
+                    {
+                        "value": "CyberFu"
+                    },
+                    {
+                        "value": "ReefModel"
+                    },
+                    {
+                        "value": "Forest"
+                    },
+                    {
+                        "value": "SphereKickGroup"
+                    },
+                    {
+                        "value": "MainStake"
+                    },
+                    {
+                        "value": "BlandAbolish"
+                    },
+                    {
+                        "value": "MoshingMenace"
+                    },
+                    {
+                        "value": "TotallyKnew"
+                    },
+                    {
+                        "value": "MouseFight"
+                    },
+                    {
+                        "value": "TellEm"
+                    },
+                    {
+                        "value": "IndigoBird"
+                    },
+                    {
+                        "value": "BelowCenter"
+                    },
+                    {
+                        "value": "FreeSnake"
+                    },
+                    {
+                        "value": "FosterRush"
+                    },
+                    {
+                        "value": "OrnateChaser"
+                    },
+                    {
+                        "value": "EasyBreeze"
+                    },
+                    {
+                        "value": "SuddenBoundary"
+                    },
+                    {
+                        "value": "BotTaught"
+                    },
+                    {
+                        "value": "SleepComfort"
+                    },
+                    {
+                        "value": "NeverAlways"
+                    },
+                    {
+                        "value": "OctoQuest"
+                    },
+                    {
+                        "value": "FareDebut"
+                    },
+                    {
+                        "value": "AwakeChrome"
+                    },
+                    {
+                        "value": "RockZombie"
+                    },
+                    {
+                        "value": "SoapPure"
+                    },
+                    {
+                        "value": "ScareReact"
+                    },
+                    {
+                        "value": "AngelSchool"
+                    },
+                    {
+                        "value": "TuneBeast"
+                    },
+                    {
+                        "value": "CuttingCrew"
+                    },
+                    {
+                        "value": "SteepOrbit"
+                    },
+                    {
+                        "value": "HerdSnow"
+                    },
+                    {
+                        "value": "IceFeline"
+                    },
+                    {
+                        "value": "EdgyDefunct"
+                    },
+                    {
+                        "value": "BureauOutlaw"
+                    },
+                    {
+                        "value": "GooeySavior"
+                    },
+                    {
+                        "value": "GripHate"
+                    },
+                    {
+                        "value": "BiteScratch"
+                    },
+                    {
+                        "value": "RanchSpite"
+                    },
+                    {
+                        "value": "NoneBattle"
+                    },
+                    {
+                        "value": "FairGlory"
+                    },
+                    {
+                        "value": "BlushNail"
+                    },
+                    {
+                        "value": "Asteroid"
+                    },
+                    {
+                        "value": "MobPatrol"
+                    },
+                    {
+                        "value": "GoingNowhere"
+                    },
+                    {
+                        "value": "GnarlBear"
+                    },
+                    {
+                        "value": "ThinCraft"
+                    },
+                    {
+                        "value": "BdayFive"
+                    },
+                    {
+                        "value": "OutlawFire"
+                    },
+                    {
+                        "value": "MangaCrew"
+                    },
+                    {
+                        "value": "Freedom"
+                    },
+                    {
+                        "value": "FearCircle"
+                    },
+                    {
+                        "value": "AutomaticDuke"
+                    },
+                    {
+                        "value": "VividEgo"
+                    },
+                    {
+                        "value": "SpottedTime"
+                    },
+                    {
+                        "value": "NightThoughts"
+                    },
+                    {
+                        "value": "Bling"
+                    },
+                    {
+                        "value": "WildLinen"
+                    },
+                    {
+                        "value": "MissStem"
+                    },
+                    {
+                        "value": "WordRemark"
+                    },
+                    {
+                        "value": "NineRing"
+                    },
+                    {
+                        "value": "PrimitiveSpirit"
+                    },
+                    {
+                        "value": "CrossedForce"
+                    },
+                    {
+                        "value": "SpellMovie"
+                    },
+                    {
+                        "value": "JustSoft"
+                    },
+                    {
+                        "value": "OceanSee"
+                    },
+                    {
+                        "value": "JellyBond"
+                    },
+                    {
+                        "value": "BlueAnime"
+                    },
+                    {
+                        "value": "CrispDrink"
+                    },
+                    {
+                        "value": "HeatHitter"
+                    },
+                    {
+                        "value": "IceCream"
+                    },
+                    {
+                        "value": "LightHistory"
+                    },
+                    {
+                        "value": "FunnySofa"
+                    },
+                    {
+                        "value": "GroupStart"
+                    },
+                    {
+                        "value": "BrightShot"
+                    },
+                    {
+                        "value": "TimeRuler"
+                    },
+                    {
+                        "value": "MannerVisual"
+                    },
+                    {
+                        "value": "FinalTract"
+                    },
+                    {
+                        "value": "WaffleWarrior"
+                    },
+                    {
+                        "value": "EerieBoats"
+                    },
+                    {
+                        "value": "ImperialRemedy"
+                    },
+                    {
+                        "value": "Nevermore"
+                    },
+                    {
+                        "value": "PunkDemon"
+                    },
+                    {
+                        "value": "JestTap"
+                    },
+                    {
+                        "value": "HarborBuffet"
+                    },
+                    {
+                        "value": "CartelHero"
+                    },
+                    {
+                        "value": "LizardDriver"
+                    },
+                    {
+                        "value": "FreeSpirit"
+                    },
+                    {
+                        "value": "ExtraTools"
+                    },
+                    {
+                        "value": "CrashContact"
+                    },
+                    {
+                        "value": "GustGuide"
+                    },
+                    {
+                        "value": "Chillin"
+                    },
+                    {
+                        "value": "ArmedRobotSquad"
+                    },
+                    {
+                        "value": "FightPardon"
+                    },
+                    {
+                        "value": "ClearDefend"
+                    },
+                    {
+                        "value": "KneePorter"
+                    },
+                    {
+                        "value": "SpaceExplorers"
+                    },
+                    {
+                        "value": "ShredKing"
+                    },
+                    {
+                        "value": "WildName"
+                    },
+                    {
+                        "value": "MagmaSlayer"
+                    },
+                    {
+                        "value": "RookieRemake"
+                    },
+                    {
+                        "value": "LeapForward"
+                    },
+                    {
+                        "value": "KnockoutBoss"
+                    },
+                    {
+                        "value": "CyberKarate"
+                    },
+                    {
+                        "value": "BeamPepper"
+                    },
+                    {
+                        "value": "HopeWatcher"
+                    },
+                    {
+                        "value": "ProperPastel"
+                    },
+                    {
+                        "value": "NewHotness"
+                    },
+                    {
+                        "value": "JokeAngel"
+                    },
+                    {
+                        "value": "ShortDefend"
+                    },
+                    {
+                        "value": "WheatCrisis"
+                    },
+                    {
+                        "value": "TentPetty"
+                    },
+                    {
+                        "value": "PraiseKudos"
+                    },
+                    {
+                        "value": "CircleLeader"
+                    },
+                    {
+                        "value": "BlackCatOps"
+                    },
+                    {
+                        "value": "GoldSentinel"
+                    },
+                    {
+                        "value": "Banana"
+                    },
+                    {
+                        "value": "BikeCatch"
+                    },
+                    {
+                        "value": "ThemeAgile"
+                    },
+                    {
+                        "value": "PenRatio"
+                    },
+                    {
+                        "value": "DevoteCatch"
+                    },
+                    {
+                        "value": "TollTribe"
+                    },
+                    {
+                        "value": "RedNight"
+                    },
+                    {
+                        "value": "StableMove"
+                    },
+                    {
+                        "value": "BreezeTune"
+                    },
+                    {
+                        "value": "MilitaryFashion"
+                    },
+                    {
+                        "value": "ShadowChoice"
+                    },
+                    {
+                        "value": "WildChair"
+                    },
+                    {
+                        "value": "SunCord"
+                    },
+                    {
+                        "value": "GuideRobot"
+                    },
+                    {
+                        "value": "BarbequeLarry"
+                    },
+                    {
+                        "value": "SharpPunk"
+                    },
+                    {
+                        "value": "CrepeWeek"
+                    },
+                    {
+                        "value": "CentralCut"
+                    },
+                    {
+                        "value": "FortuneClaw"
+                    },
+                    {
+                        "value": "StoreSlam"
+                    },
+                    {
+                        "value": "CircleMachine"
+                    },
+                    {
+                        "value": "DineGrudge"
+                    },
+                    {
+                        "value": "ScatterBan"
+                    },
+                    {
+                        "value": "NothingRoyalty"
+                    },
+                    {
+                        "value": "SpillSell"
+                    },
+                    {
+                        "value": "PolitePlatform"
+                    },
+                    {
+                        "value": "BlotGroup"
+                    },
+                    {
+                        "value": "Emperor"
+                    },
+                    {
+                        "value": "SaveTheWorld"
+                    },
+                    {
+                        "value": "LooseBeam"
+                    },
+                    {
+                        "value": "AmpleChaos"
+                    },
+                    {
+                        "value": "KingClubs"
+                    },
+                    {
+                        "value": "ForeverCommit"
+                    },
+                    {
+                        "value": "KinGhost"
+                    },
+                    {
+                        "value": "GlareAssault"
+                    },
+                    {
+                        "value": "BlazingBrain"
+                    },
+                    {
+                        "value": "StrangeReady"
+                    },
+                    {
+                        "value": "RelativeCall"
+                    },
+                    {
+                        "value": "CharmingFeather"
+                    },
+                    {
+                        "value": "FadAhead"
+                    },
+                    {
+                        "value": "AcidVain"
+                    },
+                    {
+                        "value": "ColdDestroy"
+                    },
+                    {
+                        "value": "FrozenTraitor"
+                    },
+                    {
+                        "value": "ChapterProfile"
+                    },
+                    {
+                        "value": "ColdCompete"
+                    },
+                    {
+                        "value": "CreepStep"
+                    },
+                    {
+                        "value": "MagicInstitute"
+                    },
+                    {
+                        "value": "KittyKungFu"
+                    },
+                    {
+                        "value": "SantaPirate"
+                    },
+                    {
+                        "value": "FrozenForward"
+                    },
+                    {
+                        "value": "Banger"
+                    },
+                    {
+                        "value": "DivineAspect"
+                    },
+                    {
+                        "value": "TwinReady"
+                    },
+                    {
+                        "value": "SquareHurl"
+                    },
+                    {
+                        "value": "ChompSelf"
+                    },
+                    {
+                        "value": "TimeSheriff"
+                    },
+                    {
+                        "value": "CrescentCycles"
+                    },
+                    {
+                        "value": "LaxBlast"
+                    },
+                    {
+                        "value": "Beginnings"
+                    },
+                    {
+                        "value": "HardEntry"
+                    },
+                    {
+                        "value": "Barelander"
+                    },
+                    {
+                        "value": "FlowerStepper"
+                    },
+                    {
+                        "value": "Taxi"
+                    },
+                    {
+                        "value": "PioneerBoom"
+                    },
+                    {
+                        "value": "SloganStar"
+                    },
+                    {
+                        "value": "RuneMood"
+                    },
+                    {
+                        "value": "FashionSimple"
+                    },
+                    {
+                        "value": "MorningSalon"
+                    },
+                    {
+                        "value": "GadgetLater"
+                    },
+                    {
+                        "value": "TriMech"
+                    },
+                    {
+                        "value": "RemarkGlimpse"
+                    },
+                    {
+                        "value": "StampArtist"
+                    },
+                    {
+                        "value": "DueEgo"
+                    },
+                    {
+                        "value": "BreachDog"
+                    },
+                    {
+                        "value": "BoxRuler"
+                    },
+                    {
+                        "value": "Collective"
+                    },
+                    {
+                        "value": "DroppedModel"
+                    },
+                    {
+                        "value": "SmallFrights"
+                    },
+                    {
+                        "value": "ShadeChaser"
+                    },
+                    {
+                        "value": "SaladInsure"
+                    },
+                    {
+                        "value": "CoachBucket"
+                    },
+                    {
+                        "value": "RoutineWest"
+                    },
+                    {
+                        "value": "StickPolish"
+                    },
+                    {
+                        "value": "ContraryPlace"
+                    },
+                    {
+                        "value": "CarvedBane"
+                    },
+                    {
+                        "value": "BuriedFlow"
+                    },
+                    {
+                        "value": "RuneParallel"
+                    },
+                    {
+                        "value": "Vampire"
+                    },
+                    {
+                        "value": "FreshFable"
+                    },
+                    {
+                        "value": "SourChum"
+                    },
+                    {
+                        "value": "PloyCandy"
+                    },
+                    {
+                        "value": "ColorRiot"
+                    },
+                    {
+                        "value": "RubbishMouse"
+                    },
+                    {
+                        "value": "MarrowCheck"
+                    },
+                    {
+                        "value": "MoonBark"
+                    },
+                    {
+                        "value": "Squared"
+                    },
+                    {
+                        "value": "PeakBet"
+                    },
+                    {
+                        "value": "FourthYear"
+                    },
+                    {
+                        "value": "Synergy"
+                    },
+                    {
+                        "value": "ShellState"
+                    },
+                    {
+                        "value": "SliverOperator"
+                    },
+                    {
+                        "value": "AsideTraveler"
+                    },
+                    {
+                        "value": "FrostedOats"
+                    },
+                    {
+                        "value": "Cosmonaut"
+                    },
+                    {
+                        "value": "RebelFish"
+                    },
+                    {
+                        "value": "TolerantFortune"
+                    },
+                    {
+                        "value": "FightingKing"
+                    },
+                    {
+                        "value": "Mole"
+                    },
+                    {
+                        "value": "DroppedSun"
+                    },
+                    {
+                        "value": "VeganVigilance"
+                    },
+                    {
+                        "value": "CrewTradition"
+                    },
+                    {
+                        "value": "OpenSkim"
+                    },
+                    {
+                        "value": "AdvancedForces"
+                    },
+                    {
+                        "value": "DrabGoop"
+                    },
+                    {
+                        "value": "BendAct"
+                    },
+                    {
+                        "value": "FlockInsure"
+                    },
+                    {
+                        "value": "Sketchy"
+                    },
+                    {
+                        "value": "SloppyMortar"
+                    },
+                    {
+                        "value": "GoingWayOff"
+                    },
+                    {
+                        "value": "HoundGroup"
+                    },
+                    {
+                        "value": "RichFlood"
+                    },
+                    {
+                        "value": "MaskedWarrior"
+                    },
+                    {
+                        "value": "MetalSheep"
+                    },
+                    {
+                        "value": "HalfGuide"
+                    },
+                    {
+                        "value": "ActBorder"
+                    },
+                    {
+                        "value": "BarrelGrudge"
+                    },
+                    {
+                        "value": "AshtonSaltLake"
+                    },
+                    {
+                        "value": "RotateRatio"
+                    },
+                    {
+                        "value": "ScalpExtreme"
+                    },
+                    {
+                        "value": "RareEvoke"
+                    },
+                    {
+                        "value": "JobHeat"
+                    },
+                    {
+                        "value": "WarmExoticHeat"
+                    },
+                    {
+                        "value": "HitStart"
+                    },
+                    {
+                        "value": "TreeLion"
+                    },
+                    {
+                        "value": "PresentForm"
+                    },
+                    {
+                        "value": "HayMenu"
+                    },
+                    {
+                        "value": "PublicRefund"
+                    },
+                    {
+                        "value": "BoldGreen"
+                    },
+                    {
+                        "value": "StartingMove"
+                    },
+                    {
+                        "value": "SecretHeat"
+                    },
+                    {
+                        "value": "FlatPiece"
+                    },
+                    {
+                        "value": "ArtistPhysics"
+                    },
+                    {
+                        "value": "AngryGiant"
+                    },
+                    {
+                        "value": "NotionRemark"
+                    },
+                    {
+                        "value": "BigBoom"
+                    },
+                    {
+                        "value": "LavaLeaders"
+                    },
+                    {
+                        "value": "Comeback"
+                    },
+                    {
+                        "value": "StrengthWound"
+                    },
+                    {
+                        "value": "PlotStatement"
+                    },
+                    {
+                        "value": "PortionCut"
+                    },
+                    {
+                        "value": "LeaveFast"
+                    },
+                    {
+                        "value": "SunFight"
+                    },
+                    {
+                        "value": "InsideEyes"
+                    },
+                    {
+                        "value": "CowStrong"
+                    },
+                    {
+                        "value": "ColorfulSlot"
+                    },
+                    {
+                        "value": "CodeGalaxy"
+                    },
+                    {
+                        "value": "VeryAdvanced"
+                    },
+                    {
+                        "value": "DinnerThief"
+                    },
+                    {
+                        "value": "JackedKitty"
+                    },
+                    {
+                        "value": "Jailbird"
+                    },
+                    {
+                        "value": "GoldScore"
+                    },
+                    {
+                        "value": "CosmoDrifter"
+                    },
+                    {
+                        "value": "FireRoad"
+                    },
+                    {
+                        "value": "ImpendingSpiral"
+                    },
+                    {
+                        "value": "OldForever"
+                    },
+                    {
+                        "value": "SpinHouse"
+                    },
+                    {
+                        "value": "KeyBot"
+                    },
+                    {
+                        "value": "IntoDye"
+                    },
+                    {
+                        "value": "HoloCars"
+                    },
+                    {
+                        "value": "SnekRock"
+                    },
+                    {
+                        "value": "DroppedWater"
+                    },
+                    {
+                        "value": "StoneDude"
+                    },
+                    {
+                        "value": "TrackSpeeder"
+                    },
+                    {
+                        "value": "SnakeSmack"
+                    },
+                    {
+                        "value": "GoodParachute"
+                    },
+                    {
+                        "value": "SquireMeal"
+                    },
+                    {
+                        "value": "CreditBent"
+                    },
+                    {
+                        "value": "MarrowBully"
+                    },
+                    {
+                        "value": "CyberSyndicate"
+                    },
+                    {
+                        "value": "FearlessMotor"
+                    },
+                    {
+                        "value": "FussJam"
+                    },
+                    {
+                        "value": "LandForm"
+                    },
+                    {
+                        "value": "NotedDude"
+                    },
+                    {
+                        "value": "FishCastle"
+                    },
+                    {
+                        "value": "AppleChance"
+                    },
+                    {
+                        "value": "FallStrike"
+                    },
+                    {
+                        "value": "HopeBetray"
+                    },
+                    {
+                        "value": "GroupEnergy"
+                    },
+                    {
+                        "value": "BadGoose"
+                    },
+                    {
+                        "value": "WakeUp"
+                    },
+                    {
+                        "value": "FancyHare"
+                    },
+                    {
+                        "value": "RabbitStrength"
+                    },
+                    {
+                        "value": "FelineRat"
+                    },
+                    {
+                        "value": "ChickenAce"
+                    },
+                    {
+                        "value": "OperativeBlonde"
+                    },
+                    {
+                        "value": "SpiralsCry"
+                    },
+                    {
+                        "value": "MiddlePotassium"
+                    },
+                    {
+                        "value": "LateShuttle"
+                    },
+                    {
+                        "value": "NumberSeventeen"
+                    },
+                    {
+                        "value": "GoldHand"
+                    },
+                    {
+                        "value": "SpacePolice"
+                    },
+                    {
+                        "value": "ToneTrip"
+                    },
+                    {
+                        "value": "MentionPremium"
+                    },
+                    {
+                        "value": "DangerArmy"
+                    },
+                    {
+                        "value": "AcutePanic"
+                    },
+                    {
+                        "value": "LightRain"
+                    },
+                    {
+                        "value": "Conqueror"
+                    },
+                    {
+                        "value": "AnimalClock"
+                    },
+                    {
+                        "value": "ThesisCinema"
+                    },
+                    {
+                        "value": "GuestFiction"
+                    },
+                    {
+                        "value": "ProcessNotebook"
+                    },
+                    {
+                        "value": "BeYours"
+                    },
+                    {
+                        "value": "CoverGift"
+                    },
+                    {
+                        "value": "OverallStake"
+                    },
+                    {
+                        "value": "ForestTracker"
+                    },
+                    {
+                        "value": "EntryCurtain"
+                    },
+                    {
+                        "value": "WarDefeat"
+                    },
+                    {
+                        "value": "RoadShade"
+                    },
+                    {
+                        "value": "InitialBandits"
+                    },
+                    {
+                        "value": "EndAspect"
+                    },
+                    {
+                        "value": "LabSave"
+                    },
+                    {
+                        "value": "LeanScale"
+                    },
+                    {
+                        "value": "AverageDisk"
+                    },
+                    {
+                        "value": "GravelAloof"
+                    },
+                    {
+                        "value": "GateUncle"
+                    },
+                    {
+                        "value": "GalaxyQueen"
+                    },
+                    {
+                        "value": "GlowCrew"
+                    },
+                    {
+                        "value": "NewSnow"
+                    },
+                    {
+                        "value": "DapperCandy"
+                    },
+                    {
+                        "value": "SnowDudes"
+                    },
+                    {
+                        "value": "CoolBreak"
+                    },
+                    {
+                        "value": "SparkleCrew"
+                    },
+                    {
+                        "value": "ChocoSoldier"
+                    },
+                    {
+                        "value": "IceStories"
+                    },
+                    {
+                        "value": "CoffinDriver"
+                    },
+                    {
+                        "value": "GalaxyCreatureCatcher"
+                    },
+                    {
+                        "value": "LabChaser"
+                    },
+                    {
+                        "value": "CrazyLung"
+                    },
+                    {
+                        "value": "GhostReprisal"
+                    },
+                    {
+                        "value": "CoalMonarch"
+                    },
+                    {
+                        "value": "SuspectSpectrum"
+                    },
+                    {
+                        "value": "StrollPeanut"
+                    },
+                    {
+                        "value": "JusticeSin"
+                    },
+                    {
+                        "value": "ContactSweet"
+                    },
+                    {
+                        "value": "ComedyElbow"
+                    },
+                    {
+                        "value": "GradualVertical"
+                    },
+                    {
+                        "value": "MarbleShot"
+                    },
+                    {
+                        "value": "FairyTrawl"
+                    },
+                    {
+                        "value": "ColdWoods"
+                    },
+                    {
+                        "value": "RainyDays"
+                    },
+                    {
+                        "value": "CookieArmy"
+                    },
+                    {
+                        "value": "FollowSeek"
+                    },
+                    {
+                        "value": "ReformBike"
+                    },
+                    {
+                        "value": "FieldPals"
+                    },
+                    {
+                        "value": "CenterSoldier"
+                    },
+                    {
+                        "value": "InspirationExceed"
+                    },
+                    {
+                        "value": "CooksDream"
+                    },
+                    {
+                        "value": "Cliffhanger"
+                    },
+                    {
+                        "value": "Stuffed"
+                    },
+                    {
+                        "value": "ThinGroup"
+                    },
+                    {
+                        "value": "SleepyArmy"
+                    },
+                    {
+                        "value": "QualifiedBow"
+                    },
+                    {
+                        "value": "RhythmElbow"
+                    },
+                    {
+                        "value": "FinalChuckle"
+                    },
+                    {
+                        "value": "BandageNinja"
+                    },
+                    {
+                        "value": "MoarPower"
+                    },
+                    {
+                        "value": "ForemanSquad"
+                    },
+                    {
+                        "value": "FNM2020"
+                    },
+                    {
+                        "value": "PumpkinGang"
+                    },
+                    {
+                        "value": "SkullTrooper"
+                    },
+                    {
+                        "value": "Deceit"
+                    },
+                    {
+                        "value": "SpookyOath"
+                    },
+                    {
+                        "value": "PartyLot"
+                    },
+                    {
+                        "value": "CruelSafe"
+                    },
+                    {
+                        "value": "ClanNew"
+                    },
+                    {
+                        "value": "SweetMeaning"
+                    },
+                    {
+                        "value": "SpiderCrime"
+                    },
+                    {
+                        "value": "FurthestEnd"
+                    },
+                    {
+                        "value": "Exiled"
+                    },
+                    {
+                        "value": "MajorStaircase"
+                    },
+                    {
+                        "value": "HighSerpent"
+                    },
+                    {
+                        "value": "StreetPosse"
+                    },
+                    {
+                        "value": "SquadImpact"
+                    },
+                    {
+                        "value": "GraveDestroy"
+                    },
+                    {
+                        "value": "BraveryTime"
+                    },
+                    {
+                        "value": "BDayJam"
+                    },
+                    {
+                        "value": "MetroHub"
+                    },
+                    {
+                        "value": "DarkChaser"
+                    },
+                    {
+                        "value": "Endless"
+                    },
+                    {
+                        "value": "NativeMultiply"
+                    },
+                    {
+                        "value": "AngleHeard"
+                    },
+                    {
+                        "value": "AwfulAspect"
+                    },
+                    {
+                        "value": "Venus"
+                    },
+                    {
+                        "value": "SkaterBeast"
+                    },
+                    {
+                        "value": "OldExplorer"
+                    },
+                    {
+                        "value": "OceanLight"
+                    },
+                    {
+                        "value": "HueDrive"
+                    },
+                    {
+                        "value": "DarkPunch"
+                    },
+                    {
+                        "value": "ShoalKing"
+                    },
+                    {
+                        "value": "FishyBeef"
+                    },
+                    {
+                        "value": "LlamaWarrior"
+                    },
+                    {
+                        "value": "EarthSprint"
+                    },
+                    {
+                        "value": "RoadSnake"
+                    },
+                    {
+                        "value": "StreamMachine"
+                    },
+                    {
+                        "value": "GekkoFight"
+                    },
+                    {
+                        "value": "PieFight"
+                    },
+                    {
+                        "value": "FishyParadise"
+                    },
+                    {
+                        "value": "SillyTeam"
+                    },
+                    {
+                        "value": "CosmoBunch"
+                    },
+                    {
+                        "value": "OceanAttack"
+                    },
+                    {
+                        "value": "FNOriginals"
+                    },
+                    {
+                        "value": "VacationFable"
+                    },
+                    {
+                        "value": "LadyTreat"
+                    },
+                    {
+                        "value": "FiestaDesign"
+                    },
+                    {
+                        "value": "HeftyUnit"
+                    },
+                    {
+                        "value": "DurrrBurger"
+                    },
+                    {
+                        "value": "TenderMonarch"
+                    },
+                    {
+                        "value": "MushroomQueen"
+                    },
+                    {
+                        "value": "AshtonBoardwalk"
+                    },
+                    {
+                        "value": "AreaFlame"
+                    },
+                    {
+                        "value": "EatingCraze"
+                    },
+                    {
+                        "value": "DevilIsland"
+                    },
+                    {
+                        "value": "CrazyCowboy"
+                    },
+                    {
+                        "value": "Slam"
+                    },
+                    {
+                        "value": "HarshInvaders"
+                    },
+                    {
+                        "value": "CasualSize"
+                    },
+                    {
+                        "value": "GroupAgony"
+                    },
+                    {
+                        "value": "TwoActor"
+                    },
+                    {
+                        "value": "DudeGadgets"
+                    },
+                    {
+                        "value": "RoughStreet"
+                    },
+                    {
+                        "value": "BurritoDay"
+                    },
+                    {
+                        "value": "HueCrash"
+                    },
+                    {
+                        "value": "SoarClock"
+                    },
+                    {
+                        "value": "GlowingGlory"
+                    },
+                    {
+                        "value": "CrocCommand"
+                    },
+                    {
+                        "value": "SeaIncreasing"
+                    },
+                    {
+                        "value": "MechDoggo"
+                    },
+                    {
+                        "value": "LeapSquad"
+                    },
+                    {
+                        "value": "BurstAccident"
+                    },
+                    {
+                        "value": "Garbo"
+                    },
+                    {
+                        "value": "DimDated"
+                    },
+                    {
+                        "value": "PersonalMade"
+                    },
+                    {
+                        "value": "LiquidHole"
+                    },
+                    {
+                        "value": "RoyaleHearts"
+                    },
+                    {
+                        "value": "DarkBomber"
+                    },
+                    {
+                        "value": "SoloShade"
+                    },
+                    {
+                        "value": "PropertySector"
+                    },
+                    {
+                        "value": "CoolImpact"
+                    },
+                    {
+                        "value": "Wanted"
+                    },
+                    {
+                        "value": "AmbushOfficer"
+                    },
+                    {
+                        "value": "NewStealth"
+                    },
+                    {
+                        "value": "FelineSoldier"
+                    },
+                    {
+                        "value": "UnitPoison"
+                    },
+                    {
+                        "value": "Stealthy"
+                    },
+                    {
+                        "value": "PortraitFolk"
+                    },
+                    {
+                        "value": "SmallCrimson"
+                    },
+                    {
+                        "value": "LateralDestiny"
+                    },
+                    {
+                        "value": "Banner"
+                    },
+                    {
+                        "value": "BonkTeam"
+                    },
+                    {
+                        "value": "AbsorbDrain"
+                    },
+                    {
+                        "value": "PotassiumWin"
+                    },
+                    {
+                        "value": "GetSetGo"
+                    },
+                    {
+                        "value": "Cocoa"
+                    },
+                    {
+                        "value": "DifferentShipment"
+                    },
+                    {
+                        "value": "RepaymentUpdate"
+                    },
+                    {
+                        "value": "DuckBrigade"
+                    },
+                    {
+                        "value": "PastelPatrol"
+                    },
+                    {
+                        "value": "GarageBand"
+                    },
+                    {
+                        "value": "FugitiveBandit"
+                    },
+                    {
+                        "value": "Speedcraft"
+                    },
+                    {
+                        "value": "GreekGroup"
+                    },
+                    {
+                        "value": "FireMarrow"
+                    },
+                    {
+                        "value": "LateShot"
+                    },
+                    {
+                        "value": "DrinkChamps"
+                    },
+                    {
+                        "value": "BuddingMorale"
+                    },
+                    {
+                        "value": "DoubleReverb"
+                    },
+                    {
+                        "value": "TeriyakiFish"
+                    },
+                    {
+                        "value": "AppleThief"
+                    },
+                    {
+                        "value": "TealGroup"
+                    },
+                    {
+                        "value": "FieldBooth"
+                    },
+                    {
+                        "value": "FishClipper"
+                    },
+                    {
+                        "value": "SmallLight"
+                    },
+                    {
+                        "value": "SilverSpirit"
+                    },
+                    {
+                        "value": "SpiritDarkness"
+                    },
+                    {
+                        "value": "SearchPals"
+                    },
+                    {
+                        "value": "WildHearts"
+                    },
+                    {
+                        "value": "Capoeira2020"
+                    },
+                    {
+                        "value": "HiddenCollection"
+                    },
+                    {
+                        "value": "FalseEvolution"
+                    },
+                    {
+                        "value": "ColoredForest"
+                    },
+                    {
+                        "value": "ModernMilitary"
+                    },
+                    {
+                        "value": "Pug"
+                    },
+                    {
+                        "value": "StreetDemon"
+                    },
+                    {
+                        "value": "Steel"
+                    },
+                    {
+                        "value": "OldRestart"
+                    },
+                    {
+                        "value": "ElectrodeDefect"
+                    },
+                    {
+                        "value": "IncognitoAssassin"
+                    },
+                    {
+                        "value": "TripCarrier"
+                    },
+                    {
+                        "value": "RoadMouse"
+                    },
+                    {
+                        "value": "LongDepth"
+                    },
+                    {
+                        "value": "AerosolAssassins"
+                    },
+                    {
+                        "value": "Markers"
+                    },
+                    {
+                        "value": "WiseMaster"
+                    },
+                    {
+                        "value": "ClearSight"
+                    },
+                    {
+                        "value": "OperationDiva"
+                    },
+                    {
+                        "value": "LatestTerminal"
+                    },
+                    {
+                        "value": "AlwaysFrozen"
+                    },
+                    {
+                        "value": "DumplingMan"
+                    },
+                    {
+                        "value": "WarmDealings"
+                    },
+                    {
+                        "value": "ComfyDirection"
+                    },
+                    {
+                        "value": "TreeSmell"
+                    },
+                    {
+                        "value": "FortniteFever"
+                    },
+                    {
+                        "value": "Nutcracker"
+                    },
+                    {
+                        "value": "LionArmy"
+                    },
+                    {
+                        "value": "IceKing"
+                    },
+                    {
+                        "value": "IceMaiden"
+                    },
+                    {
+                        "value": "NYE2020"
+                    },
+                    {
+                        "value": "BlastingSuns"
+                    },
+                    {
+                        "value": "TopPole"
+                    },
+                    {
+                        "value": "ScaryTime"
+                    },
+                    {
+                        "value": "Gingerbread"
+                    },
+                    {
+                        "value": "PunchOut"
+                    },
+                    {
+                        "value": "SunshineAndRainbows"
+                    },
+                    {
+                        "value": "WorldExplorers"
+                    },
+                    {
+                        "value": "Goo"
+                    },
+                    {
+                        "value": "QuietWatcher"
+                    },
+                    {
+                        "value": "TurningSolstice"
+                    },
+                    {
+                        "value": "MarrowArmy"
+                    },
+                    {
+                        "value": "ColdScares"
+                    },
+                    {
+                        "value": "Fisherman"
+                    },
+                    {
+                        "value": "CounterSpy"
+                    },
+                    {
+                        "value": "DevilRock"
+                    },
+                    {
+                        "value": "LostConnection"
+                    },
+                    {
+                        "value": "DarkEagle"
+                    },
+                    {
+                        "value": "EternalStruggle"
+                    },
+                    {
+                        "value": "Volume11"
+                    },
+                    {
+                        "value": "GardenBones"
+                    },
+                    {
+                        "value": "Witch"
+                    },
+                    {
+                        "value": "RoadGhosts"
+                    },
+                    {
+                        "value": "WaterBike"
+                    },
+                    {
+                        "value": "SkeletonHunter"
+                    },
+                    {
+                        "value": "OvernightMoon"
+                    },
+                    {
+                        "value": "Bandolier"
+                    },
+                    {
+                        "value": "ScaryBall"
+                    },
+                    {
+                        "value": "Scarecrow"
+                    },
+                    {
+                        "value": "FrighteningOddity"
+                    },
+                    {
+                        "value": "BlackWidow"
+                    },
+                    {
+                        "value": "DinoGuard"
+                    },
+                    {
+                        "value": "ZeroPoint"
+                    },
+                    {
+                        "value": "Billiards"
+                    },
+                    {
+                        "value": "Masako"
+                    },
+                    {
+                        "value": "Drift"
+                    },
+                    {
+                        "value": "PizzaPit"
+                    },
+                    {
+                        "value": "TeamShowdown"
+                    },
+                    {
+                        "value": "Cowgirl"
+                    },
+                    {
+                        "value": "Mountaineer"
+                    },
+                    {
+                        "value": "Nothingness"
+                    },
+                    {
+                        "value": "RedRiding"
+                    },
+                    {
+                        "value": "Perimeter"
+                    },
+                    {
+                        "value": "LemonLime"
+                    },
+                    {
+                        "value": "Revival"
+                    },
+                    {
+                        "value": "StreetRacer"
+                    },
+                    {
+                        "value": "Celestial"
+                    },
+                    {
+                        "value": "FortniteDJ"
+                    },
+                    {
+                        "value": "BattleSuit"
+                    },
+                    {
+                        "value": "StormTracker"
+                    },
+                    {
+                        "value": "Pirate"
+                    },
+                    {
+                        "value": "GreenClover"
+                    },
+                    {
+                        "value": "DieselPunk"
+                    },
+                    {
+                        "value": "BunkerMan"
+                    },
+                    {
+                        "value": "ScoreCard"
+                    },
+                    {
+                        "value": "StreetStripes"
+                    },
+                    {
+                        "value": "ZoneWars"
+                    },
+                    {
+                        "value": "SiegeStrike"
+                    },
+                    {
+                        "value": "AbandonedCrowd"
+                    },
+                    {
+                        "value": "CautiousLoaf"
+                    },
+                    {
+                        "value": "SleepyTime"
+                    },
+                    {
+                        "value": "Punchy"
+                    },
+                    {
+                        "value": "Jumpstart"
+                    },
+                    {
+                        "value": "Bullseye"
+                    },
+                    {
+                        "value": "FortKnights"
+                    },
+                    {
+                        "value": "WWIIPilot"
+                    },
+                    {
+                        "value": "RaptorBlackOps"
+                    },
+                    {
+                        "value": "PaddedArmor"
+                    },
+                    {
+                        "value": "StarWalker"
+                    },
+                    {
+                        "value": "Lasagna"
+                    },
+                    {
+                        "value": "Syko"
+                    },
+                    {
+                        "value": "GreenPlastic"
+                    },
+                    {
+                        "value": "Lopex"
+                    },
+                    {
+                        "value": "MechPilotShark"
+                    },
+                    {
+                        "value": "StreetAssassin"
+                    },
+                    {
+                        "value": "StrawberryPilot"
+                    },
+                    {
+                        "value": "SkullBrite"
+                    },
+                    {
+                        "value": "Math"
+                    },
+                    {
+                        "value": "Wukong"
+                    },
+                    {
+                        "value": "StormScavenger"
+                    },
+                    {
+                        "value": "Birthday2019"
+                    },
+                    {
+                        "value": "Aztec"
+                    },
+                    {
+                        "value": "WorldCup2019"
+                    },
+                    {
+                        "value": "S9Cumulative"
+                    },
+                    {
+                        "value": "NeonGlow"
+                    },
+                    {
+                        "value": "Molten"
+                    },
+                    {
+                        "value": "Pilots"
+                    },
+                    {
+                        "value": "EvilSuit"
+                    },
+                    {
+                        "value": "Viking"
+                    },
+                    {
+                        "value": "Squishy"
+                    },
+                    {
+                        "value": "S8Cumulative"
+                    },
+                    {
+                        "value": "MasterKey"
+                    },
+                    {
+                        "value": "DragonNinja"
+                    },
+                    {
+                        "value": "S7Cumulative"
+                    },
+                    {
+                        "value": "NeonCat"
+                    },
+                    {
+                        "value": "Feathers"
+                    },
+                    {
+                        "value": "Medic"
+                    },
+                    {
+                        "value": "TacticalSanta"
+                    },
+                    {
+                        "value": "S6Cumulative"
+                    },
+                    {
+                        "value": "Werewolf"
+                    },
+                    {
+                        "value": "DarkViking"
+                    },
+                    {
+                        "value": "S5Cumulative"
+                    },
+                    {
+                        "value": "Lifeguard"
+                    },
+                    {
+                        "value": "S4Cumulative"
+                    },
+                    {
+                        "value": "SweetTooth"
+                    },
+                    {
+                        "value": "Carbide"
+                    },
+                    {
+                        "value": "BlackVector"
+                    },
+                    {
+                        "value": "BrokenLight"
+                    },
+                    {
+                        "value": "Vigilante"
+                    },
+                    {
+                        "value": "Rooster"
+                    },
+                    {
+                        "value": "AnimalJackets"
+                    },
+                    {
+                        "value": "Bubblegum"
+                    },
+                    {
+                        "value": "BoneWasp"
+                    },
+                    {
+                        "value": "BlueBadass"
+                    },
+                    {
+                        "value": "Warpaint"
+                    },
+                    {
+                        "value": "RoseLeader"
+                    },
+                    {
+                        "value": "Anarchy"
+                    },
+                    {
+                        "value": "StealthSyndicate"
+                    },
+                    {
+                        "value": "Bani"
+                    },
+                    {
+                        "value": "WeirdObjects"
+                    },
+                    {
+                        "value": "StarsAndStripes"
+                    },
+                    {
+                        "value": "AssassinSuit"
+                    },
+                    {
+                        "value": "Zodiac"
+                    },
+                    {
+                        "value": "TechMage"
+                    },
+                    {
+                        "value": "Sarong"
+                    },
+                    {
+                        "value": "GlowBro"
+                    },
+                    {
+                        "value": "Flamingo"
+                    },
+                    {
+                        "value": "Butterfly"
+                    },
+                    {
+                        "value": "Hairy"
+                    },
+                    {
+                        "value": "Farmer"
+                    },
+                    {
+                        "value": "CyberRunner"
+                    },
+                    {
+                        "value": "UrbanScavenger"
+                    },
+                    {
+                        "value": "DemonHunter"
+                    },
+                    {
+                        "value": "CyberScavenger"
+                    },
+                    {
+                        "value": "StormSoldier"
+                    },
+                    {
+                        "value": "SpeedyMidnight"
+                    },
+                    {
+                        "value": "Geisha"
+                    },
+                    {
+                        "value": "WhiteTiger"
+                    },
+                    {
+                        "value": "BountyHunter"
+                    },
+                    {
+                        "value": "Interstellar"
+                    },
+                    {
+                        "value": "Shiny"
+                    },
+                    {
+                        "value": "StreetOps"
+                    },
+                    {
+                        "value": "HoppityHeist"
+                    },
+                    {
+                        "value": "TheBomb"
+                    },
+                    {
+                        "value": "BaseballKitbash"
+                    },
+                    {
+                        "value": "DarkShaman"
+                    },
+                    {
+                        "value": "Tropical"
+                    },
+                    {
+                        "value": "SciOps"
+                    },
+                    {
+                        "value": "WavyMan"
+                    },
+                    {
+                        "value": "Mechanimal"
+                    },
+                    {
+                        "value": "Snowboard"
+                    },
+                    {
+                        "value": "WinterSki"
+                    },
+                    {
+                        "value": "FurnaceFace"
+                    },
+                    {
+                        "value": "SpaceBunny"
+                    },
+                    {
+                        "value": "EvilBunny"
+                    },
+                    {
+                        "value": "Golf"
+                    },
+                    {
+                        "value": "Yeti"
+                    },
+                    {
+                        "value": "Sushi"
+                    },
+                    {
+                        "value": "SamuraiUltra"
+                    },
+                    {
+                        "value": "Luchador"
+                    },
+                    {
+                        "value": "Muertos"
+                    },
+                    {
+                        "value": "Shark"
+                    },
+                    {
+                        "value": "FireElf"
+                    },
+                    {
+                        "value": "Football"
+                    },
+                    {
+                        "value": "Medusa"
+                    },
+                    {
+                        "value": "MadCommander"
+                    },
+                    {
+                        "value": "SniperHood"
+                    },
+                    {
+                        "value": "Scrapyard"
+                    },
+                    {
+                        "value": "Biker"
+                    },
+                    {
+                        "value": "TechOps"
+                    },
+                    {
+                        "value": "Moth"
+                    },
+                    {
+                        "value": "HornedMask"
+                    },
+                    {
+                        "value": "Deco"
+                    },
+                    {
+                        "value": "ModernMilitaryRed"
+                    },
+                    {
+                        "value": "Hippie"
+                    },
+                    {
+                        "value": "StreetGoth"
+                    },
+                    {
+                        "value": "SnowNinja"
+                    },
+                    {
+                        "value": "Barbarian"
+                    },
+                    {
+                        "value": "Nautilus"
+                    },
+                    {
+                        "value": "Octoberfest"
+                    },
+                    {
+                        "value": "Hazmat"
+                    },
+                    {
+                        "value": "Pumpkin"
+                    },
+                    {
+                        "value": "GuanYu"
+                    },
+                    {
+                        "value": "StreetRacerWhite"
+                    },
+                    {
+                        "value": "Gumshoe"
+                    },
+                    {
+                        "value": "Scuba"
+                    },
+                    {
+                        "value": "Plague"
+                    },
+                    {
+                        "value": "Hacivat"
+                    },
+                    {
+                        "value": "RobotTrouble"
+                    },
+                    {
+                        "value": "Laoch"
+                    },
+                    {
+                        "value": "Exercise"
+                    },
+                    {
+                        "value": "Balloon"
+                    },
+                    {
+                        "value": "StreetRacerCobra"
+                    },
+                    {
+                        "value": "CarbideOrangeFemale"
+                    },
+                    {
+                        "value": "BlueSamurai"
+                    },
+                    {
+                        "value": "FrozenLegends"
+                    },
+                    {
+                        "value": "RaptorArcticCamo"
+                    },
+                    {
+                        "value": "RobotRed"
+                    },
+                    {
+                        "value": "CarbideBlackFemale"
+                    },
+                    {
+                        "value": "SpeedyRed"
+                    },
+                    {
+                        "value": "Krampus"
+                    },
+                    {
+                        "value": "ArcticSniper"
+                    },
+                    {
+                        "value": "SolidSteel"
+                    },
+                    {
+                        "value": "ArcticCommand"
+                    },
+                    {
+                        "value": "StormFusion"
+                    },
+                    {
+                        "value": "SharpDresser"
+                    },
+                    {
+                        "value": "Overclocked"
+                    },
+                    {
+                        "value": "Sup"
+                    },
+                    {
+                        "value": "Soccer"
+                    },
+                    {
+                        "value": "Valiant"
+                    },
+                    {
+                        "value": "HiredGun"
+                    },
+                    {
+                        "value": "Basketball"
+                    },
+                    {
+                        "value": "CarbideWhite"
+                    },
+                    {
+                        "value": "KpopFashion"
+                    },
+                    {
+                        "value": "Omega"
+                    },
+                    {
+                        "value": "HorsingAround"
+                    }
+                ]
+            },
+            {
+                "value": "Pickaxe",
+                "children": [
+                    {
+                        "value": "OneHanded"
+                    },
+                    {
+                        "value": "DualWield"
+                    },
+                    {
+                        "value": "GalileoFerry"
+                    },
+                    {
+                        "value": "DonutPlate"
+                    },
+                    {
+                        "value": "DoubleWrist"
+                    },
+                    {
+                        "value": "HightowerWasabi"
+                    }
+                ]
+            },
+            {
+                "value": "Source",
+                "children": [
+                    {
+                        "value": "ItemShop"
+                    },
+                    {
+                        "value": "RMT",
+                        "children": [
+                            {
+                                "value": "STWStarterPack"
+                            },
+                            {
+                                "value": "BlackIce"
+                            },
+                            {
+                                "value": "MintyLegends"
+                            },
+                            {
+                                "value": "NextGenStarterPack"
+                            },
+                            {
+                                "value": "RoyaltyWarriors"
+                            },
+                            {
+                                "value": "SummerSplash"
+                            },
+                            {
+                                "value": "PolarLegends"
+                            },
+                            {
+                                "value": "Eclipse"
+                            },
+                            {
+                                "value": "WhiteTiger"
+                            },
+                            {
+                                "value": "Inferno"
+                            },
+                            {
+                                "value": "LagunaStarterPack"
+                            },
+                            {
+                                "value": "CobaltStarterPack"
+                            },
+                            {
+                                "value": "LavaLegends"
+                            },
+                            {
+                                "value": "FrozenLegends"
+                            },
+                            {
+                                "value": "LoveRanger"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season23",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season21",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid",
+                                        "children": [
+                                            {
+                                                "value": "Additional"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "CrewPack",
+                        "children": [
+                            {
+                                "value": "January2023"
+                            },
+                            {
+                                "value": "December2022"
+                            },
+                            {
+                                "value": "November2022"
+                            },
+                            {
+                                "value": "October2022"
+                            },
+                            {
+                                "value": "September2022"
+                            },
+                            {
+                                "value": "August2022"
+                            },
+                            {
+                                "value": "July2022"
+                            },
+                            {
+                                "value": "June2022"
+                            },
+                            {
+                                "value": "May2022"
+                            },
+                            {
+                                "value": "April2022"
+                            },
+                            {
+                                "value": "March2022"
+                            },
+                            {
+                                "value": "February2022"
+                            },
+                            {
+                                "value": "January2022"
+                            },
+                            {
+                                "value": "December2021"
+                            },
+                            {
+                                "value": "November2021"
+                            },
+                            {
+                                "value": "October2021"
+                            },
+                            {
+                                "value": "September2021"
+                            },
+                            {
+                                "value": "August2021"
+                            },
+                            {
+                                "value": "July2021"
+                            },
+                            {
+                                "value": "June2021"
+                            },
+                            {
+                                "value": "May2021"
+                            },
+                            {
+                                "value": "April2021"
+                            },
+                            {
+                                "value": "March2021"
+                            },
+                            {
+                                "value": "Feb2021"
+                            },
+                            {
+                                "value": "Jan2021"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Winterfest",
+                        "children": [
+                            {
+                                "value": "Presents"
+                            },
+                            {
+                                "value": "Challenges"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Challenge"
+                    },
+                    {
+                        "value": "Event",
+                        "children": [
+                            {
+                                "value": "RebootRally"
+                            },
+                            {
+                                "value": "Fortnitemares",
+                                "children": [
+                                    {
+                                        "value": "2022"
+                                    },
+                                    {
+                                        "value": "2021"
+                                    },
+                                    {
+                                        "value": "2020"
+                                    },
+                                    {
+                                        "value": "2019"
+                                    },
+                                    {
+                                        "value": "2018"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Birthday",
+                                "children": [
+                                    {
+                                        "value": "2022"
+                                    },
+                                    {
+                                        "value": "2021"
+                                    },
+                                    {
+                                        "value": "2020"
+                                    },
+                                    {
+                                        "value": "2019"
+                                    },
+                                    {
+                                        "value": "2018"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "14DaysOfSummer",
+                                "children": [
+                                    {
+                                        "value": "Contrail"
+                                    },
+                                    {
+                                        "value": "Emoji"
+                                    },
+                                    {
+                                        "value": "LoadingScreen"
+                                    },
+                                    {
+                                        "value": "Toy"
+                                    },
+                                    {
+                                        "value": "Spray"
+                                    },
+                                    {
+                                        "value": "Music"
+                                    },
+                                    {
+                                        "value": "Wrap"
+                                    },
+                                    {
+                                        "value": "Pickaxe"
+                                    },
+                                    {
+                                        "value": "Backpack"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "CreativePromo",
+                                "children": [
+                                    {
+                                        "value": "Spray"
+                                    },
+                                    {
+                                        "value": "Backpack"
+                                    },
+                                    {
+                                        "value": "Character"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Competitive",
+                                "children": [
+                                    {
+                                        "value": "ShareTheLove"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "BackToSchool2021"
+                            },
+                            {
+                                "value": "CosmicSummer"
+                            },
+                            {
+                                "value": "SpringBreakout"
+                            },
+                            {
+                                "value": "CreatorBattle"
+                            },
+                            {
+                                "value": "Valentines",
+                                "children": [
+                                    {
+                                        "value": "2021"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "SpyWithin"
+                            },
+                            {
+                                "value": "MarvelKnockoutSS"
+                            },
+                            {
+                                "value": "StormTheAgency"
+                            },
+                            {
+                                "value": "Cyclone",
+                                "children": [
+                                    {
+                                        "value": "Challenges"
+                                    },
+                                    {
+                                        "value": "Concert"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "S7Overtime"
+                            },
+                            {
+                                "value": "S10OutOfTime"
+                            },
+                            {
+                                "value": "Oak",
+                                "children": [
+                                    {
+                                        "value": "Spray"
+                                    },
+                                    {
+                                        "value": "Wrap"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Ashton",
+                                "children": [
+                                    {
+                                        "value": "Emoji",
+                                        "children": [
+                                            {
+                                                "value": "Turbo"
+                                            },
+                                            {
+                                                "value": "Chicago"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "LS"
+                                    },
+                                    {
+                                        "value": "Spray",
+                                        "children": [
+                                            {
+                                                "value": "Jim"
+                                            },
+                                            {
+                                                "value": "Boardwalk"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Glider",
+                                        "children": [
+                                            {
+                                                "value": "Boardwalk"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "14DaysOfFortnite"
+                            },
+                            {
+                                "value": "Fortbytes"
+                            },
+                            {
+                                "value": "S9Overtime"
+                            },
+                            {
+                                "value": "Mash",
+                                "children": [
+                                    {
+                                        "value": "LS"
+                                    },
+                                    {
+                                        "value": "Wrap"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "S8ExtraCredit",
+                                "children": [
+                                    {
+                                        "value": "LS"
+                                    },
+                                    {
+                                        "value": "VTID",
+                                        "children": [
+                                            {
+                                                "value": "Medusa"
+                                            },
+                                            {
+                                                "value": "MasterKey"
+                                            },
+                                            {
+                                                "value": "FireElf"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Heist"
+                            },
+                            {
+                                "value": "WorldCup2019",
+                                "children": [
+                                    {
+                                        "value": "Spray"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "PirateParty"
+                            },
+                            {
+                                "value": "Festivus"
+                            },
+                            {
+                                "value": "AssassinSuit",
+                                "children": [
+                                    {
+                                        "value": "Wrap"
+                                    },
+                                    {
+                                        "value": "Umbrella"
+                                    },
+                                    {
+                                        "value": "Backpack"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Goose"
+                            },
+                            {
+                                "value": "IceStorm"
+                            },
+                            {
+                                "value": "SoloShowdown"
+                            },
+                            {
+                                "value": "E3"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "StarterPack"
+                    },
+                    {
+                        "value": "Platform",
+                        "children": [
+                            {
+                                "value": "SonyPlusPack"
+                            },
+                            {
+                                "value": "XboxHW"
+                            },
+                            {
+                                "value": "PS4"
+                            },
+                            {
+                                "value": "Huawei"
+                            },
+                            {
+                                "value": "Samsung"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season22",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid",
+                                        "children": [
+                                            {
+                                                "value": "Additional"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "CompReward"
+                    },
+                    {
+                        "value": "VMT"
+                    },
+                    {
+                        "value": "Promo"
+                    },
+                    {
+                        "value": "QuestReward"
+                    },
+                    {
+                        "value": "LevelUpQuest"
+                    },
+                    {
+                        "value": "LiveReward"
+                    },
+                    {
+                        "value": "Season19",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid",
+                                        "children": [
+                                            {
+                                                "value": "Additional"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season20",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "QuestPack"
+                    },
+                    {
+                        "value": "PlaystationActivation"
+                    },
+                    {
+                        "value": "SocialActivation"
+                    },
+                    {
+                        "value": "FNCS"
+                    },
+                    {
+                        "value": "Season18",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid",
+                                        "children": [
+                                            {
+                                                "value": "Additional"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season7",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "LevelUp"
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season17",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Mole"
+                    },
+                    {
+                        "value": "Season11",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Free"
+                                    },
+                                    {
+                                        "value": "Paid"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season16",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid",
+                                        "children": [
+                                            {
+                                                "value": "Additional"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season5",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season15",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid",
+                                        "children": [
+                                            {
+                                                "value": "Additional"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "MandosBountyLTM"
+                    },
+                    {
+                        "value": "Season14",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season13",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "testing"
+                    },
+                    {
+                        "value": "Granted",
+                        "children": [
+                            {
+                                "value": "SaveTheWorld"
+                            },
+                            {
+                                "value": "Twitch"
+                            },
+                            {
+                                "value": "MakeGood"
+                            },
+                            {
+                                "value": "Founders"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "DefaultItem"
+                    },
+                    {
+                        "value": "Season12",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Donut",
+                        "children": [
+                            {
+                                "value": "Challenges"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season8",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Levelup"
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "LoveAndWarLTM"
+                    },
+                    {
+                        "value": "Galileo",
+                        "children": [
+                            {
+                                "value": "Challenges"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "AnnualPass",
+                        "children": [
+                            {
+                                "value": "2020"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season10",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Levelup"
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season9",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Levelup"
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season6",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "LevelUp"
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season4",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season3",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "AnySeason",
+                        "children": [
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season2",
+                        "children": [
+                            {
+                                "value": "BattlePass",
+                                "children": [
+                                    {
+                                        "value": "Paid"
+                                    },
+                                    {
+                                        "value": "Free"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "FirstWin"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Contextual",
+                        "children": [
+                            {
+                                "value": "InGame",
+                                "children": [
+                                    {
+                                        "value": "Vehicle",
+                                        "children": [
+                                            {
+                                                "value": "Ostrich"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season1",
+                        "children": [
+                            {
+                                "value": "LevelUp"
+                            },
+                            {
+                                "value": "SeasonShop"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "UserFacingFlags",
+                "children": [
+                    {
+                        "value": "Reactive",
+                        "children": [
+                            {
+                                "value": "WeaponFire"
+                            },
+                            {
+                                "value": "TimeOfDay"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Emote",
+                        "children": [
+                            {
+                                "value": "Traversal"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "HasVariants"
+                    },
+                    {
+                        "value": "Wrap",
+                        "children": [
+                            {
+                                "value": "Animated"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "BuiltInEmote"
+                    },
+                    {
+                        "value": "HasUpgradeQuests"
+                    },
+                    {
+                        "value": "Synced"
+                    },
+                    {
+                        "value": "Transform"
+                    },
+                    {
+                        "value": "Emoticon",
+                        "children": [
+                            {
+                                "value": "Animated"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Enlightened"
+                    },
+                    {
+                        "value": "GearUp"
+                    },
+                    {
+                        "value": "LoadingScreen",
+                        "children": [
+                            {
+                                "value": "Animated"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Spray",
+                        "children": [
+                            {
+                                "value": "Animated"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "EmoteType",
+                "children": [
+                    {
+                        "value": "Emoji",
+                        "children": [
+                            {
+                                "value": "SquadTeamChat"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Dance"
+                    },
+                    {
+                        "value": "Spray"
+                    },
+                    {
+                        "value": "Toy"
+                    }
+                ]
+            },
+            {
+                "value": "QuestsMetaData",
+                "children": [
+                    {
+                        "value": "Outfit",
+                        "children": [
+                            {
+                                "value": "Canary"
+                            },
+                            {
+                                "value": "Bites"
+                            },
+                            {
+                                "value": "Turtleneck"
+                            },
+                            {
+                                "value": "Emperor"
+                            },
+                            {
+                                "value": "Bicycle"
+                            },
+                            {
+                                "value": "Nightmare"
+                            },
+                            {
+                                "value": "Jupiter",
+                                "children": [
+                                    {
+                                        "value": "S0Z6M"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "AncientGladiator"
+                            },
+                            {
+                                "value": "FutureSamurai"
+                            },
+                            {
+                                "value": "Lexa"
+                            },
+                            {
+                                "value": "Shapeshifter"
+                            },
+                            {
+                                "value": "Cosmos"
+                            },
+                            {
+                                "value": "FlapjackWrangler"
+                            },
+                            {
+                                "value": "Historian",
+                                "children": [
+                                    {
+                                        "value": "869BC"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "SpaceFighter"
+                            },
+                            {
+                                "value": "Vertigo"
+                            },
+                            {
+                                "value": "Embers"
+                            },
+                            {
+                                "value": "York",
+                                "children": [
+                                    {
+                                        "value": "F",
+                                        "children": [
+                                            {
+                                                "value": "B"
+                                            },
+                                            {
+                                                "value": "D"
+                                            },
+                                            {
+                                                "value": "C"
+                                            },
+                                            {
+                                                "value": "A"
+                                            },
+                                            {
+                                                "value": "E"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "M",
+                                        "children": [
+                                            {
+                                                "value": "D"
+                                            },
+                                            {
+                                                "value": "E"
+                                            },
+                                            {
+                                                "value": "C"
+                                            },
+                                            {
+                                                "value": "B"
+                                            },
+                                            {
+                                                "value": "A"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Backspin"
+                            },
+                            {
+                                "value": "Soy"
+                            },
+                            {
+                                "value": "Caramel"
+                            },
+                            {
+                                "value": "Sandcastle"
+                            },
+                            {
+                                "value": "ProfessorPup"
+                            },
+                            {
+                                "value": "Donut"
+                            },
+                            {
+                                "value": "BuffCat"
+                            },
+                            {
+                                "value": "Galileo",
+                                "children": [
+                                    {
+                                        "value": "Ferry"
+                                    },
+                                    {
+                                        "value": "Rocket"
+                                    },
+                                    {
+                                        "value": "Zeppelin"
+                                    },
+                                    {
+                                        "value": "Kayak"
+                                    },
+                                    {
+                                        "value": "Sled"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Bane"
+                            },
+                            {
+                                "value": "Columbus"
+                            },
+                            {
+                                "value": "DinoGuard",
+                                "children": [
+                                    {
+                                        "value": "DarkDino",
+                                        "children": [
+                                            {
+                                                "value": "F"
+                                            },
+                                            {
+                                                "value": "M"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "value": "Bronto"
+                                    },
+                                    {
+                                        "value": "PajamaParty"
+                                    },
+                                    {
+                                        "value": "Dinosaur"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Sheath"
+                            },
+                            {
+                                "value": "SlurpMonster"
+                            },
+                            {
+                                "value": "RebirthMedic"
+                            },
+                            {
+                                "value": "CrazyEight"
+                            },
+                            {
+                                "value": "MountainClimber"
+                            },
+                            {
+                                "value": "TacticalFisherman"
+                            },
+                            {
+                                "value": "BlackMonday"
+                            },
+                            {
+                                "value": "StreetRacerDriftRemix_B"
+                            },
+                            {
+                                "value": "RustRemixM"
+                            },
+                            {
+                                "value": "DJRemix"
+                            },
+                            {
+                                "value": "Catalyst"
+                            },
+                            {
+                                "value": "StreetRacerDriftF"
+                            },
+                            {
+                                "value": "GraffitiRemixF"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Achievements",
+                        "children": [
+                            {
+                                "value": "Umbrella"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Emote",
+                        "children": [
+                            {
+                                "value": "Awakening",
+                                "children": [
+                                    {
+                                        "value": "HightowerGrape"
+                                    },
+                                    {
+                                        "value": "HightowerMango"
+                                    },
+                                    {
+                                        "value": "HightowerDate"
+                                    },
+                                    {
+                                        "value": "HightowerTapas"
+                                    },
+                                    {
+                                        "value": "HightowerWasabi"
+                                    },
+                                    {
+                                        "value": "HightowerSquash"
+                                    },
+                                    {
+                                        "value": "HightowerHoneydew"
+                                    },
+                                    {
+                                        "value": "HightowerTomato"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "HappySkipping"
+                            },
+                            {
+                                "value": "ThumbsDown"
+                            },
+                            {
+                                "value": "TPose"
+                            },
+                            {
+                                "value": "GroundPound"
+                            },
+                            {
+                                "value": "VikingHorn"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "BackBling",
+                        "children": [
+                            {
+                                "value": "HightowerWasabi"
+                            },
+                            {
+                                "value": "Galileo",
+                                "children": [
+                                    {
+                                        "value": "Ferry"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Awakening",
+                        "children": [
+                            {
+                                "value": "HightowerSquash"
+                            },
+                            {
+                                "value": "HightowerGrape"
+                            },
+                            {
+                                "value": "HightowerWasabi"
+                            },
+                            {
+                                "value": "HightowerHoneydew"
+                            },
+                            {
+                                "value": "HIghtowerTomato"
+                            },
+                            {
+                                "value": "HightowerMango"
+                            },
+                            {
+                                "value": "HightowerTapas"
+                            },
+                            {
+                                "value": "HightowerDate"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Glider",
+                        "children": [
+                            {
+                                "value": "Galileo",
+                                "children": [
+                                    {
+                                        "value": "Rocket"
+                                    },
+                                    {
+                                        "value": "ZeppelinFemale"
+                                    },
+                                    {
+                                        "value": "Kayak"
+                                    },
+                                    {
+                                        "value": "Ferry"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Glyph",
+                        "children": [
+                            {
+                                "value": "Contrails",
+                                "children": [
+                                    {
+                                        "value": "BattleSuit"
+                                    },
+                                    {
+                                        "value": "Kpop"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "NeonTubesTrails"
+                            },
+                            {
+                                "value": "Backpack",
+                                "children": [
+                                    {
+                                        "value": "RoboKitty"
+                                    },
+                                    {
+                                        "value": "BunkerMan"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Emoticon",
+                                "children": [
+                                    {
+                                        "value": "TomatoHead"
+                                    },
+                                    {
+                                        "value": "CuddleTeamHead"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Spray",
+                                "children": [
+                                    {
+                                        "value": "SkullTrooper"
+                                    },
+                                    {
+                                        "value": "Sunbird"
+                                    },
+                                    {
+                                        "value": "Robot"
+                                    },
+                                    {
+                                        "value": "NanaNana"
+                                    },
+                                    {
+                                        "value": "StrawberryPilot"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Theme",
+                                "children": [
+                                    {
+                                        "value": "DurrBurger"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "RockPeopleSpray"
+                            },
+                            {
+                                "value": "Emote",
+                                "children": [
+                                    {
+                                        "value": "YayExcited"
+                                    },
+                                    {
+                                        "value": "SignSpinner"
+                                    },
+                                    {
+                                        "value": "SadTrombone"
+                                    },
+                                    {
+                                        "value": "GabbyHipHop"
+                                    },
+                                    {
+                                        "value": "ChickenMoves"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Pickaxe",
+                                "children": [
+                                    {
+                                        "value": "BunkerMan"
+                                    },
+                                    {
+                                        "value": "Masako"
+                                    },
+                                    {
+                                        "value": "StrawberryPilot"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "Glider",
+                                "children": [
+                                    {
+                                        "value": "Masako"
+                                    },
+                                    {
+                                        "value": "BattleSuit"
+                                    },
+                                    {
+                                        "value": "TacticalWoodland"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "BunkerManCID"
+                            },
+                            {
+                                "value": "StrawberryPilotCID"
+                            },
+                            {
+                                "value": "Outfit",
+                                "children": [
+                                    {
+                                        "value": "Vendetta"
+                                    },
+                                    {
+                                        "value": "StormTracker"
+                                    },
+                                    {
+                                        "value": "Masako"
+                                    },
+                                    {
+                                        "value": "BountyHunter"
+                                    }
+                                ]
+                            },
+                            {
+                                "value": "RoosterCID"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season10",
+                        "children": [
+                            {
+                                "value": "Visitor"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Wrap",
+                        "children": [
+                            {
+                                "value": "HoverSurfboard"
+                            },
+                            {
+                                "value": "CandyCane"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Pickaxe",
+                        "children": [
+                            {
+                                "value": "Grillin1H"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "SuperDuper"
+                    },
+                    {
+                        "value": "Festivus",
+                        "children": [
+                            {
+                                "value": "MellowMedly"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Season7",
+                        "children": [
+                            {
+                                "value": "ABC"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "Glider",
+                "children": [
+                    {
+                        "value": "HideBackPack"
+                    },
+                    {
+                        "value": "Bistro"
+                    },
+                    {
+                        "value": "BackpackGlider"
+                    },
+                    {
+                        "value": "Cherry"
+                    },
+                    {
+                        "value": "ReliesOnVariantsFromCID"
+                    }
+                ]
+            },
+            {
+                "value": "Variant",
+                "children": [
+                    {
+                        "value": "ForceLoadAllParts"
+                    },
+                    {
+                        "value": "FilterSet",
+                        "children": [
+                            {
+                                "value": "ImpulseSpring"
+                            },
+                            {
+                                "value": "Impulse"
+                            },
+                            {
+                                "value": "Collectable"
+                            },
+                            {
+                                "value": "CyberArmor"
+                            },
+                            {
+                                "value": "Motorcyclist"
+                            },
+                            {
+                                "value": "ZombieElasticMale"
+                            },
+                            {
+                                "value": "ZombieElasticFemale"
+                            },
+                            {
+                                "value": "TeriyakiFishToon"
+                            },
+                            {
+                                "value": "Carabus"
+                            },
+                            {
+                                "value": "AlienTrooper"
+                            },
+                            {
+                                "value": "Elastic",
+                                "children": [
+                                    {
+                                        "value": "Hologram"
+                                    },
+                                    {
+                                        "value": "Backs"
+                                    },
+                                    {
+                                        "value": "Male"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "Backpack",
+                "children": [
+                    {
+                        "value": "IsCape"
+                    },
+                    {
+                        "value": "ReliesOnVariantsFromCID"
+                    }
+                ]
+            },
+            {
+                "value": "BattlepassTrack",
+                "children": [
+                    {
+                        "value": "Display",
+                        "children": [
+                            {
+                                "value": "DisableVFXDuringTransitionIn"
+                            },
+                            {
+                                "value": "DisableVFXDuringTransitionOut"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "LimitedTimeReward"
+            },
+            {
+                "value": "Character",
+                "children": [
+                    {
+                        "value": "RestrictCape"
+                    }
+                ]
+            },
+            {
+                "value": "TallCharacter"
+            },
+            {
+                "value": "Exclusives",
+                "children": [
+                    {
+                        "value": "Troops"
+                    },
+                    {
+                        "value": "MercurialStorm"
+                    },
+                    {
+                        "value": "Bites"
+                    },
+                    {
+                        "value": "HightowerTapasPickaxe"
+                    },
+                    {
+                        "value": "TriflePickaxe"
+                    },
+                    {
+                        "value": "Trifle"
+                    },
+                    {
+                        "value": "ParfaitPickaxe"
+                    },
+                    {
+                        "value": "Parfait"
+                    },
+                    {
+                        "value": "EnsembleMaroon"
+                    },
+                    {
+                        "value": "Turtleneck"
+                    },
+                    {
+                        "value": "CubeQueen"
+                    },
+                    {
+                        "value": "ClashV"
+                    },
+                    {
+                        "value": "Clash"
+                    },
+                    {
+                        "value": "Emperor"
+                    },
+                    {
+                        "value": "Nightmare"
+                    },
+                    {
+                        "value": "PlumRetro"
+                    },
+                    {
+                        "value": "Cherry"
+                    },
+                    {
+                        "value": "Shapeshifter"
+                    },
+                    {
+                        "value": "Vertigo"
+                    },
+                    {
+                        "value": "HightowerSquash"
+                    },
+                    {
+                        "value": "HightowerTomato"
+                    },
+                    {
+                        "value": "HightowerTapas"
+                    },
+                    {
+                        "value": "HightowerDate"
+                    },
+                    {
+                        "value": "ParfaitGlider"
+                    }
+                ]
+            },
+            {
+                "value": "Wrap",
+                "children": [
+                    {
+                        "value": "DoNotApplyOnPickups"
+                    }
+                ]
+            },
+            {
+                "value": "NoSweat",
+                "children": [
+                    {
+                        "value": "SignDance"
+                    }
+                ]
+            },
+            {
+                "value": "CrewBling",
+                "children": [
+                    {
+                        "value": "Progressive"
+                    }
+                ]
+            },
+            {
+                "value": "AllowLockedDefaultVariants"
+            },
+            {
+                "value": "Frontend",
+                "children": [
+                    {
+                        "value": "ItemSelect",
+                        "children": [
+                            {
+                                "value": "PreviewCharacterOnConflictOnly"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "UsePreviewLength"
+                    }
+                ]
+            },
+            {
+                "value": "FrontEnd",
+                "children": [
+                    {
+                        "value": "Preview",
+                        "children": [
+                            {
+                                "value": "ForceUserBackpack"
+                            },
+                            {
+                                "value": "SkipPlayerSelections"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "MetaTags",
+                "children": [
+                    {
+                        "value": "Trait",
+                        "children": [
+                            {
+                                "value": "SkipSuitSwap"
+                            },
+                            {
+                                "value": "ExtremelyUnique"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "value": "HidePreviewAction"
+            },
+            {
+                "value": "HideVaultWorldFloor"
+            },
+            {
+                "value": "FrontEndPose",
+                "children": [
+                    {
+                        "value": "NoVariantEditingAllowed"
+                    },
+                    {
+                        "value": "DontCrossArms"
+                    }
+                ]
+            },
+            {
+                "value": "SkipOwnershipCheck"
+            }
+        ]
+    },
+    {
+        "value": "SoundLibrary",
+        "children": [
+            {
+                "value": "ID",
+                "children": [
+                    {
+                        "value": "StepType",
+                        "children": [
+                            {
+                                "value": "BootsCombat"
+                            },
+                            {
+                                "value": "ShoesSneakers"
+                            },
+                            {
+                                "value": "BootsMetal"
+                            },
+                            {
+                                "value": "BootsHeeled"
+                            },
+                            {
+                                "value": "Barefoot"
+                            },
+                            {
+                                "value": "ShoesDress"
+                            },
+                            {
+                                "value": "BarefootHeavy"
+                            },
+                            {
+                                "value": "Sandal"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "ClothingType",
+                        "children": [
+                            {
+                                "value": "ArmorLeather"
+                            },
+                            {
+                                "value": "Generic"
+                            },
+                            {
+                                "value": "ArmorMetal"
+                            },
+                            {
+                                "value": "Robot"
+                            },
+                            {
+                                "value": "GearTactical"
+                            },
+                            {
+                                "value": "Scales"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "HandType",
+                        "children": [
+                            {
+                                "value": "Glove"
+                            },
+                            {
+                                "value": "Bare"
+                            },
+                            {
+                                "value": "Robot"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "value": "Emote",
+        "children": [
+            {
+                "value": "ActivationCondition",
+                "children": [
+                    {
+                        "value": "SwapsPickaxe"
+                    },
+                    {
+                        "value": "RequiresVictoryRoyale"
+                    }
+                ]
+            },
+            {
+                "value": "ActivationTrigger",
+                "children": [
+                    {
+                        "value": "RemoveDisguise"
+                    }
+                ]
+            },
+            {
+                "value": "BuiltIn",
+                "children": [
+                    {
+                        "value": "Transform"
+                    },
+                    {
+                        "value": "IgnoreRequiredCharacterParts"
+                    }
+                ]
+            },
+            {
+                "value": "Mech",
+                "children": [
+                    {
+                        "value": "Disabled",
+                        "children": [
+                            {
+                                "value": "Design"
+                            },
+                            {
+                                "value": "Art"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "value": "Phoebe",
+        "children": [
+            {
+                "value": "Cosmetic",
+                "children": [
+                    {
+                        "value": "Minus",
+                        "children": [
+                            {
+                                "value": "Zone1"
+                            },
+                            {
+                                "value": "Zone2"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "value": "UI",
+        "children": [
+            {
+                "value": "ItemPreview",
+                "children": [
+                    {
+                        "value": "SceneChanger",
+                        "children": [
+                            {
+                                "value": "ItemShop"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "NewTech",
+                        "children": [
+                            {
+                                "value": "Hoot"
+                            },
+                            {
+                                "value": "BuildABrella"
+                            },
+                            {
+                                "value": "1h2hpickaxe"
+                            },
+                            {
+                                "value": "BKnight"
+                            },
+                            {
+                                "value": "Pup"
+                            },
+                            {
+                                "value": "TnTinaGlider"
+                            },
+                            {
+                                "value": "Maya"
+                            },
+                            {
+                                "value": "Midas"
+                            },
+                            {
+                                "value": "Moewscles"
+                            },
+                            {
+                                "value": "Brutus"
+                            },
+                            {
+                                "value": "TnTinaCharacter"
+                            },
+                            {
+                                "value": "Sky"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "value": "ChallengeCategory",
+        "children": [
+            {
+                "value": "Event",
+                "children": [
+                    {
+                        "value": "EGS"
+                    },
+                    {
+                        "value": "Winterfest"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "value": "Athena",
+        "children": [
+            {
+                "value": "Quests",
+                "children": [
+                    {
+                        "value": "Token",
+                        "children": [
+                            {
+                                "value": "MonarchLevelUp"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Cashier",
+                        "children": [
+                            {
+                                "value": "Emote"
+                            }
+                        ]
+                    },
+                    {
+                        "value": "Awakening",
+                        "children": [
+                            {
+                                "value": "HightowerTapas1h"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "value": "schedule",
+        "children": [
+            {
+                "value": "source",
+                "children": [
+                    {
+                        "value": "season",
+                        "children": [
+                            {
+                                "value": "11"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "value": "phoebe",
+        "children": [
+            {
+                "value": "cosmetic",
+                "children": [
+                    {
+                        "value": "Trails_ID_004_BlueStreak"
+                    },
+                    {
+                        "value": "CID_005_Athena_Commando_M_Default"
+                    },
+                    {
+                        "value": "EID_SneakingTraversal"
+                    },
+                    {
+                        "value": "EID_GothDance"
+                    },
+                    {
+                        "value": "Emoji_RockOn"
+                    },
+                    {
+                        "value": "EID_WindmillFloss"
+                    },
+                    {
+                        "value": "EID_BurgerFlipping"
+                    },
+                    {
+                        "value": "EID_GuitarWalk"
+                    },
+                    {
+                        "value": "EID_LlamaRider_Glitter"
+                    },
+                    {
+                        "value": "BID_045_TacticalJungle"
+                    },
+                    {
+                        "value": "Glider_ID_007_TurtleShell"
+                    },
+                    {
+                        "value": "EID_KungFuSalute"
+                    },
+                    {
+                        "value": "EID_Mime"
+                    },
+                    {
+                        "value": "EID_CowboyDance"
+                    },
+                    {
+                        "value": "CID_117_Athena_Commando_M_TacticalJungle"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "value": "Schedule",
+        "children": [
+            {
+                "value": "Source",
+                "children": [
+                    {
+                        "value": "Season"
+                    }
+                ]
+            }
+        ]
+    }
+]

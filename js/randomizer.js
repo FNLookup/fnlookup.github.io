@@ -107,7 +107,7 @@ function askForReroll(ids, ammount = 10) {
 // Bottom String
 
 function getCard(rollEventItems, item, top, bottom, backends) {
-    let parent = document.createElement('div');
+    let parent = document.createElement('a');
     parent.classList.add('item-card-parent');
 
     var obj = document.createElement("div");
@@ -187,7 +187,7 @@ function getCard(rollEventItems, item, top, bottom, backends) {
     
                 times++;
     
-                if (times == 10) {
+                if (times == 5) {
                     clearInterval(timer);
                 
                     for (let img of itemImages) {

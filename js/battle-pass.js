@@ -50,7 +50,7 @@ function start() {
 
             let item = reward.item;
 
-            let parent = document.createElement('div');
+            let parent = document.createElement('a');
             parent.classList.add('item-card-parent');
 
             var obj = document.createElement("div");
@@ -136,10 +136,7 @@ function start() {
             ic.appendChild(img_obj);
             obj.append(ic);
 
-            obj.addEventListener("click", function() {
-                openItemByID(item.id);
-            });
-
+            parent.href = getItemLinkByID(item.id);
             parent.appendChild(obj);
 
             section_c.append(parent);
