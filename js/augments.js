@@ -44,7 +44,7 @@ function geta() {
 }
 
 function makeItemCard(item, parent) {
-    let b = document.createElement('div');
+    let b = document.createElement('a');
     b.classList.add('item-card-parent');
 
     var card = document.createElement('div');

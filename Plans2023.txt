@@ -45,3 +45,15 @@ designated test url 'https://tposejank.github.io/fnlookup/island?code=3819-8434-
 - https://github.com/tposejank/fnlookup/issues/6
 
 - https://github.com/tposejank/fnlookup/issues/5
+
+- Add features to search page like
+sort by z-a or a-z
+sort by item shop appearance
+sort by oldest
+sort by newest
+sort by longest shop wait
+sort by series a-z
+sort by rarity a-z
+count for items
+
+source (gtags)

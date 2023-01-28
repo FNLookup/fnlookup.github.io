@@ -44,24 +44,20 @@
     <div class="content" id="content">
         <h1>Search All Cosmetics</h1>
         <h2>Search all Battle Royale cosmetics.</h2>
-        <p>Select filters, type in your item's name and find it.</p>
+        <p>Select filters, type in your item's name and find it. You can also use IDs in the search bar.</p>
         <hr>
 
-        <div>
-            <div class="flex cosmetic-search-container">
-                <input type="text" id="iname" class="cosmetic-search" oninput="searchItems(null)" placeholder="Item name...">
-                <button onclick="searchItems(null)">Search</button>
+        <div class="flex flex-center flex-wrap">
+            <div class="flex flex-center cosmetic-search-container">
+                <input type="text" id="iname" class="cosmetic-search" oninput="searchItems()" autocomplete="off" placeholder="Search">
+                <button onclick="searchItems()">Search</button>
             </div>
-            <div class="filter-container flex flex-wrap">
-                <a class="filters-title">Filters</a>
-                <div class="filter-options flex flex-wrap" id="dropdown-object">
-                    <script>
-                    initFilter()
-                    downloadItems()
-                    </script>
-                </div>
-                <button id="btn-apply" onclick="searchItems(null)">Apply</button>
+            <div class="filter-options flex flex-wrap" id="dropdown-object">
+                <script>downloadItems()</script>
             </div>
+        </div>
+        <div class="filter-options filters-selected flex overflow-auto" id="selected-filters">
+            <button class="filters-delete-btn">Delete All</button>
         </div>
 
         <div class="search-objects" id="objects">

@@ -149,7 +149,7 @@ function makeShopCard(item, registeredSections) {
         section_c = document.getElementsByName(section_name)[0];
     }
 
-    let parent = document.createElement('div');
+    let parent = document.createElement('a');
     parent.classList.add('item-card-parent');
 
     var obj = document.createElement("div");
@@ -262,14 +262,10 @@ function makeShopCard(item, registeredSections) {
     }
 
     if (item.ignoreClicks === undefined) {
-        obj.addEventListener("click", function() {
-            openItemByID(item.mainId);
-        });
+        parent.href = getItemLinkByID(item.mainId);
     }
     if (item.href !== undefined) {
-        obj.addEventListener("click", function() {
-            window.location.href = item.href;
-        });
+        parent.href = item.href;
     }
 
     if (item.backgroundColors !== undefined) {

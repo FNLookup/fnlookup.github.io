@@ -24,8 +24,18 @@ function init() {
             }
 
             for (let item of data.items) {
-                if ((params.has('q') && item.name.toLowerCase() === itemName.toLowerCase()) || (params.has('id') && item.id.toLowerCase() === itemID.toLowerCase())) {
-                    items.push(item);
+                let mode = '';
+                if (params.has('mode')) { mode = params.get('mode'); }
+
+                switch (mode) {
+                    case 'contains':
+                        if ((params.has('q') && item.name.toLowerCase().includes(itemName.toLowerCase())) || (params.has('id') && item.id.toLowerCase().includes(itemID.toLowerCase()))) {
+                            items.push(item);
+                        }
+                    default:
+                        if ((params.has('q') && item.name.toLowerCase() === itemName.toLowerCase()) || (params.has('id') && item.id.toLowerCase() === itemID.toLowerCase())) {
+                            items.push(item);
+                        }
                 }
             }
 
@@ -132,16 +142,20 @@ function init() {
                             name.innerHTML = item.name;
                         }
 
-                        name.classList.add('flex');
-                        name.classList.add('flex-wrap');
+                        name.classList.add('flex', 'flex-wrap', 'flex-center');
 
                         document.title = item.name + ' - FNLookup';
+                        
+                        let tags = document.createElement('div');
+                        tags.classList.add('flex', 'item-tags');
+                        tags.classList.add('tagopen');
+                        name.appendChild(tags);
 
                         if (item.type != null) {
                             let item_type = document.createElement('a');
                             item_type.classList.add('item-type-label');
                             item_type.innerHTML = item.type.name;
-                            name.appendChild(item_type);
+                            tags.appendChild(item_type);
                         }
                         
                         if (item.rarity != null) {
@@ -149,7 +163,7 @@ function init() {
                             rarity.classList.add('rarity-label');
                             rarity.setAttribute('data-rarity', item.rarity.id.toLowerCase());
                             rarity.innerHTML = item.rarity.name;
-                            name.appendChild(rarity);
+                            tags.appendChild(rarity);
 
                             if (item.series != null) {
                                 rarity.innerHTML += ' - ' + item.series.name;
@@ -160,14 +174,14 @@ function init() {
                             let caudio = document.createElement('a');
                             caudio.classList.add('item-type-label', 'copyrighted-audio-warning');
                             caudio.innerHTML = 'Copyrighted Audio';
-                            name.appendChild(caudio);
+                            tags.appendChild(caudio);
                         }
 
                         if (item.reactive) {
                             let remodal = document.createElement('a');
                             remodal.classList.add('item-type-label');
                             remodal.innerHTML = 'Reactive';
-                            name.appendChild(remodal);
+                            tags.appendChild(remodal);
                         }
 
                         if (item.price != null) {
@@ -176,7 +190,7 @@ function init() {
                                 pricetag.classList.add('item-type-label', 'flex', 'flex-center');
                                 pricetag.innerHTML = item.price;
                                 pricetag.innerHTML += '<img class="vbuck-icon-item" src="https://media.fortniteapi.io/images/652b99f7863db4ba398c40c326ac15a9/transparent.png" title="V-Buck">'
-                                name.appendChild(pricetag);
+                                tags.appendChild(pricetag);
                             }
                         }
 
@@ -184,7 +198,7 @@ function init() {
                             let item_type = document.createElement('a');
                             item_type.classList.add('item-type-label', 'upcoming-notice');
                             item_type.innerHTML = 'Upcoming';
-                            name.appendChild(item_type);
+                            tags.appendChild(item_type);
                         }
 
                         right.append(name);
@@ -315,8 +329,11 @@ function init() {
 
                         if (item.id !== null) {
                             let id = document.createElement('p');
-                            id.innerHTML = 'ID: ' + item.id;
+                            id.innerHTML = 'ID: <a>' + item.id + '</a>';
                             id.title = 'ID: ' + item.id;
+                            id.onclick = function() {
+                                navigator.clipboard.writeText(item.id);
+                            }
                             right.append(id);
                         }
 
@@ -329,6 +346,8 @@ function init() {
 
                                         let audio = gne('audio');
                                         audio.controls = true;
+                                        audio.loop = true;
+                                        audio.classList.add('audio-fn');
                                         right.append(audio);
 
                                         let sourceAudio = 'https://fortnite.gg/img/items/' + r.items[item.id] + '/audio.mp3';
@@ -610,5 +629,12 @@ function init() {
             eText.innerHTML = error;
             document.getElementById('page-content').append(eText);
         })
+    } else {
+        let eText = document.createElement('h1');
+        eText.innerHTML = 'Looks like you specified no parameters!';
+        let tipText = document.createElement('h3');
+        tipText.innerHTML = 'It looks like you\'re looking for no items. Use the search bar to view one, or click on one somewhere else.';
+        document.getElementById('page-content').append(eText, tipText);
+        document.getElementById('page-content').innerHTML += '<a href="index.html" class="gray-link">Take me home <i class="arrow sideways"></i></a>'
     }
 }

@@ -269,6 +269,31 @@ a.link-underline:hover {
     transition: transform .2s;
 }
 
+i.x-btn {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 15px;
+    height: 15px;
+}
+i.x-btn::before {
+    content: 'x';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    margin-left: .2rem;
+    font: 13px burbank-bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f04747;
+    background-color: rgba(0, 0, 0, .5);
+    border: 2px solid #f04747;
+    border-radius: 50%;
+}
+
 .navbar-top {
     align-items: center;
     display: flex;
@@ -286,7 +311,7 @@ a.link-underline:hover {
     float: right;
 }
 
-input[type=text]:not(.sac-code-box) {
+.item-search-container input[type=text]:not(.sac-code-box) {
     border: 1px solid gray;
     color: white;
     background-color: black;
@@ -295,9 +320,9 @@ input[type=text]:not(.sac-code-box) {
 
     font-family: 'Poppins', serif;
 }
-input[type=text]:not(.sac-code-box):focus { background-color: rgb(50, 50, 50); }
+.item-search-container input[type=text]:not(.sac-code-box):focus { background-color: rgb(50, 50, 50); }
 
-button {
+.item-search-container button {
     border: 1px solid gray;
     color: white;
     background-color: black;
@@ -306,14 +331,14 @@ button {
 
     font-family: 'Poppins', serif;
 }
-button:hover { background-color: rgb(50, 50, 50); }
+.item-search-container button:hover { background-color: rgb(50, 50, 50); }
 
-.item-search-container button, .cosmetic-search-container button {
+.item-search-container button {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border-left-color: transparent;
 }
-.item-search-container input:not(.sac-code-box), .cosmetic-search-container input:not(.sac-code-box) {
+.item-search-container input:not(.sac-code-box) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -354,8 +379,7 @@ button.fn-button {
 }
 
 .filter-choice {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin: 0 .25rem;
 }
 
 .filter-options .dropdown-menu {
@@ -473,10 +497,12 @@ button.fn-button {
     color: #fff;
     text-align: left;
     list-style: none;
-    background-color: #222;
+    background-color: #111213;
     background-clip: padding-box;
-    border: 1px solid #444;
-    border-radius: .25rem;
+    border-radius: 15px;
+}
+.dropdown-menu::-webkit-scrollbar-track {
+    background-color: #111213;
 }
 
 .dropdown-choice {
@@ -730,6 +756,27 @@ button.fn-button {
     margin-bottom: 5rem;
 }
 
+.item-toggler-arrow {
+    rotate: -90deg;
+    transition: transform 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.item-toggler-arrow.toggled {
+    transform: scaleX(-1);
+}
+
+.audio-fn {
+    width: 100%;
+}
+
+.item-tags {
+    max-width: 0px;
+    transition: max-width 0.5s ease-in-out;
+    overflow: hidden;
+}
+.item-tags.tagopen {
+    max-width: 100%;
+}
+
 .item-card {
     position: relative;
     background-color: #343434;
@@ -857,6 +904,7 @@ button.fn-button {
     font-style: italic;
     margin: .3rem 0 .3rem;
     transition: color .1s;
+    color: white;
 }
 
 .item-type {
@@ -1854,6 +1902,199 @@ tr .player-name {
     align-items: center;
 }
 
+.filter-choice {
+    padding: 1rem 0;
+}
+.filter-choice i.arrow {
+    margin-left: .5rem;
+}
+
+.filter-class {
+    font: 15px burbank-big;
+    border-radius: 15px;
+    padding: .8rem;
+    background-color: #111213;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.cosmetic-search-container input,
+.cosmetic-search-container button {
+    font: 15px burbank-big;
+    font-style: italic;
+    text-transform: uppercase;
+    color: white;
+
+    padding: .8rem;
+    margin: 0px 0.25rem;
+    background-color: #111213;
+
+    border-radius: 15px;
+    transition: border .15s;
+    border: 1px solid transparent;
+    outline: none;
+}
+.cosmetic-search-container input:focus {
+    border: 1px solid gray;
+}
+.cosmetic-search-container button:focus,
+.cosmetic-search-container button:hover {
+    border: 1px solid gray;
+}
+
+.filters-selected {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filters-delete-btn {
+    font: 15px burbank-big;
+    border-radius: 15px;
+    margin: .3rem;
+    padding: .8rem;
+    background-color: transparent;
+    transition: .15s background-color, .15s color;
+    font-style: italic;
+    text-transform: uppercase;
+    border: 1px solid #f04747;
+    color: #f04747;
+    height: 100%;
+    white-space: nowrap;
+}
+.filters-delete-btn:hover {
+    background-color: #f04747;
+    color: white;
+}
+
+.filter-class-container {
+    max-width: 300px;
+    padding: 1rem;
+}
+
+.filter-class-name {
+    font-family: burbank-big;
+    font-style: italic;
+}
+
+.filter-class-object {
+    font: 15px burbank-big;
+    text-rendering: optimizeLegibility;;
+    margin: .3rem;
+    border-radius: 15px;
+    padding: .8rem;
+    background-color: #323538;
+    background-size: cover;
+    text-shadow: 0 3px 3px rgb(0 0 0 / 50%);
+    box-shadow: 1px 2px 4px rgb(0 0 0 / 10%);
+}
+
+.filter-class-object[type="Cosmetics.UserFacingFlags.HasVariants"],
+.filter-class-object[type="Cosmetics.UserFacingFlags.HasUpgradeQuests"],
+.filter-class-object[type="CosmeticsCustom.Flags.Reactive"],
+.filter-class-object[type="Cosmetics.UserFacingFlags.Emote.Traversal"],
+.filter-class-object[type="Cosmetics.UserFacingFlags.Synced"],
+.filter-class-object[type="Cosmetics.UserFacingFlags.BuiltInEmote"],
+.filter-class-object[type="CosmeticsCustom.Flags.Animated"],
+.filter-class-object[type="Cosmetics.UserFacingFlags.Enlightened"],
+/*Cosmetics*/
+.filter-class-object[type="backpack"],
+.filter-class-object[type="emote"],
+.filter-class-object[type="glider"],
+.filter-class-object[type="emoji"],
+.filter-class-object[type="loadingscreen"],
+.filter-class-object[type="outfit"],
+.filter-class-object[type="pickaxe"],
+.filter-class-object[type="contrail"],
+.filter-class-object[type="cosmeticvariant"],
+.filter-class-object[type="bundle"],
+.filter-class-object[type="spray"],
+.filter-class-object[type="toy"],
+.filter-class-object[type="pet"],
+.filter-class-object[type="music"],
+.filter-class-object[type="wrap"],
+.filter-class-object[type="bannertoken"] {
+    padding-left: 2rem;
+    position: relative;
+}
+
+.filter-class-object[type="Cosmetics.UserFacingFlags.HasVariants"]::before,
+.filter-class-object[type="Cosmetics.UserFacingFlags.HasUpgradeQuests"]::before,
+.filter-class-object[type="CosmeticsCustom.Flags.Reactive"]::before,
+.filter-class-object[type="Cosmetics.UserFacingFlags.Emote.Traversal"]::before,
+.filter-class-object[type="Cosmetics.UserFacingFlags.Synced"]::before,
+.filter-class-object[type="Cosmetics.UserFacingFlags.BuiltInEmote"]::before,
+.filter-class-object[type="CosmeticsCustom.Flags.Animated"]::before,
+.filter-class-object[type="Cosmetics.UserFacingFlags.Enlightened"]::before,
+/*Cosmetics*/
+.filter-class-object[type="backpack"]::before,
+.filter-class-object[type="emote"]::before,
+.filter-class-object[type="glider"]::before,
+.filter-class-object[type="emoji"]::before,
+.filter-class-object[type="loadingscreen"]::before,
+.filter-class-object[type="outfit"]::before,
+.filter-class-object[type="pickaxe"]::before,
+.filter-class-object[type="contrail"]::before,
+.filter-class-object[type="cosmeticvariant"]::before,
+.filter-class-object[type="bundle"]::before,
+.filter-class-object[type="spray"]::before,
+.filter-class-object[type="toy"]::before,
+.filter-class-object[type="pet"]::before,
+.filter-class-object[type="music"]::before,
+.filter-class-object[type="wrap"]::before,
+.filter-class-object[type="bannertoken"]::before {
+    content: "";
+    position: absolute;
+    left: .5rem;
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+}
+
+.filter-class-object[type="Cosmetics.UserFacingFlags.HasVariants"]::before,
+.filter-class-object[type="Cosmetics.UserFacingFlags.HasUpgradeQuests"]::before { background-image: url(/assets/icons/cosmetics/styles.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.Enlightened"]::before { background-image: url(/assets/icons/cosmetics/enlightened.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.Reactive"]::before { background-image: url(/assets/icons/cosmetics/reactive.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.Emote.Traversal"]::before { background-image: url(/assets/icons/cosmetics/traversal.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.Synced"]::before { background-image: url(/assets/icons/cosmetics/synced.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.BuiltInEmote"]::before { background-image: url(/assets/icons/cosmetics/builtin.png); }
+.filter-class-object[type="CosmeticsCustom.Flags.Animated"]::before { background-image: url(/assets/icons/cosmetics/animated.png); }
+/*Cosmetics*/
+.filter-class-object[type="backpack"]::before { background-image: url(/assets/icons/cosmetics/icons/backpack.svg); }
+.filter-class-object[type="emote"]::before { background-image: url(/assets/icons/cosmetics/icons/emote.svg); }
+.filter-class-object[type="glider"]::before { background-image: url(/assets/icons/cosmetics/icons/glider.svg); }
+.filter-class-object[type="emoji"]::before { background-image: url(/assets/icons/cosmetics/icons/emoji.svg); }
+.filter-class-object[type="loadingscreen"]::before { background-image: url(/assets/icons/cosmetics/icons/loadingscreen.svg); }
+.filter-class-object[type="outfit"]::before { background-image: url(/assets/icons/cosmetics/icons/outfit.svg); }
+.filter-class-object[type="pickaxe"]::before { background-image: url(/assets/icons/cosmetics/icons/pickaxe.svg); }
+.filter-class-object[type="contrail"]::before { background-image: url(/assets/icons/cosmetics/icons/contrail.svg); }
+.filter-class-object[type="cosmeticvariant"]::before { background-image: url(/assets/icons/cosmetics/icons/cosmeticvariant.png); }
+.filter-class-object[type="bundle"]::before { background-image: url(/assets/icons/cosmetics/icons/bundle.svg); }
+.filter-class-object[type="spray"]::before { background-image: url(/assets/icons/cosmetics/icons/spray.svg); }
+.filter-class-object[type="toy"]::before { background-image: url(/assets/icons/cosmetics/icons/toy.svg); }
+.filter-class-object[type="pet"]::before { background-image: url(/assets/icons/cosmetics/icons/pet.svg); }
+.filter-class-object[type="music"]::before { background-image: url(/assets/icons/cosmetics/icons/music.svg); }
+.filter-class-object[type="wrap"]::before { background-image: url(/assets/icons/cosmetics/icons/wrap.svg); }
+.filter-class-object[type="bannertoken"]::before { background-image: url(/assets/icons/cosmetics/icons/bannertoken.svg); }
+
+.filter-class-object[type=Common] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_common.png); }
+.filter-class-object[type=Epic] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_epic.png); }
+.filter-class-object[type=Legendary] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_legendary.png); }
+.filter-class-object[type=Uncommon] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_uncommon.png); }
+.filter-class-object[type=Mythic] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_mythic.png); }
+.filter-class-object[type=Rare] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_rare.png); }
+.filter-class-object[type=Transcendent] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_transcendent.png); }
+
+.filter-class-object[type=CUBESeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/T-Cube-Background.png); }
+.filter-class-object[type=DCUSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/T-BlackMonday-Background.png); }
+.filter-class-object[type=FrozenSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Frozen.png); }
+.filter-class-object[type=CreatorCollabSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/T_Ui_CreatorsCollab_Bg.png); }
+.filter-class-object[type=LavaSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Bg.png); }
+.filter-class-object[type=MarvelSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/Marvel.png); }
+.filter-class-object[type=PlatformSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/platformseries.png); }
+.filter-class-object[type=ShadowSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/T_Ui_LavaSeries_Shadow.png); }
+.filter-class-object[type=SlurpSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/Slurp.png); }
+.filter-class-object[type=ColumbusSeries] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/ColumbusSeries.png); }
+
 .player-flag {
     width: 25px;
     height: 25px;
@@ -2144,6 +2385,9 @@ tr .player-name {
 
 .text-right {
     text-align: right;
+}
+.overflow-auto {
+    overflow: auto !important;
 }
 
 .panning {

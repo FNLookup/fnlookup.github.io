@@ -2,63 +2,10 @@ let currentLoadIndex = [0, 24];
 let itemsPerLoad = 25;
 let itemLookMode = false;
 
-function initFilter() {
-    var filters = [
-        {
-            name: 'Type',
-            backend: 'type',
-            objects: [
-                {name: 'Back Bling', backend: 'backpack'},
-                {name: 'Emote', backend: 'emote'},
-                {name: 'Glider', backend: 'glider'},
-                {name: 'Emoji', backend: 'emoji'},
-                {name: 'Loading Screen', backend: 'loadingscreen'},
-                {name: 'Outfit', backend: 'outfit'},
-                {name: 'Pickaxe', backend: 'pickaxe'},
-                {name: 'Contrail', backend: 'contrail'},
-                {name: 'Style', backend: 'cosmeticvariant'},
-                {name: 'Bundle', backend: 'bundle'},
-                {name: 'Spray', backend: 'spray'},
-                {name: 'Toy', backend: 'toy'},
-                {name: 'Pet', backend: 'pet'},
-                {name: 'Music Pack', backend: 'music'}
-            ]
-        }
-    ]
+let appliedFilters = [];
+let scrollUseList = [];
 
-    makeFc(filters);
-
-    fetch(geturllang("https://fortniteapi.io/v2/rarities", 1), {
-        headers: { 'Authorization': keyFNAPIIo}
-    }).then(r=>r.json()).then(r=>{
-        
-        let stuff = [];
-        for (let a of r.rarities) {
-            stuff.push({
-                name: a.name,
-                backend: a.id
-            });
-        }
-        for (let b of r.series) {
-            stuff.push({
-                name: b.name,
-                backend: b.id
-            });
-        }
-
-        makeFc([
-            {
-                name: 'Rarity',
-                backend: 'rarity',
-                objects: stuff
-            }
-        ])
-
-    }).catch(error => {
-        console.error(error)
-    })
-}
-
+/*
 function makeFc(filters) {
     let dropdownObject = document.getElementById('dropdown-object');
     for (let filterClass of filters) {
@@ -76,7 +23,7 @@ function makeFc(filters) {
         title.append(arrow);
         main.append(title);
 
-        let menu = document.createElement('ul');
+        let menu = document.createElement('div');
         menu.classList.add('dropdown-menu', 'hidden');
 
         title.addEventListener('click', function() {
@@ -114,34 +61,183 @@ function makeFc(filters) {
         main.append(menu);
         dropdownObject.appendChild(main);
     }
+}*/
+
+function makeFilterAdvancedClass(filterObject) {
+    let dropdownObject = document.getElementById('dropdown-object');
+    let main = document.createElement('div');
+    main.classList.add('filter-choice');
+    let title = document.createElement('span');
+    title.classList.add('filter-class');
+    title.classList.add('links', 'pointer');
+    title.innerHTML = filterObject.name;
+    let arrow = document.createElement('i');
+    arrow.classList.add('arrow');
+    title.append(arrow);
+    main.append(title);
+    let menu = document.createElement('div');
+    menu.classList.add('dropdown-menu', 'hidden');
+
+    title.addEventListener('click', function() {
+        menu.classList.toggle('hidden');
+    })
+
+    for (let filterClass of filterObject.classes) {
+        let container = document.createElement('div');
+        container.classList.add('filter-class-container');
+        container.innerHTML = '<h2 class="filter-class-name">' + filterClass.className.toUpperCase() + '</h2>';
+        
+        let containerObjects = document.createElement('div');
+        containerObjects.classList.add('flex', 'flex-wrap');
+        for (let object of filterClass.objects) {
+            let objElement = document.createElement('a');
+            objElement.classList.add('filter-class-object', 'pointer');
+            objElement.setAttribute('type', object.type);
+            objElement.innerHTML = object.name;
+
+            objElement.onclick = function() {
+                if (!appliedFilters.includes(object)) {
+                    appliedFilters.push(object);
+                    updateFilters();
+                }
+            }
+
+            containerObjects.appendChild(objElement);
+        }
+        container.append(containerObjects)
+
+        menu.append(container);
+    }
+
+    main.append(menu);
+    dropdownObject.appendChild(main);
+}
+
+function updateFilters() {
+    let main = document.getElementById('selected-filters');
+    clearChildren(main);
+
+    for (let filter of appliedFilters) {
+        let viewer = gne('a');
+        viewer.classList.add('filter-class-object', 'flex', 'flex-center');
+        viewer.setAttribute('type', filter.type);
+        viewer.innerHTML = filter.name;
+
+        let xBtn = gne('i');
+        xBtn.classList.add('x-btn', 'pointer');
+        viewer.appendChild(xBtn);
+
+        xBtn.onclick = function () {
+            appliedFilters.splice(appliedFilters.indexOf(filter),1);
+            updateFilters();
+        }
+
+        main.append(viewer);
+        
+        //<a class="filter-class-object pointer" type="Common">COMMON</a>
+    }
+
+    let clrBtn = gne('button');
+    clrBtn.classList.add('filters-delete-btn');
+    clrBtn.innerHTML = 'Delete All';
+    clrBtn.onclick = deleteFilters;
+    main.append(clrBtn);
+
+    searchItems()
+}
+
+function deleteFilters() {
+    appliedFilters = [];
+    updateFilters();
 }
 
 function downloadItems() {
-    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=id,introduction,images,name,type,rarity', 1), {
+    mainFilters();
+
+    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=id,introduction,images,displayAssets,name,type,rarity,series,gameplayTags', 1), {
         headers: {'Authorization': keyFNAPIIo}
     }).then(response => response.json()).then(response => {
         items = response.items;
+        items = items.reverse();
 
-        let seasons = [];
-        for (let item of response.items) {
-            if (item.introduction !== null) {
-                if (!seasons.includes(item.introduction.text)) {
-                    seasons.push(item.introduction.text);
+        scrollUseList = items;
+
+        fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
+            headers: {'Authorization': keyFNAPIIo}}
+        ).then(r => r.json()).then(r => {
+            let seasons = []
+            let allowedSeasons = []
+            let curChapter;
+            for (let ss of r.seasons) {
+                curChapter = ss.chapter;
+                if (seasons['Chapter ' + curChapter] === undefined) {
+                    seasons['Chapter ' + curChapter] = []
+                    allowedSeasons.push('Chapter ' + curChapter)
                 }
+                seasons['Chapter ' + curChapter].push({
+                    text: 'C' + ss.chapter + 'S' + ss.seasonInChapter,
+                    season: ss.seasonInChapter,
+                    gameplayTag: 'Cosmetics.Filter.Season.' + ss.season
+                })
+            }
+            let classes = []
+            for (let object of allowedSeasons) {
+                let classObjects = []
+                for (let co of seasons[object]) {
+                    classObjects.push({
+                        name: co.text,
+                        type: co.gameplayTag,
+                        class: 'GameplayTag'
+                    })
+                }
+                classes.push({
+                    className: object,
+                    objects: classObjects
+                })
+            }
+            makeFilterAdvancedClass({
+                name: 'Introduction',
+                classes: classes
+            });
+
+            makeFilterAdvancedClass({
+                name: 'Tags',
+                classes: [
+                    {
+                        className: 'Gameplay Tags',
+                        objects: [
+                            { name: 'Selectable Styles', type: 'Cosmetics.UserFacingFlags.HasVariants', class: 'GameplayTag' },
+                            { name: 'Unlockable Styles', type: 'Cosmetics.UserFacingFlags.HasUpgradeQuests', class: 'GameplayTag' },
+                            { name: 'Reactive', type: 'CosmeticsCustom.Flags.Reactive', class: 'GameplayTagMultiple' },
+                            { name: 'Traversal', type: 'Cosmetics.UserFacingFlags.Emote.Traversal', class: 'GameplayTag' },
+                            { name: 'Synced', type: 'Cosmetics.UserFacingFlags.Synced', class: 'GameplayTag' },
+                            { name: 'Built In Emote', type: 'Cosmetics.UserFacingFlags.BuiltInEmote', class: 'GameplayTag' },
+                            { name: 'Enlightened', type: 'Cosmetics.UserFacingFlags.Enlightened', class: 'GameplayTag' },
+                            { name: 'Animated', type: 'CosmeticsCustom.Flags.Animated', class: 'GameplayTagMultiple' }
+                        ]
+                    }
+                ]
+            });
+        })
+
+        let allGameplayTags = []
+        for (let i of items) {
+            for (let g of i.gameplayTags) {
+                allGameplayTags.push(g)
             }
         }
 
-        let stuff = [];
-        for (let season of seasons) {
-            stuff.push({
-                name: season,
-                backend: season
-            })
-        }
+        var array = allGameplayTags,
+        result = [];
 
-        makeFc([
-            {name: 'Season', backend: 'season', objects:stuff}
-        ])
+        array.forEach(s => s
+            .split('.')
+            .reduce((object, value) => {
+                var item = (object.children = object.children || []).find(q => q.value === value);
+                if (!item) object.children.push(item = { value: value })
+                return item;
+            }, { children: result })
+        );
 
         let p = new URLSearchParams(document.location.search);
         firstTime = false;
@@ -159,97 +255,156 @@ function downloadItems() {
     });
 }
 
+function mainFilters() {
+    var filters = {
+            name: 'Type',
+            classes: [
+                {
+                    className: 'Type',
+                    objects: [
+                        {name: 'Back Bling', type: 'backpack', class: 'Type'},
+                        {name: 'Emote', type: 'emote', class: 'Type'},
+                        {name: 'Glider', type: 'glider', class: 'Type'},
+                        {name: 'Emoji', type: 'emoji', class: 'Type'},
+                        {name: 'Loading Screen', type: 'loadingscreen', class: 'Type'},
+                        {name: 'Outfit', type: 'outfit', class: 'Type'},
+                        {name: 'Pickaxe', type: 'pickaxe', class: 'Type'},
+                        {name: 'Contrail', type: 'contrail', class: 'Type'},
+                        {name: 'Style', type: 'cosmeticvariant', class: 'Type'},
+                        {name: 'Bundle', type: 'bundle', class: 'Type'},
+                        {name: 'Spray', type: 'spray', class: 'Type'},
+                        {name: 'Toy', type: 'toy', class: 'Type'},
+                        {name: 'Pet', type: 'pet', class: 'Type'},
+                        {name: 'Music Pack', type: 'music', class: 'Type'},
+                        {name: 'Wrap', type: 'wrap', class: 'Type'},
+                        {name: 'Banner', type: 'bannertoken', class: 'Type'},
+                    ]
+                }
+            ]
+        }
+
+    makeFilterAdvancedClass(filters);
+
+    fetch(geturllang("https://fortniteapi.io/v2/rarities", 1), {
+        headers: { 'Authorization': keyFNAPIIo}
+    }).then(r=>r.json()).then(r=>{
+        let classes = []
+        let classObjects = []
+        for (let a of r.rarities) {
+            classObjects.push({
+                name: a.name,
+                type: a.id,
+                class: 'Rarity'
+            })
+        }
+        classes.push({
+            className: 'Rarity',
+            objects: classObjects
+        })
+        classObjects = []
+        for (let b of r.series) {
+            classObjects.push({
+                name: b.name,
+                type: b.id,
+                class: 'Series'
+            })
+        }
+        classes.push({
+            className: 'Series',
+            objects: classObjects
+        })
+
+        makeFilterAdvancedClass({
+            name: 'Rarity/Series',
+            classes: classes
+        });
+    }).catch(error => {
+        console.error(error)
+    })
+}
+
+function searchItems(urlname) {
+    let nameorid = document.getElementById('iname').value;
+    if (urlname !== undefined) nameorid = urlname;
+
+    resetItems();
+
+    let searchBarMatched = [];
+    for (let item of items) {
+        if (item.name.toLowerCase().includes(nameorid.toLowerCase()) && !searchBarMatched.includes(item)) {
+            searchBarMatched.push(item);
+        }
+    }
+    if (nameorid.length < 1) searchBarMatched = items;
+
+    let matchingItems = [];
+
+    const gameplayTagFilters = [];
+    const typeFilters = [];
+    const rarityFilters = [];
+    const seriesFilters = [];
+    for (let filter of appliedFilters) {
+        if (filter.class === 'Type')
+            typeFilters.push(filter.type)
+        if (filter.class === 'Rarity')
+            rarityFilters.push(filter.type)
+        if (filter.class === 'Series')
+            seriesFilters.push(filter.type);
+        if (filter.class === 'GameplayTag')
+            gameplayTagFilters.push(filter.type);
+        if (filter.class === 'GameplayTagMultiple') {
+            if (filter.type === 'CosmeticsCustom.Flags.Animated') {
+                gameplayTagFilters.push('Cosmetics.UserFacingFlags.Emoticon.Animated', 'Cosmetics.UserFacingFlags.Wrap.Animated', 'Cosmetics.UserFacingFlags.LoadingScreen.Animated', 'Cosmetics.UserFacingFlags.Spray.Animated');
+            }
+            if (filter.type === 'CosmeticsCustom.Flags.Reactive') {
+                gameplayTagFilters.push('Cosmetics.UserFacingFlags.Reactive.WeaponFire', 'Cosmetics.UserFacingFlags.Reactive.TimeOfDay')
+            }
+        }
+    }
+
+    matchingItems = filterItems(searchBarMatched, typeFilters, rarityFilters, seriesFilters, gameplayTagFilters);
+    scrollUseList = matchingItems;
+
+    clearChildren(document.getElementById('objects'));
+    generateItems();
+}
+
+function filterItems(filteredItems, chosenType, chosenRarity, chosenSeries, chosenGameplayTags) {
+    return filteredItems.filter(item => {
+        let matchesType = chosenType.length <1 || chosenType.includes(item.type.id);
+        let matchesRarity = chosenRarity.length <1 || chosenRarity.includes(item.rarity.id);
+        let matchesSeries = chosenSeries.length <1 || (item.series && chosenSeries.includes(item.series.id));
+        let matchesGameplayTags = chosenGameplayTags.length <1 || item.gameplayTags.some(tag => chosenGameplayTags.includes(tag));
+  
+        let matchAll = matchesType && matchesRarity && matchesSeries && matchesGameplayTags;
+        return matchAll;
+    });
+}
+
 function generateItems() {
-    if (items !== null) {
-        for (let i = 0; i < items.length; i++) {
+    if (scrollUseList !== null) {
+        for (let i = 0; i < scrollUseList.length; i++) {
             if (i >= currentLoadIndex[0] && i <= currentLoadIndex[1]) {
-                makeItemCard(items[i]);
+                makeItemCard(scrollUseList[i]);
             }
         }
     }
 }
 
 function generateMoreItems() {
-    if (itemLookMode === false) {
-        currentLoadIndex[0] += itemsPerLoad;
-        currentLoadIndex[1] += itemsPerLoad;
+    currentLoadIndex[0] += itemsPerLoad;
+    currentLoadIndex[1] += itemsPerLoad;
     
-        generateItems();
-    }
+    generateItems();
 }
 
 function resetItems () {
     currentLoadIndex[0] = 0;
     currentLoadIndex[1] = 99;
-
-    let o = document.getElementById('objects');
-    while(o.firstChild)
-        o.removeChild(o.firstChild);
-}
-
-function searchItems(urlname) {
-    let types = [];
-    let rarities = [];
-    let seasons = [];
-
-    let name = document.getElementById('iname').value;
-    if (urlname !== null) name = urlname;
-    
-    let tchbox = document.getElementsByName('type');
-    let rchbox = document.getElementsByName('rarity');
-    let schbox = document.getElementsByName('season');
-
-    for (let checkbox of tchbox) {
-        if (checkbox.checked) {
-            types.push(checkbox.getAttribute('backend-value'));
-        }
-    }
-
-    for (let checkbox of rchbox) {
-        if (checkbox.checked) {
-            rarities.push(checkbox.getAttribute('backend-value'));
-        }
-    }
-
-    for (let checkbox of schbox) {
-        if (checkbox.checked) {
-            seasons.push(checkbox.getAttribute('backend-value'));
-        }
-    }
-
-    if (items !== null) {
-        resetItems();
-        if (name.length > 0) {
-            itemLookMode = true;
-
-            for (let item of items) {
-                if (item.name.toLowerCase().includes(name.toLowerCase())) {
-    
-                    let typematch = types.includes(item.type.id)
-                    let raritymatch = rarities.includes(item.rarity.id.toLowerCase());
-                    let seasonmatch = true;
-                    if (item.introduction !== null) {
-                        seasonmatch = seasons.includes(item.introduction.text);
-                    }
-                    if (types.length < 1) typematch = true;
-                    if (rarities.length < 1) raritymatch = true;
-                    if (seasons.length < 1) seasonmatch = true;
-    
-                    if (typematch && raritymatch && seasonmatch) {
-                        makeItemCard(item);
-                    }
-                }
-            }
-        } else {
-            itemLookMode = false;
-
-            generateItems();
-        }
-    }
 }
 
 function makeItemCard(item) {
-    let b = document.createElement('div');
+    let b = document.createElement('a');
     b.classList.add('item-card-parent');
 
     var obj = document.createElement("div");
@@ -268,13 +423,22 @@ function makeItemCard(item) {
 
     var img_obj = document.createElement("img");
     var img_src;
-
+    if (item.images.icon_background != null)
+        img_src = item.images.icon_background;
     if (item.images.icon != null)
         img_src = item.images.icon;
     if (item.images.featured != null)
         img_src = item.images.featured;
     if (item.images.background != null)
-        img_src = item.images.background;   
+        img_src = item.images.background;
+
+    if (item.displayAssets.length > 0) {
+        let displayAsset = item.displayAssets[0];
+        if (displayAsset.url !== null)
+            img_src = displayAsset.url;
+        if (displayAsset.background !== null)
+            img_src = displayAsset.background;
+    }
 
     let ic = document.createElement('div');
     ic.classList.add("item-image");
@@ -285,9 +449,7 @@ function makeItemCard(item) {
 
     obj.appendChild(ic);
 
-    obj.addEventListener("click", function() {
-        openItemByID(item.id);
-    });
+    b.href = getItemLinkByID(item.id);
 
     b.append(obj);
     document.getElementById('objects').append(b);
