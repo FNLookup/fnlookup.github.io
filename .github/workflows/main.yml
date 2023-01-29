@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  tweet-commit:
+    runs-on: ubuntu-latest
+    name: Tweet push commit
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Commit Info
+        run: |
+          echo "::set-env name=head::$(git log -1 HEAD --pretty=format:%s)"
+          echo "::set-env name=body::$(git log -1 HEAD --pretty=format:%b)" 
+      - name: Tweet
+        uses: obasekietinosa/tweet-for-code-review-action@v1
+        with:
+          api-key: ${{ secrets.TWITTER_API_KEY }}
+          tweet-body: "#FNLookup | New commit for FNLookup\n${{ github.actor }} - ${{ github.event_name }} (${{ github.ref_name }})\n${{ env.head }}\n${{ env.body }}\nView commit - https://www.github.com/tposejank/fnlookup/commit/${{ github.sha }}\nView page - https://tposejank.github.io/fnlookup"
