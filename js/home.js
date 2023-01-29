@@ -137,7 +137,7 @@ function makeCard(item) {
     }
 
     if (item.ignoreClicks === undefined) {
-        parent.href = item.mainId
+        parent.href = getItemLinkByID(item.mainId);
     }
     if (item.href !== undefined) {
         parent.href = item.href;

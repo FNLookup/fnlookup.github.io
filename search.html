@@ -42,9 +42,17 @@
     </div>
 
     <div class="content" id="content">
-        <h1>Search All Cosmetics</h1>
-        <h2>Search all Battle Royale cosmetics.</h2>
-        <p>Select filters, type in your item's name and find it. You can also use IDs in the search bar.</p>
+        <div class="flex flex-wrap">
+            <div class="d-70-media">
+                <h1>Search All Cosmetics</h1>
+                <h2>Search all Battle Royale cosmetics.</h2>
+                <p>Select filters, type in your item's name and find it. You can also use IDs in the search bar.</p>
+            </div>
+            <div class="d-30-media text-center">
+                <h1 id="item-search-count">0</h1>
+                <p>Cosmetics</p>
+            </div>
+        </div>
         <hr>
 
         <div class="flex flex-center flex-wrap">
@@ -52,9 +60,7 @@
                 <input type="text" id="iname" class="cosmetic-search" oninput="searchItems()" autocomplete="off" placeholder="Search">
                 <button onclick="searchItems()">Search</button>
             </div>
-            <div class="filter-options flex flex-wrap" id="dropdown-object">
-                <script>downloadItems()</script>
-            </div>
+            <div class="filter-options flex flex-wrap" id="dropdown-object"></div>
         </div>
         <div class="filter-options filters-selected flex overflow-auto" id="selected-filters">
             <button class="filters-delete-btn">Delete All</button>
@@ -63,6 +69,7 @@
         <div class="search-objects" id="objects">
             <script>
                 resetItems()
+                downloadItems()
             </script>
         </div>
 
