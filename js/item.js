@@ -166,7 +166,11 @@ function init() {
                             tags.appendChild(rarity);
 
                             if (item.series != null) {
-                                rarity.innerHTML += ' - ' + item.series.name;
+                                let series = document.createElement('a');
+                                series.classList.add('rarity-label');
+                                series.setAttribute('data-rarity', item.series.id.toLowerCase());
+                                series.innerHTML = item.series.name;
+                                tags.appendChild(series);
                             }
                         }
 
@@ -322,19 +326,35 @@ function init() {
             
                             right.append(hlist);
 
-                            let avgWaitPerA = document.createElement('p');
-                            avgWaitPerA.innerHTML = 'Average Wait: ' + avg + 'd';
-                            right.append(avgWaitPerA);
+                            if (item.shopHistory.length > 1) {
+                                let avgWaitPerA = document.createElement('p');
+                                avgWaitPerA.innerHTML = 'Average Wait: ' + avg + 'd';
+                                right.append(avgWaitPerA);
+                            }
                         }
 
                         if (item.id !== null) {
                             let id = document.createElement('p');
-                            id.innerHTML = 'ID: <a>' + item.id + '</a>';
+                            id.innerHTML = 'ID: <code>' + item.id + '</code>';
                             id.title = 'ID: ' + item.id;
                             id.onclick = function() {
                                 navigator.clipboard.writeText(item.id);
                             }
                             right.append(id);
+                        }
+
+                        if (item.gameplayTags.length > 0) {
+                            let gt = document.createElement('p');
+                            gt.innerHTML = 'Gameplay Tags';
+                            right.append(gt);
+
+                            let gtcode = document.createElement('div');
+                            gtcode.style.padding = '.5rem';
+                            gtcode.style.border = '1px solid gray';
+                            right.append(gtcode);
+                            for (let gtag of item.gameplayTags) {
+                                gtcode.innerHTML += '<p><code>' + gtag + '</code></p>';
+                            }
                         }
 
                         if (item.audio !== null) {
@@ -630,7 +650,13 @@ function init() {
                 let eText = document.createElement('h1');
                 eText.innerHTML = 'No cosmetics were found!';
                 let tipText = document.createElement('h3');
-                tipText.innerHTML = 'Are you looking for a cosmetic you don\'t know the name of? Go to <a class="green" href="search.html?q=' + params.get('q') + '">cosmetic search</a> and try again.';
+
+                let value = ''
+                if (params.has('q')) value = params.get('q');
+                if (params.has('id')) value = params.get('id');
+
+
+                tipText.innerHTML = 'Are you looking for a cosmetic you don\'t know the name of? Go to <a class="green" href="search.html?name=' + value + '">cosmetic search</a> and try again.';
                 content.append(eText, tipText);
             }
         }).catch(error => {

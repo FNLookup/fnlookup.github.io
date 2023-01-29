@@ -580,6 +580,7 @@ button.fn-button {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .shop-items-display .item-card, .search-objects .item-card {
@@ -1645,7 +1646,7 @@ button.fn-button {
 .item-info[data-rarity=lava]::before {
     border-top-color: #d19635;
 }
-.rarity-label[data-rarity=lava] {
+.rarity-label[data-rarity=lavaseries] {
     background-color: #d19635;
 }
 
@@ -1658,7 +1659,7 @@ button.fn-button {
 .item-info[data-rarity=frozen]::before {
     border-top-color: #c4dff7;
 }
-.rarity-label[data-rarity=frozen] {
+.rarity-label[data-rarity=frozenseries] {
     background-color: #c4dff7;
 }
 
@@ -1671,7 +1672,7 @@ button.fn-button {
 .item-info[data-rarity=dark]::before {
     border-top-color: #ff42e7;
 }
-.rarity-label[data-rarity=dark] {
+.rarity-label[data-rarity=darkseries] {
     background-color: #ff42e7;
 }
 
@@ -1684,7 +1685,7 @@ button.fn-button {
 .item-info[data-rarity=marvel]::before {
     border-top-color: #ef3537;
 }
-.rarity-label[data-rarity=marvel] {
+.rarity-label[data-rarity=marvelseries] {
     background-color: #ea3537;
 }
 
@@ -1697,7 +1698,7 @@ button.fn-button {
 .item-info[data-rarity=dc]::before {
     border-top-color: #6094ce;
 }
-.rarity-label[data-rarity=dc] {
+.rarity-label[data-rarity=dcuseries] {
     background-color: #6094ce;
 }
 
@@ -1710,7 +1711,7 @@ button.fn-button {
 .item-info[data-rarity=starwars]::before {
     border-top-color: #e7c413;
 }
-.rarity-label[data-rarity=starwars] {
+.rarity-label[data-rarity=columbusseries] {
     background-color: #e7c413;
 }
 
@@ -1723,7 +1724,7 @@ button.fn-button {
 .item-info[data-rarity=gaminglegends]::before {
     border-top-color: #8078ff;
 }
-.rarity-label[data-rarity=gaminglegends] {
+.rarity-label[data-rarity=platformseries] {
     background-color: #9790ff;
 }
 
@@ -1737,7 +1738,7 @@ button.fn-button {
 .item-info[data-rarity=icon]::before {
     border-top-color: #52e0e0;
 }
-.rarity-label[data-rarity=icon] {
+.rarity-label[data-rarity=creatorcollabseries] {
     background-color: #32a7a7;
 }
 
@@ -1750,7 +1751,7 @@ button.fn-button {
 .item-info[data-rarity=slurp]::before {
     border-top-color: #53f0ff;
 }
-.rarity-label[data-rarity=slurp] {
+.rarity-label[data-rarity=slurpseries] {
     background-color: #53f0ff;
 }
 
@@ -1763,7 +1764,7 @@ button.fn-button {
 .item-info[data-rarity=shadow]::before {
     border-top-color: #949494;
 }
-.rarity-label[data-rarity=shadow] {
+.rarity-label[data-rarity=shadowseries] {
     background-color: #949494;
 }
 

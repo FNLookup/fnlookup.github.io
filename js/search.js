@@ -102,6 +102,8 @@ function deleteFilters() {
 function downloadItems() {
     mainFilters();
 
+    document.getElementById('objects').innerHTML = '<img src="assets/images/loading.gif">';
+
     fetch(geturllang('https://fortniteapi.io/v2/items/list', 1), {
         headers: {'Authorization': keyFNAPIIo}
     }).then(response => response.json()).then(response => {
@@ -255,10 +257,12 @@ function downloadItems() {
             }, { children: result })
         );
 
+        clearChildren(document.getElementById('objects'));
+
         let p = new URLSearchParams(document.location.search);
         firstTime = false;
-        if (p.has('q') && firstTime === false) {
-            searchItems(p.get('q'));
+        if (p.has('name') && firstTime === false) {
+            searchItems(p.get('name'));
             firstTime = true;
         } else {
             generateItems();
@@ -355,13 +359,18 @@ function mainFilters() {
 
 function searchItems(urlname) {
     let nameorid = document.getElementById('iname').value;
-    if (urlname !== undefined) nameorid = urlname;
+    if (urlname !== undefined) {
+        nameorid = urlname;
+        document.getElementById('iname').value = urlname;
+    }
+
+    window.history.replaceState({ id: "100" }, nameorid + "Search - FNLookup", "/search.html" + (nameorid.length > 0 ? "?name=" + nameorid : ""));
 
     resetItems();
 
     let searchBarMatched = [];
     for (let item of items) {
-        if (item.name.toLowerCase().includes(nameorid.toLowerCase()) && !searchBarMatched.includes(item)) {
+        if ((item.name.toLowerCase().includes(nameorid.toLowerCase()) || item.id.toLowerCase().includes(nameorid.toLowerCase())) && !searchBarMatched.includes(item)) {
             searchBarMatched.push(item);
         }
     }
@@ -558,6 +567,8 @@ function generateItems() {
             }
 
         }
+
+        document.getElementById('item-search-count').innerHTML = scrollUseList.length
     }
 }
 
