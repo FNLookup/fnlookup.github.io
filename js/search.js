@@ -5,64 +5,6 @@ let itemLookMode = false;
 let appliedFilters = [];
 let scrollUseList = [];
 
-/*
-function makeFc(filters) {
-    let dropdownObject = document.getElementById('dropdown-object');
-    for (let filterClass of filters) {
-        let main = document.createElement('div');
-        main.classList.add('filter-choice');
-
-        let title = document.createElement('span');
-        title.classList.add('filter-class');
-        title.classList.add('links', 'pointer');
-        title.innerHTML = filterClass.name;
-        
-        let arrow = document.createElement('i');
-        arrow.classList.add('arrow');
-
-        title.append(arrow);
-        main.append(title);
-
-        let menu = document.createElement('div');
-        menu.classList.add('dropdown-menu', 'hidden');
-
-        title.addEventListener('click', function() {
-            menu.classList.toggle('hidden');
-        })
-
-        if (filterClass.objects !== undefined) {
-            for (let option of filterClass.objects) {
-                let item = document.createElement('li');
-                item.classList.add('dropdown-choice');
-    
-                let chbox = document.createElement('div');
-                chbox.classList.add('flex');
-    
-                let normalize = option.name.toLowerCase().replace(' ', '-').replace(',', '-');
-    
-                let checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.id = normalize;
-                checkbox.name = filterClass.backend;
-                checkbox.setAttribute('backend-value', option.backend.toLowerCase());
-    
-                let label = document.createElement('a');
-                label.innerHTML = option.name;
-    
-                chbox.append(checkbox);
-                chbox.append(label);
-    
-                item.append(chbox);
-    
-                menu.appendChild(item);
-            }
-        }
-
-        main.append(menu);
-        dropdownObject.appendChild(main);
-    }
-}*/
-
 function makeFilterAdvancedClass(filterObject) {
     let dropdownObject = document.getElementById('dropdown-object');
     let main = document.createElement('div');
@@ -96,9 +38,15 @@ function makeFilterAdvancedClass(filterObject) {
             objElement.innerHTML = object.name;
 
             objElement.onclick = function() {
-                if (!appliedFilters.includes(object)) {
-                    appliedFilters.push(object);
-                    updateFilters();
+                let ignoreFilterApply = false;
+                if (filterObject.ignoreCosmeticFilters !== undefined && !filterObject.ignoreCosmeticFilters)
+                    ignoreFilterApply = true;   
+
+                if (!ignoreFilterApply) {
+                    if (!appliedFilters.includes(object)) {
+                        appliedFilters.push(object);
+                        updateFilters();
+                    }
                 }
             }
 
@@ -154,11 +102,17 @@ function deleteFilters() {
 function downloadItems() {
     mainFilters();
 
-    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=id,introduction,images,displayAssets,name,type,rarity,series,gameplayTags', 1), {
+    fetch(geturllang('https://fortniteapi.io/v2/items/list', 1), {
         headers: {'Authorization': keyFNAPIIo}
     }).then(response => response.json()).then(response => {
         items = response.items;
         items = items.reverse();
+
+        for (let item of items) {
+            if (!item.name || item.name.length < 1 || item.name === '') {
+                item.name = item.id;
+            }
+        }
 
         scrollUseList = items;
 
@@ -218,6 +172,68 @@ function downloadItems() {
                     }
                 ]
             });
+
+            makeFilterAdvancedClass({
+                name: 'Sort',
+                classes: [
+                    {
+                        className: 'Name',
+                        objects: [
+                            { name: 'Name (A-Z)', type: 'Sort.Name.A-Z', class: 'Sort'},
+                            { name: 'Name (Z-A)', type: 'Sort.Name.Z-A', class: 'Sort'}
+                        ]
+                    },
+                    {
+                        className: 'Description',
+                        objects: [
+                            { name: 'Description (A-Z)', type: 'Sort.Description.A-Z', class: 'Sort'},
+                            { name: 'Description (Z-A)', type: 'Sort.Description.Z-A', class: 'Sort'}
+                        ]
+                    },
+                    {
+                        className: 'Set',
+                        objects: [
+                            { name: 'Set (A-Z)', type: 'Sort.Set.A-Z', class: 'Sort'},
+                            { name: 'Set (Z-A)', type: 'Sort.Set.Z-A', class: 'Sort'}
+                        ]
+                    },
+                    {
+                        className: 'Rarity',
+                        objects: [
+                            { name: 'Rarity (A-Z)', type: 'Sort.Rarity.A-Z', class: 'Sort'},
+                            { name: 'Rarity (Z-A)', type: 'Sort.Rarity.Z-A', class: 'Sort'}
+                        ]
+                    },
+                    {
+                        className: 'Series',
+                        objects: [
+                            { name: 'Series (A-Z)', type: 'Sort.Series.A-Z', class: 'Sort'},
+                            { name: 'Series (Z-A)', type: 'Sort.Series.Z-A', class: 'Sort'}
+                        ]
+                    },
+                    {
+                        className: 'Shop Appearances',
+                        objects: [
+                            { name: 'Longest Wait', type: 'Sort.Shop.LongestWait', class: 'Sort'},
+                            { name: 'Most Recent in Shop', type: 'Sort.Shop.MostRecent', class: 'Sort'}
+                        ]
+                    },
+                    {
+                        className: 'Added',
+                        objects: [
+                            { name: 'Newest', type: 'Sort.Added.Newest', class: 'Sort'},
+                            { name: 'Oldest', type: 'Sort.Added.Oldest', class: 'Sort'}
+                        ]
+                    },
+                    {
+                        className: 'API Interest',
+                        objects: [
+                            { name: 'Highest', type: 'Sort.Interest.Highest', class: 'Sort'},
+                            { name: 'Lowest', type: 'Sort.Interest.Lowest', class: 'Sort'}
+                        ]
+                    }
+                ]
+            })
         })
 
         let allGameplayTags = []
@@ -247,6 +263,20 @@ function downloadItems() {
         } else {
             generateItems();
         }
+
+        var scrollPercentage;
+        window.onscroll = function() {
+            var h = document.documentElement, 
+                b = document.body,
+                st = 'scrollTop',
+                sh = 'scrollHeight';
+        
+            scrollPercentage = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+        
+            if (scrollPercentage >= 95) {
+                generateMoreItems();
+            }
+        };        
     }).catch(error => {
         let eText = document.createElement('h1');
         console.error(error);
@@ -343,6 +373,19 @@ function searchItems(urlname) {
     const typeFilters = [];
     const rarityFilters = [];
     const seriesFilters = [];
+
+    const sorts = [];
+    
+    var encounteredOne = false;
+    for (let filter of appliedFilters) {
+        if (encounteredOne && filter.class === 'Sort') {
+            appliedFilters.splice(appliedFilters.indexOf(filter), 1);
+            updateFilters();
+            return;
+        }
+        if (filter.class === 'Sort') encounteredOne = true;
+    }
+
     for (let filter of appliedFilters) {
         if (filter.class === 'Type')
             typeFilters.push(filter.type)
@@ -360,9 +403,134 @@ function searchItems(urlname) {
                 gameplayTagFilters.push('Cosmetics.UserFacingFlags.Reactive.WeaponFire', 'Cosmetics.UserFacingFlags.Reactive.TimeOfDay')
             }
         }
+        if (filter.class === 'Sort') {
+            sorts.push(filter.type);
+        }
     }
 
     matchingItems = filterItems(searchBarMatched, typeFilters, rarityFilters, seriesFilters, gameplayTagFilters);
+
+    if (sorts.length > 0) {
+        let sort = sorts[0]
+        if (['Sort.Name.A-Z', 'Sort.Name.Z-A', 'Sort.Description.A-Z', 'Sort.Description.Z-A', 'Sort.Set.A-Z', 'Sort.Set.Z-A', 'Sort.Rarity.A-Z', 'Sort.Rarity.Z-A', 'Sort.Series.A-Z', 'Sort.Series.Z-A'].includes(sort)) {
+            if (['Sort.Set.A-Z', 'Sort.Set.Z-A'].includes(sort)) {
+                matchingItems = matchingItems.filter(function(item) {
+                    return item.set != null;
+                });
+            }
+            if (['Sort.Series.A-Z', 'Sort.Series.Z-A'].includes(sort)) {
+                matchingItems = matchingItems.filter(function(item) {
+                    return item.series != null;
+                });
+            }
+
+            matchingItems.sort(function(a, b) {
+                // ignore upper and lowercase
+                var nameA = a.name.toUpperCase();
+                var nameB = b.name.toUpperCase();
+
+                if (sort === 'Sort.Name.Z-A') {
+                    nameA = b.name.toUpperCase();
+                    nameB = a.name.toUpperCase();
+                } else if (sort === 'Sort.Description.A-Z') {
+                    nameA = a.description.toUpperCase();
+                    nameB = b.description.toUpperCase();
+                } else if (sort === 'Sort.Description.Z-A') {
+                    nameA = b.description.toUpperCase();
+                    nameB = a.description.toUpperCase();
+                } else if (sort === 'Sort.Set.A-Z') {
+                    nameA = a.set.name.toUpperCase();
+                    nameB = b.set.name.toUpperCase();
+                } else if (sort === 'Sort.Set.Z-A') {
+                    nameA = b.set.name.toUpperCase();
+                    nameB = a.set.name.toUpperCase();
+                } else if (sort === 'Sort.Rarity.A-Z') {
+                    nameA = a.rarity.name.toUpperCase();
+                    nameB = b.rarity.name.toUpperCase();
+                } else if (sort === 'Sort.Rarity.Z-A') {
+                    nameA = b.rarity.name.toUpperCase();
+                    nameB = a.rarity.name.toUpperCase();
+                } else if (sort === 'Sort.Series.A-Z') {
+                    if (a.series === null || b.series === null) {
+                        return 0;
+                    }
+                    nameA = a.series.name.toUpperCase();
+                    nameB = b.series.name.toUpperCase();
+                } else if (sort === 'Sort.Series.Z-A') {
+                    if (a.series === null || b.series === null) {
+                        return 0;
+                    }
+                    nameA = b.series.name.toUpperCase();
+                    nameB = a.series.name.toUpperCase();
+                }
+
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                // names must be equal
+                return 0;
+            });
+        } 
+        if (['Sort.Shop.LongestWait', 'Sort.Shop.MostRecent'].includes(sort)) {
+            matchingItems = matchingItems.filter(function(item) {
+                return item.lastAppearance != null;
+            });
+
+            if (sort === 'Sort.Shop.MostRecent') {
+                matchingItems.sort(function(a, b) {
+                    return new Date(b.lastAppearance) - new Date(a.lastAppearance);
+                });     
+            } 
+
+            if (sort === 'Sort.Shop.LongestWait') {
+                //Calculate the wait time for each item in days
+                matchingItems.forEach(function(item) {
+                    var current_date = new Date();
+                    var lastAppearance = new Date(item.lastAppearance);
+                    item.wait = (current_date - lastAppearance) / (1000 * 60 * 60 * 24);
+                });
+
+                //Sort the items by the wait time in ascending order
+                matchingItems.sort(function(a, b) {
+                    return b.wait - a.wait;
+                });
+            }
+        }
+        if (['Sort.Added.Newest', 'Sort.Added.Oldest'].includes(sort)) {
+            if (sort === 'Sort.Added.Newest') {
+                matchingItems.sort(function(a, b) {
+                    var date1 = new Date(a.added.date);
+                    var date2 = new Date(b.added.date);
+                    return date2 - date1;
+                });                
+            }
+
+            if (sort === 'Sort.Added.Oldest') {
+                matchingItems.sort(function(a, b) {
+                    var date1 = new Date(a.added.date);
+                    var date2 = new Date(b.added.date);
+                    return date1 - date2;
+                });
+            }
+        }
+        if (['Sort.Interest.Lowest', 'Sort.Interest.Highest'].includes(sort)) {
+            if (sort === 'Sort.Interest.Lowest') {
+                matchingItems.sort(function(a, b) {
+                    return a.interest - b.interest;
+                });                
+            }
+
+            if (sort === 'Sort.Interest.Highest') {
+                matchingItems.sort(function(a, b) {
+                    return b.interest - a.interest;
+                });
+            }
+        }
+    }
+
     scrollUseList = matchingItems;
 
     clearChildren(document.getElementById('objects'));
@@ -384,9 +552,11 @@ function filterItems(filteredItems, chosenType, chosenRarity, chosenSeries, chos
 function generateItems() {
     if (scrollUseList !== null) {
         for (let i = 0; i < scrollUseList.length; i++) {
+
             if (i >= currentLoadIndex[0] && i <= currentLoadIndex[1]) {
                 makeItemCard(scrollUseList[i]);
             }
+
         }
     }
 }
@@ -413,6 +583,7 @@ function makeItemCard(item) {
 
     var hold = document.createElement("div");
     hold.classList.add("item-info");
+    hold.setAttribute('data-rarity', item.rarity.id.toLowerCase());
 
     var title = document.createElement('span');
     title.innerHTML = item.name;
@@ -432,12 +603,14 @@ function makeItemCard(item) {
     if (item.images.background != null)
         img_src = item.images.background;
 
-    if (item.displayAssets.length > 0) {
-        let displayAsset = item.displayAssets[0];
-        if (displayAsset.url !== null)
-            img_src = displayAsset.url;
-        if (displayAsset.background !== null)
-            img_src = displayAsset.background;
+    if (item.displayAssets != null) {
+        if (item.displayAssets.length > 0) {
+            let displayAsset = item.displayAssets[0];
+            if (displayAsset.url !== null)
+                img_src = displayAsset.url;
+            if (displayAsset.background !== null)
+                img_src = displayAsset.background;
+        }
     }
 
     let ic = document.createElement('div');
