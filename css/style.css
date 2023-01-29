@@ -1966,6 +1966,44 @@ tr .player-name {
     color: white;
 }
 
+.filters-delete-btn {
+    font: 15px burbank-big;
+    border-radius: 15px;
+    margin: .3rem;
+    padding: .8rem;
+    background-color: transparent;
+    transition: .15s background-color, .15s color;
+    font-style: italic;
+    text-transform: uppercase;
+    border: 1px solid #f04747;
+    color: #f04747;
+    height: 100%;
+    white-space: nowrap;
+}
+.filters-delete-btn:hover {
+    background-color: #f04747;
+    color: white;
+}
+
+.see-more-btn {
+    font: 15px burbank-big;
+    border-radius: 15px;
+    margin: .3rem;
+    padding: .8rem;
+    background-color: transparent;
+    transition: .15s background-color, .15s color;
+    font-style: italic;
+    text-transform: uppercase;
+    border: 1px solid #6df5ff;
+    color: #6df5ff;
+    height: 100%;
+    white-space: nowrap;
+}
+.see-more-btn:hover {
+    background-color: #6df5ff;
+    color: white;
+}
+
 .filter-class-container {
     max-width: 300px;
     padding: 1rem;

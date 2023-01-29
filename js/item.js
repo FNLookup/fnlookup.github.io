@@ -337,7 +337,17 @@ function init() {
                             right.append(id);
                         }
 
-                        if (item.type.id == 'music') {
+                        if (item.audio !== null) {
+                            right.innerHTML += '<h3>Listen</h3>';
+
+                            let audio = gne('audio');
+                            audio.controls = true;
+                            audio.loop = true;
+                            audio.classList.add('audio-fn');
+                            right.append(audio);
+                            audio.src = item.audio;
+                            audio.load();
+                        } else if (item.type.id == 'music') {
                             fetch('assets/local/music-packs/ResourceIDs.json').then(r => r.json()).then(r => {
 
                                 if (r.items[item.id] !== undefined) {
