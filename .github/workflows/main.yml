@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  tweet-commit:
+    runs-on: ubuntu-latest
+    name: Tweet push commit
+    steps:
+      - name: Echo tweet content
+        run: echo "#FNLookup | New commit for FNLookup\n${{ github.actor }} - ${{ github.event_name }} (${{ github.ref_name }})\nView commit - https://www.github.com/tposejank/fnlookup/commit/${{ github.sha }}\nView page - https://tposejank.github.io/fnlookup"
+        
+      - name: Tweet
+        uses: obasekietinosa/tweet-for-code-review-action@v1
+        with:
+          api-key: ${{ secrets.TWITTER_API_KEY }}
+          tweet-body: "#FNLookup | New commit for FNLookup\n${{ github.actor }} - ${{ github.event_name }} (${{ github.ref_name }})\nView commit - https://www.github.com/tposejank/fnlookup/commit/${{ github.sha }}\nView page - https://tposejank.github.io/fnlookup"

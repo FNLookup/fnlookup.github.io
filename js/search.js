@@ -1,5 +1,5 @@
 let currentLoadIndex = [0, 24];
-let itemsPerLoad = 25;
+let itemsPerLoad = 20;
 let itemLookMode = false;
 
 let appliedFilters = [];
