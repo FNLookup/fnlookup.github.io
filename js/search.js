@@ -364,7 +364,7 @@ function searchItems(urlname) {
         document.getElementById('iname').value = urlname;
     }
 
-    window.history.replaceState({ id: "100" }, nameorid + "Search - FNLookup", "/search.html" + (nameorid.length > 0 ? "?name=" + nameorid : ""));
+    window.history.replaceState({ id: "100" }, nameorid + " - Search - FNLookup", "fnlookup/search.html" + (nameorid.length > 0 ? "?name=" + nameorid : ""));
 
     resetItems();
 
