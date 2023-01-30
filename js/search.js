@@ -364,7 +364,8 @@ function searchItems(urlname) {
         document.getElementById('iname').value = urlname;
     }
 
-    window.history.replaceState({ id: "100" }, nameorid + " - Search - FNLookup", "fnlookup/search.html" + (nameorid.length > 0 ? "?name=" + nameorid : ""));
+    // window.history.replaceState({ id: "100" }, nameorid + " - Search - FNLookup", "fnlookup/search.html" + (nameorid.length > 0 ? "?name=" + nameorid : ""));
+    // this code wont work in github pages
 
     resetItems();
 
