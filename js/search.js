@@ -18,10 +18,10 @@ function makeFilterAdvancedClass(filterObject) {
     title.append(arrow);
     main.append(title);
     let menu = document.createElement('div');
-    menu.classList.add('dropdown-menu', 'hidden');
+    menu.classList.add('dropdown-menu', 'hidden-dropdown');
 
     title.addEventListener('click', function() {
-        menu.classList.toggle('hidden');
+        menu.classList.toggle('hidden-dropdown');
     })
 
     for (let filterClass of filterObject.classes) {

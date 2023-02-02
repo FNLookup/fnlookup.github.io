@@ -500,6 +500,20 @@ button.fn-button {
     background-color: #111213;
     background-clip: padding-box;
     border-radius: 15px;
+
+    pointer-events: all;
+    transform: translateY(0);
+    opacity: 1;
+    scale: 1;
+    transition: opacity .15s cubic-bezier(0,0.1,0.1,1), transform .15s cubic-bezier(0.23, 1, 0.320, 1), scale .15s cubic-bezier(0,0.1,0.1,1);
+
+    box-shadow: 0 8px 24px #010409;
+}
+.dropdown-menu.hidden-dropdown {
+    transform: translateY(-3rem);
+    opacity: 0;
+    scale: .9;
+    pointer-events: none;
 }
 .dropdown-menu::-webkit-scrollbar-track {
     background-color: #111213;
@@ -2105,30 +2119,30 @@ tr .player-name {
 }
 
 .filter-class-object[type="Cosmetics.UserFacingFlags.HasVariants"]::before,
-.filter-class-object[type="Cosmetics.UserFacingFlags.HasUpgradeQuests"]::before { background-image: url(/assets/icons/cosmetics/styles.png); }
-.filter-class-object[type="Cosmetics.UserFacingFlags.Enlightened"]::before { background-image: url(/assets/icons/cosmetics/enlightened.png); }
-.filter-class-object[type="Cosmetics.UserFacingFlags.Reactive"]::before { background-image: url(/assets/icons/cosmetics/reactive.png); }
-.filter-class-object[type="Cosmetics.UserFacingFlags.Emote.Traversal"]::before { background-image: url(/assets/icons/cosmetics/traversal.png); }
-.filter-class-object[type="Cosmetics.UserFacingFlags.Synced"]::before { background-image: url(/assets/icons/cosmetics/synced.png); }
-.filter-class-object[type="Cosmetics.UserFacingFlags.BuiltInEmote"]::before { background-image: url(/assets/icons/cosmetics/builtin.png); }
-.filter-class-object[type="CosmeticsCustom.Flags.Animated"]::before { background-image: url(/assets/icons/cosmetics/animated.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.HasUpgradeQuests"]::before { background-image: url(../assets/icons/cosmetics/styles.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.Enlightened"]::before { background-image: url(../assets/icons/cosmetics/enlightened.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.Reactive"]::before { background-image: url(../assets/icons/cosmetics/reactive.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.Emote.Traversal"]::before { background-image: url(../assets/icons/cosmetics/traversal.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.Synced"]::before { background-image: url(../assets/icons/cosmetics/synced.png); }
+.filter-class-object[type="Cosmetics.UserFacingFlags.BuiltInEmote"]::before { background-image: url(../assets/icons/cosmetics/builtin.png); }
+.filter-class-object[type="CosmeticsCustom.Flags.Animated"]::before { background-image: url(../assets/icons/cosmetics/animated.png); }
 /*Cosmetics*/
-.filter-class-object[type="backpack"]::before { background-image: url(/assets/icons/cosmetics/icons/backpack.svg); }
-.filter-class-object[type="emote"]::before { background-image: url(/assets/icons/cosmetics/icons/emote.svg); }
-.filter-class-object[type="glider"]::before { background-image: url(/assets/icons/cosmetics/icons/glider.svg); }
-.filter-class-object[type="emoji"]::before { background-image: url(/assets/icons/cosmetics/icons/emoji.svg); }
-.filter-class-object[type="loadingscreen"]::before { background-image: url(/assets/icons/cosmetics/icons/loadingscreen.svg); }
-.filter-class-object[type="outfit"]::before { background-image: url(/assets/icons/cosmetics/icons/outfit.svg); }
-.filter-class-object[type="pickaxe"]::before { background-image: url(/assets/icons/cosmetics/icons/pickaxe.svg); }
-.filter-class-object[type="contrail"]::before { background-image: url(/assets/icons/cosmetics/icons/contrail.svg); }
-.filter-class-object[type="cosmeticvariant"]::before { background-image: url(/assets/icons/cosmetics/icons/cosmeticvariant.png); }
-.filter-class-object[type="bundle"]::before { background-image: url(/assets/icons/cosmetics/icons/bundle.svg); }
-.filter-class-object[type="spray"]::before { background-image: url(/assets/icons/cosmetics/icons/spray.svg); }
-.filter-class-object[type="toy"]::before { background-image: url(/assets/icons/cosmetics/icons/toy.svg); }
-.filter-class-object[type="pet"]::before { background-image: url(/assets/icons/cosmetics/icons/pet.svg); }
-.filter-class-object[type="music"]::before { background-image: url(/assets/icons/cosmetics/icons/music.svg); }
-.filter-class-object[type="wrap"]::before { background-image: url(/assets/icons/cosmetics/icons/wrap.svg); }
-.filter-class-object[type="bannertoken"]::before { background-image: url(/assets/icons/cosmetics/icons/bannertoken.svg); }
+.filter-class-object[type="backpack"]::before { background-image: url(../assets/icons/cosmetics/icons/backpack.svg); }
+.filter-class-object[type="emote"]::before { background-image: url(../assets/icons/cosmetics/icons/emote.svg); }
+.filter-class-object[type="glider"]::before { background-image: url(../assets/icons/cosmetics/icons/glider.svg); }
+.filter-class-object[type="emoji"]::before { background-image: url(../assets/icons/cosmetics/icons/emoji.svg); }
+.filter-class-object[type="loadingscreen"]::before { background-image: url(../assets/icons/cosmetics/icons/loadingscreen.svg); }
+.filter-class-object[type="outfit"]::before { background-image: url(../assets/icons/cosmetics/icons/outfit.svg); }
+.filter-class-object[type="pickaxe"]::before { background-image: url(../assets/icons/cosmetics/icons/pickaxe.svg); }
+.filter-class-object[type="contrail"]::before { background-image: url(../assets/icons/cosmetics/icons/contrail.svg); }
+.filter-class-object[type="cosmeticvariant"]::before { background-image: url(../assets/icons/cosmetics/icons/cosmeticvariant.png); }
+.filter-class-object[type="bundle"]::before { background-image: url(../assets/icons/cosmetics/icons/bundle.svg); }
+.filter-class-object[type="spray"]::before { background-image: url(../assets/icons/cosmetics/icons/spray.svg); }
+.filter-class-object[type="toy"]::before { background-image: url(../assets/icons/cosmetics/icons/toy.svg); }
+.filter-class-object[type="pet"]::before { background-image: url(../assets/icons/cosmetics/icons/pet.svg); }
+.filter-class-object[type="music"]::before { background-image: url(../assets/icons/cosmetics/icons/music.svg); }
+.filter-class-object[type="wrap"]::before { background-image: url(../assets/icons/cosmetics/icons/wrap.svg); }
+.filter-class-object[type="bannertoken"]::before { background-image: url(../assets/icons/cosmetics/icons/bannertoken.svg); }
 
 .filter-class-object[type=Common] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_common.png); }
 .filter-class-object[type=Epic] { background-image: url(https://media.fortniteapi.io/images/rarities/v2/rarity_epic.png); }
