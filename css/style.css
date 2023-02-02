@@ -311,7 +311,7 @@ i.x-btn::before {
     float: right;
 }
 
-.item-search-container input[type=text]:not(.sac-code-box) {
+input[type=text]:not(.sac-code-box) {
     border: 1px solid gray;
     color: white;
     background-color: black;
@@ -320,9 +320,9 @@ i.x-btn::before {
 
     font-family: 'Poppins', serif;
 }
-.item-search-container input[type=text]:not(.sac-code-box):focus { background-color: rgb(50, 50, 50); }
+input[type=text]:not(.sac-code-box):focus { background-color: rgb(50, 50, 50); }
 
-.item-search-container button {
+button {
     border: 1px solid gray;
     color: white;
     background-color: black;
@@ -331,7 +331,7 @@ i.x-btn::before {
 
     font-family: 'Poppins', serif;
 }
-.item-search-container button:hover { background-color: rgb(50, 50, 50); }
+button:hover { background-color: rgb(50, 50, 50); }
 
 .item-search-container button {
     border-top-left-radius: 0;
@@ -1919,8 +1919,23 @@ tr .player-name {
     text-transform: uppercase;
 }
 
-.cosmetic-search-container input,
 .cosmetic-search-container button {
+    font: 15px burbank-big;
+    font-style: italic;
+    text-transform: uppercase;
+    color: white;
+
+    padding: .8rem;
+    margin: 0px 0.25rem;
+    background-color: #111213;
+
+    border-radius: 15px;
+    transition: border .15s;
+    border: 1px solid transparent;
+    outline: none;
+}
+
+.cosmetic-search-container input[type=text] {
     font: 15px burbank-big;
     font-style: italic;
     text-transform: uppercase;
