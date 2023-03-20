@@ -1,4 +1,3 @@
-keyFNAPI = '***REMOVED***'
 keyFNAPIIo = '***REMOVED***'
 marioDancing = 'https://cdn.discordapp.com/emojis/1036788611925950504.gif?size=96&quality=lossless'
 
@@ -12,19 +11,15 @@ if (localStorage.requestLanguage === undefined) {
         if (window.supportedLanguages.includes(window.navigator.language)) {
             localStorage.requestLanguage = window.navigator.language;
             console.log('changed language to ' + window.navigator.language);
-        } else
-            localStorage.requestLanguage = window.defaultLanguage;
-        
-        if (window.navigator.language.toLowerCase().startsWith('es-')) {
-            console.log(window.navigator.language + ' changed to es-419');
-            localStorage.requestLanguage = 'es-419';
-        }
+        } else localStorage.requestLanguage = window.defaultLanguage;
+        if (window.navigator.language.toLowerCase().startsWith('es-')) localStorage.requestLanguage = 'es-419';
+        if (window.navigator.language.toLowerCase() == 'es-ES') localStorage.requestLanguage = 'es';
     } else
         localStorage.requestLanguage = window.defaultLanguage;
 }
 
-function debugFetch(url, oauth) {
-    fetch(url, {headers: { 'Authorization': oauth }}).then(r => r.json()).then(r => {
+function debugFetch(url) {
+    fetch(url, {headers: { 'Authorization': keyFNAPIIo }}).then(r => r.json()).then(r => {
         console.log('DebugFetch done\n', r)
     });
 }
@@ -51,23 +46,6 @@ function geturllang(url, type) {
     }
 }
 
-function otherargument(url, arg) {
-    let t = '?';
-    if (url.split('?').length > 1) {
-        t = '&';
-    }
-
-    return url + t + arg + '=' + localStorage.requestLanguage
-}
-function oac(url, arg, value) {
-    let t = '?';
-    if (url.split('?').length > 1) {
-        t = '&';
-    }
-
-    return url + t + arg + '=' + value
-}
-
 function getFlag(code) {
     return 'https://laendercode.net/img/flag-icon-css/flags/4x3/' + code.toLowerCase() + '.svg'
 }
@@ -90,4 +68,8 @@ function getAllowedTournamentDevice(device) {
         case 'PS5': return 'PS5';
         default: return 'Unknown device (' + device + ')';
     }
+}
+
+function getUnixTimestampDate(unixTimestamp) {
+    return new Date(unixTimestamp * 1000).toLocaleString().replace(',', '').replace(/:.. /, ' ');
 }

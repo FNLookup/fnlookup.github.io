@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="FNLookup is an easy browsing interface for most Fortnite related content.">
+    <meta name="description" content="AES Keys allow dataminers to find files in Fortnite's archives. Use these keys in FModel to decrypt the .pak and .utoc/.ucas packages.">
     <meta name="author" content="tposejank">
-    <title>Item - FNLookup</title>
+    <title>AES Keys - FNLookup</title>
     <link rel="icon" href="assets/icons/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +14,8 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
-    <script src="js/item.js" type="text/javascript"></script>
-    <script src="https://fortnite.gg/data/items/all-v2.en.js"></script> <!--lol i cracked the code-->
+
+    <script src="js/aes-mappings.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -28,9 +29,9 @@
                 <div class="nav-main-buttons">
                     <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
                     <a class="nav-logo" href="index.html">
-<p class="fn">FN</p>
-<p class="lookup">Lookup</p>
-</a>
+                        <p class="fn">FN</p>
+                        <p class="lookup">Lookup</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -41,8 +42,27 @@
         <script>i()</script>
     </div>
 
-    <div class="content" id="page-content">
-        <script>init()</script>
+    <div class="content">
+        <h1 id="fn-version"></h1>
+        <h3 id="key-count"></h3>
+
+        <div>
+            <hr> <h1>Dynamic Keys</h1>
+
+            <div id="aes-table" style="padding: 1rem;"></div>
+
+            <hr> <h1>Unloaded Keys</h1>
+
+            <div id="unloaded-table" style="padding: 1rem;"></div>
+        </div>
+
+        <script>downloadAes()</script>
+
+        <h1>Mappings</h1>
+
+        <div id="mappings-table"></div>
+
+        <script>downloadMappings();</script>
     </div>
 </body>
 </html>

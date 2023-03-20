@@ -47,6 +47,18 @@ body {
     background-color: rgba(88, 88, 88, 0.5);
 }
 
+/*https://fortniteapi.io/favicon.ico*/
+.watermark-container {
+    display: flex;
+    position: absolute;
+    padding: 1rem;
+    bottom: 0;
+    right: 0;
+}
+.watermark-container img {
+    opacity: .5;
+}
+
 .news-item-info {
     position: absolute;
     bottom: 0;

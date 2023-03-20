@@ -1,22 +1,14 @@
 shopBasic = false;
-
+let registeredSections = [];
 // Set the date we're counting down to
 var today = new Date();
 var countDownDate = new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate() + 1, 0, 0, 0).getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
-
-    // Get today's date and time in utc
-
     var now_local = new Date();
     var now = new Date(now_local.getUTCFullYear(), now_local.getUTCMonth(), now_local.getUTCDate(), now_local.getUTCHours(), now_local.getUTCMinutes(), now_local.getUTCSeconds());
-
-    // Find the distance between now and the count down date
     var distance = countDownDate - now;
-
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -24,8 +16,6 @@ var x = setInterval(function() {
     if (!shopBasic) {
         document.getElementById("item-timer").innerHTML = hours + "h " +
         minutes + "m " + seconds + "s";
-
-        // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
             var secondsUntilRefresh = 5;
@@ -45,9 +35,50 @@ var x = setInterval(function() {
     }
 }, 500);
 
-function createItems() {
-    let registeredSections = [];
+function constructItemShop() {
+    let params = new URLSearchParams(window.location.search);
+    if (params.has('date')) {
+        let goalDate = params.get('date');
+        let listMatching = []
 
+        fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=name,id,displayAssets,images,shopHistory,rarity,type,price', 1), {
+            headers: {'Authorization': keyFNAPIIo}
+        }).then(data => data.json()).then(data => {
+            listMatching = data.items.filter(item => item.shopHistory && item.shopHistory.includes(goalDate));
+
+            for (let item of listMatching) {
+                makeShopCard({
+                    section: {
+                        name: 'Item Shop for ' + getFormatDate(new Date(goalDate)),
+                        landingPriority: 0
+                    },
+                    rarity: {
+                        id: item.rarity.id
+                    },
+                    mainId: item.id,
+                    mainType: item.type.id,
+                    displayName: item.name,
+                    price: {
+                        finalPrice: item.price,
+                        regularPrice: item.price
+                    },
+                    displayType: item.type.name,
+                    displayAssets: item.displayAssets,
+                    images: item.images,
+                    banner: null
+                }, registeredSections);
+            }
+        });
+
+        return true;
+    }
+
+    return false;
+}
+
+function createItems() {
+    if (constructItemShop()) return;
+    
     fetch(geturllang("https://fortniteapi.io/v2/shop", 1), {
         headers: { 'Authorization': keyFNAPIIo}
     }).then(response=>response.json()).then(response=>{
@@ -229,28 +260,44 @@ function makeShopCard(item, registeredSections) {
             img_src = displayAsset.background;
 
         img_obj.src = img_src;
-        img_obj.setAttribute("title", item.displayName + ' for ' + item.price.finalPrice + ' VBucks');
+        img_obj.setAttribute("title", item.displayName + ' for ' + item.price.finalPrice + ' V-Bucks');
         img_obj.setAttribute('otype', item.mainType);
-        img_obj.classList.add("style-picture");
+        img_obj.classList.add("shop-picture");
         
-        if (i === 0) img_obj.classList.add('current-style');
+        if (i === 0) img_obj.classList.add('first-image', 'current-showcase-style');
+        if (i === item.displayAssets.length - 1) img_obj.classList.add('last-image');
 
         images.push(img_obj);
         ic.appendChild(img_obj);
     }
     obj.append(ic);
 
+    let cycleSecs = 3
+
     if (item.displayAssets.length > 1) {
         setInterval(function() {
+            let lastImage = currentImage;
+
             currentImage ++;
             if (currentImage > images.length - 1) currentImage = 0;
 
-            images[currentImage].classList.add('current-style');
+            images[currentImage].classList.add('current-showcase-style');
             for (let i = 0; i < images.length; i++) {
-                if (i !== currentImage) 
-                    images[i].classList.remove('current-style');
+                if (images.length == 2) {
+                    if (i !== currentImage) images[i].classList.remove('current-showcase-style');
+                } else {
+                    if (i !== currentImage - 1 && 
+                        i != currentImage) images[i].classList.remove('current-showcase-style');
+
+                    if (currentImage == 0) {
+                        images[images.length - 2].classList.add('go-away-instantly');
+                    }
+                    if (currentImage == images.length - 3) {
+                        images[images.length - 2].classList.remove('go-away-instantly');
+                    }
+                }
             }
-        }, 5000);
+        }, (cycleSecs * 1000));
     }
 
     if (item.banner !== null) {
