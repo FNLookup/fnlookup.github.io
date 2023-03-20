@@ -1,5 +1,7 @@
 function doTable() {
     fetch('assets/local/epic/hype-leaderboard.json').then(r => r.json()).then(r => {
+        document.getElementById('last-update').innerText += ' ' + getFormatDate(new Date(r.updatedTime))
+        
         let nationalities = [];
 
         for (let entry of r.entries) {

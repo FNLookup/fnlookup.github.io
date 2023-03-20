@@ -1,3 +1,5 @@
+let demoVideo = undefined;
+
 function init() {
     var params = new URLSearchParams(window.location.search);
     if (params.has('q') || params.has('id')) {
@@ -228,8 +230,9 @@ function init() {
                         }
 
                         if (item.set != null) {
-                            let set = document.createElement('h3');
-                            set.innerHTML = item.set.partOf;
+                            let set = document.createElement('a');
+                            set.href = 'set.html?id=' + item.set.id;
+                            set.innerHTML = '<h3>' + item.set.partOf + '</h3>';
                             right.appendChild(set);
 
                             for (let i of allItems) {
@@ -287,28 +290,24 @@ function init() {
                                 row.append(left, right);
                                 hlist.append(row);
 
-                                let date = document.createElement('p');
+                                let date = document.createElement('a');
                                 var hdate = new Date(appearanceDate);
                                 date.innerHTML = getFormatDate(hdate);
                                 date.classList.add('shop-history-element');
 
                                 left.append(date);
-                                
-                                if (i === 0) {
-                                    date.classList.add('flex-wrap');
-            
-                                    let tagRel = document.createElement('a');
-                                    tagRel.classList.add('shop-history-tag');
-                                    tagRel.innerHTML = 'Release';
-                                    date.appendChild(tagRel);
-                                }
 
                                 var today = new Date();
                                 var dsince = Math.floor((today.getTime() - hdate.getTime()) / (1000 * 3600 * 24));
 
                                 let ds = gne('a');
                                 ds.innerHTML = dsince + 'd';
+
                                 if (dsince == 0) ds.innerHTML = '<a href="item-shop.html">Item Shop</a>';
+                                else {
+                                    date.href = 'item-shop.html?date=' + appearanceDate;
+                                }
+
                                 right.append(ds);
 
                                 if (j !== item.shopHistory.length-1) {
@@ -398,8 +397,14 @@ function init() {
 
                         mainObject.append(bottom);
 
+                        let rowItem = 1;
+                        let rows = -1;
+
                         if (item.styles != null) {
                             if (item.styles.length > 0) {
+                                let allStyleObjects = []
+                                let selectedStyleOfRows = []
+
                                 let styleContainer = document.createElement('div');
                                 styleContainer.classList.add('d-50-media');
                                 bottom.append(styleContainer);
@@ -409,9 +414,12 @@ function init() {
                                 styleContainer.append(parttitle);
 
                                 let rStyleTabs = [];
-                                for (let style of item.styles) {
+                                for (let a in item.styles) {
+                                    let style = item.styles[a];
                                     let box;
                                     let key = 'box_' + style.channelName.toLowerCase();
+
+                                    let isNewRow = false;
 
                                     if (!rStyleTabs.includes(style.channelName)) {
                                         let title = document.createElement('h2');
@@ -421,10 +429,15 @@ function init() {
                                         box = document.createElement('div');
                                         box.classList.add('flex');
                                         box.classList.add('flex-wrap');
+                                        box.classList.add('variants');
                                         box.id = key;
                                         styleContainer.append(box);
 
                                         rStyleTabs.push(style.channelName)
+
+                                        rowItem = 1;
+                                        rows++;
+                                        isNewRow = true;
                                     } else {
                                         box = document.getElementById(key);
                                     }
@@ -442,13 +455,98 @@ function init() {
                                     parent.innerHTML = style.name;
                                     parent.append(image);
 
+                                    parent.setAttribute('style-row', rows);
+                                    parent.setAttribute('style-row-item', rowItem);
+                                    if (rowItem == 1) parent.setAttribute('is-selected', true)
+                                    else parent.setAttribute('is-selected', false)
+
+                                    if (isNewRow) {
+                                        selectedStyleOfRows.push(parent);
+                                    }
+
+                                    parent.onclick = () => {
+                                        parent.setAttribute('is-selected', true);
+                                        selectedStyleOfRows[parseInt(parent.getAttribute('style-row'))].setAttribute('is-selected', false);
+                                        selectedStyleOfRows[parseInt(parent.getAttribute('style-row'))] = parent;
+
+                                        let urlPost = '';
+
+                                        let allRowArray = [];
+                                        for (let thing of allStyleObjects) {
+                                            if (thing.getAttribute('is-selected') == 'true') {
+                                                allRowArray.push(thing.getAttribute('style-row-item') == '1');
+                                            }
+                                        }
+                                        let allNotFirst = allRowArray.includes(false);
+
+                                        for (let xd=-1; xd<rows; xd++) {
+                                            urlPost += '-' + selectedStyleOfRows[xd + 1].getAttribute('style-row-item');
+                                        }
+
+                                        console.log(urlPost)
+
+                                        if (demoVideo) {
+                                            demoVideo.title = item.name + ' "' + style.name + '" style';
+
+                                            let leCurTime = demoVideo.currentTime;
+                                            
+                                            if (allNotFirst) {
+                                                demoVideo.src = 'https://cdn.fortnite.gg/items/'+ fnggItem.id + '/video' + urlPost + '.mp4?2'
+                                            } else {
+                                                demoVideo.src = 'https://cdn.fortnite.gg/items/'+ fnggItem.id + '/video.mp4?2'
+                                            }
+
+                                            demoVideo.addEventListener('play', function() {
+                                                demoVideo.currentTime = leCurTime;
+                                            })
+                                        }
+                                    }
+
+                                    rowItem++;
+
+                                    allStyleObjects.push(parent);
+
                                     box.append(parent);
                                 }
                             }
                         }
 
+                        // fortnuite.gg videos!! omg
+                        //we need the english name tho                        
+                        fetch('https://fortniteapi.io/v2/items/get?id=' + item.id, {
+                            headers: {'Authorization': keyFNAPIIo}
+                        }).then(data => data.json()).then(data => {
+                            const hasFNGG = Items.some(item => item.name === data.item.name);
+                            if (hasFNGG) {
+                                fnggItem = Items.find(item => item.name === data.item.name);
+
+                                let vidURL = 'https://cdn.fortnite.gg/items/'+ fnggItem.id + '/video.mp4?2' // apparently built in transform emote videos with ?2 make them both sides
+
+                                let videoContainer = document.createElement('div');
+                                videoContainer.classList.add('d-50-media', 'cosmetic-demo-video');
+                                bottom.append(videoContainer);
+
+                                demoVideo = document.createElement('video');
+                                demoVideo.src = vidURL;
+                                demoVideo.title = item.name;
+                                demoVideo.autoplay = true;
+                                demoVideo.loop = true;
+                                demoVideo.controls = true
+
+                                videoContainer.append(demoVideo);
+
+                                demoVideo.onerror = function() {
+                                    demoVideo.remove();
+                                    videoContainer.remove();
+                                };
+                            }
+                        })
+
+                        let bottom1 = document.createElement('div');
+                        mainObject.appendChild(bottom1);
+
                         if (item.type.id !== 'bundle' && item.type.id !== 'cosmeticvariant') {
-                            fetch(otherargument(geturllang('https://fortnite-api.com/v2/cosmetics/br/search?id=' + item.id, 0), 'searchLanguage')).then(data => data.json()).then(data => {
+                            fetch('https://fortnite-api.com/v2/cosmetics/br/search?id=' + item.id).then(data => data.json()).then(data => {
                                 if (data.status !== 200) {
                                     let eTitle = document.createElement('h1'); let eText = document.createElement('h2'); let error = data.status + ': ' + data.error;
                                     console.error(error); eTitle.innerHTML = 'Error: ' + data.status; eText.innerHTML = data.error; document.getElementById('page-content').append(eTitle);
@@ -456,7 +554,7 @@ function init() {
                                     if (data.data.showcaseVideo != null) {
                                         let ytContainer = document.createElement('div');
                                         ytContainer.classList.add('d-50-media');
-                                        bottom.append(ytContainer);
+                                        bottom1.append(ytContainer);
                                         let ytIframe = document.createElement('iframe');
                                         ytIframe.src = 'https://www.youtube.com/embed/' + data.data.showcaseVideo + '?loop=1';
                                         ytIframe.setAttribute('frameborder', '0');
@@ -469,9 +567,6 @@ function init() {
                             }).catch(error => { console.error(error) })
                         }
 
-                        let bottom1 = document.createElement('div');
-                        mainObject.appendChild(bottom1);
-
                         if (item.grants.length > 0) {
                             let title = gne('h1');
                             title.innerHTML = 'This item includes';
@@ -480,6 +575,7 @@ function init() {
                             let grantModal = document.createElement('div');
                             grantModal.classList.add('flex');
                             grantModal.classList.add('flex-wrap');
+                            grantModal.classList.add('variants');
                             bottom1.append(grantModal);
 
                             for (let grant of item.grants) {
@@ -509,6 +605,7 @@ function init() {
                             let grantModal = document.createElement('div');
                             grantModal.classList.add('flex');
                             grantModal.classList.add('flex-wrap');
+                            grantModal.classList.add('variants');
                             bottom2.append(grantModal);
 
                             for (granted of item.grantedBy) {
@@ -537,6 +634,7 @@ function init() {
                             let grantModal = document.createElement('div');
                             grantModal.classList.add('flex');
                             grantModal.classList.add('flex-wrap');
+                            grantModal.classList.add('variants');
                             bottom2.append(grantModal);
 
                             let parent = document.createElement('a');
@@ -559,6 +657,7 @@ function init() {
                             let grantModal = document.createElement('div');
                             grantModal.classList.add('flex');
                             grantModal.classList.add('flex-wrap');
+                            grantModal.classList.add('variants');
                             bottom2.append(grantModal);
 
                             for (setItem of setItems) {
@@ -584,6 +683,7 @@ function init() {
                         let imageModal = document.createElement('div');
                         imageModal.classList.add('flex');
                         imageModal.classList.add('flex-wrap');
+                        imageModal.classList.add('variants');
                         bottom2.append(imageModal);
 
                         let allAvailable = Object.getOwnPropertyNames(item.images);
@@ -605,37 +705,40 @@ function init() {
                         }
 
                         if (item.displayAssets !== null) {
-                            let titlei = gne('h1');
-                            titlei.innerHTML = 'Display Assets';
-                            bottom2.append(titlei);
-    
-                            let imageModal = document.createElement('div');
-                            imageModal.classList.add('flex');
-                            imageModal.classList.add('flex-wrap');
-                            bottom2.append(imageModal);
-                            
-                            for (let displayAsset of item.displayAssets) {
-                                let allAvailable = Object.getOwnPropertyNames(displayAsset);
+                            if (item.displayAssets.length >0) {
+                                let titlei = gne('h1');
+                                titlei.innerHTML = 'Display Assets';
+                                bottom2.append(titlei);
 
-                                function validURL(string) {
-                                    let url;
-                                    try { url = new URL(string); } catch (_) { return false; }
-                                    return url.protocol === "http:" || url.protocol === "https:";
-                                }
+                                let imageModal = document.createElement('div');
+                                imageModal.classList.add('flex');
+                                imageModal.classList.add('variants');
+                                imageModal.classList.add('flex-wrap');
+                                bottom2.append(imageModal);
+                                
+                                for (let displayAsset of item.displayAssets) {
+                                    let allAvailable = Object.getOwnPropertyNames(displayAsset);
 
-                                for (let imageField of allAvailable) {
-                                    if (displayAsset[imageField] !== null && validURL(displayAsset[imageField])) {
-                                        let parent = document.createElement('a');
-                                        parent.classList.add('variant-container');
-            
-                                        let image = document.createElement('img');
-                                        image.src = displayAsset[imageField];
-                                        image.title = imageField;
-                                        parent.innerHTML = imageField;
-                                        parent.append(image);
-                                        parent.href = displayAsset[imageField];
-                                        parent.target = '_blank';
-                                        imageModal.append(parent);
+                                    function validURL(string) {
+                                        let url;
+                                        try { url = new URL(string); } catch (_) { return false; }
+                                        return url.protocol === "http:" || url.protocol === "https:";
+                                    }
+
+                                    for (let imageField of allAvailable) {
+                                        if (displayAsset[imageField] !== null && validURL(displayAsset[imageField])) {
+                                            let parent = document.createElement('a');
+                                            parent.classList.add('variant-container');
+                
+                                            let image = document.createElement('img');
+                                            image.src = displayAsset[imageField];
+                                            image.title = imageField;
+                                            parent.innerHTML = imageField;
+                                            parent.append(image);
+                                            parent.href = displayAsset[imageField];
+                                            parent.target = '_blank';
+                                            imageModal.append(parent);
+                                        }
                                     }
                                 }
                             }

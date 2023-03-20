@@ -2,6 +2,43 @@ function reloadWithRegion() {
     window.location.href = 'tournaments.html?region=' + document.getElementById('region-dropdown').value;
 }
 
+function getRegionName(reg) {
+    switch (reg) {
+        case 'NAE': return 'NA-East';
+        case 'NAC': return 'NA-Central';
+        case 'NAW': return 'NA-West';
+        case 'EU': return 'Europe';
+        case 'ME': return 'Middle East';
+        case 'OCE': return 'Oceania';
+        case 'BR': return 'Brazil';
+        case 'ASIA': return 'Asia';
+    }
+}
+
+function createRegionSelector() {
+    let regionDropdown = document.getElementById('region-dropdown');
+
+    for (let region of ['NAE', 'NAC', 'NAW', 'EU', 'ME', 'OCE', 'BR', 'ASIA']) {
+        let option = gne('option');
+        option.value = region;
+        option.innerText = getRegionName(region);
+
+        let params = new URLSearchParams(window.location.search)
+
+        if (params.has('region')) {
+            if (region === params.get('region')) {
+                option.selected = true;
+            }
+        } else {
+            if (region === 'NAE') {
+                option.selected = true;
+            }
+        }
+
+        regionDropdown.appendChild(option);
+    }
+}
+
 function getcompetitive() {
     let region = 'NAE';
     let params = new URLSearchParams(window.location.search)
@@ -10,7 +47,8 @@ function getcompetitive() {
         region = params.get('region');
     }
 
-    document.getElementById('cur-reg').innerHTML = 'Current region: ' + region
+    document.getElementById('cur-reg').innerHTML = 'Current region: ' + getRegionName(region);
+    if (region === 'NAE' || region === 'NAW') { document.getElementById('cur-reg').innerHTML += 'warning this region might have cease and desisted' }
 
     fetch(geturllang('https://fortniteapi.io/v1/events/list?region=' + region, 1), {
         headers: {'Authorization': keyFNAPIIo}
@@ -27,8 +65,7 @@ function getcompetitive() {
         let windows = document.getElementById('tournament-windows');
         let scoring = document.getElementById('tournament-scoring');
     
-        for (let i = r.events.length - 24; i < r.events.length; i++) {
-            let event = r.events[i];
+        for (let event of r.events.slice(-24)) {
 
             let parent = gne('a')
             parent.href = '#tournament-details';
@@ -58,7 +95,6 @@ function getcompetitive() {
             eventbox.append(textholder);
 
             eventbox.addEventListener('click', function() {
-                region.textContent = event.region;
                 name.textContent = event.name_line1 + ' ' + event.name_line2;
                 desc.textContent = event.long_description;
                 shortDesc.textContent = event.short_description;
@@ -100,10 +136,11 @@ function getcompetitive() {
                         fetch('https://fortniteapi.io/v1/events/window?windowId=' + twindow.windowId, {
                             headers: {'Authorization': keyFNAPIIo}
                         }).then(r => r.json()).then(r => {
+                            console.log(r);
+
                             clearChildren(scoring)
                             let session = r.session
 
-                            scoring.innerHTML += '<h1>' + session.region + '</h1>'
                             scoring.innerHTML += '<h1>Max. matches: ' + session.matchCap + '</h1>'
                             if (session.finished) {
                                 scoring.innerHTML += '<h1>FINISHED</h1>'

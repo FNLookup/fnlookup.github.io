@@ -24,70 +24,51 @@
     </div>
 
     <div class="nav-container">
-        <nav class="navbar-top">
-            <div class="nav-main-buttons">
-                <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" width="25" height="25" title="Menu">
-                <a class="nav-logo" href="index.html">FNLookup</a>
-            </div>
-            <div class="nav-content hidden-media" id="nav-elements">
-                <ul class="nav-items" id="nav-items"></ul>
-
-                <div class="item-search-container">
-                    <input type="text" placeholder="Search for an item..." id="search-input">
-                    <button title="Search" id="search-button">Search</button>
+        <div class="navbar-top">
+            <div class="nav-component-top">
+                <div class="nav-main-buttons">
+                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
+                    <a class="nav-logo" href="index.html">
+                    <p class="fn">FN</p>
+                    <p class="lookup">Lookup</p>
+                    </a>
                 </div>
-                <script>i()</script>
             </div>
-        </nav>
+        </div>
+    </div>
+    <div class="nav-content hidden-nav" id="nav-elements">
+        <ul class="nav-items" id="nav-items"></ul>
+        
+        <script>i()</script>
     </div>
 
     <div class="content">
-        <h1>Player Stats</h1>
-        <h2>Get a Player's Stats</h2>
-        <p class="player-data">To look up a player's stats, insert their <strong>user name</strong> or their <strong>Epic Games Account ID</strong>, select the <strong>account type</strong> (does not work with account IDs), select the <strong>time window</strong> then click the Discover button.</p>
+        <h1>Lookup players</h1>
+        <h2>Lookup players by their username and view their Fortnite stats by <strong>clicking on their name</strong></h2>
 
         <div class="flex flex-wrap player-data">
-            <input type="text" placeholder="Player Name" id="player-name" title="Player Name">
+            <input type="text" placeholder="User Name" id="player-name" title="Account Name">
+            <button id="discover" onclick="lookupPlayer()">Search</button>
+        </div>
+
+        <div id="content-players">
+            
+        </div>
+
+        <hr>
+
+        <h1 id="player-stats">Player Stats</h1>
+        <h2>Get a Player's Stats</h2>
+        <p class="player-data">To look up a player's stats, insert their <strong>Epic Games Account ID</strong> then click the Discover button.</p>
+
+        <div class="flex flex-wrap player-data">
             <input type="text" placeholder="Account ID" id="player-id" title="Epic Games Account ID">
             <button id="discover" onclick="searchPlayer()">Discover</button>
         </div>
 
-        <i>The first checkbox of these lists to be checked is the one used.</i>
-        <div class="flex-media">
-            <div class="d-50-media">
-                <h2 class="flex-hcenter">Account Type</h2>
-
-                <div>
-                    <input type="checkbox" id="acc-psn" name="psn">
-                    <label for="psn">PlayStation Network</label>
-                </div>
-
-                <div>
-                    <input type="checkbox" id="acc-xbl" name="xbl">
-                    <label for="xbl">XBOX Live</label>
-                </div>
-
-                <div>
-                    <input type="checkbox" id="acc-epic" name="epic" checked>
-                    <label for="epic">Epic Games</label>
-                </div>
-            </div>
-            <div class="d-50-media">
-                <h2 class="flex-hcenter">Time Window</h2>
-
-                <div>
-                    <input type="checkbox" id="ts-season" name="season">
-                    <label for="season">Season</label>
-                </div>
-
-                <div>
-                    <input type="checkbox" id="ts-lifetime" name="lifetime" checked>
-                    <label for="lifetime">Lifetime</label>
-                </div>
-            </div>
+        <div id="content">
+            
         </div>
-
-        <div id="content"></div>
     </div>
 </body>
 </html>

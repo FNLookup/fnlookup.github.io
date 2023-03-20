@@ -22,8 +22,6 @@ Offset 16 and so on (acumulative) = 8 more blog posts
 
 SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED
 
-- View set items, enter an item and get a link for a set in the Part of {set} part, or go to a set page. "https://fortniteapi.io/v2/items/sets?lang=en"
-
 - Fortnite Crew List and History "https://fortniteapi.io/v2/crew/history?lang=en" --- DONE
 
 - Fish "https://fortniteapi.io/v1/loot/fish?lang=en" --- DONE
@@ -33,20 +31,20 @@ SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED SCRAPPED
 - Creative island "https://fortniteapi.io/v1/creative/island?code=1787-6243-5207" -- DONE
 designated test url 'https://tposejank.github.io/fnlookup/island?code=3819-8434-1705' -- DONE
 
-- Featured creative islands "https://fortniteapi.io/v1/creative/featured"
+- FNAPI.io news -- done
 
 - Maps "https://fortniteapi.io/v1/maps/list"
 
 - fix predictions id missing _ DONE
 - fix club id missing _ DONE
 
-- https://github.com/tposejank/fnlookup/issues/8
+- https://github.com/tposejank/fnlookup/issues/8 --- done
 
-- https://github.com/tposejank/fnlookup/issues/6
+- https://github.com/tposejank/fnlookup/issues/5 --- done
 
-- https://github.com/tposejank/fnlookup/issues/5
+- Redesign ui __ done
 
-- Add features to search page like
+G!- Add features to search page like
 sort by z-a or a-z
 sort by item shop appearance
 sort by oldest
@@ -57,3 +55,21 @@ sort by rarity a-z
 count for items
 
 source (gtags)
+
+G!-- ALL DONE
+
+-------
+
+- Construct older shops from cosmetics list -- done
+
+- View set items, enter an item and get a link for a set in the Part of {set} part, or go to a set page. "https://fortniteapi.io/v2/items/sets?lang=en" -- done
+
+- Featured creative islands "https://fortniteapi.io/v1/creative/featured" -- done along with gmodes
+
+- fix stats --done and remastered
+
+- fix overflowing elements -- issue not identified, done
+
+- https://github.com/tposejank/fnlookup/issues/6
+
+- Maps "https://fortniteapi.io/v1/maps/list"

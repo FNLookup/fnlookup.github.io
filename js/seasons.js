@@ -2,9 +2,28 @@ function gets() {
     fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
         headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
-        for (let season of r.seasons) {
+        for (i=0;i<r.seasons.length;i++) {
+            let season = r.seasons[i]
+
             let p = document.createElement('div');
-            p.classList.add('season-date');
+            p.classList.add('season');
+
+            let image = document.createElement('img');
+            image.src = 'https://fortnite.gg/img/seasons/' + (i + 1) + '.jpg';
+            p.appendChild(image);
+
+            let content = document.createElement('div');
+            content.classList.add('season-context');
+            p.appendChild(content);
+
+            if (i !== 0) {
+                let bpButton = document.createElement('a');
+                bpButton.classList.add('season-bp-button');
+                bpButton.innerHTML = 'VIEW BATTLE PASS';
+                bpButton.href = 'battle-pass.html?season=' + (i + 1);
+    
+                p.appendChild(bpButton);
+            }
 
             let title = document.createElement('h1');
             title.innerHTML = season.displayName;
@@ -14,8 +33,8 @@ function gets() {
             let startDate = document.createElement('p');
             startDate.innerHTML = 'Started ' + getFormatDate(sDate);
 
-            p.appendChild(title);
-            p.appendChild(startDate);
+            content.appendChild(title);
+            content.appendChild(startDate);
 
             if (season.endDate !== null) {
                 let eDate = season.endDate.split(' ')[0];
@@ -27,7 +46,7 @@ function gets() {
                     endDate.innerHTML = 'Ends ' + getFormatDate(new Date(eDate));
                 }
 
-                p.appendChild(endDate);
+                content.appendChild(endDate);
             } else {
                 startDate.innerHTML = 'Starts ' + getFormatDate(sDate);
             }

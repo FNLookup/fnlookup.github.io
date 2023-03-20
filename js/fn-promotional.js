@@ -6,6 +6,44 @@ fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=current', 1), {
     sources = [];
     curSource = 0;
 
+    vid = document.getElementById("fn-video");
+    
+    fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=current', 1), {
+        headers: { 'Authorization': keyFNAPIIo }
+    }).then(r => r.json()).then(r => {
+        let sources = [];
+        let curSource = 0;
+
+        for (let src of r.videos) {
+            sources.push(src.url);
+        }
+
+        let testVideoEnabled = false;
+        if (testVideoEnabled) sources = [];
+
+        vid.muted = true;
+        if (sources.length > 0) {
+            vid.src = sources[curSource];
+            vid.loop = false;
+
+            vid.addEventListener('ended', function () {
+                curSource += 1;
+                if (curSource >= sources.length) curSource = 0;
+
+                vid.src = sources[curSource];
+            }, false);
+        } else {
+            vid.src = 'assets/old-school-anthem.mp4';
+            vid.muted = false;
+            vid.volume = 0.15;
+        }
+    }).catch(err => { console.error(err); });
+
+    vid.style.width = document.body.clientWidth + 'px';
+    window.addEventListener("resize", function() {
+        vid.style.width = document.body.clientWidth + 'px';
+    });
+
     for (let src of r.videos) {
         sources.push(src.url);
     }

@@ -1,8 +1,16 @@
+let augmentSum = 0;
+let chanceTable = 0
 function geta() {
     fetch(geturllang('https://fortniteapi.io/v1/game/augments', 1), {
         headers: {'Authorization': keyFNAPIIo}
     }).then(r => r.json()).then(r => {
         let createdTabs = [];
+
+        for (let augment of r.augments) { 
+            augmentSum += augment.weight;
+            console.log(augmentSum);
+        }
+
         for (let augment of r.augments) {
             let space;
 
@@ -18,7 +26,7 @@ function geta() {
                 createdTabs.push(tabtitle);
 
                 let content = document.createElement('div');
-                content.classList.add('flex', 'flex-wrap');
+                content.classList.add('flex', 'flex-wrap', 'augment-holder');
                 content.setAttribute('name', tabtitle);
 
                 document.getElementById('content').appendChild(content);
@@ -93,9 +101,14 @@ function makeItemCard(item, parent) {
     let additionalDescription = document.createElement("a");
     additionalDescription.innerHTML = item.additionalDescription;
 
+    let chance = parseFloat(trueRound(item.weight / augmentSum, 2));
+    let rollChance = document.createElement("a");
+    rollChance.innerHTML = 'Probability: ' + (chance * 100) + '%';
+
     right.appendChild(name);
     right.appendChild(description);
     right.appendChild(additionalDescription);
+    right.appendChild(rollChance);
 
     card.appendChild(left);
     card.appendChild(right);

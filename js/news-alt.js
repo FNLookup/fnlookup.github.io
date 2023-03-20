@@ -2,25 +2,18 @@ newsBasic = false;
 
 function newsAlt() {
     let parent = document.getElementById('news-mobile');
+    if (parent.getAttribute('basic') == 'true') newsBasic = true;
     
-    fetch(geturllang('https://fortnite-api.com/v2/news/br', 0)).then(response => response.json()).then(response => {
-        if (response.status !== 200) {
-            let eTitle = document.createElement('h1');
-            let eText = document.createElement('h2');
-            let error = response.status + ': ' + response.error;
-            console.log(error);
-            eTitle.innerHTML = 'Error: ' + response.status;
-            eText.innerHTML = response.error;
-            document.getElementsByClassName('content')[0].append(eTitle);
-            document.getElementsByClassName('content')[0].append(eText);
+    fetch(geturllang('https://fortniteapi.io/v1/news?type=br', 1), {
+        headers: { 'Authorization': keyFNAPIIo }
+    }).then(response => response.json()).then(response => {
+        var news = response.news;
 
-            return;
-        }
+        let areWeOld = false;
+        let yesWeAreOld = false;
 
-        var data = response.data.motds;
-
-        for (let i = 0; i < data.length; i++) {
-            if (i >= 3 && newsBasic) return;
+        for (let i in news) {
+            let breaking = news[i]
 
             let container = document.createElement('div');
             container.classList.add('news-item');
@@ -32,10 +25,21 @@ function newsAlt() {
             }
 
             let image = document.createElement('img');
-            image.src = data[i].image;
+            image.src = breaking.image;
             image.classList.add('full-size');
             image.classList.add('news-item-image');
             container.appendChild(image);
+
+            if (!breaking.live && !areWeOld) {
+                areWeOld = true;
+            }
+
+            if (areWeOld && newsBasic) return;
+            if (areWeOld && !yesWeAreOld) {
+                document.getElementsByClassName('content')[0].innerHTML += '<hr><h1 class="shop-section-title">Previous News</h1><div class="news-mobile" id="old-news"></div>';
+                parent = document.getElementById('old-news');
+                yesWeAreOld = true;
+            }
 
             /// image part ended
 
@@ -43,13 +47,13 @@ function newsAlt() {
             context.classList.add('mobile-media-content');
 
             let tabTitle = document.createElement('h3');
-            tabTitle.innerHTML = data[i].tabTitle;
+            tabTitle.innerHTML = breaking.tabTitle;
 
             let title = document.createElement('h2');
-            title.innerHTML = data[i].title;
+            title.innerHTML = breaking.title;
 
             let body = document.createElement('p');
-            body.innerHTML = data[i].body;
+            body.innerHTML = breaking.body;
 
             context.appendChild(tabTitle);
             context.appendChild(title);
