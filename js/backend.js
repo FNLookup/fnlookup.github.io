@@ -1,4 +1,4 @@
-keyFNAPIIo = '***REMOVED***'
+keyFNAPIIo = 'temporary';
 marioDancing = 'https://cdn.discordapp.com/emojis/1036788611925950504.gif?size=96&quality=lossless'
 
 window.supportedLanguages = [
