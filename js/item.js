@@ -512,9 +512,10 @@ function init() {
                         // fortnuite.gg videos!! omg
                         //we need the english name tho                        
                         fetch('https://fortnite-api.com/v2/cosmetics/br/' + item.id).then(data => data.json()).then(data => {
-                            const hasFNGG = Items.some(item => item.name === data.item.name);
+                            console.log(data);
+                            const hasFNGG = Items.some(item => item.name === data.data.name);
                             if (hasFNGG) {
-                                fnggItem = Items.find(item => item.name === data.item.name);
+                                fnggItem = Items.find(item => item.name === data.data.name);
 
                                 let vidURL = 'https://cdn.fortnite.gg/items/'+ fnggItem.id + '/video.mp4?2' // apparently built in transform emote videos with ?2 make them both sides
 
