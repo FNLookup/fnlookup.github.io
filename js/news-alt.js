@@ -4,9 +4,7 @@ function newsAlt() {
     let parent = document.getElementById('news-mobile');
     if (parent.getAttribute('basic') == 'true') newsBasic = true;
     
-    fetch(geturllang('https://fortniteapi.io/v1/news?type=br', 1), {
-        headers: { 'Authorization': keyFNAPIIo }
-    }).then(response => response.json()).then(response => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=news&type=br', 1)).then(response => response.json()).then(response => {
         var news = response.news;
 
         let areWeOld = false;

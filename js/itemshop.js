@@ -41,9 +41,7 @@ function constructItemShop() {
         let goalDate = params.get('date');
         let listMatching = []
 
-        fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=name,id,displayAssets,images,shopHistory,rarity,type,price', 1), {
-            headers: {'Authorization': keyFNAPIIo}
-        }).then(data => data.json()).then(data => {
+        fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=items&fields=name,id,displayAssets,images,shopHistory,rarity,type,price', 1)).then(data => data.json()).then(data => {
             listMatching = data.items.filter(item => item.shopHistory && item.shopHistory.includes(goalDate));
 
             for (let item of listMatching) {
@@ -79,9 +77,7 @@ function constructItemShop() {
 function createItems() {
     if (constructItemShop()) return;
     
-    fetch(geturllang("https://fortniteapi.io/v2/shop", 1), {
-        headers: { 'Authorization': keyFNAPIIo}
-    }).then(response=>response.json()).then(response=>{
+    fetch(geturllang("https://fnlookup-api.vercel.app/api?endpoint=shop", 1)).then(response=>response.json()).then(response=>{
     
         if (response.customBackground !== null) {
             let p = document.getElementsByClassName("season-video")[0]
@@ -107,9 +103,7 @@ function createItems() {
             document.getElementById('title_' + obj).append(item_count);
         }
 
-        fetch(geturllang('https://fortniteapi.io/v2/crew', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-        }).then(r=>r.json()).then(r=> {
+        fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=crew', 1)).then(r=>r.json()).then(r=> {
             let crew = r.currentCrew;
 
             let images = [];

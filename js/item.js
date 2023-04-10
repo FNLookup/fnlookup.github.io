@@ -7,9 +7,7 @@ function init() {
 
         content.innerHTML = '<h1>Loading...</h1><h3>Loading cosmetic list...</h3><img src="assets/images/loading.gif">';
 
-        fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=name,id,set,images', 1), {
-            headers: {'Authorization': keyFNAPIIo}
-        }).then(data => data.json()).then(data => {
+        fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=items&fields=name,id,set,images', 1)).then(data => data.json()).then(data => {
             clearChildren(content);
             content.innerHTML = '<h1>Loading...</h1><h3>Searching for ' + params.get('q') + '</h3><img src="assets/images/loading.gif">';
 
@@ -46,9 +44,7 @@ function init() {
                 clearChildren(content);
 
                 for (let preitem of response) {
-                    fetch(geturllang('https://fortniteapi.io/v2/items/get?id=' + preitem.id, 1), {
-                        headers: {'Authorization': keyFNAPIIo}
-                    }).then(data => data.json()).then(data => {
+                    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=item&id=' + preitem.id, 1)).then(data => data.json()).then(data => {
                         let setItems = [];
 
                         let item = data.item;
@@ -513,7 +509,7 @@ function init() {
 
                         // fortnuite.gg videos!! omg
                         //we need the english name tho                        
-                        fetch('https://fortniteapi.io/v2/items/get?id=' + item.id, {
+                        fetch('https://fortnite-api.com/v2/cosmetics/br/' + item.id, {
                             headers: {'Authorization': keyFNAPIIo}
                         }).then(data => data.json()).then(data => {
                             const hasFNGG = Items.some(item => item.name === data.item.name);
@@ -546,7 +542,7 @@ function init() {
                         mainObject.appendChild(bottom1);
 
                         if (item.type.id !== 'bundle' && item.type.id !== 'cosmeticvariant') {
-                            fetch('https://fortnite-api.com/v2/cosmetics/br/search?id=' + item.id).then(data => data.json()).then(data => {
+                            fetch('https://fortnite-api.com/v2/cosmetics/br/' + item.id).then(data => data.json()).then(data => {
                                 if (data.status !== 200) {
                                     let eTitle = document.createElement('h1'); let eText = document.createElement('h2'); let error = data.status + ': ' + data.error;
                                     console.error(error); eTitle.innerHTML = 'Error: ' + data.status; eText.innerHTML = data.error; document.getElementById('page-content').append(eTitle);

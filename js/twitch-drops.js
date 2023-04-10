@@ -1,9 +1,5 @@
 function getdrops() {
-    fetch('https://fortniteapi.io/v1/twitch/drops', {
-        headers: {
-            'Authorization': keyFNAPIIo
-        }
-    }).then(r => r.json()).then(r => {
+    fetch('https://fnlookup-api.vercel.app/api?endpoint=twitch-drops').then(r => r.json()).then(r => {
         for (drop of r.drops) {
             makeTwitchDropCard(drop);
         }

@@ -1,7 +1,5 @@
 function getfish() {
-    fetch(geturllang('https://fortniteapi.io/v1/loot/fish', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=fish', 1)).then(r => r.json()).then(r => {
 
         console.log(r);
         let main = document.getElementById('fish-wrapper');

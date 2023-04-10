@@ -3,9 +3,7 @@ function start() {
     var p = new URLSearchParams(window.location.search);
     if (p.has('season')) season = p.get('season');
 
-    fetch(geturllang('https://fortniteapi.io/v2/battlepass?season=' + season, 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=battlepass&season=' + season, 1)).then(r => r.json()).then(r => {
 
         let pc = document.getElementById('page-content');
 

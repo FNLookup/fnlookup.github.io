@@ -1,5 +1,5 @@
 function loadHistory() {
-    fetch(geturllang('https://fortniteapi.io/v2/crew/history', 1), {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=crew-history', 1), {
         headers: {'Authorization': keyFNAPIIo}
     }).then(r=>r.json()).then(r=> {
 

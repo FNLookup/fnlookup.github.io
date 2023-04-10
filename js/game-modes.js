@@ -5,9 +5,7 @@ function fetchModes() {
     let modeimage = document.getElementById('gmode-image');
     let modedesc = document.getElementById('description');
 
-    fetch(geturllang('https://fortniteapi.io/v1/game/modes?enabled=true', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=gamemodes&enabled=true', 1)).then(r => r.json()).then(r => {
         let modes = r.modes;
         console.log(r);
 

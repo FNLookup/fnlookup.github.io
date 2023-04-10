@@ -50,9 +50,7 @@ function getcompetitive() {
     document.getElementById('cur-reg').innerHTML = 'Current region: ' + getRegionName(region);
     if (region === 'NAE' || region === 'NAW') { document.getElementById('cur-reg').innerHTML += 'warning this region might have cease and desisted' }
 
-    fetch(geturllang('https://fortniteapi.io/v1/events/list?region=' + region, 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=events&region=' + region, 1)).then(r => r.json()).then(r => {
         let main = document.getElementById('main');
 
         let region = document.getElementById('region-title');
@@ -133,9 +131,7 @@ function getcompetitive() {
                         clearChildren(scoring);
                         scoring.innerHTML = 'Please wait...<br><img src="' + marioDancing + '" alt="Mario">';
 
-                        fetch('https://fortniteapi.io/v1/events/window?windowId=' + twindow.windowId, {
-                            headers: {'Authorization': keyFNAPIIo}
-                        }).then(r => r.json()).then(r => {
+                        fetch('https://fnlookup-api.vercel.app/api?endpoint=window&windowId=' + twindow.windowId).then(r => r.json()).then(r => {
                             console.log(r);
 
                             clearChildren(scoring)

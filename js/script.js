@@ -128,10 +128,6 @@ function i() {
             href: 'aes-mappings.html'
         },
         {
-            href: 'promotionalvideos.html',
-            name: 'Season Promotional Videos'
-        },
-        {
             name: 'About',
             href: 'about.html'
         },

@@ -2,9 +2,7 @@ var tabs = [];
 let selected = 0;
 
 function create() {
-    fetch(geturllang('https://fortniteapi.io/v1/news?type=br', 1), {
-        headers: { 'Authorization': keyFNAPIIo }
-    }).then(response => response.json()).then(response => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=news&type=br', 1)).then(response => response.json()).then(response => {
         document.getElementsByClassName('text-wait')[0].setAttribute('done', 'true');
 
         var news = response.news;

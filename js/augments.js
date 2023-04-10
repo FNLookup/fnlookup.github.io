@@ -1,14 +1,12 @@
 let augmentSum = 0;
 let chanceTable = 0
 function geta() {
-    fetch(geturllang('https://fortniteapi.io/v1/game/augments', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=augments', 1)).then(r => r.json()).then(r => {
         let createdTabs = [];
 
         for (let augment of r.augments) { 
             augmentSum += augment.weight;
-            console.log(augmentSum);
+            console.log('With the weight of ' + augment.id + ', the chance is now ' + augmentSum);
         }
 
         for (let augment of r.augments) {

@@ -2,7 +2,7 @@ function declareFuncs() {
     document.getElementById('sac-accept-button').onclick = function() {
         let enterCode = document.getElementById('sac-input').value;
 
-        fetch('https://fortniteapi.io/v1/creator?code=' + enterCode, {
+        fetch('https://fnlookup-api.vercel.app/api?endpoint=creator&code=' + enterCode, {
             headers: { 'Authorization': keyFNAPIIo }
         }).then(r => r.json()).then(r => {
             if (typeof(r.code) !== 'string') {

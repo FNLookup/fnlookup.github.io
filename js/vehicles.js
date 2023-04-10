@@ -1,7 +1,5 @@
 function getstat() {
-    fetch(geturllang("https://fortniteapi.io/v2/game/vehicles", 1), {
-        headers: { 'Authorization': keyFNAPIIo}
-    }).then(shop => shop.json()).then(data => {
+    fetch(geturllang("https://fnlookup-api.vercel.app/api?endpoint=vehicles", 1)).then(shop => shop.json()).then(data => {
 
         let main = document.getElementById('vehicle-wrapper');
 

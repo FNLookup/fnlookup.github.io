@@ -104,9 +104,7 @@ function downloadItems() {
 
     document.getElementById('objects').innerHTML = '<img src="assets/images/loading.gif">';
 
-    fetch(geturllang('https://fortniteapi.io/v2/items/list', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(response => response.json()).then(response => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=items', 1)).then(response => response.json()).then(response => {
         items = response.items;
         items = items.reverse();
 
@@ -118,8 +116,7 @@ function downloadItems() {
 
         scrollUseList = items;
 
-        fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
-            headers: {'Authorization': keyFNAPIIo}}
+        fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=seasons', 1)
         ).then(r => r.json()).then(r => {
             let seasons = []
             let allowedSeasons = []
@@ -319,9 +316,7 @@ function mainFilters() {
 
     makeFilterAdvancedClass(filters);
 
-    fetch(geturllang("https://fortniteapi.io/v2/rarities", 1), {
-        headers: { 'Authorization': keyFNAPIIo}
-    }).then(r=>r.json()).then(r=>{
+    fetch(geturllang("https://fnlookup-api.vercel.app/api?endpoint=rarities", 1)).then(r=>r.json()).then(r=>{
         let classes = []
         let classObjects = []
         for (let a of r.rarities) {

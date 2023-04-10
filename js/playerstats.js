@@ -4,13 +4,9 @@ function searchPlayer() {
 
     clearChildren(content);
 
-    let reqUrl = 'https://fortniteapi.io/v1/stats?account=' + uID.value
+    let reqUrl = 'https://fnlookup-api.vercel.app/api?endpoint=stats&account=' + uID.value
 
-    fetch(reqUrl, {
-        headers: 'string' === typeof keyFNAPIIo ? {
-            "Authorization": keyFNAPIIo
-        } : {}
-    }).then(res => res.json()).then(res => {
+    fetch(reqUrl).then(res => res.json()).then(res => {
         content.innerHTML += '<h1 id="user-name">' + res.name + '</h1><h1 class="shop-section-title">Level History</h1><hr>'
         let cardContainerHTML = ''
         for (let levelHistory of res.accountLevelHistory) {
@@ -146,13 +142,9 @@ function lookupPlayer() {
     let containers = document.getElementById('content-players');
     var uName = document.getElementById('player-name').value;
 
-    let reqUrl = 'https://fortniteapi.io/v2/lookup/advanced?username=' + uName
+    let reqUrl = 'https://fnlookup-api.vercel.app/api?endpoint=lookup&username=' + uName
 
-    fetch(reqUrl, {
-        headers: 'string' === typeof keyFNAPIIo ? {
-            "Authorization": keyFNAPIIo
-        } : {}
-    }).then(res => res.json()).then(res => {
+    fetch(reqUrl).then(res => res.json()).then(res => {
 
         clearChildren(containers);
 

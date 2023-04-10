@@ -1,6 +1,6 @@
 function addToList() {
     sections = [];
-    fetch(geturllang("https://fortniteapi.io/v2/shop", 1), {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=shop', 1), {
         headers: { 'Authorization': keyFNAPIIo}
     }).then(shop => shop.json()).then(data => {
         shopItems = data.shop; // save api key requests

@@ -1,7 +1,5 @@
 function getach() {
-    fetch(geturllang('https://fortniteapi.io/v1/achievements', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=achievements', 1)).then(r => r.json()).then(r => {
         let content = document.getElementsByClassName('content')[0];
 
         let main = gne('div');

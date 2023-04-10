@@ -1,4 +1,3 @@
-keyFNAPIIo = 'temporary';
 marioDancing = 'https://cdn.discordapp.com/emojis/1036788611925950504.gif?size=96&quality=lossless'
 
 window.supportedLanguages = [
@@ -47,7 +46,8 @@ function geturllang(url, type) {
 }
 
 function getFlag(code) {
-    return 'https://laendercode.net/img/flag-icon-css/flags/4x3/' + code.toLowerCase() + '.svg'
+    return 'https://raw.githubusercontent.com/hampusborgos/country-flags/main/png1000px/' + code.toLowerCase() + '.png'
+    //they done my ecuador dirty so had to ditch them
 }
 
 function getAllowedTournamentDevice(device) {

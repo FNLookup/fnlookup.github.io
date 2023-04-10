@@ -5,9 +5,7 @@ function loadSet() {
 
         content.innerHTML = '<h1>Loading...</h1><h3>Loading cosmetic list...</h3><img src="assets/images/loading.gif">';
 
-        fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=name,id,set,images,displayAssets', 1), {
-            headers: {'Authorization': keyFNAPIIo}
-        }).then(data => data.json()).then(data => {
+        fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=items&fields=name,id,set,images,displayAssets', 1)).then(data => data.json()).then(data => {
             clearChildren(content);
             content.innerHTML = '<h1>Loading...</h1><h3>Searching for ' + params.get('id') + '</h3><img src="assets/images/loading.gif">';
 

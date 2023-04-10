@@ -1,7 +1,5 @@
 function gets() {
-    fetch(geturllang('https://fortniteapi.io/v1/seasons/list', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=seasons', 1)).then(r => r.json()).then(r => {
         for (i=0;i<r.seasons.length;i++) {
             let season = r.seasons[i]
 

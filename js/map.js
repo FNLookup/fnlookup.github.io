@@ -1,7 +1,5 @@
 function generateMap() {
-    fetch(geturllang('https://fortniteapi.io/v2/game/poi', 1),{
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=poi', 1)).then(r => r.json()).then(r => {
         if (r.data !== null) {
             setMapFunctions();
             addMapElements();
