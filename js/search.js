@@ -104,8 +104,12 @@ function downloadItems() {
 
     document.getElementById('objects').innerHTML = '<img src="assets/images/loading.gif">';
 
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=items', 1)).then(response => response.json()).then(response => {
+    fetch(geturllang('https://fortniteapi.io/v2/items/list', 1), {
+        headers: { 'Authorization': crystalBall.split('|')[1]
+    }}).then(response => response.json()).then(response => {
         items = response.items;
+        console.log(items);
+
         items = items.reverse();
 
         for (let item of items) {

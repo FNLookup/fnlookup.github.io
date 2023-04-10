@@ -1,8 +1,6 @@
 function addToList() {
     sections = [];
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=shop', 1), {
-        headers: { 'Authorization': keyFNAPIIo}
-    }).then(shop => shop.json()).then(data => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=shop', 1)).then(shop => shop.json()).then(data => {
         shopItems = data.shop; // save api key requests
 
         for (let item of data.shop) {

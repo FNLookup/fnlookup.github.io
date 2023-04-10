@@ -41,7 +41,9 @@ function constructItemShop() {
         let goalDate = params.get('date');
         let listMatching = []
 
-        fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=items&fields=name,id,displayAssets,images,shopHistory,rarity,type,price', 1)).then(data => data.json()).then(data => {
+        fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=name,id,displayAssets,images,shopHistory,rarity,type,price', 1), {
+            headers: { 'Authorization': crystalBall.split('|')[1]
+        }}).then(data => data.json()).then(data => {
             listMatching = data.items.filter(item => item.shopHistory && item.shopHistory.includes(goalDate));
 
             for (let item of listMatching) {
