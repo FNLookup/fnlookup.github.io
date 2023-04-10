@@ -511,9 +511,7 @@ function init() {
 
                         // fortnuite.gg videos!! omg
                         //we need the english name tho                        
-                        fetch('https://fortnite-api.com/v2/cosmetics/br/' + item.id, {
-                            headers: {'Authorization': keyFNAPIIo}
-                        }).then(data => data.json()).then(data => {
+                        fetch('https://fortnite-api.com/v2/cosmetics/br/' + item.id).then(data => data.json()).then(data => {
                             const hasFNGG = Items.some(item => item.name === data.item.name);
                             if (hasFNGG) {
                                 fnggItem = Items.find(item => item.name === data.item.name);
