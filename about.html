@@ -27,9 +27,9 @@
                 <div class="nav-main-buttons">
                     <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
                     <a class="nav-logo" href="index.html">
-<p class="fn">FN</p>
-<p class="lookup">Lookup</p>
-</a>
+                    <p class="fn">FN</p>
+                    <p class="lookup">Lookup</p>
+                    </a>
                 </div>
             </div>
         </div>
@@ -41,18 +41,30 @@
     </div>
 
     <div class="content">
-<h1>PLEASE READ CAREFULLY<h1>
-<p>FNLookup is offered for free to any sort of public with ease of access to the internet. There is no ad revenue, no visit fee or no restrictions. No data collections, etc. Content here is not used for any sort of revenue whatsoever.<p>
+        <h1>Disclaimer</h1>
+        <p>FNLookup is a free, non-profit page. No content is used for revenue.<p>
+        <hr>
 
         <h1>About FNLookup</h1>
 
         <h2>Information</h2>
 
         <p>FNLookup is a page hosted on <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>, a free page hosting system for GitHub.</p>
-        <p>FNLookup is provided by Fortnite APIs that provide information from the game.</p>
+        <p>Made with Fortnite APIs that provide live information from Fortnite.</p>
+        <hr>
+
+        <h2>How FNLookup works</h2>
+        <p>FNLookup uses various Fortnite APIs to offer the best experience for the user. While only one API may be used at once, all of the APIs provide various set of features, that can be shown to the user.</p>
+        <p>Some of the APIs are:</p>
+        <ul>
+            <li><a href="https://discord.com/invite/KbGH43p">Fortnite Central API</a></li>
+            <li><a href="https://www.Fortnite-API.com">Fortnite API</a></li>
+            <li><a href="https://www.fortnte-api.io">Fortnite-Api.io</a></li>
+        </ul>
+        <hr>
 
         <h2>Personal Information</h2>
-        <p>FNLookup does NOT collect any information about the user, however Fortnite APIs collect the country of residence of the user for analytics.</p>
+        <p>FNLookup does NOT collect any information about the user, however Fortnite APIs collect country information for analytics.</p>
         <p>Here are any types of information that is NOT collected by FNLookup</p>
         <ul class="classified">
             <li>IP Address</li>
@@ -62,10 +74,14 @@
         </ul>
 
         <p>Information may or may not be as well collected by GitHub's free page hosting service: GitHub Pages.</p>
+        
+        <hr>
 
         <h2>Saved Data</h2>
         <p>Only data that is stored locally is your request language.</p>
         <p>Languages are independent from each machine and do not carry on with Google Accounts or any other type of account.</p>
+
+        <hr>
 
         <h2>Deleting your data</h2>
         <p>You have an option to delete your data: Right below with this button. This will delete everything that is saved currently, like your language.</p>
@@ -73,20 +89,17 @@
             <button class="fn-button" onclick="localStorage.clear(); document.getElementById('del-data-btn').innerHTML = 'DATA DELETED'; console.log('Data deleted by force')" id="del-data-btn">DELETE MY DATA</button>
         </div>
 
+        <hr>
+
         <h2>Language Specifications</h2>
-        <p>You are able to use a total of <a id="lang-length"></a> languages, of those being the following:</p>
+        <p>You are able to use a total of <a id="lang-length"></a> languages, those being the following:</p>
         <ul class="classified" id="lang-ab-list"></ul>
         <script>document.getElementById("lang-length").innerHTML = window.uiLangList.length;for (let lang of window.uiLangList)document.getElementById("lang-ab-list").innerHTML += '<li title="' + lang.backend + '">' + lang.name + ' (' + lang.title + ')' + '</li>'</script>
     
-        <p>You can change your language <a href="language-picker.html">here</a></p>
-        <h3>Language affects ONLY the Fortnite data. Website elements may not be affected.</h3>
+        <p>You can change your language <a href="language-picker.html">here</a>.</p>
+        <p>Languages will change specifically Fortnite content, not website elements.</p>
 
-        <h2>APIs</h2>
-        <p>FNLookup uses 2 Fortnite APIs currently, those being the following:</p>
-        <ul class="classified">
-            <li><a href="https://fortniteapi.io">FortniteApi.io</a></li>
-            <li><a href="https://www.fortnite-api.com">Fortnite-API.com</a></li>
-        </ul>
+        <hr>
 
         <h1>README.md</h1>
 
@@ -160,5 +173,18 @@
             <p>Check it out <a href="https://tposejank.github.io/fnlookup/news/index.html">here</a>  </p>
         </div>
     </div>
+
+    <!-- <div class="cookie-container">
+        <div class="cookie-dialog">
+            <h3>ACCEPT PRIVACY</h3>
+            <div class="cookie-dialog-text">
+                <p>You accept that Fortnite APIs may collect your country of residence for analytics.</p>
+                
+                <button class="fn-ui-btn" onclick="acceptCookies()">I ACCEPT</button>
+
+                <a href="about.html"class="gray cookie-accept">What's this?</a>
+            </div>
+        </div>
+    </div> -->
 </body>
 </html>

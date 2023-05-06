@@ -47,9 +47,7 @@ function fetchModes() {
         }
     });
 
-    fetch(geturllang('https://fortniteapi.io/v1/creative/featured', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r => r.json()).then(r => {
+    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=featured', 1)).then(r => r.json()).then(r => {
         let modes = r.featured;
         console.log(r);
 
