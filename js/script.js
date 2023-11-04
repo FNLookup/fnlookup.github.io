@@ -47,7 +47,7 @@ function i() {
         </div>`;
 
     document.getElementById('menu-btn').addEventListener('click', function() {
-        document.getElementById('nav-elements').classList.toggle('hidden-nav');
+        //document.getElementById('nav-elements').classList.toggle('hidden-nav');
         document.getElementById('main-nav').classList.toggle('hidden-nav');
     });
 
