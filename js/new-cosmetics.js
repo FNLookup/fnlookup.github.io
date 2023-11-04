@@ -19,6 +19,7 @@ function init() {
             for (let j = 0; j < items.length; j++) {
                 let b = document.createElement('a');
                 b.classList.add('item-card-parent');
+                b.classList.add('fn-border-style');
                     
                 const item_obj = items[j];
 

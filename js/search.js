@@ -120,8 +120,8 @@ function downloadItems() {
 
         scrollUseList = items;
 
-        fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=seasons', 1)
-        ).then(r => r.json()).then(r => {
+        let requestData = getRequestData('seasons');
+        fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
             let seasons = []
             let allowedSeasons = []
             let curChapter;
@@ -229,7 +229,7 @@ function downloadItems() {
                         ]
                     },
                     {
-                        className: 'API Interest',
+                        className: 'Most Searched',
                         objects: [
                             { name: 'Highest', type: 'Sort.Interest.Highest', class: 'Sort'},
                             { name: 'Lowest', type: 'Sort.Interest.Lowest', class: 'Sort'}
@@ -320,7 +320,8 @@ function mainFilters() {
 
     makeFilterAdvancedClass(filters);
 
-    fetch(geturllang("https://fnlookup-api.vercel.app/api?endpoint=rarities", 1)).then(r=>r.json()).then(r=>{
+    let requestData = getRequestData('rarities');
+    fetch(requestData.url, requestData.data).then(r=>r.json()).then(r=>{
         let classes = []
         let classObjects = []
         for (let a of r.rarities) {

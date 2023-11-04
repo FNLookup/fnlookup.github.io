@@ -5,7 +5,8 @@ function fetchModes() {
     let modeimage = document.getElementById('gmode-image');
     let modedesc = document.getElementById('description');
 
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=gamemodes&enabled=true', 1)).then(r => r.json()).then(r => {
+    let requestData = getRequestData('gamemodes?enabled=true');
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
         let modes = r.modes;
         console.log(r);
 
@@ -47,7 +48,8 @@ function fetchModes() {
         }
     });
 
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=featured', 1)).then(r => r.json()).then(r => {
+    let requestDataFt = getRequestData('featured');
+    fetch(requestDataFt.url, requestDataFt.data).then(r => r.json()).then(r => {
         let modes = r.featured;
         console.log(r);
 

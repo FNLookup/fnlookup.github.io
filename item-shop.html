@@ -24,45 +24,33 @@
     </div>
 
     <div class="nav-container">
-        <div class="navbar-top">
-            <div class="nav-component-top">
-                <div class="nav-main-buttons">
-                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
-                    <a class="nav-logo" href="index.html">
-<p class="fn">FN</p>
-<p class="lookup">Lookup</p>
-</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="nav-content hidden-nav" id="nav-elements">
-        <ul class="nav-items" id="nav-items"></ul>
-        
-        <script>i()</script>
     </div>
 
+    <script>i()</script>
+
     <div class="content">
-        <div class="top">
-            <div class="flex">
-                <div class="d-50">
-                    <h1>Live Item Shop</h1>
-                    <p id="date"></p>
-                    <p>The current Fortnite Item Shop, updated daily at <a href="https://time.is/UTC">00:00 UTC</a></p>
-                    <script>dateNow()</script>
-                </div>
-                <div class="d-50 float-right">
-                    <div class="flex-center float-right item-shop-countdown">
-                        <img src="assets/icons/Clock.png" class="clock-icon" title="Clock">
-                        <h3 id="item-timer" class="shop-reset-timer"></h3>
+        <div>
+            <div class="top">
+                <div class="flex">
+                    <div class="d-50">
+                        <h1>Live Item Shop</h1>
+                        <p id="date"></p>
+                        <p>The current Fortnite Item Shop, updated daily at <a href="https://time.is/UTC">00:00 UTC</a></p>
+                        <script>dateNow()</script>
+                    </div>
+                    <div class="d-50 float-right">
+                        <div class="flex-center float-right item-shop-countdown">
+                            <img src="assets/icons/Clock.png" class="clock-icon" title="Clock">
+                            <h3 id="item-timer" class="shop-reset-timer"></h3>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <hr>
-
-        <div class="shop-items-container" id="shop-container">
-            <script>createItems()</script>
+            <hr>
+    
+            <div class="shop-items-container" id="shop-container">
+                <script>createItems()</script>
+            </div>
         </div>
     </div>
 </body>

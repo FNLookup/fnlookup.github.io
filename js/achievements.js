@@ -1,5 +1,6 @@
 function getach() {
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=achievements', 1)).then(r => r.json()).then(r => {
+    let requestData = getRequestData('achievements?season=27');
+    fetch(requestData.url, requestData.data).then(r=>r.json()).then(r=> {
         let content = document.getElementsByClassName('content')[0];
 
         let main = gne('div');

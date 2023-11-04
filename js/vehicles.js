@@ -1,5 +1,6 @@
 function getstat() {
-    fetch(geturllang("https://fnlookup-api.vercel.app/api?endpoint=vehicles", 1)).then(shop => shop.json()).then(data => {
+    let requestData = getRequestData('vehicles');
+    fetch(requestData.url, requestData.data).then(shop => shop.json()).then(data => {
 
         let main = document.getElementById('vehicle-wrapper');
 

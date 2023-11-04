@@ -16,6 +16,7 @@
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script src="js/randomizer.js" type="text/javascript"></script>
+    <script src="js/new-menu.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -24,56 +25,50 @@
     </div>
 
     <div class="nav-container">
-        <div class="navbar-top">
-            <div class="nav-component-top">
-                <div class="nav-main-buttons">
-                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
-                    <a class="nav-logo" href="index.html">
-<p class="fn">FN</p>
-<p class="lookup">Lookup</p>
-</a>
+    </div>
+
+    <script>i()</script>
+
+    <div class="content" fullpage="true">
+        <div class="left-menu-modal">
+            <ul class="nav-items" id="nav-items"></ul>
+
+            <script>prepareOptions();</script>
+        </div>
+
+        <div class="right-menu-modal">
+            <h1>Cosmetic randomizer</h1>
+            <h2>Tap on a question mark to reveal an item! Tap again to reroll.</h2>
+    
+            <h2>Main Locker</h2>
+            <div class="shop-items-display flex flex-wrap" id="main-locker-items"></div>
+            <hr>
+            <h2>Emote Slots</h3>
+            <div id="emote-pickers">
+                <div>
+                    <input type="checkbox" name="Emotes" id="emote-checkbox" checked>
+                    <a>Emotes</a>
                 </div>
+                <div>
+                    <input type="checkbox" name="Emojis" id="emoji-checkbox">
+                    <a>Emojis</a>
+                </div>
+                <div>
+                    <input type="checkbox" name="Sprays" id="spray-checkbox">
+                    <a>Sprays</a>
+                </div>
+                <button id="generate-emotes">Generate</button>
             </div>
+            <div class="shop-items-display flex flex-wrap" id="emote-slots"></div>
+            <hr>
+            <h2>Wraps</h2>
+            <div class="shop-items-display flex flex-wrap" id="weapon-wraps"></div>
+            <hr>
+            <h2>Menus</h2>
+            <div class="shop-items-display flex flex-wrap" id="menu-items"></div>
+    
+            <script>loadRandomPicker()</script>
         </div>
-    </div>
-    <div class="nav-content hidden-nav" id="nav-elements">
-        <ul class="nav-items" id="nav-items"></ul>
-        
-        <script>i()</script>
-    </div>
-
-    <div class="content">
-        <h1>Cosmetic randomizer</h1>
-        <h2>Tap on a question mark to reveal an item! Tap again to reroll.</h2>
-
-        <h2>Main Locker</h2>
-        <div class="shop-items-display flex flex-wrap" id="main-locker-items"></div>
-        <hr>
-        <h2>Emote Slots</h3>
-        <div id="emote-pickers">
-            <div>
-                <input type="checkbox" name="Emojis" id="emote-checkbox" checked>
-                <a>Emotes</a>
-            </div>
-            <div>
-                <input type="checkbox" name="Emojis" id="emoji-checkbox">
-                <a>Emojis</a>
-            </div>
-            <div>
-                <input type="checkbox" name="Sprays" id="spray-checkbox">
-                <a>Sprays</a>
-            </div>
-            <button id="generate-emotes">Generate</button>
-        </div>
-        <div class="shop-items-display flex flex-wrap" id="emote-slots"></div>
-        <hr>
-        <h2>Wraps</h2>
-        <div class="shop-items-display flex flex-wrap" id="weapon-wraps"></div>
-        <hr>
-        <h2>Menus</h2>
-        <div class="shop-items-display flex flex-wrap" id="menu-items"></div>
-
-        <script>loadRandomPicker()</script>
     </div>
 </body>
 </html>

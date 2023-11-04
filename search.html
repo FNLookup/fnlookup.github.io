@@ -24,58 +24,46 @@
     </div>
 
     <div class="nav-container">
-        <div class="navbar-top">
-            <div class="nav-component-top">
-                <div class="nav-main-buttons">
-                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
-                    <a class="nav-logo" href="index.html">
-<p class="fn">FN</p>
-<p class="lookup">Lookup</p>
-</a>
-                </div>
-            </div>
-        </div>
     </div>
-    <div class="nav-content hidden-nav" id="nav-elements">
-        <ul class="nav-items" id="nav-items"></ul>
-        
-        <script>i()</script>
-    </div>
+
+    <script>i()</script>
 
     <div class="content" id="content">
-        <div class="flex flex-wrap">
-            <div class="d-70-media">
-                <h1>Search All Cosmetics</h1>
-                <h2>Search all Battle Royale cosmetics.</h2>
-                <p>Select filters, type in your item's name and find it. You can also use IDs in the search bar.</p>
+        <div>
+            <div class="flex flex-wrap">
+                <div class="d-70-media">
+                    <h1>Search All Cosmetics</h1>
+                    <h2>Search all Battle Royale cosmetics.</h2>
+                    <p>Select filters, type in your item's name and find it. You can also use IDs in the search bar.</p>
+                </div>
+                <div class="d-30-media text-center">
+                    <h1 id="item-search-count"></h1>
+                    <p>Cosmetics</p>
+                </div>
             </div>
-            <div class="d-30-media text-center">
-                <h1 id="item-search-count"></h1>
-                <p>Cosmetics</p>
+            <hr>
+    
+            <div class="flex flex-center flex-wrap">
+                <div class="flex flex-center cosmetic-search-container">
+                    <input type="text" id="iname" class="cosmetic-search" oninput="searchItems()" autocomplete="off" placeholder="Search">
+                    <button onclick="searchItems()">Search</button>
+                </div>
+                <div class="filter-options flex flex-wrap" id="dropdown-object"></div>
             </div>
-        </div>
-        <hr>
-
-        <div class="flex flex-center flex-wrap">
-            <div class="flex flex-center cosmetic-search-container">
-                <input type="text" id="iname" class="cosmetic-search" oninput="searchItems()" autocomplete="off" placeholder="Search">
-                <button onclick="searchItems()">Search</button>
+            <div class="filter-options filters-selected flex overflow-auto" id="selected-filters">
+                <button class="filters-delete-btn">Delete All</button>
             </div>
-            <div class="filter-options flex flex-wrap" id="dropdown-object"></div>
-        </div>
-        <div class="filter-options filters-selected flex overflow-auto" id="selected-filters">
-            <button class="filters-delete-btn">Delete All</button>
-        </div>
-
-        <div class="search-objects" id="objects">
-            <script>
-                resetItems()
-                downloadItems()
-            </script>
-        </div>
-
-        <div class="flex-hcenter">
-            <button class="see-more-btn" onclick="generateMoreItems()">Load More</button>
+    
+            <div class="search-objects" id="objects">
+                <script>
+                    resetItems()
+                    downloadItems()
+                </script>
+            </div>
+    
+            <div class="flex-hcenter">
+                <button class="see-more-btn" onclick="generateMoreItems()">Load More</button>
+            </div>
         </div>
     </div>
 </body>

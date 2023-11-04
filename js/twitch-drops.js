@@ -1,5 +1,6 @@
 function getdrops() {
-    fetch('https://fnlookup-api.vercel.app/api?endpoint=twitch-drops').then(r => r.json()).then(r => {
+    let requestData = getRequestData('twitch-drops');
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
         for (drop of r.drops) {
             makeTwitchDropCard(drop);
         }

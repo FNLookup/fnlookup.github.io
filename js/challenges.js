@@ -1,5 +1,6 @@
 function getchs() {
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=challenges&season=current', 1)).then(response => response.json()).then(response=>{
+    let requestData = getRequestData('challenges&season=current');
+    fetch(requestData.url, requestData.data).then(response => response.json()).then(response=>{
     
         for (let bundle of response.bundles) {
             if (bundle.tag === null) continue

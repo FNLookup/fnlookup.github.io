@@ -48,24 +48,78 @@ function getFlag(code) {
 
 function getAllowedTournamentDevice(device) {
     switch(device) {
-        case 'XboxOneGDK': return 'Xbox One Game Development Kit';
+        case 'XboxOneGDK': return 'Xbox One Game Devkit';
         case 'XCloud': return 'Xbox Cloud Gaming (DEV)';
         case 'XCloudMobile': return 'Xbox Cloud Gaming Mobile (DEV)';
         case 'Helios': return 'Xbox Cloud Gaming';
         case 'HeliosMobile': return 'Xbox Cloud Gaming Mobile';
         case 'XboxOne': return 'Xbox One';
         case 'XSX': return 'Xbox Series X';
-        case 'Android': return 'Android (Mobile)';
+        case 'Android': return 'Android';
         case 'GFN': return 'GeForce NOW';
         case 'Switch': return 'Nintendo Switch';
         case 'GFNMobile': return 'GeForce NOW Mobile';
-        case 'Windows': return 'Windows PCs';
+        case 'Windows': return 'Windows';
         case 'PS4': return 'PS4';
         case 'PS5': return 'PS5';
+        case 'Luna': return 'Amazon Luna';
+        case 'LunaMobile': return 'Amazon Luna Mobile';
         default: return 'Unknown device (' + device + ')';
     }
 }
 
 function getUnixTimestampDate(unixTimestamp) {
     return new Date(unixTimestamp * 1000).toLocaleString().replace(',', '').replace(/:.. /, ' ');
+}
+
+function getApiURL(endpoint) {
+    return 'https://fnlookup-api.vercel.app/api?endpoint=' + endpoint.replace('?', '&');
+
+    var baseURL = 'https://fortniteapi.io/';
+    var requestURL = endpoint.replace(endpoint, '');
+    const endpoints = {
+        'achievements': 'v1/achievements',
+        'twitch-drops': 'v1/twitch/drops',
+        'battlepass': '/v2/battlepass',
+        'stats': 'v1/stats',
+        'shop': 'v2/shop',
+        'seasons': 'v1/seasons/list',
+        'rarities': 'v2/rarities',
+        'news': 'v1/news',
+        'fish': 'v1/loot/fish',
+        'loot': 'v1/loot/list',
+        'lookup': 'v2/lookup/advanced',
+        'item': 'v2/items/get',
+        'all-items': 'v2/items/list',
+        'augments': 'v1/game/augments',
+        'gamemodes': 'v1/game/modes',
+        'poi': 'v1/game/poi',
+        'vehicles': 'v1/game/vehicles',
+        'events': 'v1/events/list',
+        'window': 'v1/events/window',
+        'crew': 'v2/crew',
+        'crew-history': 'v2/crew/history',
+        'creator': 'v1/creator',
+        'island': 'v1/creative/island',
+        'featured': 'v1/creative/featured',
+        'challenges': 'v3/challenges',
+        // ...
+      };
+
+    var originalURL = 'https://fnlookup-api.vercel.app/api?endpoint=' + endpoint;
+    var params = new URLSearchParams(originalURL.split('?')[1]);
+
+    const gottenEndpoint = params.get('endpoint');
+    var lastURL = baseURL + endpoints[gottenEndpoint];
+    params.delete('endpoint');
+    lastURL += '?'+ params.toString();
+
+    console.log(lastURL);
+    return lastURL
+}
+
+function getRequestData(urlEndpoint) {
+    return {
+        url: geturllang(getApiURL(urlEndpoint), 1), data:{}
+    };
 }

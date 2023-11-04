@@ -2,7 +2,8 @@ function declareFuncs() {
     document.getElementById('sac-accept-button').onclick = function() {
         let enterCode = document.getElementById('sac-input').value;
 
-        fetch('https://fnlookup-api.vercel.app/api?endpoint=creator&code=' + enterCode).then(r => r.json()).then(r => {
+        let requestData = getRequestData('creator&code=' + enterCode);
+        fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
             if (typeof(r.code) !== 'string') {
                 document.getElementById('sac-player').classList.remove('hidden');
                 document.getElementById('code-label').innerHTML = 'SAC Code ' + r.code.slug;

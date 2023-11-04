@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/new-menu.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -22,32 +23,26 @@
     </div>
 
     <div class="nav-container">
-        <div class="navbar-top">
-            <div class="nav-component-top">
-                <div class="nav-main-buttons">
-                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
-                    <a class="nav-logo" href="index.html">
-                        <p class="fn">FN</p>
-                        <p class="lookup">Lookup</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="nav-content hidden-nav" id="nav-elements">
-        <ul class="nav-items" id="nav-items"></ul>
-        
-        <script>i()</script>
     </div>
 
-    <div class="content">
-        <div style="text-align:center;">
-            <h1>404 Not Found</h1>
-            <div style="display: flex; align-items: center; justify-content: center; height: 200px">
-                <img src="assets/images/ComputerError.png" title="404" width="200" height="200">
+    <script>i()</script>
+
+    <div class="content" fullpage="true">
+        <div class="left-menu-modal">
+            <ul class="nav-items" id="nav-items"></ul>
+
+            <script>prepareOptions();</script>
+        </div>
+
+        <div class="right-menu-modal">
+            <div style="text-align:center;">
+                <h1>404 Not Found</h1>
+                <div style="display: flex; align-items: center; justify-content: center; height: 200px">
+                    <img src="assets/images/ComputerError.png" title="404" width="200" height="200">
+                </div>
+                <h2>Whoops!</h2>
+                <h3>The page you were looking for does not exist.</h3>
             </div>
-            <h2>Whoops!</h2>
-            <h3>The page you were looking for does not exist.</h3>
         </div>
     </div>
 </body>

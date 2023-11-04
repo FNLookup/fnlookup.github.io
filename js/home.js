@@ -1,6 +1,7 @@
 function addToList() {
     sections = [];
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=shop', 1)).then(shop => shop.json()).then(data => {
+    let requestData = getRequestData('shop');
+    fetch(requestData.url, requestData.data).then(shop => shop.json()).then(data => {
         shopItems = data.shop; // save api key requests
 
         for (let item of data.shop) {
@@ -72,7 +73,7 @@ function makeCard(item) {
 
     hold.appendChild(title);
 
-    let type = document.createElement('a');
+    let type = document.createElement('p');
     type.classList.add("item-type");
     type.innerHTML = item.displayType;
     hold.appendChild(type);
@@ -80,7 +81,7 @@ function makeCard(item) {
     hold.appendChild(price);
     hold.setAttribute('data-rarity', item.rarity.id.toLowerCase());
 
-    marqueeCheck(title);
+    //marqueeCheck(title);
 
     obj.appendChild(hold);
 

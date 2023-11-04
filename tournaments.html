@@ -43,31 +43,33 @@
     </div>
 
     <div class="content">
-        <div class="content-select">
-            <h1>Region</h1>
-            <select id="region-dropdown" onchange="reloadWithRegion()">
-                <script>createRegionSelector()</script>
-            </select>
-            <h2 id="cur-reg">Current: </h2>
-        </div>
-
-        <hr>
-
-        <div class="flex-media">
-            <div class="tournament-box-viewer d-30-media" id="main">
-                <script>getcompetitive()</script>
+        <div>
+            <div class="content-select">
+                <h1>Region</h1>
+                <select id="region-dropdown" onchange="reloadWithRegion()">
+                    <script>createRegionSelector()</script>
+                </select>
+                <h2 id="cur-reg">Current: </h2>
             </div>
-            <div class="d-70-media tournament-details" id="tournament-details">
-                <h2 id="region-title"></h2>
-                <h1 id="tournament-name"></h1>
-                <h2 id="tournament-desc"></h2>
-                <h3 id="tournament-short-desc"></h3>
-                <h3 id="begin-end-times"></h3>
     
-                <h2 id="event-platforms"></h2>
-                <div id="free-event-details"></div>
-                <div id="tournament-windows" class="tournament-windows"></div>
-                <div id="tournament-scoring"></div>
+            <hr>
+    
+            <div class="flex-media">
+                <div class="tournament-box-viewer d-30-media" id="main">
+                    <script>getcompetitive()</script>
+                </div>
+                <div class="d-70-media tournament-details" id="tournament-details">
+                    <h2 id="region-title"></h2>
+                    <h1 id="tournament-name"></h1>
+                    <h2 id="tournament-desc"></h2>
+                    <h3 id="tournament-short-desc"></h3>
+                    <h3 id="begin-end-times"></h3>
+        
+                    <h2 id="event-platforms"></h2>
+                    <div id="free-event-details"></div>
+                    <div id="tournament-windows" class="tournament-windows"></div>
+                    <div id="tournament-scoring"></div>
+                </div>
             </div>
         </div>
     </div>

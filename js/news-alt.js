@@ -4,7 +4,8 @@ function newsAlt() {
     let parent = document.getElementById('news-mobile');
     if (parent.getAttribute('basic') == 'true') newsBasic = true;
     
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=news&type=br', 1)).then(response => response.json()).then(response => {
+    let requestData = getRequestData('news?type=br');
+    fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
         var news = response.news;
 
         let areWeOld = false;
@@ -34,7 +35,7 @@ function newsAlt() {
 
             if (areWeOld && newsBasic) return;
             if (areWeOld && !yesWeAreOld) {
-                document.getElementsByClassName('content')[0].innerHTML += '<hr><h1 class="shop-section-title">Previous News</h1><div class="news-mobile" id="old-news"></div>';
+                document.getElementById('page-content').innerHTML += '<hr><h1 class="shop-section-title">Previous News</h1><div class="news-mobile" id="old-news"></div>';
                 parent = document.getElementById('old-news');
                 yesWeAreOld = true;
             }

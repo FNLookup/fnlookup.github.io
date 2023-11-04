@@ -1,5 +1,6 @@
 function generateMap() {
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=poi', 1)).then(r => r.json()).then(r => {
+    let requestData = getRequestData('poi');
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
         if (r.data !== null) {
             setMapFunctions();
             addMapElements();
@@ -38,7 +39,7 @@ function openMapView(poi) {
 }
 
 function setMapFunctions() {
-    let page = document.getElementsByClassName('content')[0];
+    let page = document.getElementById('page-content');
 
     var poiSwitch = document.createElement('label');
     poiSwitch.classList.add('toggle');
@@ -69,7 +70,7 @@ function setMapFunctions() {
 }
 
 function addMapElements() {
-    let page = document.getElementsByClassName('content')[0];
+    let page = document.getElementById('page-content');
     let content = document.createElement('div');
     content.classList.add('flex-media');
 

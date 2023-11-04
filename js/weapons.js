@@ -1,5 +1,6 @@
 function getWeapons() {
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=loot', 1)).then(r => r.json()).then(r => {
+    let requestData = getRequestData('loot');
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
         let content = document.getElementById('weapon-container');
 
         for (let gun of r.weapons) {

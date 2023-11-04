@@ -2,7 +2,8 @@ var tabs = [];
 let selected = 0;
 
 function create() {
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=news&type=br', 1)).then(response => response.json()).then(response => {
+    let requestData = getRequestData('news?type=br');
+    fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
         document.getElementsByClassName('text-wait')[0].setAttribute('done', 'true');
 
         var news = response.news;

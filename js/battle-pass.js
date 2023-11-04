@@ -2,8 +2,8 @@ function start() {
     let season = 'current';
     var p = new URLSearchParams(window.location.search);
     if (p.has('season')) season = p.get('season');
-
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=battlepass&season=' + season, 1)).then(r => r.json()).then(r => {
+    let requestData = getRequestData('battlepass&season=' + season);
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
 
         let pc = document.getElementById('page-content');
 
@@ -50,6 +50,8 @@ function start() {
 
             let parent = document.createElement('a');
             parent.classList.add('item-card-parent');
+            
+            parent.classList.add("fn-border-style");
 
             var obj = document.createElement("div");
             obj.classList.add("item-card");
@@ -80,8 +82,8 @@ function start() {
                 vbuck.title = fprice + ' Battle Stars';
                 vbt.innerHTML = fprice;
     
-                price.append(vbt);
                 price.appendChild(vbuck);
+                price.append(vbt);
             } else {
                 let fprice = 'Tier ' + reward.tier;
                 let vbt = document.createElement('a');
@@ -94,7 +96,7 @@ function start() {
 
             hold.appendChild(otitle);
 
-            let type = document.createElement('a');
+            let type = document.createElement('p');
             type.classList.add("item-type");
             type.innerHTML = item.type.name;
             hold.appendChild(type);
@@ -102,7 +104,7 @@ function start() {
             hold.appendChild(price);
             hold.setAttribute('data-rarity', item.rarity.id.toLowerCase());
 
-            marqueeCheck(otitle);
+            //marqueeCheck(otitle);
 
             obj.appendChild(hold);
 

@@ -4,9 +4,8 @@ function searchPlayer() {
 
     clearChildren(content);
 
-    let reqUrl = 'https://fnlookup-api.vercel.app/api?endpoint=stats&account=' + uID.value
-
-    fetch(reqUrl).then(res => res.json()).then(res => {
+    let requestData = getRequestData('stats&account=' + uID.value);
+    fetch(requestData.url, requestData.data).then(res => res.json()).then(res => {
         content.innerHTML += '<h1 id="user-name">' + res.name + '</h1><h1 class="shop-section-title">Level History</h1><hr>'
         let cardContainerHTML = ''
         for (let levelHistory of res.accountLevelHistory) {
@@ -142,9 +141,8 @@ function lookupPlayer() {
     let containers = document.getElementById('content-players');
     var uName = document.getElementById('player-name').value;
 
-    let reqUrl = 'https://fnlookup-api.vercel.app/api?endpoint=lookup&username=' + uName
-
-    fetch(reqUrl).then(res => res.json()).then(res => {
+    let requestData = getRequestData('lookup&username=' + uName);
+    fetch(requestData.url, requestData.data).then(res => res.json()).then(res => {
 
         clearChildren(containers);
 

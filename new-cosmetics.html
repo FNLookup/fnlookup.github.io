@@ -16,6 +16,7 @@
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/new-cosmetics.js"></script>
+    <script src="js/new-menu.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -24,31 +25,24 @@
     </div>
 
     <div class="nav-container">
-        <div class="navbar-top">
-            <div class="nav-component-top">
-                <div class="nav-main-buttons">
-                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
-                    <a class="nav-logo" href="index.html">
-<p class="fn">FN</p>
-<p class="lookup">Lookup</p>
-</a>
-                </div>
+    </div>
+
+    <script>i()</script>
+
+    <div class="content" fullpage="true">
+        <div class="left-menu-modal">
+            <ul class="nav-items" id="nav-items"></ul>
+
+            <script>prepareOptions();</script>
+        </div>
+
+        <div class="right-menu-modal">
+            <h1 class="flex" id="cosmetic-page-title">Recently added cosmetics</h1>
+            <h2>See the cosmetics that have been recently added to Fortnite.</h2>
+            <hr>
+            <div class="shop-items-display" id="items">
+                <script>init()</script>
             </div>
         </div>
     </div>
-    <div class="nav-content hidden-nav" id="nav-elements">
-        <ul class="nav-items" id="nav-items"></ul>
-        
-        <script>i()</script>
-    </div>
-
-    <div class="content" id="page-content">
-        <h1 class="flex" id="cosmetic-page-title">Recently added cosmetics</h1>
-        <h2>See the cosmetics that have been recently added to Fortnite.</h2>
-        <hr>
-        <div class="shop-items-display" id="items">
-            <script>init()</script>
-        </div>
-    </div>
 </body>
-</html>

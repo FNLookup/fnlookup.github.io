@@ -40,7 +40,7 @@ function createRegionSelector() {
 }
 
 function getcompetitive() {
-    let region = 'NAE';
+    let region = 'NAC';
     let params = new URLSearchParams(window.location.search)
 
     if (params.has('region')) {
@@ -50,7 +50,8 @@ function getcompetitive() {
     document.getElementById('cur-reg').innerHTML = 'Current region: ' + getRegionName(region);
     if (region === 'NAE' || region === 'NAW') { document.getElementById('cur-reg').innerHTML += 'warning this region might have cease and desisted' }
 
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=events&region=' + region, 1)).then(r => r.json()).then(r => {
+    let requestData = getRequestData('events&region=' + region);
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
         let main = document.getElementById('main');
 
         let region = document.getElementById('region-title');
@@ -131,7 +132,8 @@ function getcompetitive() {
                         clearChildren(scoring);
                         scoring.innerHTML = 'Please wait...<br><img src="' + marioDancing + '" alt="Mario">';
 
-                        fetch('https://fnlookup-api.vercel.app/api?endpoint=window&windowId=' + twindow.windowId).then(r => r.json()).then(r => {
+                        let requestData = getRequestData('window&windowId=' + twindow.windowId);
+                        fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
                             console.log(r);
 
                             clearChildren(scoring)

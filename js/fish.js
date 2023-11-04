@@ -1,5 +1,6 @@
 function getfish() {
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=fish', 1)).then(r => r.json()).then(r => {
+    let requestData = getRequestData('fish');
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
 
         console.log(r);
         let main = document.getElementById('fish-wrapper');

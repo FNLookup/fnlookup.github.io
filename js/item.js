@@ -46,7 +46,8 @@ function init() {
                 clearChildren(content);
 
                 for (let preitem of response) {
-                    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=item&id=' + preitem.id, 1)).then(data => data.json()).then(data => {
+                    let requestData = getRequestData('item&id=' + preitem.id);
+                    fetch(requestData.url, requestData.data).then(data => data.json()).then(data => {
                         let setItems = [];
 
                         let item = data.item;

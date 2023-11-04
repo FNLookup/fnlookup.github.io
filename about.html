@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/new-menu.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -22,155 +23,149 @@
     </div>
 
     <div class="nav-container">
-        <div class="navbar-top">
-            <div class="nav-component-top">
-                <div class="nav-main-buttons">
-                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
-                    <a class="nav-logo" href="index.html">
-                    <p class="fn">FN</p>
-                    <p class="lookup">Lookup</p>
-                    </a>
-                </div>
+    </div>
+
+    <script>i()</script>
+
+    <div class="content" fullpage="true">
+        <div class="left-menu-modal">
+            <ul class="nav-items" id="nav-items"></ul>
+
+            <script>prepareOptions();</script>
+        </div>
+
+        <div class="right-menu-modal">
+            <h1>Disclaimer</h1>
+            <p>FNLookup is a free, non-profit page. No content is used for revenue.<p>
+            <hr>
+
+            <h1>About FNLookup</h1>
+
+            <h2>Information</h2>
+
+            <p>FNLookup is a page hosted on <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>, a free page hosting system for GitHub.</p>
+            <p>Made with Fortnite APIs that provide live information from Fortnite.</p>
+            <hr>
+
+            <h2>How FNLookup works</h2>
+            <p>FNLookup uses various Fortnite APIs to offer the best experience for the user. While only one API may be used at once, all of the APIs provide various set of features, that can be shown to the user.</p>
+            <p>Some of the APIs are:</p>
+            <ul>
+                <li><a href="https://discord.com/invite/KbGH43p">Fortnite Central API</a></li>
+                <li><a href="https://www.Fortnite-API.com">Fortnite API</a></li>
+                <li><a href="https://www.fortnte-api.io">Fortnite-Api.io</a></li>
+            </ul>
+            <hr>
+
+            <h2>Personal Information</h2>
+            <p>FNLookup does NOT collect any information about the user, however Fortnite APIs collect country information for analytics.</p>
+            <p>Here are any types of information that is NOT collected by FNLookup</p>
+            <ul class="classified">
+                <li>IP Address</li>
+                <li>Browser type</li>
+                <li>Device</li>
+                <li>Epic Games account credentials</li>
+            </ul>
+
+            <p>Information may or may not be as well collected by GitHub's free page hosting service: GitHub Pages.</p>
+            
+            <hr>
+
+            <h2>Saved Data</h2>
+            <p>Only data that is stored locally is your request language.</p>
+            <p>Languages are independent from each machine and do not carry on with Google Accounts or any other type of account.</p>
+
+            <hr>
+
+            <h2>Deleting your data</h2>
+            <p>You have an option to delete your data: Right below with this button. This will delete everything that is saved currently, like your language.</p>
+            <div class="flex flex-hcenter">
+                <button class="fn-button" onclick="localStorage.clear(); document.getElementById('del-data-btn').innerHTML = 'DATA DELETED'; console.log('Data deleted by force')" id="del-data-btn">DELETE MY DATA</button>
             </div>
-        </div>
-    </div>
-    <div class="nav-content hidden-nav" id="nav-elements">
-        <ul class="nav-items" id="nav-items"></ul>
+
+            <hr>
+
+            <h2>Language Specifications</h2>
+            <p>You are able to use a total of <a id="lang-length"></a> languages, those being the following:</p>
+            <ul class="classified" id="lang-ab-list"></ul>
+            <script>document.getElementById("lang-length").innerHTML = window.uiLangList.length;for (let lang of window.uiLangList)document.getElementById("lang-ab-list").innerHTML += '<li title="' + lang.backend + '">' + lang.name + ' (' + lang.title + ')' + '</li>'</script>
         
-        <script>i()</script>
-    </div>
+            <p>You can change your language <a href="language-picker.html">here</a>.</p>
+            <p>Languages will change specifically Fortnite content, not website elements.</p>
 
-    <div class="content">
-        <h1>Disclaimer</h1>
-        <p>FNLookup is a free, non-profit page. No content is used for revenue.<p>
-        <hr>
+            <hr>
 
-        <h1>About FNLookup</h1>
+            <h1>README.md</h1>
 
-        <h2>Information</h2>
-
-        <p>FNLookup is a page hosted on <a href="https://www.github.com" target="_blank" rel="noopener noreferrer">GitHub Pages</a>, a free page hosting system for GitHub.</p>
-        <p>Made with Fortnite APIs that provide live information from Fortnite.</p>
-        <hr>
-
-        <h2>How FNLookup works</h2>
-        <p>FNLookup uses various Fortnite APIs to offer the best experience for the user. While only one API may be used at once, all of the APIs provide various set of features, that can be shown to the user.</p>
-        <p>Some of the APIs are:</p>
-        <ul>
-            <li><a href="https://discord.com/invite/KbGH43p">Fortnite Central API</a></li>
-            <li><a href="https://www.Fortnite-API.com">Fortnite API</a></li>
-            <li><a href="https://www.fortnte-api.io">Fortnite-Api.io</a></li>
-        </ul>
-        <hr>
-
-        <h2>Personal Information</h2>
-        <p>FNLookup does NOT collect any information about the user, however Fortnite APIs collect country information for analytics.</p>
-        <p>Here are any types of information that is NOT collected by FNLookup</p>
-        <ul class="classified">
-            <li>IP Address</li>
-            <li>Browser type</li>
-            <li>Device</li>
-            <li>Epic Games account credentials</li>
-        </ul>
-
-        <p>Information may or may not be as well collected by GitHub's free page hosting service: GitHub Pages.</p>
-        
-        <hr>
-
-        <h2>Saved Data</h2>
-        <p>Only data that is stored locally is your request language.</p>
-        <p>Languages are independent from each machine and do not carry on with Google Accounts or any other type of account.</p>
-
-        <hr>
-
-        <h2>Deleting your data</h2>
-        <p>You have an option to delete your data: Right below with this button. This will delete everything that is saved currently, like your language.</p>
-        <div class="flex flex-hcenter">
-            <button class="fn-button" onclick="localStorage.clear(); document.getElementById('del-data-btn').innerHTML = 'DATA DELETED'; console.log('Data deleted by force')" id="del-data-btn">DELETE MY DATA</button>
-        </div>
-
-        <hr>
-
-        <h2>Language Specifications</h2>
-        <p>You are able to use a total of <a id="lang-length"></a> languages, those being the following:</p>
-        <ul class="classified" id="lang-ab-list"></ul>
-        <script>document.getElementById("lang-length").innerHTML = window.uiLangList.length;for (let lang of window.uiLangList)document.getElementById("lang-ab-list").innerHTML += '<li title="' + lang.backend + '">' + lang.name + ' (' + lang.title + ')' + '</li>'</script>
-    
-        <p>You can change your language <a href="language-picker.html">here</a>.</p>
-        <p>Languages will change specifically Fortnite content, not website elements.</p>
-
-        <hr>
-
-        <h1>README.md</h1>
-
-        <div class="about-markdown">
-            <p><img src="https://repository-images.githubusercontent.com/490444433/1c25dc92-06e7-4414-8afc-df0790e0536c" alt="FNLookup"></p>
-            <h1 id="fnlookup">FNLookup</h1>
-            <p><a href="https://tposejank.github.io/fnlookup/">FNLookup</a> is a easy browsing tool for <a href="https://fn.gg">Fortnite</a> related content.</p>
-            <h2 id="features-of-this-page">Features of this page</h2>
-            <ol>
-            <li>Fortnite content<ol>
-            <li>Battle pass</li>
-            <li>Map and map comparisons</li>
-            <li>Season Progress</li>
-            <li>Augments</li>
-            <li>News</li>
-            </ol>
-            </li>
-            <li>Other<ol>
-            <li>Player Stats</li>
-            <li>Seasons</li>
-            <li>Twitch Drops</li>
-            </ol>
-            </li>
-            <li>Cosmetics and Item Shop<ol>
-            <li>Predictions</li>
-            <li>Search cosmetics</li>
-            <li>View cosmetics</li>
-            <li>See the newest added cosmetics</li>
-            <li>See the Item Shop</li>
-            </ol>
-            </li>
-            <li>Multilingual API Requests</li>
-            </ol>
-            <h1 id="home-view-item-shop">Home view item shop</h1>
-            <p>Explore the Item Shop from the home page.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055318610656104448/image.png" alt="Home Item Shop"></p>
-            <h1 id="item-shop">Item Shop</h1>
-            <p>View the <a href="https://tposejank.github.io/fnlookup/item-shop.html">Item Shop</a>.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055329436855193651/image.png" alt="Item Shop"></p>
-            <h1 id="predictions">Predictions</h1>
-            <p>See items that may come soon into the Item Shop (otherwise known as <a href="https://tposejank.github.io/fnlookup/predictions.html">Predictions</a>.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055330813606100992/image.png" alt="Predictions"></p>
-            <h1 id="news">News</h1>
-            <p>See the current <a href="https://tposejank.github.io/fnlookup/news.html">news</a> in-game.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055329965480103936/image.png" alt="News"></p>
-            <h1 id="season-progress">Season Progress</h1>
-            <p>View the End Of Season countdown and a progress bar.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055330235677167626/image.png" alt="Season Progress"></p>
-            <h1 id="item-search">Item Search</h1>
-            <p>Look up items with a <a href="https://tposejank.github.io/fnlookup/search.html">Search Bar</a>.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055334013503545344/image.png" alt="Season Progress"></p>
-            <h1 id="new-cosmetics">New Cosmetics</h1>
-            <p>See the cosmetic items that have been recently added to Fortnite.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055331152182919239/image.png" alt="New Cosmetics"></p>
-            <h1 id="map">Map</h1>
-            <p>See the map and the POIs, Landmarks and an image.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055331377169563709/image.png" alt="Map"></p>
-            <h1 id="augments">Augments</h1>
-            <p>View the various augments that are available in-game.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055331638806073384/image.png" alt="Augments"></p>
-            <h1 id="twitch-drops">Twitch Drops</h1>
-            <p>View the current Twitch Drops.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055331838303936523/image.png" alt="Twitch Drops"></p>
-            <h1 id="player-stats">Player Stats</h1>
-            <p>View a player&#39;s stats or yours from the browser.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055332011440623678/image.png" alt="Player Stats"></p>
-            <h1 id="seasons">Seasons</h1>
-            <p>See the past seasons and their start and end dates.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055332299044036624/image.png" alt="Seasons"></p>
-            <h1 id="other">Other</h1>
-            <h2 id="credits">Credits</h2>
-            <p>Item cards are based on <a href="https://fn.gg">Fortnite</a>&#39;s actual item shop cards.</p>
-            <p>APIs used are </p>
-            <ol>
-            <li><a href="https://www.Fortnite-API.com">Fortnite-API.com</a></li>
-            <li><a href="https://fortniteapi.io">FortniteAPI.io</a></li>
-            </ol>
-            <p>Some icons that can be seen in-game are provided by <a href="https://www.fortnite.gg/assets">fortnite.gg/assets</a></p>
-            <h2 id="tools">Tools</h2>
-            <h3 id="browser-page-for-the-countdown">Browser page for the countdown</h3>
-            <p>Check it out <a href="https://tposejank.github.io/fnlookup/season-timer/index.html">here</a>  </p>
-            <h3 id="news-page-visualizer">News page visualizer</h3>
-            <p>Check it out <a href="https://tposejank.github.io/fnlookup/news/index.html">here</a>  </p>
+            <div class="about-markdown">
+                <p><img src="https://repository-images.githubusercontent.com/490444433/1c25dc92-06e7-4414-8afc-df0790e0536c" alt="FNLookup"></p>
+                <h1 id="fnlookup">FNLookup</h1>
+                <p><a href="https://tposejank.github.io/fnlookup/">FNLookup</a> is a easy browsing tool for <a href="https://fn.gg">Fortnite</a> related content.</p>
+                <h2 id="features-of-this-page">Features of this page</h2>
+                <ol>
+                <li>Fortnite content<ol>
+                <li>Battle pass</li>
+                <li>Map and map comparisons</li>
+                <li>Season Progress</li>
+                <li>Augments</li>
+                <li>News</li>
+                </ol>
+                </li>
+                <li>Other<ol>
+                <li>Player Stats</li>
+                <li>Seasons</li>
+                <li>Twitch Drops</li>
+                </ol>
+                </li>
+                <li>Cosmetics and Item Shop<ol>
+                <li>Predictions</li>
+                <li>Search cosmetics</li>
+                <li>View cosmetics</li>
+                <li>See the newest added cosmetics</li>
+                <li>See the Item Shop</li>
+                </ol>
+                </li>
+                <li>Multilingual API Requests</li>
+                </ol>
+                <h1 id="home-view-item-shop">Home view item shop</h1>
+                <p>Explore the Item Shop from the home page.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055318610656104448/image.png" alt="Home Item Shop"></p>
+                <h1 id="item-shop">Item Shop</h1>
+                <p>View the <a href="https://tposejank.github.io/fnlookup/item-shop.html">Item Shop</a>.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055329436855193651/image.png" alt="Item Shop"></p>
+                <h1 id="predictions">Predictions</h1>
+                <p>See items that may come soon into the Item Shop (otherwise known as <a href="https://tposejank.github.io/fnlookup/predictions.html">Predictions</a>.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055330813606100992/image.png" alt="Predictions"></p>
+                <h1 id="news">News</h1>
+                <p>See the current <a href="https://tposejank.github.io/fnlookup/news.html">news</a> in-game.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055329965480103936/image.png" alt="News"></p>
+                <h1 id="season-progress">Season Progress</h1>
+                <p>View the End Of Season countdown and a progress bar.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055330235677167626/image.png" alt="Season Progress"></p>
+                <h1 id="item-search">Item Search</h1>
+                <p>Look up items with a <a href="https://tposejank.github.io/fnlookup/search.html">Search Bar</a>.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055334013503545344/image.png" alt="Season Progress"></p>
+                <h1 id="new-cosmetics">New Cosmetics</h1>
+                <p>See the cosmetic items that have been recently added to Fortnite.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055331152182919239/image.png" alt="New Cosmetics"></p>
+                <h1 id="map">Map</h1>
+                <p>See the map and the POIs, Landmarks and an image.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055331377169563709/image.png" alt="Map"></p>
+                <h1 id="augments">Augments</h1>
+                <p>View the various augments that are available in-game.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055331638806073384/image.png" alt="Augments"></p>
+                <h1 id="twitch-drops">Twitch Drops</h1>
+                <p>View the current Twitch Drops.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055331838303936523/image.png" alt="Twitch Drops"></p>
+                <h1 id="player-stats">Player Stats</h1>
+                <p>View a player&#39;s stats or yours from the browser.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055332011440623678/image.png" alt="Player Stats"></p>
+                <h1 id="seasons">Seasons</h1>
+                <p>See the past seasons and their start and end dates.<br><img src="https://cdn.discordapp.com/attachments/1050911269433118720/1055332299044036624/image.png" alt="Seasons"></p>
+                <h1 id="other">Other</h1>
+                <h2 id="credits">Credits</h2>
+                <p>Item cards are based on <a href="https://fn.gg">Fortnite</a>&#39;s actual item shop cards.</p>
+                <p>APIs used are </p>
+                <ol>
+                <li><a href="https://www.Fortnite-API.com">Fortnite-API.com</a></li>
+                <li><a href="https://fortniteapi.io">FortniteAPI.io</a></li>
+                </ol>
+                <p>Some icons that can be seen in-game are provided by <a href="https://www.fortnite.gg/assets">fortnite.gg/assets</a></p>
+                <h2 id="tools">Tools</h2>
+                <h3 id="browser-page-for-the-countdown">Browser page for the countdown</h3>
+                <p>Check it out <a href="https://tposejank.github.io/fnlookup/season-timer/index.html">here</a>  </p>
+                <h3 id="news-page-visualizer">News page visualizer</h3>
+                <p>Check it out <a href="https://tposejank.github.io/fnlookup/news/index.html">here</a>  </p>
+            </div>
         </div>
     </div>
 

@@ -120,7 +120,7 @@ function getCard(rollEventItems, item, top, bottom, backends) {
     title.innerHTML = top;
     title.classList.add("item-title");
 
-    let type = document.createElement('a');
+    let type = document.createElement('p');
     type.classList.add("item-type");
     type.innerHTML = bottom;
 

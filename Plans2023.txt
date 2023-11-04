@@ -73,3 +73,21 @@ G!-- ALL DONE
 - https://github.com/tposejank/fnlookup/issues/6
 
 - Maps "https://fortniteapi.io/v1/maps/list"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Make the ugly looking pages more better looking
+- optimize the weapons page!!
+- have the news be lookin like the new news

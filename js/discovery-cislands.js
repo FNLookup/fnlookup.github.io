@@ -26,8 +26,9 @@ function doStuff(iCode) {
     let live = document.getElementById('live')
     let img = document.getElementById('island-img');
     let link = document.getElementById('link-visit');
-
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=island&code=' + iID, 1)).then(r => r.json()).then(r => {
+    
+    let requestData = getRequestData('island&code=' + iID);
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
         if (r.island !== undefined) {
             document.getElementById('island-data').classList.remove('hidden');
 

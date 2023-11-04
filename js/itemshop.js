@@ -79,7 +79,8 @@ function constructItemShop() {
 function createItems() {
     if (constructItemShop()) return;
     
-    fetch(geturllang("https://fnlookup-api.vercel.app/api?endpoint=shop", 1)).then(response=>response.json()).then(response=>{
+    let requestData = getRequestData('shop');
+    fetch(requestData.url, requestData.data).then(response=>response.json()).then(response=>{
     
         if (response.customBackground !== null) {
             let p = document.getElementsByClassName("season-video")[0]
@@ -104,8 +105,8 @@ function createItems() {
 
             document.getElementById('title_' + obj).append(item_count);
         }
-
-        fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=crew', 1)).then(r=>r.json()).then(r=> {
+        let requestData = getRequestData('crew');
+        fetch(requestData.url, requestData.data).then(r=>r.json()).then(r=> {
             let crew = r.currentCrew;
 
             let images = [];
@@ -178,6 +179,7 @@ function makeShopCard(item, registeredSections) {
 
     let parent = document.createElement('a');
     parent.classList.add('item-card-parent');
+    parent.classList.add('fn-border-style');
 
     var obj = document.createElement("div");
     obj.classList.add("item-card");
@@ -226,7 +228,7 @@ function makeShopCard(item, registeredSections) {
 
     hold.appendChild(title);
 
-    let type = document.createElement('a');
+    let type = document.createElement('p');
     type.classList.add("item-type");
     type.innerHTML = item.displayType;
     hold.appendChild(type);
@@ -234,7 +236,7 @@ function makeShopCard(item, registeredSections) {
     hold.appendChild(price);
     hold.setAttribute('data-rarity', item.rarity.id.toLowerCase());
 
-    marqueeCheck(title);
+    //marqueeCheck(title);
 
     obj.appendChild(hold);
 

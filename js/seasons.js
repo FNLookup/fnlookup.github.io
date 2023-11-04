@@ -1,5 +1,6 @@
 function gets() {
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=seasons', 1)).then(r => r.json()).then(r => {
+    let requestData = getRequestData('seasons');
+    fetch(requestData.url, requestData.data).then(r => r.json()).then(r => {
         for (i=0;i<r.seasons.length;i++) {
             let season = r.seasons[i]
 

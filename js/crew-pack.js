@@ -3,7 +3,8 @@ function getcpackdata() {
     let params = new URLSearchParams(window.location.search);
     if (params.has('crewID')) crewID = params.get('crewID');
 
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=crew-history', 1)).then(r=>r.json()).then(r=> {
+    let requestData = getRequestData('crew-history');
+    fetch(requestData.url, requestData.data).then(r=>r.json()).then(r=> {
         let crew = r.history[crewID];
 
         document.getElementById('crew-pack-image').src = crew.images.itemShopTile;

@@ -1,7 +1,6 @@
 function loadHistory() {
-    fetch(geturllang('https://fnlookup-api.vercel.app/api?endpoint=crew-history', 1), {
-        headers: {'Authorization': keyFNAPIIo}
-    }).then(r=>r.json()).then(r=> {
+    let requestData = getRequestData('crew-history');
+    fetch(requestData.url, requestData.data).then(r=>r.json()).then(r=> {
 
         for (let i in r.history) {
             let crew = r.history[i]

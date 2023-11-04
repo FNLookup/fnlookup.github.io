@@ -16,6 +16,7 @@
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script src="js/map.js" type="text/javascript"></script>
+    <script src="js/new-menu.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -24,38 +25,30 @@
     </div>
 
     <div class="nav-container">
-        <div class="navbar-top">
-            <div class="nav-component-top">
-                <div class="nav-main-buttons">
-                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
-                    <a class="nav-logo" href="index.html">
-<p class="fn">FN</p>
-<p class="lookup">Lookup</p>
-</a>
-                </div>
-            </div>
+    </div>
+
+    <script>i()</script>
+
+    <div class="content" fullpage="true">
+        <div class="left-menu-modal">
+            <ul class="nav-items" id="nav-items"></ul>
+
+            <script>prepareOptions();</script>
         </div>
-    </div>
-    <div class="nav-content hidden-nav" id="nav-elements">
-        <ul class="nav-items" id="nav-items"></ul>
-        
-        <script>i()</script>
-    </div>
 
-    <div class="content">  
+        <div class="right-menu-modal" id="page-content">
+            <script>generateMap()</script>
 
-        <script>generateMap()</script>
-
-        <div class="poi-view" id="poi-view-dialog">
-            <div class="flex map-controls">
-                <h1 id="poi-name"></h1>
-                <svg class="pointer" id="close-map-btn" width="30" height="30" viewBox="0 0 130 130">
-                    <line x1="10" y1="10" x2="120" y2="120" stroke-width="10" stroke="White" />
-                    <line x1="10" y1="120" x2="120" y2="10" stroke-width="10" stroke="White" />
-                </svg>
+            <div class="poi-view" id="poi-view-dialog">
+                <div class="flex map-controls">
+                    <h1 id="poi-name"></h1>
+                    <svg class="pointer" id="close-map-btn" width="30" height="30" viewBox="0 0 130 130">
+                        <line x1="10" y1="10" x2="120" y2="120" stroke-width="10" stroke="White" />
+                        <line x1="10" y1="120" x2="120" y2="10" stroke-width="10" stroke="White" />
+                    </svg>
+                </div>
+                <img alt="POI" class="poi-image" id="poi-image">
             </div>
-            <img alt="POI" class="poi-image" id="poi-image">
         </div>
     </div>
 </body>
-</html>

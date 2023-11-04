@@ -16,6 +16,7 @@
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/playerstats.js"></script>
+    <script src="js/new-menu.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="season-video">
@@ -24,50 +25,44 @@
     </div>
 
     <div class="nav-container">
-        <div class="navbar-top">
-            <div class="nav-component-top">
-                <div class="nav-main-buttons">
-                    <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
-                    <a class="nav-logo" href="index.html">
-                    <p class="fn">FN</p>
-                    <p class="lookup">Lookup</p>
-                    </a>
-                </div>
+    </div>
+
+    <script>i()</script>
+
+    <div class="content" fullpage="true">
+        <div class="left-menu-modal">
+            <ul class="nav-items" id="nav-items"></ul>
+
+            <script>prepareOptions();</script>
+        </div>
+
+        <div class="right-menu-modal">
+            <h1>Lookup players</h1>
+            <h2>Lookup players by their username and view their Fortnite stats by <strong>clicking on their name</strong></h2>
+    
+            <div class="flex flex-wrap player-data">
+                <input type="text" placeholder="User Name" id="player-name" title="Account Name">
+                <button id="discover" onclick="lookupPlayer()">Search</button>
             </div>
-        </div>
-    </div>
-    <div class="nav-content hidden-nav" id="nav-elements">
-        <ul class="nav-items" id="nav-items"></ul>
-        
-        <script>i()</script>
-    </div>
-
-    <div class="content">
-        <h1>Lookup players</h1>
-        <h2>Lookup players by their username and view their Fortnite stats by <strong>clicking on their name</strong></h2>
-
-        <div class="flex flex-wrap player-data">
-            <input type="text" placeholder="User Name" id="player-name" title="Account Name">
-            <button id="discover" onclick="lookupPlayer()">Search</button>
-        </div>
-
-        <div id="content-players">
-            
-        </div>
-
-        <hr>
-
-        <h1 id="player-stats">Player Stats</h1>
-        <h2>Get a Player's Stats</h2>
-        <p class="player-data">To look up a player's stats, insert their <strong>Epic Games Account ID</strong> then click the Discover button.</p>
-
-        <div class="flex flex-wrap player-data">
-            <input type="text" placeholder="Account ID" id="player-id" title="Epic Games Account ID">
-            <button id="discover" onclick="searchPlayer()">Discover</button>
-        </div>
-
-        <div id="content">
-            
+    
+            <div id="content-players">
+                
+            </div>
+    
+            <hr>
+    
+            <h1 id="player-stats">Player Stats</h1>
+            <h2>Get a Player's Stats</h2>
+            <p class="player-data">To look up a player's stats, insert their <strong>Epic Games Account ID</strong> then click the Discover button.</p>
+    
+            <div class="flex flex-wrap player-data">
+                <input type="text" placeholder="Account ID" id="player-id" title="Epic Games Account ID">
+                <button id="discover" onclick="searchPlayer()">Discover</button>
+            </div>
+    
+            <div id="content">
+                
+            </div>
         </div>
     </div>
 </body>
