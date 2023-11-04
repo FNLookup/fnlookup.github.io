@@ -1,6 +1,3 @@
-# Warning
-### Development is currently paused. Returning probably late April - Early may.
-
 ![FNLookup](https://repository-images.githubusercontent.com/490444433/1c25dc92-06e7-4414-8afc-df0790e0536c)
 
 # FNLookup
