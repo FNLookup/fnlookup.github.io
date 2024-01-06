@@ -17,10 +17,8 @@ function init() {
 
     dateFirst.innerHTML = getFormatDate(new Date(times[0]));
     dateSecond.innerHTML = getFormatDate(new Date(times[1]));
-
-    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=images,name,description,rarity,type,shopHistory,id', 1), {
-        headers: { 'Authorization': crystalBall.split('|')[1]
-    }}).then(response => response.json()).then(response => {
+    let requestData = getRequestData('all-items&fields=images,name,description,rarity,type,shopHistory,id');
+    fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
         if (response.items !== null) {
             for (let item of response.items) {
     

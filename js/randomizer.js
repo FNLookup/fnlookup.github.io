@@ -46,9 +46,8 @@ let menuObjectTypes = {
 }
 
 function loadRandomPicker() {
-    fetch(geturllang('https://fortniteapi.io/v2/items/list?fields=images,name,type', 1), {
-        headers: { 'Authorization': crystalBall.split('|')[1]
-    }}).then(response => response.json()).then(response => {
+    let requestData = getRequestData('all-items&fields=images,name,type');
+    fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
         items = response.items;
 
         for (let object of [rowOneLockerTypes, wrapTypes, menuObjectTypes]) {

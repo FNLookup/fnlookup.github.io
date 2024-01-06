@@ -103,10 +103,8 @@ function downloadItems() {
     mainFilters();
 
     document.getElementById('objects').innerHTML = '<img src="assets/images/loading.gif">';
-
-    fetch(geturllang('https://fortniteapi.io/v2/items/list', 1), {
-        headers: { 'Authorization': crystalBall.split('|')[1]
-    }}).then(response => response.json()).then(response => {
+    let requestData = getRequestData('all-items');
+    fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
         items = response.items;
         console.log(items);
 
