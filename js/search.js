@@ -103,7 +103,7 @@ function downloadItems() {
     mainFilters();
 
     document.getElementById('objects').innerHTML = '<img src="assets/images/loading.gif">';
-    let requestData = getRequestData('all-items');
+    let requestData = itemFetch();
     fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
         items = response.items;
         console.log(items);

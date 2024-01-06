@@ -17,7 +17,7 @@ function init() {
 
     dateFirst.innerHTML = getFormatDate(new Date(times[0]));
     dateSecond.innerHTML = getFormatDate(new Date(times[1]));
-    let requestData = getRequestData('all-items&fields=images,name,description,rarity,type,shopHistory,id');
+    let requestData = itemFetch('fields=images,name,description,rarity,type,shopHistory,id');
     fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
         if (response.items !== null) {
             for (let item of response.items) {

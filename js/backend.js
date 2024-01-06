@@ -122,3 +122,10 @@ function getRequestData(urlEndpoint) {
         url: geturllang(getApiURL(urlEndpoint), 1), data:{}
     };
 }
+
+function itemFetch(params = '') {
+    var qMark = params == '' ? '' : '?';
+    return {
+        url: geturllang('https://fortniteapi.io/v2/items/list'+ qMark + params, 1), data:{headers:{'Authorization':atob('YTIyYjEyZGMtNzEzOTZkODUtMTM5N2UzZjktYTUwNDUxNGQ=')}}
+    };
+}

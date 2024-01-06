@@ -40,7 +40,7 @@ function constructItemShop() {
     if (params.has('date')) {
         let goalDate = params.get('date');
         let listMatching = []
-        let requestData = getRequestData('all-items&fields=name,id,displayAssets,images,shopHistory,rarity,type,price');
+        let requestData = itemFetch('fields=name,id,displayAssets,images,shopHistory,rarity,type,price');
         fetch(requestData.url, requestData.data).then(data => data.json()).then(data => {
             listMatching = data.items.filter(item => item.shopHistory && item.shopHistory.includes(goalDate));
 

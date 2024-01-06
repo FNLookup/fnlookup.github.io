@@ -46,7 +46,7 @@ let menuObjectTypes = {
 }
 
 function loadRandomPicker() {
-    let requestData = getRequestData('all-items&fields=images,name,type');
+    let requestData = itemFetch('fields=images,name,type');
     fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
         items = response.items;
 
