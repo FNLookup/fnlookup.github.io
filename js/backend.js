@@ -73,7 +73,7 @@ function getUnixTimestampDate(unixTimestamp) {
 }
 
 function getApiURL(endpoint) {
-    return 'https://fnlookup-api.vercel.app/api?endpoint=' + endpoint.replace('?', '&');
+    return 'https://fnlookup-apiv2.vercel.app/api?endpoint=' + endpoint.replace('?', '&');
 
     var baseURL = 'https://fortniteapi.io/';
     var requestURL = endpoint.replace(endpoint, '');
