@@ -38,7 +38,7 @@ function i() {
                 <a href="index.html" class="navbar-button no-link">HOME</a>
                 <a href="search.html" class="navbar-button no-link">ITEMS</a>
                 <a href="item-shop.html" class="navbar-button no-link">ITEM SHOP</a>
-                <a href="battle-pass.html" class="navbar-button no-link">OG PASS</a>
+                <a href="battle-pass.html" class="navbar-button no-link">BATTLE PASS</a>
                 <a href="challenges.html" class="navbar-button no-link">QUESTS</a>
                 <a href="tournaments.html" class="navbar-button no-link">COMPETE</a>
                 <a href="achievements.html" class="navbar-button no-link">CARREER</a>
