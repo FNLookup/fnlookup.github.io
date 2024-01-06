@@ -1,5 +1,4 @@
 marioDancing = 'https://cdn.discordapp.com/emojis/1036788611925950504.gif?size=96&quality=lossless'
-crystalBall = 'https://discord.com/assets/1e183a34aa97fc91f7e6992bdd24f981.svg|46c8d137-adea4f05-5928e673-ffdcf29d';
 // document.head.innerHTML += '<script src="js/cookie.js"></script>'
 
 window.supportedLanguages = [
@@ -14,7 +13,7 @@ if (localStorage.requestLanguage === undefined) {
             console.log('changed language to ' + window.navigator.language);
         } else localStorage.requestLanguage = window.defaultLanguage;
         if (window.navigator.language.toLowerCase().startsWith('es-')) localStorage.requestLanguage = 'es-419';
-        if (window.navigator.language.toLowerCase() == 'es-ES') localStorage.requestLanguage = 'es';
+        if (window.navigator.language.toLowerCase() == 'es-es') localStorage.requestLanguage = 'es';
     } else
         localStorage.requestLanguage = window.defaultLanguage;
 }
