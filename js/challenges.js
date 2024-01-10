@@ -1,35 +1,45 @@
 function getchs() {
+    let toggler = document.getElementById('quest-selector-toggler');
+    toggler.onclick = function(){
+        document.getElementById('quest-selector-arrow').classList.toggle('sideways')
+        document.getElementById('quest-selector-options').classList.toggle('displaynone')
+    }
+
     let requestData = getRequestData('challenges&season=current');
     fetch(requestData.url, requestData.data).then(response => response.json()).then(response=>{
     
         for (let bundle of response.bundles) {
             if (bundle.tag === null) continue
 
-            let main = document.getElementById('quest-category-picker');
+            let img = document.getElementById('quest-category-image');
+            let title = document.getElementById('quest-category-title');
 
-            let c = gne('div');
-            c.classList.add('challenge-category');
+            let questNum = 0;
+            for (let questbundle of bundle.bundles) {
+                for (let quest of questbundle.quests) {
+                    questNum+= 1;
+                }
+            }
 
-            let img = gne('img');
-            img.src = bundle.image;
-
-            let title = gne('h2');
-            title.classList.add('challenge-title');
-            title.innerHTML = bundle.name;
+            //<div class="quest-section"><a>SURVIVOR MEDALS <a class="quest-count">3 quests</a></a></div>
+            let container = gne('div')
+            container.classList.add('quest-section');
+            container.innerHTML =  `<a>${bundle.name} <a class="quest-count">${questNum} quests</a></a>`;
+            document.getElementById('quest-selector-options').append(container);
 
             if (bundle.colorData !== null) {
                 let colorThing = '#' + bundle.colorData.RGB1.substring(3, bundle.colorData.RGB1.length) + ', ' + '#' + bundle.colorData.RGB2.substring(3, bundle.colorData.RGB2.length)
                 let cssThing = 'linear-gradient(to bottom, ' + colorThing + ')';
                 img.style.background = cssThing;
             }
-
-            c.append(img);
-            c.append(title);
-            main.appendChild(c);
+            //main.appendChild(c);
 
             /////////////////
-            c.addEventListener('click', function() {
+            container.addEventListener('click', function() {
                 clean();
+                title.innerHTML = bundle.name;
+                img.src = bundle.image;
+
                 let right = document.getElementById('quests-viewer');
 
                 for (let questbundle of bundle.bundles) {

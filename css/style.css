@@ -1097,7 +1097,7 @@ body.purple {
     object-position: top;
 }
 
-.go-away-instantly {
+.go-away-instantly,.displaynone {
     display: none;
 }
 
@@ -1563,6 +1563,52 @@ body.purple {
 
 .achievement-item:hover .decoration-2 .decoration-bottom {
     top: 1rem;
+}
+
+.quests-section-dropdown {
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.quest-current-category {
+    display: flex;
+    padding: 1rem;
+}
+
+.quest-current-category h2 {
+    left: 1rem;
+}
+
+.quest-current-category img {
+    width: 30%;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    mask-image: linear-gradient(to left, #000 20%, #00000000);
+}
+
+.quest-section-selector {
+    position: relative;
+    z-index: 23;
+    margin-top: 2rem;
+    background-color: rgb(12, 12, 12);
+    padding: 0.5rem 1rem;
+}
+
+.quest-section {
+    padding: 0.5rem 0;
+}
+
+.quest-section:not(:last-child) {
+    border-bottom: 1px solid var(--card-background-color);
+}
+
+.quest-count {
+    color: rgba(255, 255, 255, .75);
+    font-size: 80%;
 }
 
 .challenge-category {
