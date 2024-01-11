@@ -496,7 +496,7 @@ button.fn-button {
 /*Page contents*/
 .content {
     --side-padding: 6rem;
-    --top-padding: 9rem;
+    --top-padding: 7rem;
     --bottom-padding: 3rem;
 
     padding: var(--top-padding) 0 var(--bottom-padding);
@@ -1570,6 +1570,9 @@ body.purple {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
+    height: 100%;
+    width: 30%;
+    z-index: 1;
 }
 
 .quest-current-category {
@@ -1582,7 +1585,7 @@ body.purple {
 }
 
 .quest-current-category img {
-    width: 30%;
+    width: 50%;
     position: absolute;
     z-index: 2;
     right: 0;
@@ -1654,12 +1657,26 @@ body.purple {
     display: flex;
     margin: 1rem;
     border-radius: 10px;
-    background: #195aff47;
+    /* background: #195aff47; */
+    background-color: var(--card-background-color);
     transition: background .15s;
+    position: relative;
 }
 
 .challenge-info {
-    margin: 1rem;
+    margin: 1.2rem 1rem;
+}
+
+.challenge-info:not(.no-rewards) {
+    width: 73%;
+}
+
+.challenge-reward-data {
+    padding-right: 1.5rem;
+}
+
+.challenge-small-progress {
+    color: rgb(255,255,255,0.5);
 }
 
 .challenge-name, .challenge-description {
@@ -1667,7 +1684,7 @@ body.purple {
     font-family: burbank-bold;
     font-size: 15px;
     letter-spacing: 1px;
-    margin: .5rem;
+    margin: .4rem 0;
 }
 
 .challenge-description {
@@ -1675,6 +1692,10 @@ body.purple {
 }
 
 .challenge-rewards {
+    position: absolute;
+    right: 0;
+    height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1684,16 +1705,21 @@ body.purple {
     border-bottom-right-radius: 10px;
 }
 
+.challenge-rewards:not(:hover) .challenge-reward-data {
+    display: none;
+}
+
 .challenge-reward .reward-quantity {
     font-family: burbank-bold;
-    font-size: 9px;
+    font-size: 13px;
     font-style:italic;
     color: white;
     text-align: center;
 }
 
 .challenge-reward .reward-icon {
-    width: 50px;
+    width: 60px;
+    margin: 0 1.5rem;
 }
 
 .news-item-image {
@@ -3145,6 +3171,18 @@ tr .player-name {
     }
     .navbar-top.hidden-nav .nav-buttons-items {
         height: auto;
+    }
+
+    .content {
+        --side-padding: 2rem;
+        --top-padding: 5rem;
+    }
+
+    .quests-section-dropdown {
+        width: 100%;
+    }
+    .quests-viewer {
+        width: 100%;
     }
 }
 

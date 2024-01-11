@@ -26,12 +26,6 @@ function getchs() {
             container.classList.add('quest-section');
             container.innerHTML =  `<a>${bundle.name} <a class="quest-count">${questNum} quests</a></a>`;
             document.getElementById('quest-selector-options').append(container);
-
-            if (bundle.colorData !== null) {
-                let colorThing = '#' + bundle.colorData.RGB1.substring(3, bundle.colorData.RGB1.length) + ', ' + '#' + bundle.colorData.RGB2.substring(3, bundle.colorData.RGB2.length)
-                let cssThing = 'linear-gradient(to bottom, ' + colorThing + ')';
-                img.style.background = cssThing;
-            }
             //main.appendChild(c);
 
             /////////////////
@@ -39,6 +33,12 @@ function getchs() {
                 clean();
                 title.innerHTML = bundle.name;
                 img.src = bundle.image;
+
+                if (bundle.colorData !== null) {
+                    let colorThing = '#' + bundle.colorData.RGB1.substring(3, bundle.colorData.RGB1.length) + ', ' + '#' + bundle.colorData.RGB2.substring(3, bundle.colorData.RGB2.length)
+                    let cssThing = 'linear-gradient(to bottom, ' + colorThing + ')';
+                    img.style.background = cssThing;
+                }
 
                 let right = document.getElementById('quests-viewer');
 
@@ -61,7 +61,7 @@ function getchs() {
                         questObject.classList.add('challenge');
                         
                         let questInfo = gne('div');
-                        questInfo.classList.add('challenge-info', 'd-80');
+                        questInfo.classList.add('challenge-info');
     
                         let questName = gne('p');
                         questName.innerHTML = quest.name;
@@ -71,13 +71,13 @@ function getchs() {
                         questDesc.innerHTML = quest.description;
                         questDesc.classList.add('challenge-description');
 
-                        let questShortDesc = gne('p');
+                        let questShortDesc = gne('a');
                         questShortDesc.innerHTML = quest.shortDescription;
                         questShortDesc.classList.add('challenge-description');
 
-                        let questProgress = gne('p');
-                        questProgress.innerHTML = quest.progressTotal;
-                        questProgress.classList.add('challenge-description');
+                        let questProgress = gne('a');
+                        questProgress.innerHTML = ' ' + quest.progressTotal + ' to do';
+                        questProgress.classList.add('challenge-description', 'challenge-small-progress');
     
                         questInfo.append(questName);
                         questInfo.append(questDesc);
@@ -85,13 +85,20 @@ function getchs() {
                         questInfo.append(questProgress);
                         questObject.append(questInfo)
 
+                        if (quest.description == quest.name) questDesc.remove();
+                        console.log(quest.description == quest.name, quest.description, quest.name);
+                        console.log('removed');
+
+                        if (quest.shortDescription == quest.description || quest.shortDescription == quest.name) questShortDesc.remove();
+                        console.log(quest.shortDescription == quest.description || quest.shortDescription == quest.name, quest.shortDescription, quest.description);
+
                         ////////////// right part of the quest rewards
 
                         let rewards = quest.reward;
 
                         if (rewards !== undefined) {
                             let questRewards = gne('div');
-                            questRewards.classList.add('challenge-rewards', 'd-20');
+                            questRewards.classList.add('challenge-rewards');
     
                             if (rewards.xp > 0) {
                                 let rewardobj = gne('div');
@@ -121,13 +128,21 @@ function getchs() {
                                 rewardicon.addEventListener('click', function() {
                                     openItemByID(item.id)
                                 });
+
+                                let rewardname = gne('div');
+                                rewardname.classList.add('challenge-reward-data');
+
+                                rewardname.innerHTML = `<h3>${item.name}</h3>`;
     
                                 rewardobj.append(rewardicon);
                                 questRewards.append(rewardobj);
+                                questRewards.append(rewardname);
                             }
 
+                            questObject.append(questRewards)
+
                             if (questRewards.children.length == 0) {
-                                let rewardobj = gne('div');
+                                /*let rewardobj = gne('div');
                                 rewardobj.classList.add('challenge-reward');
     
                                 let rewardicon = gne('img');
@@ -141,9 +156,15 @@ function getchs() {
     
                                 rewardobj.append(rewardicon, rewardquantity);
                                 questRewards.append(rewardobj);
+                                */
+                                let text = 'No reward';
+                                if (questProgress.innerHTML.length > 1) {
+                                        text = ' - No reward.'
+                                }
+                                questProgress.innerHTML += text;
+                                questRewards.remove();
+                                questInfo.classList.add('no-rewards');
                             }
-
-                            questObject.append(questRewards)
                         }
 
                         mainBundle.append(questObject);
