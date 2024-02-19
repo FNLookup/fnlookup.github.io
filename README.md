@@ -1,7 +1,7 @@
-![FNLookup](https://repository-images.githubusercontent.com/490444433/1c25dc92-06e7-4414-8afc-df0790e0536c)
+![FNLookup](https://github.com/FNLookup/fnlookup.github.io/blob/main/assets/FNLookupBanner.jpg?raw=true)
 
 # FNLookup
-[FNLookup](https://fnlookup.github.io/) is a easy browsing tool for [Fortnite](https://fn.gg) related content.
+[FNLookup](https://fnlookup.github.io/) is your source for all Fortnite.
 
 ## Features of this page
 1. Fortnite content
@@ -20,7 +20,7 @@
     3. View cosmetics
     4. See the newest added cosmetics
     5. See the Item Shop
-4. Multilingual API Requests
+4. Multiple Fortnite content languages! (Spanish translation coming soon)
 
 # Home view item shop
 Explore the Item Shop from the home page.  
