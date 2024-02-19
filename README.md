@@ -1,26 +1,29 @@
+# FNLookup
 ![FNLookup](https://github.com/FNLookup/fnlookup.github.io/blob/main/assets/FNLookupBanner.jpg?raw=true)
 
-# FNLookup
 [FNLookup](https://fnlookup.github.io/) is your source for all Fortnite.
 
 ## Features of this page
 1. Fortnite content
-    1. Battle pass
-    2. Map and map comparisons
-    3. Season Progress
-    4. Augments
-    5. News
-2. Other
-    1. Player Stats
-    2. Seasons
+    1. Item Shop
+    2. Items
+    3. Quests
+    4. Statistics
+2. Community
+    1. Creative Maps
+    2. Creator Codes
     3. Twitch Drops
-3. Cosmetics and Item Shop
-    1. Predictions
-    2. Search cosmetics
-    3. View cosmetics
-    4. See the newest added cosmetics
-    5. See the Item Shop
+    4. Seasons
+    5. Item Rotation Predictions
+    6. Fortnite Crew
+    7. Tournaments
+3. Gameplay
+    1. Vehicles
+    2. Loot and Weapons
 4. Multiple Fortnite content languages! (Spanish translation coming soon)
+5. Technical
+    1. AES & Mappings
+    2. Map
 
 # Home view item shop
 Explore the Item Shop from the home page.  
