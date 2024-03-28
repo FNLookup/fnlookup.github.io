@@ -3,10 +3,10 @@
 
 [FNLookup](https://fnlookup.github.io/) is your source for all Fortnite.
 
-## Information
+## Notice
 Everything is broken/outdated/what you name it. FNLookup 3² coming soon to fix your experience.
 
-## Features of this page
+## Features
 - Fortnite content
     - Item Shop
     - Items
@@ -14,24 +14,17 @@ Everything is broken/outdated/what you name it. FNLookup 3² coming soon to fix 
     - Statistics (Ranked coming soon)
 - Community
     - Creative Maps
-    - Seasons
-    - Item Rotation Predictions
-    - Fortnite Crew
-    - Tournaments
+    - Item Shop Predictions
+    - Fortnite Crew Membership
+    - Events
 - Gameplay
     - Weapons, items improving soon
 - Multiple languages (Currently only game data, page spanish translation coming soon)
 - Technical
-    1. AES & Mappings for FModel geniouses (we thank you leakers)
-    2. Maps
+    - AES & Mappings for FModel geniouses (we thank you leakers)
 
-## Credits
+## Special Thanks
 
-This page is styled so you have a similar experience like you would in [Fortnite](https://fn.gg).
+FNLookup lets you have a similar experience like you would in [Fortnite.com](https://fn.gg).
 
-APIs used are 
-1. [Fortnite-API.com](https://www.Fortnite-API.com)
-2. [FortniteApi.io](https://fortniteapi.io)
-3. Fortnite Content API
-
-Some elements are provided by [Fortnite.GG](fortnite.gg)
+FNLookup uses a closed API hosted externally.
