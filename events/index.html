@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="fortnite tournaments, fortnite competitive, fortnite compete">
+    <meta name="description" content="FNLookup is an easy browsing interface for most Fortnite related content. View the upcoming and past tournaments.">
+    <meta name="author" content="tposejank">
+    <title>Tournaments - FNLookup</title>
+    <link rel="icon" href="assets/icons/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/backend.js" type="text/javascript"></script>
+    <script src="/js/script.js" type="text/javascript"></script>
+    <script src="js/tournaments.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="nav-container">
+    </div>
+    <script>
+        i()
+    </script>
+
+    <div class="content">
+        <div>
+            <div class="content-select">
+                <h1>Region</h1>
+                <select id="region-dropdown" onchange="reloadWithRegion()">
+                    <script>createRegionSelector()</script>
+                </select>
+                <h2 id="cur-reg">Current: </h2>
+            </div>
+
+            <hr>
+
+            <div class="tournament-box-viewer" id="main">
+                <script>
+                    getcompetitive()
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

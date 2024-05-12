@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,47 +16,39 @@
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script src="js/sac-code.js" type="text/javascript"></script>
-    <script src="js/new-menu.js" type="text/javascript"></script>
 </head>
-<body>
-    <div class="season-video">
-        <video autoplay loop playsinline class="fn-season-video" id="fn-video"></video>
-        <div class="fn-dot-mask"></div>
-    </div>
 
+<body>
     <div class="nav-container">
     </div>
 
-    <script>i()</script>
+    <script>
+        i()
+    </script>
 
     <div class="content" fullpage="true">
-        <div class="left-menu-modal">
-            <ul class="nav-items" id="nav-items"></ul>
+        <div class="sac-box">
+            <h1 class="sac-header">SUPPORT A CREATOR</h1>
+            <div class="sac-content-box">
+                <h2>Declare your support for a Creator! Your in-game purchases will help support this Creator.</h2>
+                <input type="text" name="Support A Creator Code" id="sac-input" class="sac-code-box">
 
-            <script>prepareOptions();</script>
-        </div>
-
-        <div class="right-menu-modal">
-            <div class="sac-box">
-                <h1 class="sac-header">SUPPORT A CREATOR</h1>
-                <div class="sac-content-box">
-                    <h2>Declare your support for a Creator! Your in-game purchases will help support this Creator.</h2>
-                    <input type="text" name="Support A Creator Code" id="sac-input" class="sac-code-box">
-    
-                    <div class="sac-button-box">
-                        <button class="sac-accept-button" id="sac-accept-button">ACCEPT</button>
-                    </div>
+                <div class="sac-button-box">
+                    <button class="sac-accept-button" id="sac-accept-button">ACCEPT</button>
                 </div>
             </div>
-    
-            <div class="sac-player hidden" id="sac-player">
-                <p id="code-label"></p>
-                <h2 class="sac-user" id="sac-user"></h2>
-                <p id="player-id"></p>
-            </div>
-    
-            <script>declareFuncs()</script>
         </div>
+
+        <div class="sac-player hidden" id="sac-player">
+            <p id="code-label"></p>
+            <h2 class="sac-user" id="sac-user"></h2>
+            <p id="player-id"></p>
+        </div>
+
+        <script>
+            declareFuncs()
+        </script>
     </div>
 </body>
+
 </html>

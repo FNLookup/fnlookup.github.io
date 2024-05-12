@@ -10,8 +10,8 @@ function calcDays(v) {
     return v / (1000 * 3600 * 24)
 }
 
-function trueRound(value, digits){
-    return (Math.round((value*Math.pow(10,digits)).toFixed(digits-1))/Math.pow(10,digits)).toFixed(digits);
+function trueRound(value, digits) {
+    return (Math.round((value * Math.pow(10, digits)).toFixed(digits - 1)) / Math.pow(10, digits)).toFixed(digits);
 }
 
 function cero(integer) {
@@ -21,28 +21,27 @@ function cero(integer) {
 function i() {
     document.getElementsByClassName('nav-container')[0].innerHTML = `
         <div class="navbar-top" id="main-nav">
-            <a class="navbar-button no-link">
-                <img class="menu-toggle" id="menu-btn" src="assets/icons/xbox-menu.png" title="Menu">
+            <a class="navbar-button fortnite-button-border no-link">
+                <img class="menu-toggle" id="menu-btn" src="/assets/icons/xbox-menu.png" title="Menu">
             </a>
-            <a href="new-menu.html" class="navbar-button no-link">
-                <img class="services" src="assets/images/menu.svg" title="Services">
+            <a href="/services/" class="navbar-button fortnite-button-border no-link">
+                <img class="services" src="/assets/images/menu.svg" title="Services">
             </a>
-            <a href="island.html" class="navbar-button no-link">
-                <img class="creative-discovery" src="assets/images/lupa.svg" title="Search">
+            <a href="/island.html" class="navbar-button fortnite-button-border no-link">
+                <img class="creative-discovery" src="/assets/images/lupa.svg" title="Search">
             </a>
-            <a href="index.html" class="navbar-button no-link mini-logo-container">
-                <img class="mini-logo" src="assets/logo-maxres.png" title="FNLookup">
+            <a href="/" class="navbar-button no-link fortnite-button-border mini-logo-container">
+                <img class="mini-logo" src="/assets/logo_nobg.png" title="FNLookup">
             </a>
-            <a href="index.html" class="nav-logo">FNLookup</a>
+            <a href="/" class="nav-logo">FNLookup</a>
             <div class="nav-buttons-items">
-                <a href="index.html" class="navbar-button no-link">HOME</a>
-                <a href="search.html" class="navbar-button no-link">ITEMS</a>
-                <a href="item-shop.html" class="navbar-button no-link">ITEM SHOP</a>
-                <a href="battle-pass.html" class="navbar-button no-link">BATTLE PASS</a>
-                <a href="challenges.html" class="navbar-button no-link">QUESTS</a>
-                <a href="tournaments.html" class="navbar-button no-link">COMPETE</a>
-                <a href="achievements.html" class="navbar-button no-link">CARREER</a>
-                <a href="item-shop.html" class="navbar-button no-link">V-BUCKS</a>
+                <a href="/account/" class="navbar-button fortnite-button-border no-link">ACCOUNT</a>
+                <a href="/items/" class="navbar-button fortnite-button-border no-link">ITEMS</a>
+                <a href="/items/shop/" class="navbar-button fortnite-button-border no-link">ITEM SHOP</a>
+                <a href="/battle-pass/" class="navbar-button fortnite-button-border no-link">BATTLE PASS</a>
+                <a href="/challenges/" class="navbar-button fortnite-button-border no-link">QUESTS</a>
+                <a href="/events/" class="navbar-button fortnite-button-border no-link">COMPETE</a>
+                ${(localStorage.accountId !== undefined ? '<a href="/statistics/" class="navbar-button fortnite-button-border no-link">STATS</a>' : '')}
             </div>
         </div>`;
 
@@ -51,8 +50,7 @@ function i() {
         document.getElementById('main-nav').classList.toggle('hidden-nav');
     });
 
-    let languages = [
-        {
+    let languages = [{
             name: 'English',
             title: 'English',
             backend: 'en'
@@ -141,22 +139,12 @@ function doSearch() {
     openItem(searchQuery);
 }
 
-function openItem(q) {
-    console.log('Browsing item: ' + q);
-    window.location.href = 'item.html?q=' + q;
-}
-
-function openItemByID(id) {
-    console.log('Browsing item (by ID): ' + id);
-    window.location.href = 'item.html?id=' + id;
-}
-
-function getItemLink(q) {
-    return 'item.html?q=' + q;
+function openItemByID(id) { // From the prehistoric days of FNLookup
+    window.location.href = getItemLinkByID(id);
 }
 
 function getItemLinkByID(id) {
-    return 'item.html?id=' + id;
+    return '/items/view/?id=' + id;
 }
 
 function secsToDays(secs) {
@@ -168,24 +156,70 @@ function sameDay(a, b) {
 }
 
 function sameDayUTC(day, now) {
-    var theday = [ day.getUTCDate(),
+    var theday = [day.getUTCDate(),
         day.getUTCMonth(),
-        day.getUTCFullYear() ];
-    var today = [ now.getUTCDate(),
+        day.getUTCFullYear()
+    ];
+    var today = [now.getUTCDate(),
         now.getUTCMonth(),
-        now.getUTCFullYear() ];
+        now.getUTCFullYear()
+    ];
 
     return theday[0] == today[0] &&
-    theday[1] == today[1] &&
-    theday[2] == today[2];
+        theday[1] == today[1] &&
+        theday[2] == today[2];
 }
 
 
-function getFormatDate(date) {
-    var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    var months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+function getFormatDate(date, relative = false, justToday = false) {
+    if (!relative) {
+        var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        var months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+        var currentDate = new Date();
+        var currentYear = currentDate.getUTCFullYear();
+        var currentMonth = currentDate.getUTCMonth();
+        var currentDay = currentDate.getUTCDate();
 
-    return weekDays[date.getUTCDay()] + ', ' + months[date.getUTCMonth()] + ' ' + date.getUTCDate() + ', ' + date.getUTCFullYear();
+        if (date.getUTCFullYear() === currentYear && date.getUTCMonth() === currentMonth && date.getUTCDate() === currentDay && justToday) {
+            return "Today";
+        } else if (date.getUTCFullYear() === currentYear) {
+            return weekDays[date.getUTCDay()] + ', ' + months[date.getUTCMonth()] + ' ' + date.getUTCDate();
+        } else {
+            return weekDays[date.getUTCDay()] + ', ' + months[date.getUTCMonth()] + ' ' + date.getUTCDate() + ', ' + date.getUTCFullYear();
+        }
+    } else {
+        var currentDate = new Date();
+        var currentYear = currentDate.getUTCFullYear();
+        var currentMonth = currentDate.getUTCMonth();
+        var currentDay = currentDate.getUTCDate();
+        if (date.getUTCFullYear() === currentYear && date.getUTCMonth() === currentMonth && date.getUTCDate() === currentDay && justToday) {
+            return "Today";
+        }
+
+        var units = {
+            year: 24 * 60 * 60 * 1000 * 365,
+            month: 24 * 60 * 60 * 1000 * 365 / 12,
+            day: 24 * 60 * 60 * 1000,
+            hour: 60 * 60 * 1000,
+            minute: 60 * 1000,
+            second: 1000
+        }
+
+        var rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
+
+        var getRelativeTime = (date, date2 = new Date()) => {
+            var elapsed = date - date2
+
+            // "Math.abs" accounts for both "past" & "future" scenarios
+            for (var u in units)
+                if (Math.abs(elapsed) > units[u] || u == 'second')
+                    return rtf.format(Math.round(elapsed / units[u]), u)
+        }
+
+        return getRelativeTime(date)
+
+        // stack overflow thx
+    }
 }
 
 function dateNow() {
@@ -216,7 +250,7 @@ function christmasPayload(christmas) {
     setInterval(function() {
         // Imported from local education website. Undisclosed.
         const snow = document.createElement("div");
-        snow.innerHTML = "<img src='assets/images/snowflake.svg'>";
+        snow.innerHTML = "<img src='/assets/images/snowflake.svg'>";
         snow.classList.add("snow");
         snow.style.left = Math.random() * 100 + "vw";
         snow.style.animationDuration = Math.random() * 5 + 8 + "s";
@@ -227,9 +261,9 @@ function christmasPayload(christmas) {
 
 function newYearPayloads() {
     setInterval(function() {
-        for(let o in [0,1,2]) {
+        for (let o in [0, 1, 2]) {
             const firework = document.createElement("div");
-            firework.innerHTML = "<img src='assets/images/firework.png'>";
+            firework.innerHTML = "<img src='/assets/images/firework.png'>";
             firework.classList.add("firework");
             firework.style.left = Math.random() * 100 + "vw";
             firework.style.top = Math.random() * 50 + "vh";
@@ -242,6 +276,7 @@ function newYearPayloads() {
 }
 
 loadPayloads();
+
 function loadPayloads() {
     var now = new Date();
     var anyPayloadTriggered = false;
@@ -251,9 +286,9 @@ function loadPayloads() {
     let distances = [0, 0];
     var lastYear = new Date(now.getFullYear() - 1, 11, 31);
     var thisYear = new Date(now.getFullYear(), 11, 31);
-    distances[0] =  Math.floor(calcDays(now.getTime() - lastYear.getTime()))
+    distances[0] = Math.floor(calcDays(now.getTime() - lastYear.getTime()))
     distances[1] = Math.abs(Math.floor(calcDays(now.getTime() - thisYear.getTime())))
-    
+
     if (distances[0] <= 10 || distances[1] <= 10) {
         const christmas = sameDay(now, new Date(now.getFullYear(), 12, 25))
         christmasPayload(christmas);
@@ -283,7 +318,7 @@ function iS() {
         if (item.section.name == section) sectionItems.push(item);
     }
 
-    for (let i=0; i<sectionItems.length;i++) {
+    for (let i = 0; i < sectionItems.length; i++) {
         let item = sectionItems[i];
 
         makeCard(item);

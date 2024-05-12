@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AES Keys allow dataminers to find files in Fortnite's archives. Use these keys in FModel to decrypt the .pak and .utoc/.ucas packages.">
+    <meta name="author" content="tposejank">
+    <title>AES Keys - FNLookup</title>
+    <link rel="icon" href="assets/icons/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/backend.js" type="text/javascript"></script>
+    <script src="/js/script.js" type="text/javascript"></script>
+    <script>
+        function lookupPlayer() {
+            let containers = document.getElementById('content-players');
+            var uName = document.getElementById('player-name').value;
+
+            let requestData = getRequestData('lookup&username=' + uName);
+            fetch(requestData.url, requestData.data).then(res => res.json()).then(res => {
+
+                clearChildren(containers);
+
+                let boxes = gne('div')
+                boxes.classList.add('stats-content');
+
+                for (let match of res.matches) {
+                    let hrefThing = gne('a')
+                    hrefThing.innerHTML = '<h3 class="looked-up-account"><i class="account-type-icon" acctype="' + match.matches[0].platform + '"></i>' + match.matches[0].value + '</h3>';
+
+                    boxes.append(hrefThing);
+
+                    hrefThing.onclick = () => {
+                        account = {
+                            accountId: match.accountId,
+                            accountName: match.matches[0].value
+                        }
+                        addAccount(account)
+                        changeAccount(account)
+                    }
+                }
+
+                containers.append(boxes);
+
+            }).catch(error => {
+                console.error(error);
+            })
+        }
+
+        function addAccount(account) {
+            if (localStorage.accounts === undefined) {
+                localStorage.accounts = 'Dummy/Dummy'
+            }
+
+            localStorage.accounts += `//${account.accountId}()${account.accountName}`
+        }
+
+        function changeAccount(account) {
+            localStorage.accountId = account.accountId
+            localStorage.accountName = account.accountName
+
+            document.location.href = '/account/'
+        }
+
+        function loadSwitcher() {
+            let modal = document.getElementById('account-change-modal')
+
+            if (localStorage.accounts === undefined || localStorage.accounts.length === 0) {
+                modal.innerHTML = `<h2 class="header-text-bold">Link your account</h2><div class="flex flex-wrap player-data">
+                <input type="text" placeholder="User Name" id="player-name" title="Account Name">
+                <button id="discover" onclick="lookupPlayer()">Search</button>
+            </div>`
+            } else {
+                modal.innerHTML = `<h2 class="header-text-bold">Your accounts</h2>`
+                let accountContainer = document.createElement('div')
+                accountContainer.id = 'accounts'
+                modal.append(accountContainer)
+
+                let allAccounts = localStorage.accounts.split('//')
+
+                for (let account of allAccounts) {
+                    if (account !== 'Dummy/Dummy') {
+                        let paragraph = document.createElement('p')
+                        paragraph.style.cursor = 'pointer'
+                        paragraph.style.padding = '.3rem 0'
+                        paragraph.classList.add('header-text-bold')
+                        paragraph.innerText = '- ' + account.split('()')[1]
+                        paragraph.setAttribute('accountId', account.split('()')[0])
+                        paragraph.setAttribute('accountName', account.split('()')[1])
+
+                        accountContainer.append(paragraph)
+                    }
+                }
+
+                modal.innerHTML += `<h2 class="header-text-bold">Add new account</h2><div class="flex flex-wrap player-data">
+                <input type="text" placeholder="User Name" id="player-name" title="Account Name">
+                <button id="discover" onclick="lookupPlayer()">Search</button>
+            </div>`
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="nav-container">
+    </div>
+
+    <script>
+        i()
+    </script>
+
+    <div class="content">
+        <div class="navigation">
+            <div class="navigation-part part-left" id="navigation-left">
+                <a class="no-link part-button" id="label-left">BACK</a>
+                <script>
+                    document.getElementById('label-left').onclick = function() {
+                        history.back()
+                    }
+                </script>
+            </div>
+            <div class="navigation-part part-center" id="navigation-center">
+                <a class="part-button not-button" id="label-center">ACCOUNT SWITCH</a>
+            </div>
+            <div class="navigation-part part-right" id="navigation-right">
+                <a href="/404.html" class="no-link part-button" id="label-right">NOTIFICATIONS</a>
+            </div>
+        </div>
+
+        <div id="account-change-modal"></div>
+
+        <div id="content-players"></div>
+
+        <script>
+            loadSwitcher()
+        </script>
+
+        <script>
+            for (let paragraph of document.getElementById('accounts').children) {
+                paragraph.onclick = function() {
+                    changeAccount({
+                        accountId: paragraph.getAttribute('accountid'),
+                        accountName: paragraph.getAttribute('accountname')
+                    })
+                }
+            }
+        </script>
+    </div>
+</body>

@@ -4,7 +4,7 @@
 [FNLookup](https://fnlookup.github.io/) is your source for all Fortnite.
 
 ## Notice
-Everything is broken/outdated/what you name it. FNLookup 3² coming soon to fix your experience.
+FNLookup 3 Wave 1 Released.
 
 ## Features
 - Fortnite content
@@ -25,6 +25,6 @@ Everything is broken/outdated/what you name it. FNLookup 3² coming soon to fix 
 
 ## Special Thanks
 
-FNLookup lets you have a similar experience like you would in [Fortnite.com](https://fn.gg).
+FNLookup lets you have a similar experience like you would in [Fortnite.com](https://fortnite.com).
 
 FNLookup uses a closed API hosted externally.

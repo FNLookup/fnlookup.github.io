@@ -1,5 +1,5 @@
-marioDancing = 'https://cdn.discordapp.com/emojis/1036788611925950504.gif?size=96&quality=lossless'
-// document.head.innerHTML += '<script src="js/cookie.js"></script>'
+marioDancing = '/assets/mario.gif'
+    // document.head.innerHTML += '<script src="js/cookie.js"></script>'
 
 window.supportedLanguages = [
     'en', 'ar', 'de', 'es', 'es-419', 'fr', 'it', 'ja', 'ko', 'pl', 'pt-BR', 'ru', 'tr', 'zh-CN', 'zh-Hant'
@@ -26,6 +26,10 @@ function switchLanguage(to) {
     } else return false;
 }
 
+function getLang() {
+    return localStorage.requestLanguage
+}
+
 function geturllang(url, type) {
     let t = '?';
     if (url.split('?').length > 1) {
@@ -34,7 +38,7 @@ function geturllang(url, type) {
 
     switch (type) {
         case 0: // Fortnite-API.com
-            return url + t + 'language=' + localStorage.requestLanguage
+            return url + t + 'language=' + getLang()
         case 1: // FortniteAPI.io
             return url + t + 'lang=' + localStorage.requestLanguage
     }
@@ -42,28 +46,85 @@ function geturllang(url, type) {
 
 function getFlag(code) {
     return 'https://raw.githubusercontent.com/hampusborgos/country-flags/main/png1000px/' + code.toLowerCase() + '.png'
-    //they done my ecuador dirty so had to ditch them
 }
 
 function getAllowedTournamentDevice(device) {
-    switch(device) {
-        case 'XboxOneGDK': return 'Xbox One Game Devkit';
-        case 'XCloud': return 'Xbox Cloud Gaming (DEV)';
-        case 'XCloudMobile': return 'Xbox Cloud Gaming Mobile (DEV)';
-        case 'Helios': return 'Xbox Cloud Gaming';
-        case 'HeliosMobile': return 'Xbox Cloud Gaming Mobile';
-        case 'XboxOne': return 'Xbox One';
-        case 'XSX': return 'Xbox Series X';
-        case 'Android': return 'Android';
-        case 'GFN': return 'GeForce NOW';
-        case 'Switch': return 'Nintendo Switch';
-        case 'GFNMobile': return 'GeForce NOW Mobile';
-        case 'Windows': return 'Windows';
-        case 'PS4': return 'PS4';
-        case 'PS5': return 'PS5';
-        case 'Luna': return 'Amazon Luna';
-        case 'LunaMobile': return 'Amazon Luna Mobile';
-        default: return 'Unknown device (' + device + ')';
+    switch (device) {
+        case 'XboxOneGDK':
+            return 'Xbox One Game Devkit';
+        case 'XCloud':
+            return 'Xbox Cloud Gaming (DEV)';
+        case 'XCloudMobile':
+            return 'Xbox Cloud Gaming Mobile (DEV)';
+        case 'Helios':
+            return 'Xbox Cloud Gaming';
+        case 'HeliosMobile':
+            return 'Xbox Cloud Gaming Mobile';
+        case 'XboxOne':
+            return 'Xbox One';
+        case 'XSX':
+            return 'Xbox Series X';
+        case 'Android':
+            return 'Android';
+        case 'GFN':
+            return 'GeForce NOW';
+        case 'Switch':
+            return 'Nintendo Switch';
+        case 'GFNMobile':
+            return 'GeForce NOW Mobile';
+        case 'Windows':
+            return 'Windows';
+        case 'PS4':
+            return 'PS4';
+        case 'PS5':
+            return 'PS5';
+        case 'Luna':
+            return 'Amazon Luna';
+        case 'LunaMobile':
+            return 'Amazon Luna Mobile';
+        default:
+            return 'Unknown device (' + device + ')';
+    }
+}
+
+function getDeviceLogo(device) {
+    switch (device) {
+        case 'XboxOneGDK':
+            return '/assets/images/platformlogo/XboxOneGDK.png';
+        case 'XCloud':
+            return '/assets/images/platformlogo/CloudGamingDEV.png';
+        case 'XCloudMobile':
+            return '/assets/images/platformlogo/CloudGamingMobileDEV.png';
+        case 'Helios':
+            return '/assets/images/platformlogo/CloudGaming.png';
+        case 'HeliosMobile':
+            return '/assets/images/platformlogo/CloudGamingMobile.png';
+        case 'XboxOne':
+            return '/assets/images/platformlogo/XboxOne.png';
+        case 'XB1':
+            return '/assets/images/platformlogo/XboxOne.png';
+        case 'XSX':
+            return '/assets/images/platformlogo/SeriesX.png';
+        case 'Android':
+            return '/assets/images/platformlogo/Android.png';
+        case 'GFN':
+            return '/assets/images/platformlogo/GeforceNOW.png';
+        case 'Switch':
+            return '/assets/images/platformlogo/Switch.png';
+        case 'GFNMobile':
+            return '/assets/images/platformlogo/GeforceNOWMobile.png';
+        case 'Windows':
+            return '/assets/images/platformlogo/Windows.png';
+        case 'PS4':
+            return '/assets/images/platformlogo/PS4.png';
+        case 'PS5':
+            return '/assets/images/platformlogo/PS5.png';
+        case 'Luna':
+            return '/assets/images/platformlogo/Luna.png';
+        case 'LunaMobile':
+            return '/assets/images/platformlogo/LunaMobile.png';
+        default:
+            return '/assets/images/logo-maxres.png'
     }
 }
 
@@ -73,59 +134,18 @@ function getUnixTimestampDate(unixTimestamp) {
 
 function getApiURL(endpoint) {
     return 'https://fnlookup-apiv2.vercel.app/api?endpoint=' + endpoint.replace('?', '&');
-
-    var baseURL = 'https://fortniteapi.io/';
-    var requestURL = endpoint.replace(endpoint, '');
-    const endpoints = {
-        'achievements': 'v1/achievements',
-        'twitch-drops': 'v1/twitch/drops',
-        'battlepass': '/v2/battlepass',
-        'stats': 'v1/stats',
-        'shop': 'v2/shop',
-        'seasons': 'v1/seasons/list',
-        'rarities': 'v2/rarities',
-        'news': 'v1/news',
-        'fish': 'v1/loot/fish',
-        'loot': 'v1/loot/list',
-        'lookup': 'v2/lookup/advanced',
-        'item': 'v2/items/get',
-        'all-items': 'v2/items/list',
-        'augments': 'v1/game/augments',
-        'gamemodes': 'v1/game/modes',
-        'poi': 'v1/game/poi',
-        'vehicles': 'v1/game/vehicles',
-        'events': 'v1/events/list',
-        'window': 'v1/events/window',
-        'crew': 'v2/crew',
-        'crew-history': 'v2/crew/history',
-        'creator': 'v1/creator',
-        'island': 'v1/creative/island',
-        'featured': 'v1/creative/featured',
-        'challenges': 'v3/challenges',
-        // ...
-      };
-
-    var originalURL = 'https://fnlookup-api.vercel.app/api?endpoint=' + endpoint;
-    var params = new URLSearchParams(originalURL.split('?')[1]);
-
-    const gottenEndpoint = params.get('endpoint');
-    var lastURL = baseURL + endpoints[gottenEndpoint];
-    params.delete('endpoint');
-    lastURL += '?'+ params.toString();
-
-    console.log(lastURL);
-    return lastURL
 }
 
 function getRequestData(urlEndpoint) {
     return {
-        url: geturllang(getApiURL(urlEndpoint), 1), data:{}
+        url: geturllang(getApiURL(urlEndpoint), 1),
+        data: {}
     };
 }
 
-function itemFetch(params = '') {
-    var qMark = params == '' ? '' : '?';
+function itemFetch(small = true) {
     return {
-        url: geturllang('https://fortniteapi.io/v2/items/list'+ qMark + params, 1), data:{headers:{'Authorization':atob('YTIyYjEyZGMtNzEzOTZkODUtMTM5N2UzZjktYTUwNDUxNGQ=')}}
+        url: `https://raw.githubusercontent.com/FNLookup/data/main/fnapiio/items_${small ? 'smaller' : 'all'}_${getLang()}.json`,
+        data: {}
     };
 }

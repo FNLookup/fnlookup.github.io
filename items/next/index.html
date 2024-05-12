@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="fortnite predictions, fortnite next shop, fortnite next items">
+    <meta name="description" content="FNLookup is an easy browsing interface for most Fortnite related content. View the possible items that may appear in later Item Shops.">
+    <meta name="author" content="tposejank">
+    <title>Predictions - FNLookup</title>
+    <link rel="icon" href="/assets/icons/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/backend.js" type="text/javascript"></script>
+    <script src="/js/script.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/predictions.js"></script>
+</head>
+
+<body>
+    <div class="season-video">
+        <video autoplay loop playsinline class="fn-season-video" id="fn-video"></video>
+        <div class="fn-dot-mask"></div>
+    </div>
+
+    <div class="nav-container">
+    </div>
+
+    <script>
+        i()
+    </script>
+
+    <div class="content" fullpage="true">
+        <h1 class="flex" id="cosmetic-page-title">Predictions</h1>
+        <h2>See the cosmetics date checking code has determined will go soon in the <a href="item-shop.html">Item Shop</a>.</h2>
+        <h3>WARNING: Some cosmetics may not make sense to be in the Item Shop at all, or have a very sharp averaged wait</h3>
+        <hr>
+
+        <h2>Items may appear between the following dates</h2>
+        <h3 id="dates-first"></h3>
+        <h3 id="dates-second"></h3>
+
+        <div class="predictions" id="items">
+            <script>
+                init()
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

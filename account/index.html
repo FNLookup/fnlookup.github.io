@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AES Keys allow dataminers to find files in Fortnite's archives. Use these keys in FModel to decrypt the .pak and .utoc/.ucas packages.">
+    <meta name="author" content="tposejank">
+    <title>AES Keys - FNLookup</title>
+    <link rel="icon" href="assets/icons/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/backend.js" type="text/javascript"></script>
+    <script src="/js/script.js" type="text/javascript"></script>
+    <script src="js/account.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="nav-container">
+    </div>
+
+    <script>
+        i()
+    </script>
+
+    <div class="content" fullpage="true">
+        <div class="navigation">
+            <div class="navigation-part part-left" id="navigation-left">
+                <a class="no-link part-button" id="label-left">BACK</a>
+                <script>
+                    document.getElementById('label-left').onclick = function() {
+                        history.back()
+                    }
+                </script>
+            </div>
+            <div class="navigation-part part-center" id="navigation-center">
+                <a class="part-button not-button" id="label-center">ACCOUNT</a>
+            </div>
+            <div class="navigation-part part-right" id="navigation-right">
+                <a href="/404.html" class="no-link part-button" id="label-right">NOTIFICATIONS</a>
+            </div>
+        </div>
+
+        <h1 class="header-text-bold header-text-italic">Account</h1>
+        <h2 class="header-text-bold header-text-italic">Link or view your accounts</h2>
+
+        <hr>
+
+        <h1 class="header-text-bold header-text-italic">Current account</h1>
+        <div id="account-modal"></div>
+
+        <script>
+            loadAccounts()
+        </script>
+
+        <hr>
+
+        <h1 class="header-text-bold header-text-italic">Language
+            <a class="no-link float-right fortnite-button fortnite-button-border" href="/language/">CHANGE LANGUAGE</a>
+        </h1>
+
+        <hr>
+
+        <h1 class="header-text-bold header-text-italic">FNLookup
+            <a class="no-link float-right fortnite-button fortnite-button-border" href="/about/">ABOUT</a>
+        </h1>
+        <h2 class="header-text-bold header-text-italic">About FNLookup</h2>
+    </div>
+</body>

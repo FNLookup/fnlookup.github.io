@@ -1,50 +1,13 @@
 function prepareOptions() {
     let list = document.getElementById("nav-items");
 
-    let nav_items = [
-        {
-            name: 'Item Shop',
-            href: 'item-shop.html',
-        },
-        {
-            href: 'search.html',
-            name: 'Cosmetics'
-        },
-        {
+    let nav_items = [{
             href: 'predictions.html',
             name: 'Predictions'
         },
         {
-            href: 'battle-pass.html',
-            name: 'Battle Pass'
-        },
-        {
-            href: 'challenges.html',
-            name: 'Quests',
-        },
-        {
-            href: 'augments.html',
-            name: 'Augments'
-        },
-        {
-            href: 'news.html',
-            name: 'In-game News'
-        },
-        {
-            href: 'stats.html',
-            name: 'Player Stats',
-        },
-        {
             href: 'sac-codes.html',
             name: 'SAC Codes'
-        },
-        {
-            href: 'game-modes.html',
-            name: 'Discovery'
-        },
-        {
-            href: 'island.html',
-            name: 'Creative Island'
         },
         {
             href: 'map.html',
@@ -62,26 +25,18 @@ function prepareOptions() {
             href: 'new-cosmetics.html',
             name: 'New Cosmetics',
         },
-        
+
         {
             href: 'random-cosmetics.html',
             name: 'Locker Generator'
         },
         {
-            href: 'progress.html',
+            href: '/seasons/progress',
             name: 'Season Progress',
         },
         {
             href: 'seasons.html',
             name: 'All Seasons'
-        },
-        {
-            href: 'achievements.html',
-            name: 'Legacy Achievements'
-        },
-        {
-            href: 'twitch-drops.html',
-            name: 'Twitch Drops'
         },
         {
             href: 'fish.html',
@@ -96,16 +51,8 @@ function prepareOptions() {
             href: 'crew-history.html'
         },
         {
-            name: 'Tournaments',
-            href: 'tournaments.html'
-        },
-        {
-            name: 'Hype Leaderboard',
-            href: 'hype-leaderboard.html'
-        },
-        {
-            name: 'AES Keys & Mappings',
-            href: 'aes-mappings.html'
+            name: 'AES, Mappings & Hotfixes',
+            href: '/aes/'
         },
         {
             name: 'About',

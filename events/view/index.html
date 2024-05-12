@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="fortnite tournaments, fortnite competitive, fortnite compete">
+    <meta name="description" content="FNLookup is an easy browsing interface for most Fortnite related content. View the upcoming and past tournaments.">
+    <meta name="author" content="tposejank">
+    <title>View Event - FNLookup</title>
+    <link rel="icon" href="assets/icons/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/backend.js" type="text/javascript"></script>
+    <script src="/js/script.js" type="text/javascript"></script>
+    <script src="js/event.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="nav-container">
+    </div>
+    <script>
+        i()
+    </script>
+
+    <div class="content">
+        <div class="flex flex-wrap event-information">
+            <div class="event-view-img">
+                <img id="event-img">
+            </div>
+            <div class="event-details">
+                <h1 id="event-name"></h1>
+                <h2 id="event-short-desc"></h2>
+                <h3 id="schedule"></h3>
+                <p id="event-desc"></p>
+                <p id="event-times"></p>
+
+                <div id="other-details"></div>
+
+                <div class="flex flex-wrap event-platforms-logos" id="event-platforms"></div>
+            </div>
+        </div>
+
+        <hr>
+        <h1 class="header-text-bold header-text-italic">EVENT DETAILS</h1>
+
+        <h2 class="header-text-bold header-text-italic">Sessions</h2>
+        <div id="event-windows"></div>
+
+        <div id="event-scoring"></div>
+
+        <script>
+            viewEvent()
+        </script>
+    </div>
+</body>
+
+</html>

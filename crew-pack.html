@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,8 +17,8 @@
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script src="js/crew-pack.js" type="text/javascript"></script>
-    <script src="js/new-menu.js" type="text/javascript"></script>
 </head>
+
 <body>
     <div class="season-video">
         <video autoplay loop playsinline class="fn-season-video" id="fn-video"></video>
@@ -27,34 +28,31 @@
     <div class="nav-container">
     </div>
 
-    <script>i()</script>
+    <script>
+        i()
+    </script>
 
     <div class="content" fullpage="true">
-        <div class="left-menu-modal">
-            <ul class="nav-items" id="nav-items"></ul>
+        <div class="crew-content hidden-media">
+            <img alt="Image" class="crew-pack-img" id="crew-pack-image">
 
-            <script>prepareOptions();</script>
-        </div>
-
-        <div class="right-menu-modal">
-            <div class="crew-content hidden-media">
-                <img alt="Image" class="crew-pack-img" id="crew-pack-image">
-    
-                <div class="crew-pack-inner">
-                    <div class="crew-pack-item-scrollbar" id="crew-pack-items"></div>
-                    <div class="crew-pack-item-details" id="pack-item-details">
-                    </div>
+            <div class="crew-pack-inner">
+                <div class="crew-pack-item-scrollbar" id="crew-pack-items"></div>
+                <div class="crew-pack-item-details" id="pack-item-details">
                 </div>
             </div>
-    
-            <h1 id="crew-pack-price">EUR: € 11.99 - USD: $ 11.99 - GBP: £ 9.99 - CAD: $ 15.99 - RUB: ₽ 749 - DKK: kr 73 - JPY: ¥ 1320 - SEK: kr 113.79 - BRL: R$ 38 - NOK: kr 119 - SAR: SAR 45 - AUD: $ 17.55 - AED: AED 45 - TRY: ₺ 79 - QAR: QAR 44</h1>
-    
-            <div class="crew-pack-items-mobile" id="items-mobile">
-    
-            </div>
-    
-            <script>getcpackdata()</script>
         </div>
+
+        <h1 id="crew-pack-price">EUR: € 11.99 - USD: $ 11.99 - GBP: £ 9.99 - CAD: $ 15.99 - RUB: ₽ 749 - DKK: kr 73 - JPY: ¥ 1320 - SEK: kr 113.79 - BRL: R$ 38 - NOK: kr 119 - SAR: SAR 45 - AUD: $ 17.55 - AED: AED 45 - TRY: ₺ 79 - QAR: QAR 44</h1>
+
+        <div class="crew-pack-items-mobile" id="items-mobile">
+
+        </div>
+
+        <script>
+            getcpackdata()
+        </script>
     </div>
 </body>
+
 </html>

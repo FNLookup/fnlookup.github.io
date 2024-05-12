@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="fortnite item shop, fortnite shop, fortnite store">
+    <meta name="description" content="FNLookup is an easy browsing interface for most Fortnite related content. See today's full Item Shop.">
+    <meta name="author" content="tposejank">
+    <title>Item Shop - FNLookup</title>
+    <link rel="icon" href="assets/icons/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/./css/style.css">
+    <script src="/./js/backend.js" type="text/javascript"></script>
+    <script src="/./js/script.js" type="text/javascript"></script>
+    <script src="js/item-shop.js" type="text/javascript"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="season-video">
+        <video autoplay loop playsinline class="fn-season-video" id="fn-video"></video>
+        <div class="fn-dot-mask"></div>
+    </div>
+
+    <div class="nav-container">
+    </div>
+
+    <script>
+        i()
+    </script>
+
+    <div class="content">
+        <div class="navigation">
+            <div class="navigation-part part-left" id="navigation-left">
+                <a class="no-link part-button" id="label-left">BACK</a>
+                <script>
+                    document.getElementById('label-left').onclick = function() {
+                        history.back()
+                    }
+                </script>
+            </div>
+            <div class="navigation-part part-center" id="navigation-center">
+                <a class="part-button not-button flex" id="label-center">ITEM SHOP<p id="item-timer" class="shop-reset-timer"></p>
+                </a>
+            </div>
+            <div class="navigation-part part-right" id="navigation-right">
+                <a class="no-link part-button" id="label-right">JUMP TO CATEGORY</a>
+                <div class="dropdown-menu hidden-dropdown" style="max-height: 300px; overflow-y: auto;" id="dropdown-menu-sections">
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div class="shop-items-container" id="shop-container">
+                <script>
+                    createItems()
+                </script>
+                <div id="Section_OldShop" style="height: 100%; width: 100%;"></div>
+            </div>
+        </div>
+
+        <script>
+            function backToTop() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+        </script>
+
+        <a class="back-to-top-button fortnite-button-border pointer" onclick="backToTop()">BACK TO TOP</a>
+    </div>
+</body>
+
+</html>
