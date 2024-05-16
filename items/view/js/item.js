@@ -26,7 +26,7 @@ function init() {
             mainObject.setAttribute('item', item.name);
             mainObject.setAttribute('type', item.type.name);
 
-            document.getElementById('label-center').innerHTML = item.name.toUpperCase()
+            //document.getElementById('label-center').innerHTML = item.name.toUpperCase()
 
             let main = document.createElement('div');
             main.classList.add('flex-media');
@@ -764,6 +764,8 @@ function init() {
             let value = ''
             if (params.has('q')) value = params.get('q');
             if (params.has('id')) value = params.get('id');
+
+            console.error(err)
 
 
             tipText.innerHTML = 'Are you looking for a cosmetic you don\'t know the name of? Go to <a class="green" href="search.html?name=' + value + '">cosmetic search</a> and try again.';
