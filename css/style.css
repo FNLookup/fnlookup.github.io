@@ -318,6 +318,7 @@ a.link-underline:hover {
     padding: 1rem 1.5rem;
     border-radius: 25px;
     background-color: var(--card-background-color);
+    z-index: 999;
 }
 
 .fortnite-button {
@@ -1542,41 +1543,25 @@ body.purple {
 }
 
 .navigation {
-    width: 100%;
-    padding: 0 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    border-radius: 30px;
+    position: fixed;
+    right: 0;
+    top: var(--top-margin);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
     background-color: var(--nav-color);
     margin: 2rem 0;
 }
 
-.navigation-part {
-    display: flex;
-}
-
-.navigation-part a {
-    cursor: pointer;
-}
-
-.navigation-part.part-left {
-    justify-content: left;
-    float: left;
-}
-
-.navigation-part.part-center {
-    justify-content: center;
-}
-
-.navigation-part.part-right {
-    justify-content: right;
-    float: right;
+.navigation-icon {
+    width: 30px;
 }
 
 .navigation-part {
-    width: 33.33%;
+    padding: 1rem 0;
+}
+
+.shop-bar {
+    display: flex; justify-content: center; align-items: center;
 }
 
 .achievements {
@@ -3725,7 +3710,7 @@ tr .player-name {
         height: auto;
     }
     .content {
-        --side-padding: 2rem;
+        --side-padding: 3rem;
         --top-padding: 5rem;
     }
     .quests-section-dropdown {
@@ -3860,12 +3845,8 @@ tr .player-name {
         width: 100%;
         padding: 0;
     }
-    .navigation {
+    .shop-bar {
         flex-direction: column;
-    }
-    .navigation-part.part-left, .navigation-part.part-right {
-        justify-content: center;
-        float: none;
     }
 }
 

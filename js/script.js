@@ -35,15 +35,36 @@ function i() {
             </a>
             <a href="/" class="nav-logo">FNLookup</a>
             <div class="nav-buttons-items">
-                <a href="/account/" class="navbar-button fortnite-button-border no-link">ACCOUNT</a>
-                <a href="/items/" class="navbar-button fortnite-button-border no-link">ITEMS</a>
-                <a href="/items/shop/" class="navbar-button fortnite-button-border no-link">ITEM SHOP</a>
-                <a href="/battle-pass/" class="navbar-button fortnite-button-border no-link">BATTLE PASS</a>
-                <a href="/challenges/" class="navbar-button fortnite-button-border no-link">QUESTS</a>
-                <a href="/events/" class="navbar-button fortnite-button-border no-link">COMPETE</a>
-                ${(localStorage.accountId !== undefined ? '<a href="/statistics/" class="navbar-button fortnite-button-border no-link">STATS</a>' : '')}
+                <a href="/account/" class="navbar-button fortnite-button-border no-link" tkey="nav:account">ACCOUNT</a>
+                <a href="/items/" class="navbar-button fortnite-button-border no-link" tkey="nav:items">ITEMS</a>
+                <a href="/items/shop/" class="navbar-button fortnite-button-border no-link" tkey="nav:item-shop">ITEM SHOP</a>
+                <a href="/battle-pass/" class="navbar-button fortnite-button-border no-link" tkey="nav:battle-pass">BATTLE PASS</a>
+                <a href="/challenges/" class="navbar-button fortnite-button-border no-link" tkey="nav:quests">QUESTS</a>
+                <a href="/events/" class="navbar-button fortnite-button-border no-link" tkey="nav:compete">COMPETE</a>
+                ${(localStorage.accountId !== undefined ? '<a href="/statistics/" class="navbar-button fortnite-button-border no-link" tkey="nav:stats">STATS</a>' : '')}
+            </div>
+        </div>
+        <div class="navigation">
+            <div class="navigation-part" id="navigation-1">
+                <a class="part-button"><img src="/assets/icons/home.png" class="navigation-icon"></a>
+            </div>
+            <div class="navigation-part" id="navigation-2">
+                <a href="/404.html" class="part-button"><img src="/assets/icons/broadcast.png" class="navigation-icon"></a>
+            </div>
+            <div class="navigation-part" id="navigation-3">
+                <a href="/404.html" class="part-button"><img src="/assets/icons/notis.png" class="navigation-icon"></a>
             </div>
         </div>`;
+
+    if (window.location.pathname !== '/' && history.length > 1) {
+        let buttonOne = document.getElementById('navigation-1')
+        buttonOne.children[0].children[0].src = '/assets/icons/back.png' //icon
+        buttonOne.children[0].onclick = function() { // a
+            history.back()
+        }
+    } else {
+        document.getElementById('navigation-1').remove()
+    }
 
     document.getElementById('menu-btn').addEventListener('click', function() {
         //document.getElementById('nav-elements').classList.toggle('hidden-nav');
@@ -127,6 +148,110 @@ function i() {
         }
     ];
     window.uiLangList = languages;
+}
+
+function getTranslationKey(key) {
+    let translations = {
+        "en": {
+            "home:welcome_back": "Welcome Back",
+            "home:your_ranked_stats": "Your Ranked Stats",
+            "home:br": "Battle Royale",
+            "home:zb": "Zero Build",
+            "home:rr": "Ranked Racing",
+
+            "home:not_linked": "You haven't linked an account yet.",
+            "home:link_account": "Link your account",
+
+            "nav:account": "ACCOUNT",
+            "nav:items": "ITEMS",
+            "nav:item-shop": "ITEM SHOP",
+            "nav:battle-pass": "BATTLE PASS",
+            "nav:quests": "QUESTS",
+            "nav:compete": "COMPETE",
+            "nav:stats": "STATS",
+
+            "navigation:home": "HOME",
+            "navigation:back": "BACK",
+            "navigation:broadcast": "BROADCAST",
+            "navigation:notifications": "NOTIFICATIONS",
+
+            "account:navigation_bar": "ACCOUNT",
+            "account:page_name": "Account",
+            "account:page": "Link or view your accounts",
+            "account:current_account": "Current Account",
+            "account:link_button": "LINK",
+            "account:switch_button": "SWITCH ACCOUNT",
+            "account:language": "Language",
+            "account:change_language": "CHANGE LANGUAGE",
+            "account:about_fnlookup": "About FNLookup",
+            "account:about": "VIEW",
+            "account:not_linked": "You haven't linked an account yet.",
+
+            "account_change:your_accounts": "Your accounts",
+            "account_change:add_another": "Add new account",
+            "account_change:search": "Search",
+            "account_change:reset_your_accounts": "Reset your accounts",
+            "account_change:link_new": "Link your account",
+
+            "language:language": "Language",
+            "language:desc": "Change your display language."
+        },
+        "es-419": {
+            "home:welcome_back": "Bienvenido de vuelta",
+            "home:your_ranked_stats": "Tus estadísticas en Ranked",
+            "home:br": "Battle Royale",
+            "home:zb": "Sin construcción",
+            "home:rr": "Ranked Racing",
+
+            "home:not_linked": "Aún no has vinculado una cuenta.",
+            "home:link_account": "Vincula tu cuenta",
+
+            "nav:account": "CUENTA",
+            "nav:items": "OBJETOS",
+            "nav:item-shop": "TIENDA",
+            "nav:battle-pass": "PASE DE BATALLA",
+            "nav:quests": "MISIONES",
+            "nav:compete": "COMPETIR",
+            "nav:stats": "ESTADISTICAS",
+
+            "navigation:home": "INICIO",
+            "navigation:back": "ATRAS",
+            "navigation:broadcast": "BROADCAST",
+            "navigation:notifications": "NOTIFICACIONES",
+
+            "account:navigation_bar": "CUENTA",
+            "account:page_name": "Cuenta",
+            "account:page": "Vincular o ver tus cuentas",
+            "account:current_account": "CUENTA PRINCIPAL",
+            "account:link_button": "VINCULAR",
+            "account:switch_button": "CAMBIAR CUENTA",
+            "account:language": "Idioma",
+            "account:change_language": "CAMBIAR IDIOMA",
+            "account:about_fnlookup": "Sobre FNLookup",
+            "account:about": "VER",
+            "account:not_linked": "Aún no has vinculado una cuenta.",
+
+            "account_change:link_new": "Vincula tu cuenta",
+            "account_change:your_accounts": "Tus cuentas",
+            "account_change:add_another": "Añadir nueva cuenta",
+            "account_change:search": "Buscar",
+            "account_change:reset_your_accounts": "Restablecer tus cuentas",
+
+            "language:language": "Idioma",
+            "language:desc": "Cambia el idioma de visualización."
+        },
+    }
+
+    let lang = localStorage.requestLanguage
+    if (lang === 'es') lang = 'es-419' // Perdon espanioles oleEEEE
+    return translations[lang][key]
+}
+
+function callTranslate() {
+    let toTranslate = document.querySelectorAll('[tkey]')
+    for (let element of toTranslate) {
+        element.textContent = getTranslationKey(element.getAttribute('tkey'))
+    }
 }
 
 function doSearch() {

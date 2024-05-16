@@ -66,16 +66,29 @@
             document.location.href = '/account/'
         }
 
+        function resetAccounts() {
+            // BUT
+            let lang = localStorage.requestLanguage
+
+            localStorage.clear()
+
+            localStorage.requestLanguage = lang
+
+            window.location.reload()
+
+            // MIGRATION NEEDED HERE!
+        }
+
         function loadSwitcher() {
             let modal = document.getElementById('account-change-modal')
 
             if (localStorage.accounts === undefined || localStorage.accounts.length === 0) {
-                modal.innerHTML = `<h2 class="header-text-bold">Link your account</h2><div class="flex flex-wrap player-data">
+                modal.innerHTML = `<h2 class="header-text-bold" tkey="account_change:link_new">Link your account</h2><div class="flex flex-wrap player-data">
                 <input type="text" placeholder="User Name" id="player-name" title="Account Name">
-                <button id="discover" onclick="lookupPlayer()">Search</button>
+                <button id="discover" onclick="lookupPlayer()" tkey="account_change:search">Search</button>
             </div>`
             } else {
-                modal.innerHTML = `<h2 class="header-text-bold">Your accounts</h2>`
+                modal.innerHTML = `<h2 class="header-text-bold" tkey="account_change:your_accounts">Your accounts</h2>`
                 let accountContainer = document.createElement('div')
                 accountContainer.id = 'accounts'
                 modal.append(accountContainer)
@@ -96,10 +109,11 @@
                     }
                 }
 
-                modal.innerHTML += `<h2 class="header-text-bold">Add new account</h2><div class="flex flex-wrap player-data">
+                modal.innerHTML += `<h2 class="header-text-bold" tkey="account_change:add_another">Add new account</h2><div class="flex flex-wrap player-data">
                 <input type="text" placeholder="User Name" id="player-name" title="Account Name">
-                <button id="discover" onclick="lookupPlayer()">Search</button>
-            </div>`
+                <button id="discover" onclick="lookupPlayer()" tkey="account_change:search">Search</button>
+            </div>
+                <hr><button onclick="resetAccounts()" tkey="account_change:reset_your_accounts">Reset all accounts</button>`
             }
         }
     </script>
@@ -114,23 +128,6 @@
     </script>
 
     <div class="content">
-        <div class="navigation">
-            <div class="navigation-part part-left" id="navigation-left">
-                <a class="no-link part-button" id="label-left">BACK</a>
-                <script>
-                    document.getElementById('label-left').onclick = function() {
-                        history.back()
-                    }
-                </script>
-            </div>
-            <div class="navigation-part part-center" id="navigation-center">
-                <a class="part-button not-button" id="label-center">ACCOUNT SWITCH</a>
-            </div>
-            <div class="navigation-part part-right" id="navigation-right">
-                <a href="/404.html" class="no-link part-button" id="label-right">NOTIFICATIONS</a>
-            </div>
-        </div>
-
         <div id="account-change-modal"></div>
 
         <div id="content-players"></div>
@@ -148,6 +145,10 @@
                     })
                 }
             }
+        </script>
+
+        <script>
+            callTranslate()
         </script>
     </div>
 </body>

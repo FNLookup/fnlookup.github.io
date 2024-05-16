@@ -22,7 +22,6 @@
     <script src="js/backend.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>
     <script src="home/scripts/home.js" type="text/javascript"></script>
-    <script type="text/javascript" src="items/shop/js/item-shop.js"></script>
     <script type="text/javascript" src="home/scripts/ranked.js"></script>
 </head>
 
@@ -36,31 +35,19 @@
 
     <div class="content" fullpage="true">
         <div class="navigation">
-            <div class="navigation-part part-left" id="navigation-left">
-                <a class="not-button part-button" id="label-left">HOME</a>
-            </div>
-            <div class="navigation-part part-center" id="navigation-center">
-                <a href="/item-shop/" class="part-button not-button" id="label-center">ITEM SHOP</a>
-            </div>
-            <div class="navigation-part part-right" id="navigation-right">
-                <a href="/404.html" class="no-link part-button" id="label-right">NOTIFICATIONS</a>
-            </div>
+
         </div>
         <div id="main-content">
-            <!-- <h1>Welcome</h1>
-            <a class="d-link" href="index.html">FNLookup</a> is a simple browsing tool for <a href="https://fn.gg" class="d-link">Fortnite</a> related content.
-            <p>Use the sidebar to navigate.</p> -->
-
-            <h3 class="header-text-light header-text-italic">Welcome Back</h3>
+            <h3 class="header-text-light header-text-italic" tkey="home:welcome_back">Welcome Back</h3>
             <h1 id="user_username" class="header-text-bold header-text-italic"></h1>
 
             <hr>
 
             <div class="ranked-section" id="account-section">
-                <h1 class="header-text-bold">Your Ranked Stats</h1>
+                <h1 class="header-text-bold" tkey="home:your_ranked_stats">Your Ranked Stats</h1>
                 <div class="ranked-progress-sections">
                     <div class="ranked-progress-section">
-                        <h2 class="header-text-bold">Battle Royale</h2>
+                        <h2 class="header-text-bold" tkey="home:br">Battle Royale</h2>
 
                         <div class="ranked-view">
                             <div class="progress-bar-circle" id="br-ranked-progress" style="--end-progress-value: 0">
@@ -71,7 +58,7 @@
                         <h2 class="header-text-light" id="br-rank-text">Unknown</h2>
                     </div>
                     <div class="ranked-progress-section">
-                        <h2 class="header-text-bold">Zero Build</h2>
+                        <h2 class="header-text-bold" tkey="home:zb">Zero Build</h2>
 
                         <div class="ranked-view">
                             <div class="progress-bar-circle" id="zb-ranked-progress" style="--end-progress-value: 0">
@@ -82,7 +69,7 @@
                         <h2 class="header-text-light" id="zb-rank-text">Unknown</h2>
                     </div>
                     <div class="ranked-progress-section">
-                        <h2 class="header-text-bold">Ranked Racing</h2>
+                        <h2 class="header-text-bold" tkey="home:rr">Ranked Racing</h2>
 
                         <div class="ranked-view">
                             <div class="progress-bar-circle" id="dc-ranked-progress" style="--end-progress-value: 0">
@@ -101,11 +88,14 @@
                     document.getElementById('user_username').innerHTML += `${localStorage.accountName}`
                 } else {
                     document.getElementById('account-section').remove()
+                    document.getElementById('user_username').setAttribute('tkey', 'home:not_linked')
                     document.getElementById('user_username').innerHTML += `You haven't linked an account yet.`
-                    document.getElementById('main-content').innerHTML += '<a class="no-link fortnite-button fortnite-button-border" href="/account/">LINK AN ACCOUNT</a>'
+                    document.getElementById('main-content').innerHTML += '<a class="no-link fortnite-button fortnite-button-border" href="/account/change/" tkey="home:link_account">LINK AN ACCOUNT</a>'
                 }
             </script>
         </div>
+
+        <script>callTranslate()</script>
     </div>
 </body>
 

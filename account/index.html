@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AES Keys allow dataminers to find files in Fortnite's archives. Use these keys in FModel to decrypt the .pak and .utoc/.ucas packages.">
     <meta name="author" content="tposejank">
-    <title>AES Keys - FNLookup</title>
+    <title>Account - FNLookup</title>
     <link rel="icon" href="assets/icons/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,29 +27,12 @@
     </script>
 
     <div class="content" fullpage="true">
-        <div class="navigation">
-            <div class="navigation-part part-left" id="navigation-left">
-                <a class="no-link part-button" id="label-left">BACK</a>
-                <script>
-                    document.getElementById('label-left').onclick = function() {
-                        history.back()
-                    }
-                </script>
-            </div>
-            <div class="navigation-part part-center" id="navigation-center">
-                <a class="part-button not-button" id="label-center">ACCOUNT</a>
-            </div>
-            <div class="navigation-part part-right" id="navigation-right">
-                <a href="/404.html" class="no-link part-button" id="label-right">NOTIFICATIONS</a>
-            </div>
-        </div>
-
-        <h1 class="header-text-bold header-text-italic">Account</h1>
-        <h2 class="header-text-bold header-text-italic">Link or view your accounts</h2>
+        <h1 class="header-text-bold header-text-italic" tkey="account:page_name">Account</h1>
+        <h2 class="header-text-bold header-text-italic" tkey="account:page">Link or view your accounts</h2>
 
         <hr>
 
-        <h1 class="header-text-bold header-text-italic">Current account</h1>
+        <h1 class="header-text-bold header-text-italic" tkey="account:current_account">Current account</h1>
         <div id="account-modal"></div>
 
         <script>
@@ -58,15 +41,19 @@
 
         <hr>
 
-        <h1 class="header-text-bold header-text-italic">Language
-            <a class="no-link float-right fortnite-button fortnite-button-border" href="/language/">CHANGE LANGUAGE</a>
-        </h1>
+        <div>
+            <h1 class="header-text-bold header-text-italic" tkey="account:language">Language
+            </h1>
+            <a class="no-link float-right fortnite-button fortnite-button-border" href="/language/" tkey="account:change_language">CHANGE LANGUAGE</a>
+        </div>
 
         <hr>
 
         <h1 class="header-text-bold header-text-italic">FNLookup
-            <a class="no-link float-right fortnite-button fortnite-button-border" href="/about/">ABOUT</a>
+            <a class="no-link float-right fortnite-button fortnite-button-border" href="/about/" tkey="account:about">VIEW</a>
         </h1>
-        <h2 class="header-text-bold header-text-italic">About FNLookup</h2>
+        <h2 class="header-text-bold header-text-italic" tkey="account:about_fnlookup">About FNLookup</h2>
+
+        <script>callTranslate()</script>
     </div>
 </body>

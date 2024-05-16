@@ -156,7 +156,7 @@ function createItems() {
                         if (tileSize === "Size_1_x_1") {
                             item['width'] = count in [4, 2] ? 0.25 : 0.2;
                             item['height'] = 0.5;
-                        } else if (tileSize === "Size_1_x_2") {
+                        } else if (tileSize === "Size_1_x_2" || tileSize === "Normal") {
                             item['width'] = ((count == 4 || count == 2) ? 0.25 : count > 5 ? 0.2 : 0.2);
                             item['height'] = 1.0;
                             console.log(count, tileSize, item['name'])

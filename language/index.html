@@ -31,8 +31,8 @@
     </script>
 
     <div class="content" fullpage="true">
-        <h1 class="header-text-bold">Language</h1>
-        <h2 class="header-text-bold">Change the display language.</h2>
+        <h1 class="header-text-bold" tkey="language:language">Language</h1>
+        <h2 class="header-text-bold" tkey="language:desc">Change the display language.</h2>
         <div id="languages-list">
             <script>
                 for (let language of window.uiLangList) {
@@ -54,6 +54,8 @@
                 }
             </script>
         </div>
+
+        <script>callTranslate()</script>
     </div>
 </body>
 
