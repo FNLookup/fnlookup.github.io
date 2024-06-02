@@ -139,7 +139,7 @@ function getApiURL(endpoint) {
 function getRequestData(urlEndpoint) {
     return {
         url: geturllang(getApiURL(urlEndpoint), 1),
-        data: {}
+        data: {headers: {'Authorization': 'Kaiser'}}
     };
 }
 

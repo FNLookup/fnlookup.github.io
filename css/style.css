@@ -3402,6 +3402,169 @@ tr .player-name {
     bottom: -2.2rem;
 }
 
+.instrument-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.festival-leaderboard-instrument-button {
+    flex: 16%;
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    margin: .5rem;
+    background-color: var(--card-background-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: headings-squash;
+}
+
+.festival-song-info {
+    display: flex;
+    align-items: center;
+}
+
+.festival-song-data {
+    padding-left: 1rem;
+    font-family: headings-squash;
+}
+
+.festival-album-art {
+    border-radius: 15px;
+    width: 50%;
+}
+
+.festival-difficulty-item {
+    width: 50%;
+    position: relative;
+    justify-content: right;
+    align-items: center;
+}
+
+.festival-diff-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.festival-difficulty-item a:not(.festival-difficulty-level) {
+    font-family: headings-squash;
+    font-size: 19px;
+    padding-left: 1rem;
+}
+
+.festival-difficulty-level {
+    font-family: headings-squash;
+    font-size: 19px;
+    padding-left: 3rem;
+}
+
+.festival-leaderboard-entry {
+    font-family: headings-squash;
+    font-size: 19px;
+    cursor: pointer;
+    padding: .5rem 1rem;
+
+    align-items: center;
+}
+
+.festival-leaderboard-entry-parent {
+    background-color: var(--card-background-color);
+    margin: 0.25rem 0;
+}
+
+.festival-leaderboard-entry-parent:first-child { /* First child */
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.festival-leaderboard-entry-parent { /* Not first or last */
+    border-radius: 5px;
+}
+
+.festival-leaderboard-entry-parent:last-child { /* Last child */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.festival-entry-position {
+    width: 10%;
+}
+
+.festival-entry-name {
+    width: 40%;
+}
+
+.festival-entry-score {
+    width: 15%;
+}
+
+.festival-entry-accuracy {
+    width: 10%;
+}
+
+.festival-entry-stars {
+    width: 25%;
+}
+
+.festival-entry-stars img {
+    width: 45px;
+    height: 45px;
+}
+
+.festival-entry-flawless {
+    color: #FFEA26;
+    font-style: italic;
+    outline: solid #FDF2BA 3px;
+    outline-offset: .1875rem;
+    border-radius: 8px;
+}
+
+.festival-entry-sessions-data {
+    
+    padding: 1rem;
+}
+
+.festival-session-player {
+    background-color: var(--theme-color);
+    margin: 1rem 0.5rem;
+    border-radius: 15px;
+    padding: 0.5rem;
+    flex: 25%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.festival-player-instrument-info {
+    display: flex;
+    align-items: center;
+}
+
+.festival-player-instrument-info img {
+    width: 30px;
+}
+
+.festival-session-player p {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.festival-session-player.is-player {
+    --outline-width-hover: .25rem;
+    outline-color: #fffc;
+    outline-offset: .1875rem;
+    outline-width: var(--outline-width-hover);
+    outline-style: solid;
+    transition-duration: .15s;
+    transition-property: outline-color, outline-offset, outline-width;
+    transition-timing-function: ease-out;
+}
+
 .cookie-container {
     width: 100%;
     height: 100%;
@@ -3716,6 +3879,10 @@ tr .player-name {
     .nav-logo {
         display: none;
     }
+    .festival-leaderboard-entries {
+        min-width: 960px;
+        max-width: 1280px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -3835,6 +4002,10 @@ tr .player-name {
     }
     .shop-bar {
         flex-direction: column;
+    }
+    .festival-leaderboard-entries {
+        min-width: 200px;
+        max-width: 400px;
     }
 }
 
