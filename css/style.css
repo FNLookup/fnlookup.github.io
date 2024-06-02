@@ -1687,25 +1687,15 @@ body.purple {
 }
 
 .weapon {
-    background: linear-gradient(#0086CF, #006ACF);
+    background-color: var(--card-background-color);
     margin: 2rem .5rem;
-    height: 500px;
-    display: flex;
-    align-items: center;
+    padding: 1rem;
     position: relative;
     overflow: hidden;
 }
 
 .weapon-img {
-    position: absolute;
     width: 100%;
-}
-
-.weapon .weapon-img img {
-    mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    -webkit-mask-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    margin-left: 10%;
-    width: 130%;
 }
 
 .weapon .weapon-details {
@@ -1715,8 +1705,7 @@ body.purple {
 
 .weapon-name,
 .weapon-desc {
-    font-family: burbank-big;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: headings-squash;
 }
 
 .weapon-stats {
@@ -1737,8 +1726,7 @@ body.purple {
 
 .weapon-stat-label,
 .weapon-stat-num {
-    font-family: burbank-big;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-family: headings-squash;
     font-weight: 700;
     font-size: 20px;
 }
