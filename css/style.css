@@ -263,6 +263,16 @@ a.link-underline:hover {
     position: relative;
 }
 
+.navigation-part popup {
+    position: absolute;
+    right: 5rem;
+    background-color: #101C40;
+    padding: 1rem;
+    border-radius: 15px;
+    font-family: headings-squash;
+    width: 150px;
+}
+
 .navbar-button,
 .part-button {
     padding: .8rem 1rem;
@@ -3584,6 +3594,54 @@ jam-track {
 
 .jam-track-description {
     padding-left: 1rem;
+}
+
+.fnlookup-blog-posts {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blog-post {
+    margin: 0.5rem;
+    background-color: var(--card-background-color);
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.blog-post .information {
+    padding: 1rem;
+}
+
+.blog-post img {
+    width: 100%;
+    display: block;
+}
+
+.blog-post-big-image-container {
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-post-big-image-container img {
+    width: 100%;
+    display: block;
+}
+
+.blog-data {
+    font-family: headings-squash;
+}
+
+.blog-data * {
+    margin: 0.5rem 0;
+}
+
+.blog-data img {
+    width: 50%;
+    height: 50%;
 }
 
 .cookie-container {

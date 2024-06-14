@@ -373,7 +373,7 @@ function init() {
                     let ds = gne('a');
                     ds.innerText = rSince;
 
-                    if (dsince == 0) ds.innerHTML = '<a href="/item-shop/">Today</a>';
+                    if (dsince == 0) ds.innerHTML = '<a href="/items/shop/">Today</a>';
 
                     right.append(ds);
 

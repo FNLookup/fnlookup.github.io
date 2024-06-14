@@ -49,7 +49,8 @@ function i() {
                 <a class="part-button"><img src="/assets/icons/home.png" class="navigation-icon"></a>
             </div>
             <div class="navigation-part" id="navigation-2">
-                <a href="/404.html" class="part-button"><img src="/assets/icons/broadcast.png" class="navigation-icon"></a>
+                <a href="/broadcast/" class="part-button"><img src="/assets/icons/broadcast.png" class="navigation-icon"></a>
+                ${(localStorage.popupVersion != '0.1' || localStorage.popupVersion == undefined ? `<popup>>>>> NEW! >>>> Broadcast!</popup>` : '')}
             </div>
             <div class="navigation-part" id="navigation-3">
                 <a href="/404.html" class="part-button"><img src="/assets/icons/notis.png" class="navigation-icon"></a>
