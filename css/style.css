@@ -1198,7 +1198,7 @@ body.purple {
     margin-bottom: 3rem;
     border-radius: 50%;
     position: relative;
-    background: radial-gradient(closest-side, var(--theme-color) 90%, transparent 80% 100%), conic-gradient(hotpink calc(var(--progress-value) * 1%), var(--card-background-color) 0);
+    background: radial-gradient(closest-side, var(--theme-color) 90%, transparent 80% 100%), conic-gradient(#ffff01 calc(var(--progress-value) * 1%), var(--card-background-color) 0);
 }
 
 .progress-bar-circle img {
