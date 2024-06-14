@@ -27,18 +27,42 @@ function getFeaturedJamTracks() {
 
                 //console.log(jamTrack)
 
+                const jamTrackElement = document.createElement('jam-track');
+
+                const jamShit = document.createElement('a');
+
+                jamShit.classList.add("jam-track-item-card", "fortnite-button-border");
+                jamShit.href = 'view/?' + id;
+
+                jamTrackElement.append(jamShit)
+              
+                // Add image element
+                const image = document.createElement("img");
+                image.src = album;
+                image.alt = songName;
+                jamShit.appendChild(image);
+              
+                // Add description container
+                const description = document.createElement("div");
+                description.classList.add("jam-track-description");
+              
+                // Add song name heading
+                const songNameHeading = document.createElement("h2");
+                songNameHeading.classList.add("header-text-bold");
+                songNameHeading.textContent = songName;
+                description.appendChild(songNameHeading);
+              
+                // Add artist heading
+                const artistHeading = document.createElement("h3");
+                artistHeading.classList.add("header-text-bold");
+                artistHeading.textContent = artist; // Assuming you have the artist variable defined
+                description.appendChild(artistHeading);
+              
+                // Add description container to link
+                jamShit.appendChild(description);          
+
                 if (listFeatured.includes(id)) {
-                    document.getElementById('featured-entries').innerHTML += `
-                    <jam-track>
-                        <a class="jam-track-item-card fortnite-button-border" href="view/?${id}">
-                            <img src="${album}" alt="Give Me Everything">
-            
-                            <div class="jam-track-description">
-                                <h2 class="header-text-bold">${songName}</h2>
-                                <h3 class="header-text-bold">${artist}</h3>
-                            </div>
-                        </a>
-                    </jam-track>`
+                    document.getElementById('featured-entries').append(jamTrackElement)
                 }
 
                 document.getElementById('all-entries').innerHTML += `

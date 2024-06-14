@@ -6,6 +6,9 @@ function loadViewer() {
     //console.log(firstKey);
     let _placeholder_songID = firstKey
 
+    document.getElementById('preview-audio').src = 'https://raw.githubusercontent.com/FNLookup/festival/main/music/' + _placeholder_songID + '_preview.ogg'
+    document.getElementById('full-audio').src = 'https://raw.githubusercontent.com/FNLookup/festival/main/music/' + _placeholder_songID + '.ogg'
+
     // check params
 
     fetch(_jam_tracks_URL).then(r=>r.json()).then(r=> {
