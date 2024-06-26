@@ -43,7 +43,7 @@
 
             async function extractFilesFromZip(data) {
                 let zipUrl = data.zip;
-                let response = await fetch('https://raw.githubusercontent.com/FNLookup/encore/main/' + zipUrl);
+                let response = await fetch('https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl);
                 let zipData = await response.arrayBuffer();
     
                 let jszip = new JSZip();

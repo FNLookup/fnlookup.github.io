@@ -8,7 +8,7 @@ function loadSong() {
 
     async function extractFilesFromZip(data) {
         let zipUrl = data.zip;
-        let response = await fetch('https://raw.githubusercontent.com/FNLookup/encore/main/' + zipUrl);
+        let response = await fetch('https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl);
         let size = response.headers.get('Content-Length');
         let zipData = await response.arrayBuffer();
 
@@ -159,7 +159,7 @@ function loadSong() {
 
         downloadButton.title = 'Size: ' + mbs + ' MB'
 
-        downloadButton.href = 'https://raw.githubusercontent.com/FNLookup/encore/main/' + zipUrl
+        downloadButton.href = 'https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl
 
         trackDetails.append(trackAnalysisTable)
 
