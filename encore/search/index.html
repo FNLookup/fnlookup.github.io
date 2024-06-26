@@ -15,7 +15,7 @@
     <script src="/js/backend.js" type="text/javascript"></script>
     <script src="/js/script.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-    <script src="js/songs.js"></script>
+    <script src="js/find.js"></script>
 </head>
 <body>
     <div class="season-video">
@@ -33,17 +33,7 @@
     <div class="content" style="max-width: 1450px; align-items: center;">
         <img src="https://raw.githubusercontent.com/Encore-Developers/Encore/main/Encore/Assets/encore-white.png" alt="Encore" style="max-width: 500px;">
 
-        <h2 class="header-text-bold">Search Tracks</h2>
-
-        <div id="search-function-encore">
-            <input type="text" id="iname" class="cosmetic-search fortnite-button-border" autocomplete="off" placeholder="Name/ID">
-
-            <button class="fortnite-button-border" onclick="searchForSong()">Search</button>
-        </div>
-
-        <br>
-
-        <h2 class="header-text-bold">All Charts</h2>
+        <h2 class="header-text-bold" id="resultsfor">Results for </h2>
         
         <div id="songs"></div>
 

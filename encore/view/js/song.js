@@ -7,6 +7,10 @@ function loadSong() {
     }
 
     async function extractFilesFromZip(data) {
+        let loading = document.createElement('p')
+        loading.innerText = 'Downloading ' + data.zip + ', please wait...'
+        document.getElementById('song').append(loading)
+
         let zipUrl = data.zip;
         let response = await fetch('https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl);
         let size = response.headers.get('Content-Length');
@@ -16,12 +20,12 @@ function loadSong() {
         let zip = await jszip.loadAsync(zipData);
         let root = data.isRootFirstDir ? '' : data.root + '/'
 
-        console.log(zip)
+        //console.log(zip)
 
         let infoFile = zip.file(root + 'info.json');
         let infoContent = await infoFile.async('text');
         let info = JSON.parse(infoContent)
-        console.log(info)
+        //console.log(info)
 
         // Extract the .ogg file
         //let audioFile = zip.file('my-audio.ogg');
@@ -44,6 +48,7 @@ function loadSong() {
         let trackDetails = document.createElement('track-details')
         let songTitle = document.createElement('h1')
         songTitle.innerText = info.title
+        document.title = info.title + ' (Encore) - FNLookup'
 
         let songArtist = document.createElement('h2')
         let piss = ` - ${info.album != undefined ? info.album + ' - ': ''}${toTimeStr(data['secs'])}`
@@ -120,7 +125,7 @@ function loadSong() {
 
         let difficulties = {
             'E': [60, 64],
-            'N': [72, 75],
+            'M': [72, 75],
             'H': [84, 87],
             'X': [96, 100]
         }
@@ -137,8 +142,11 @@ function loadSong() {
 
             trackAnalysisName.append(trackNotes)
 
+            totalNotesForTrack = 0
+
             for (let diff of Object.keys(difficulties)) {
                 let trackNotesTotal = trackAnalysis(tracks[track], difficulties[diff][0], difficulties[diff][1])
+                totalNotesForTrack += trackNotesTotal
                 if (trackNotesTotal < 1) continue
                 let item = Object.keys(difficulties).indexOf(diff)
 
@@ -147,7 +155,7 @@ function loadSong() {
                 diffAnalysis.innerText += `${diff}: ${trackNotesTotal} ${shouldAddDash ? '- ' : ''}` 
             }
 
-            trackAnalysisTable.append(trackAnalysisName)
+            if (totalNotesForTrack > 0) trackAnalysisTable.append(trackAnalysisName)
         }
 
         let downloadButton = document.createElement('a')
@@ -164,6 +172,8 @@ function loadSong() {
         trackDetails.append(trackAnalysisTable)
 
         trackDetails.append(downloadButton)
+
+        loading.remove()
     }
 
     fetch('https://raw.githubusercontent.com/FNLookup/encore/main/encore.json').then(r => r.json()).then(r => {

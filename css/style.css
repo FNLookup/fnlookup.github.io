@@ -3648,6 +3648,32 @@ jam-track {
     flex-wrap: wrap;
 }
 
+#search-function-encore {
+    display: flex;
+}
+
+#search-function-encore .cosmetic-search {
+    font: 15px headings-squash;
+    text-transform: uppercase;
+    color: white;
+    padding: .8rem;
+    margin: 0px 0.25rem;
+    background-color: var(--card-background-color);
+    border-radius: 15px;
+    border: none;
+}
+
+#search-function-encore button {
+    font: 15px headings-squash;
+    text-transform: uppercase;
+    color: white;
+    padding: .8rem;
+    margin: 0px 0.25rem;
+    background-color: #111213;
+    border-radius: 15px;
+    border: none;
+}
+
 .blog-post {
     margin: 0.5rem;
     background-color: var(--card-background-color);
