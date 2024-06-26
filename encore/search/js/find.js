@@ -85,13 +85,17 @@ function loadSongs() {
     document.getElementById('resultsfor').innerText = 'Results for ' + keyword
 
     songs = fetch('https://raw.githubusercontent.com/FNLookup/encore/main/encore.json').then(r => r.json()).then(r => {
+        let totalresults = 0
         for (let song of r.songs) {
             //console.log(song)
     
             if (song.id.toLowerCase().includes(keyword) || song.title.toLowerCase().includes(keyword)) {
+                totalresults++
                 extractFilesFromZip(song)
             }
         }
+
+        if (totalresults < 1) document.getElementById('resultsfor').innerText = 'Your search did not have any results.'
     }).catch(err => {
         console.error(err)
     })
