@@ -37,6 +37,10 @@
         <div id="songs"></div>
 
         <script>
+            function toTimeStr(secs) {
+                return `${Math.floor(secs / 60)}:${(secs % 60) > 9 ? '' : '0'}${secs % 60}`
+            }
+
             async function extractFilesFromZip(data) {
                 let zipUrl = data.zip;
                 let response = await fetch('https://raw.githubusercontent.com/FNLookup/encore/main/' + zipUrl);
@@ -76,17 +80,20 @@
                 let songTitle = document.createElement('h1')
                 songTitle.innerText = info.title
 
-                let songArtist = document.createElement('h2')
-                songArtist.innerText = info.artist
+                let songArtist = document.createElement('h3')
+                let piss = ` - ${info.album != undefined ? info.album + ' - ': ''}${toTimeStr(data['secs'])}`
+                songArtist.innerText = info.artist + piss
+
+                //console.log(piss)
 
                 let songDiffs = document.createElement('song-diffs')
                 for (let diff of Object.keys(info.diff)) {
                     icon = ''
 
-                    if (diff == 'ds') icon = 'drums.webp'
-                    if (diff == 'ba') icon = 'bass.webp'
-                    if (diff == 'vl') icon = 'voices.webp'
-                    if (diff == 'gr') icon = 'guitar.webp'
+                    if (diff == 'ds' || diff == 'drums' || diff == 'plastic_drums') icon = 'drums.webp'
+                    if (diff == 'ba' || diff == 'bass' || diff == 'plastic_bass') icon = 'bass.webp'
+                    if (diff == 'vl' || diff == 'vocals' || diff == 'plastic_vocals') icon = 'voices.webp'
+                    if (diff == 'gr' || diff == 'guitar' || diff == 'plastic_guitar') icon = 'guitar.webp'
 
                     let imageIcon = document.createElement('img')
                     imageIcon.classList.add('instrument-icon-encore')

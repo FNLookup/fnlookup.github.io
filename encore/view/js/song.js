@@ -2,6 +2,10 @@ function loadSong() {
     let params = new URLSearchParams(window.location.search);
     let firstKey = params.keys().next().value;
 
+    function toTimeStr(secs) {
+        return `${Math.floor(secs / 60)}:${(secs % 60) > 9 ? '' : '0'}${secs % 60}`
+    }
+
     async function extractFilesFromZip(data) {
         let zipUrl = data.zip;
         let response = await fetch('https://raw.githubusercontent.com/FNLookup/encore/main/' + zipUrl);
@@ -42,16 +46,32 @@ function loadSong() {
         songTitle.innerText = info.title
 
         let songArtist = document.createElement('h2')
-        songArtist.innerText = info.artist
+        let piss = ` - ${info.album != undefined ? info.album + ' - ': ''}${toTimeStr(data['secs'])}`
+        songArtist.innerText = info.artist + piss
+
+        let songCharter = document.createElement('h3')
+        let charterstr = 'Charters: Unknown'
+        if (info.charters != undefined) {
+            charterstr = 'Charters: ' + info.charters.join(', ')
+        }
+        songCharter.innerText = charterstr
+
+        let songGenre = document.createElement('h3')
+        let genrestr = 'Genres: Unknown'
+        if (info.genres != undefined) {
+            genrestr = 'Genres: ' + info.genres.join(', ') + ' - ' + info.release_year
+        }
+
+        songGenre.innerText = genrestr
 
         let songDiffs = document.createElement('song-diffs')
         for (let diff of Object.keys(info.diff)) {
             icon = ''
 
-            if (diff == 'ds') icon = 'drums.webp'
-            if (diff == 'ba') icon = 'bass.webp'
-            if (diff == 'vl') icon = 'voices.webp'
-            if (diff == 'gr') icon = 'guitar.webp'
+            if (diff == 'ds' || diff == 'drums' || diff == 'plastic_drums') icon = 'drums.webp'
+            if (diff == 'ba' || diff == 'bass' || diff == 'plastic_bass') icon = 'bass.webp'
+            if (diff == 'vl' || diff == 'vocals' || diff == 'plastic_vocals') icon = 'voices.webp'
+            if (diff == 'gr' || diff == 'guitar' || diff == 'plastic_guitar') icon = 'guitar.webp'
 
             let imageIcon = document.createElement('img')
             imageIcon.classList.add('instrument-icon-encore')
@@ -64,7 +84,7 @@ function loadSong() {
             songDiffs.append(imageIcon, diffQtt)
         }
 
-        trackDetails.append(songTitle, songArtist, songDiffs)
+        trackDetails.append(songTitle, songArtist, songCharter, songGenre, songDiffs)
         encoreTrack.append(trackDetails)
 
         document.getElementById('song').appendChild(encoreTrack);
@@ -76,6 +96,7 @@ function loadSong() {
             let trackIndex = midi.tracks.indexOf(midi.tracks.find(track => {
                 return track.name == trackName
             }))
+            if (trackIndex < 0) return 0
             let track = midi.tracks[trackIndex];
             let noteCount = 0;
             for (let note of track.notes) {
@@ -90,8 +111,11 @@ function loadSong() {
         let tracks = {
             'Drums': 'PART DRUMS',
             'Bass': 'PART BASS',
+            'Guitar': 'PART GUITAR',
             'Vocals': 'PART VOCALS',
-            'Guitar': 'PART GUITAR'
+            'Pro Drums': 'PLASTIC DRUMS',
+            'Pro Bass': 'PLASTIC BASS',
+            'Pro Guitar': 'PLASTIC GUITAR'
         }
 
         let difficulties = {
@@ -115,8 +139,7 @@ function loadSong() {
 
             for (let diff of Object.keys(difficulties)) {
                 let trackNotesTotal = trackAnalysis(tracks[track], difficulties[diff][0], difficulties[diff][1])
-                if (trackNotesTotal == 0)
-                    continue
+                if (trackNotesTotal < 1) continue
                 let item = Object.keys(difficulties).indexOf(diff)
 
                 let shouldAddDash = item < 3
