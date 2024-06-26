@@ -50,10 +50,13 @@ function i() {
             </div>
             <div class="navigation-part" id="navigation-2">
                 <a href="/broadcast/" class="part-button"><img src="/assets/icons/broadcast.png" class="navigation-icon"></a>
-                ${(localStorage.popupVersion != '0.1' || localStorage.popupVersion == undefined ? `<popup>>>>> NEW! >>>> Broadcast and Festival Hub!</popup>` : '')}
             </div>
             <div class="navigation-part" id="navigation-3">
                 <a href="/festival/" class="part-button"><img src="/assets/icons/guitar.webp" class="navigation-icon"></a>
+            </div>
+            <div class="navigation-part" id="navigation-3">
+                <a href="/encore/" class="part-button"><img src="https://raw.githubusercontent.com/Encore-Developers/Encore/main/Encore/Assets/encore_favicon-NEW.png" class="navigation-icon"></a>
+                ${(localStorage.popupVersion != '0.2' || localStorage.popupVersion == undefined ? `<popup>>>>> NEW! >>>> Encore Charts!</popup>` : '')}
             </div>
         </div>`;
 
