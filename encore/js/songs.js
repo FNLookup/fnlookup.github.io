@@ -9,15 +9,6 @@ async function extractFilesFromZip(data) {
     loading.innerText = 'Downloading ' + data.id + ', please wait...'
     document.getElementById('songs').append(loading)
 
-    let response = await fetch('https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl);
-    let zipData = await response.arrayBuffer();
-    //console.log(root)
-    //console.log(info)
-
-    // Extract the .ogg file
-    //let audioFile = zip.file('my-audio.ogg');
-    //console.log(imageFile)
-
     let imageUrl = 'https://raw.githubusercontent.com/FNLookup/encore/main/covers/'+data.id +'/'+data.art;
     let encoreTrack = document.createElement('a')
     encoreTrack.classList.add('encore-track', 'flex-media', 'fortnite-button-border')
