@@ -3,57 +3,38 @@ function toTimeStr(secs) {
 }
 
 async function extractFilesFromZip(data) {
-    let zipUrl = data.zip;
-
     let loading = document.createElement('p')
     loading.innerText = 'Downloading ' + data.id + ', please wait...'
     document.getElementById('songs').append(loading)
 
-    let response = await fetch('https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl);
-    let zipData = await response.arrayBuffer();
-
-    let jszip = new JSZip();
-    let zip = await jszip.loadAsync(zipData);
-    //console.log(zip)
-    let root = data.isRootFirstDir ? '' : data.root + '/'
-    //console.log(root)
-
-    let infoFile = zip.file(root + 'info.json');
-    let infoContent = await infoFile.async('text');
-    let info = JSON.parse(infoContent)
-    //console.log(info)
-
-    // Extract the .ogg file
-    //let audioFile = zip.file('my-audio.ogg');
-
-    let imageFile = zip.file(root + info.art);
-    //console.log(imageFile)
-
-    let imageBlob = await imageFile.async('blob');
-    let imageUrl = URL.createObjectURL(imageBlob);
+    let imageUrl = 'https://raw.githubusercontent.com/FNLookup/encore/main/covers/'+data.id +'/'+data.art;
 
     let encoreTrack = document.createElement('a')
-    encoreTrack.classList.add('encore-track', 'flex-media')
+    encoreTrack.classList.add('encore-track', 'flex-media', 'fortnite-button-border')
     encoreTrack.href = '/encore/view/?' + data.id
 
     let imgElement = document.createElement('img');
     imgElement.src = imageUrl;
     imgElement.classList.add('art')
 
-    encoreTrack.append(imgElement)
+    let imgElement2 = document.createElement('img');
+    imgElement2.src = imageUrl;
+    imgElement2.classList.add('art-ghost')
+
+    encoreTrack.append(imgElement, imgElement2)
 
     let trackDetails = document.createElement('track-details')
     let songTitle = document.createElement('h1')
-    songTitle.innerText = info.title
+    songTitle.innerText = data.title
 
     let songArtist = document.createElement('h3')
-    let piss = ` - ${info.album != undefined ? info.album + ' - ': ''}${toTimeStr(data['secs'])}`
-    songArtist.innerText = info.artist + piss
+    let piss = ` - ${data.album != undefined ? data.album + ' - ': ''}${toTimeStr(data['secs'])}`
+    songArtist.innerText = data.artist + piss
 
     //console.log(piss)
 
     let songDiffs = document.createElement('song-diffs')
-    for (let diff of Object.keys(info.diff)) {
+    for (let diff of Object.keys(data.diffs)) {
         icon = ''
 
         if (diff == 'ds' || diff == 'drums' || diff == 'plastic_drums') icon = 'drums.webp'
@@ -67,7 +48,7 @@ async function extractFilesFromZip(data) {
         imageIcon.src = '/assets/icons/' + icon
 
         let diffQtt = document.createElement('a')
-        diffQtt.innerText = `${info.diff[diff] + 1}/7`
+        diffQtt.innerText = `${data.diffs[diff] + 1}/7`
 
         songDiffs.append(imageIcon, diffQtt)
     }
@@ -89,7 +70,7 @@ function loadSongs() {
         for (let song of r.songs) {
             //console.log(song)
     
-            if (song.id.toLowerCase().includes(keyword) || song.title.toLowerCase().includes(keyword)) {
+            if (song.title.toLowerCase().includes(keyword)) {
                 totalresults++
                 extractFilesFromZip(song)
             }
