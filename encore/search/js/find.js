@@ -39,7 +39,7 @@ async function extractFilesFromZip(data) {
 
         if (diff == 'ds' || diff == 'drums' || diff == 'plastic_drums') icon = 'drums.webp'
         if (diff == 'ba' || diff == 'bass' || diff == 'plastic_bass') icon = 'bass.webp'
-        if (diff == 'vl' || diff == 'vocals' || diff == 'plastic_vocals') icon = 'voices.webp'
+        if (diff == 'vl' || diff == 'vocals' || diff == 'plastic_vocals' || diff == 'pitched_vocals') icon = 'voices.webp'
         if (diff == 'gr' || diff == 'guitar' || diff == 'plastic_guitar') icon = 'guitar.webp'
 
         let imageIcon = document.createElement('img')
