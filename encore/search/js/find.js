@@ -2,16 +2,87 @@ function toTimeStr(secs) {
     return `${Math.floor(secs / 60)}:${(secs % 60) > 9 ? '' : '0'}${secs % 60}`
 }
 
-async function extractFilesFromZip(data) {
+async function extractFilesFromZip(data, rurl) {
+    //let zipUrl = data.zip;
+
     let loading = document.createElement('p')
     loading.innerText = 'Downloading ' + data.id + ', please wait...'
     document.getElementById('songs').append(loading)
 
     let imageUrl = 'https://raw.githubusercontent.com/FNLookup/encore/main/covers/'+data.id +'/'+data.art;
-
     let encoreTrack = document.createElement('a')
-    encoreTrack.classList.add('encore-track', 'flex-media', 'fortnite-button-border')
-    encoreTrack.href = '/encore/view/?' + data.id
+    encoreTrack.classList.add('encore-track', 'flex-media')
+    let leftSection = document.createElement('div')
+    leftSection.classList.add('left-section');
+
+    let trackDetails = document.createElement('div')
+    trackDetails.classList.add('track-details')
+    let songTitle = document.createElement('h1')
+    songTitle.innerText = data.title
+
+    let songArtist = document.createElement('h2')
+    songArtist.innerText = data.artist
+
+    let songAlbum = document.createElement('h3')
+    songAlbum.innerText = `${data.album != undefined ? data.album + ' - ' : ''}${toTimeStr(data.secs)}`
+
+    let songCharters = document.createElement('h3')
+    songCharters.innerText = `Charters: ${data.charters.length > 0 ? data.charters.join(', ') : 'Unknown'}`
+
+    //console.log(piss)
+
+    let songDiffs = document.createElement('a')
+    songDiffs.classList.add('song-diffs');
+    for (let diff of Object.keys(data.diffs)) 
+    {
+        let diffContainer = document.createElement('div')
+        diffContainer.classList.add('diff')
+        
+        icon = ''
+
+        if (diff == 'ds' || diff == 'drums') icon = 'drums.webp'
+        if (diff == 'ba' || diff == 'bass') icon = 'bass.webp'
+        if (diff == 'vl' || diff == 'vocals') icon = 'voices.webp'
+        if (diff == 'gr' || diff == 'guitar') icon = 'guitar.webp'
+        if (diff == 'plastic_drums') icon = 'pro-drums.png'
+        if (diff == 'plastic_bass') icon = 'pro-bass.png'
+        if (diff == 'plastic_guitar') icon = 'pro-guitar.png'
+        if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'THEvoicesARELOUDER.png'
+
+        let imageIcon = document.createElement('img')
+        imageIcon.classList.add('instrument-icon-encore')
+        imageIcon.src = '/assets/icons/' + icon
+
+        diffContainer.append(imageIcon)
+
+        let diffBarsContainer = document.createElement('div')
+        diffBarsContainer.classList.add('diffbars')
+
+        let difficultyOfChart = data.diffs[diff] +1;
+
+        for (let i = 0; i<difficultyOfChart; i++) {
+            let diffThing = document.createElement('div')
+            diffThing.classList.add('diffbar')
+            diffBarsContainer.append(diffThing);
+        }
+
+        for (let i = 0; i<7-difficultyOfChart; i++) {
+            let diffThing = document.createElement('div')
+            diffThing.classList.add('diffbar', 'empty')
+            diffBarsContainer.append(diffThing);
+        }
+
+        diffContainer.append(diffBarsContainer)
+
+        songDiffs.append(diffContainer)
+    }
+
+    trackDetails.append(songTitle, songArtist, songAlbum, songCharters)
+    leftSection.append(trackDetails)
+    encoreTrack.append(leftSection)
+
+    let rightSection = document.createElement('div')
+    rightSection.classList.add('right-section');
 
     let imgElement = document.createElement('img');
     imgElement.src = imageUrl;
@@ -21,40 +92,25 @@ async function extractFilesFromZip(data) {
     imgElement2.src = imageUrl;
     imgElement2.classList.add('art-ghost')
 
-    encoreTrack.append(imgElement, imgElement2)
+    let songDiffsView = document.createElement('a');
+    songDiffsView.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-override-fortnite-button', 'diffs-view', 'track-btn')
+    songDiffsView.innerText = 'View more'
+    songDiffsView.href = 'view/?' + data.id
 
-    let trackDetails = document.createElement('track-details')
-    let songTitle = document.createElement('h1')
-    songTitle.innerText = data.title
+    let songDiffsPopup = document.createElement('div')
+    songDiffsPopup.classList.add('song-diffs-popup')
+    songDiffsView.append(songDiffsPopup);
 
-    let songArtist = document.createElement('h3')
-    let piss = ` - ${data.album != undefined ? data.album + ' - ': ''}${toTimeStr(data['secs'])}`
-    songArtist.innerText = data.artist + piss
+    let downloadSong = document.createElement('a');
+    downloadSong.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-override-fortnite-button', 'track-btn')
+    downloadSong.innerText = 'Download'
+    downloadSong.href = rurl + data.zip
 
-    //console.log(piss)
+    songDiffsPopup.append(songDiffs);
 
-    let songDiffs = document.createElement('song-diffs')
-    for (let diff of Object.keys(data.diffs)) {
-        icon = ''
+    rightSection.append(imgElement, songDiffsView, downloadSong)
 
-        if (diff == 'ds' || diff == 'drums' || diff == 'plastic_drums') icon = 'drums.webp'
-        if (diff == 'ba' || diff == 'bass' || diff == 'plastic_bass') icon = 'bass.webp'
-        if (diff == 'vl' || diff == 'vocals' || diff == 'plastic_vocals' || diff == 'pitched_vocals') icon = 'voices.webp'
-        if (diff == 'gr' || diff == 'guitar' || diff == 'plastic_guitar') icon = 'guitar.webp'
-
-        let imageIcon = document.createElement('img')
-        imageIcon.classList.add('instrument-icon-encore')
-
-        imageIcon.src = '/assets/icons/' + icon
-
-        let diffQtt = document.createElement('a')
-        diffQtt.innerText = `${data.diffs[diff] + 1}/7`
-
-        songDiffs.append(imageIcon, diffQtt)
-    }
-
-    trackDetails.append(songTitle, songArtist, songDiffs)
-    encoreTrack.append(trackDetails)
+    encoreTrack.append(rightSection);
 
     document.getElementById('songs').appendChild(encoreTrack);
 
@@ -72,7 +128,7 @@ function loadSongs() {
     
             if (song.title.toLowerCase().includes(keyword)) {
                 totalresults++
-                extractFilesFromZip(song)
+                extractFilesFromZip(song, r.RAW_path)
             }
         }
 

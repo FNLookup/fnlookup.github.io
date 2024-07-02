@@ -3596,7 +3596,11 @@ jam-track {
     padding-left: 1rem;
 }
 
-.encore-track, .encore-track-view {
+.encore-override-fortnite-button {
+    font-size: 18px;
+}
+
+.encore-track {
     padding: 1.5rem;
     border-radius: 15px;
     margin: 1rem;
@@ -3604,29 +3608,118 @@ jam-track {
 
 .encore-track {
     background-color: var(--card-background-color);
+    max-width: 1400px;
+    width: 600px;
 }
 
-.encore-track .art, .encore-track-view .art {
-    display: block;
-    border-radius: 10px;
+.encore-track .left-section {
+    width: 70%;
 }
-
-.encore-track .art {
-    max-width: 150px;
-}
-
-.encore-track track-details, .encore-track-view track-details {
-    padding-left: 1.5rem;
-    font-family: headings-squash;
-}
-
-.encore-track song-diffs, .encore-track-view song-diffs {
+.encore-track .right-section {
+    width: 30%;
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.encore-track song-diffs a, .encore-track-view song-diffs a {
-    margin-right: 1rem;
+.encore-track .right-section .art {
+    display: block;
+    border-radius: 15px;
+}
+
+.right-section .diffs-view {
+    position: relative;
+}
+
+.diffs-view:hover .song-diffs-popup {
+    display: block;
+}
+
+.song-diffs-popup {
+    position: absolute;
+    background-color: var(--theme-color);
+    padding: 1rem;
+    left: -230px;
+    top: -45%;
+    width: 230px;
+    border-radius: 18px;
+    display: none;
+}
+
+.song-diffs-popup::after {
+    position: absolute;
+    right: -1rem;
+    top: 2.5rem;
+    content: '';
+    width: 30px;
+    height: 30px;
+    background-color: var(--theme-color);
+    rotate: -45deg;
+}
+
+.track-btn {
+    margin-top: .5rem;
+}
+
+.diff {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.diffbars {
+    display: flex;
+}
+
+.diffbar {
+    width: 8px;
+    height: 16px;
+    background-color: rgb(255, 255,255);
+    border-radius: 3px;
+    rotate: 7deg;
+    margin-right: 1px;
+}
+
+.diffbar.empty {
+    background-color: gray;
+}
+
+.encore-track .art {
+    width: 100%;
+}
+
+.encore-track .track-details {
+    font-family: headings-squash;
+}
+
+.encore-track .song-diffs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+track-details {
+    padding-left: 1rem;
+    font-family: headings-squash;
+    width: 50%;
+}
+
+.encore-track-view .art {
+    height: 100%;
+}
+
+track-details th, track-details td {
+    padding: 0 1rem;
+} 
+
+track-details .song-diffs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+track-details .song-diffs .diff {
+    width: auto;
 }
 
 .instrument-icon-encore {

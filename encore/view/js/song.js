@@ -47,19 +47,18 @@ function loadSong() {
 
         let trackDetails = document.createElement('track-details')
         let songTitle = document.createElement('h1')
-        songTitle.innerText = info.title
-        document.title = info.title + ' (Encore) - FNLookup'
-
+        songTitle.innerText = data.title
+    
         let songArtist = document.createElement('h2')
-        let piss = ` - ${info.album != undefined ? info.album + ' - ': ''}${toTimeStr(data['secs'])}`
-        songArtist.innerText = info.artist + piss
-
+        songArtist.innerText = data.artist
+    
+        let songAlbum = document.createElement('h3')
+        songAlbum.innerText = `${data.album != undefined ? data.album + ' - ' : ''}${toTimeStr(data.secs)}`
+    
         let songCharter = document.createElement('h3')
-        let charterstr = 'Charters: Unknown'
-        if (info.charters != undefined) {
-            charterstr = 'Charters: ' + info.charters.join(', ')
-        }
-        songCharter.innerText = charterstr
+        songCharter.innerText = `Charters: ${data.charters.length > 0 ? data.charters.join(', ') : 'Unknown'}`
+
+        document.title = info.title + ' (Encore) - FNLookup'
 
         let songGenre = document.createElement('h3')
         let genrestr = 'Genres: Unknown'
@@ -69,27 +68,53 @@ function loadSong() {
 
         songGenre.innerText = genrestr
 
-        let songDiffs = document.createElement('song-diffs')
-        for (let diff of Object.keys(info.diff)) {
+        let songDiffs = document.createElement('a')
+        songDiffs.classList.add('song-diffs');
+        for (let diff of Object.keys(data.diffs)) 
+        {
+            let diffContainer = document.createElement('div')
+            diffContainer.classList.add('diff')
+            
             icon = ''
-
-            if (diff == 'ds' || diff == 'drums' || diff == 'plastic_drums') icon = 'drums.webp'
-            if (diff == 'ba' || diff == 'bass' || diff == 'plastic_bass') icon = 'bass.webp'
-            if (diff == 'vl' || diff == 'vocals' || diff == 'plastic_vocals' || diff == 'pitched_vocals') icon = 'voices.webp'
-            if (diff == 'gr' || diff == 'guitar' || diff == 'plastic_guitar') icon = 'guitar.webp'
-
+    
+            if (diff == 'ds' || diff == 'drums') icon = 'drums.webp'
+            if (diff == 'ba' || diff == 'bass') icon = 'bass.webp'
+            if (diff == 'vl' || diff == 'vocals') icon = 'voices.webp'
+            if (diff == 'gr' || diff == 'guitar') icon = 'guitar.webp'
+            if (diff == 'plastic_drums') icon = 'pro-drums.png'
+            if (diff == 'plastic_bass') icon = 'pro-bass.png'
+            if (diff == 'plastic_guitar') icon = 'pro-guitar.png'
+            if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'THEvoicesARELOUDER.png'
+    
             let imageIcon = document.createElement('img')
             imageIcon.classList.add('instrument-icon-encore')
-
             imageIcon.src = '/assets/icons/' + icon
-
-            let diffQtt = document.createElement('a')
-            diffQtt.innerText = `${info.diff[diff] + 1}/7`
-
-            songDiffs.append(imageIcon, diffQtt)
+    
+            diffContainer.append(imageIcon)
+    
+            let diffBarsContainer = document.createElement('div')
+            diffBarsContainer.classList.add('diffbars')
+    
+            let difficultyOfChart = data.diffs[diff] +1;
+    
+            for (let i = 0; i<difficultyOfChart; i++) {
+                let diffThing = document.createElement('div')
+                diffThing.classList.add('diffbar')
+                diffBarsContainer.append(diffThing);
+            }
+    
+            for (let i = 0; i<7-difficultyOfChart; i++) {
+                let diffThing = document.createElement('div')
+                diffThing.classList.add('diffbar', 'empty')
+                diffBarsContainer.append(diffThing);
+            }
+    
+            diffContainer.append(diffBarsContainer)
+    
+            songDiffs.append(diffContainer)
         }
 
-        trackDetails.append(songTitle, songArtist, songCharter, songGenre, songDiffs)
+        trackDetails.append(songTitle, songArtist, songAlbum, songCharter, songGenre, document.createElement('hr'), songDiffs)
         encoreTrack.append(trackDetails)
 
         document.getElementById('song').appendChild(encoreTrack);
@@ -131,32 +156,46 @@ function loadSong() {
         }
 
         let trackAnalysisTable = document.createElement('track-midi-notes')
+        tablefullhtml = `            <table>
+                <tr>
+                    <th>Instrument</th>
+                    <th>Easy</th>
+                    <th>Medium</th>
+                    <th>Hard</th>
+                    <th>Expert</th>
+                </tr>`
 
         for (let track of Object.keys(tracks)) {
-            let trackAnalysisName = document.createElement('track-name')
-            trackAnalysisName.innerText = track
+            // let trackAnalysisName = document.createElement('track-name')
+            // trackAnalysisName.innerText = track
+
+            let tablehtml = `<tr>
+                    <td>${track}</td>`
 
             let trackNotes = document.createElement('div')
-            let diffAnalysis = document.createElement('a')
-            trackNotes.append(diffAnalysis)
 
-            trackAnalysisName.append(trackNotes)
+            // trackAnalysisName.append(trackNotes)
 
             totalNotesForTrack = 0
 
             for (let diff of Object.keys(difficulties)) {
                 let trackNotesTotal = trackAnalysis(tracks[track], difficulties[diff][0], difficulties[diff][1])
                 totalNotesForTrack += trackNotesTotal
-                if (trackNotesTotal < 1) continue
+                //if (trackNotesTotal < 1) continue
                 let item = Object.keys(difficulties).indexOf(diff)
 
-                let shouldAddDash = item < 3
+                tablehtml += `<td>${trackNotesTotal > 0 ? trackNotesTotal : 'N/A'}</td>`
 
-                diffAnalysis.innerText += `${diff}: ${trackNotesTotal} ${shouldAddDash ? '- ' : ''}` 
+                //diffAnalysis.innerText += `${diff}: ${trackNotesTotal} ${shouldAddDash ? '- ' : ''}` 
             }
 
-            if (totalNotesForTrack > 0) trackAnalysisTable.append(trackAnalysisName)
+            tablefullhtml += tablehtml + '</tr>';
+
+            // trackAnalysisTable.append(trackAnalysisName)
         }
+
+        tablefullhtml += '</table>';
+        trackAnalysisTable.innerHTML = tablefullhtml
 
         let downloadButton = document.createElement('a')
         downloadButton.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-download')
@@ -169,7 +208,7 @@ function loadSong() {
 
         downloadButton.href = 'https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl
 
-        trackDetails.append(trackAnalysisTable)
+        trackDetails.append(document.createElement('hr'), trackAnalysisTable)
 
         trackDetails.append(downloadButton)
 
