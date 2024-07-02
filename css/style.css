@@ -4259,15 +4259,30 @@ track-details .song-diffs .diff {
     .encore-track {
         position: relative;
         overflow: hidden;
+        width: 100%;
     }
 
-    .encore-track .art {
-        visibility: hidden;
-    }
-
-    .encore-track track-details {
+    .encore-track .left-section,
+    .encore-track .right-section {
+        width: 100%;
         position: relative;
         z-index: 1;
+    }
+
+    .encore-track .right-section {
+        flex-direction: row;
+    }
+
+    .encore-track .right-section .art {
+        display: none;
+    }
+
+    track-details th, track-details td {
+        padding: 0 0.3rem;
+    } 
+
+    .diffs-view:hover .song-diffs-popup {
+        display: none;
     }
 
     .encore-track .art-ghost {
@@ -4286,7 +4301,7 @@ track-details .song-diffs .diff {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.795) 100%);
+        background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.795) 100%);
         pointer-events: none;
         z-index: 0;
     }

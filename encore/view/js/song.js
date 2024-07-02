@@ -159,10 +159,10 @@ function loadSong() {
         tablefullhtml = `            <table>
                 <tr>
                     <th>Instrument</th>
-                    <th>Easy</th>
-                    <th>Medium</th>
-                    <th>Hard</th>
-                    <th>Expert</th>
+                    <th>E</th>
+                    <th>M</th>
+                    <th>H</th>
+                    <th>X</th>
                 </tr>`
 
         for (let track of Object.keys(tracks)) {
@@ -199,7 +199,7 @@ function loadSong() {
 
         let downloadButton = document.createElement('a')
         downloadButton.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-download')
-        downloadButton.innerText = 'Download'
+        downloadButton.innerText = 'Download Chart'
 
         let mbsize = size / 1024 / 1024
         let mbs = mbsize.toFixed(2)

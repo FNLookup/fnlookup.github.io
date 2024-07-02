@@ -110,7 +110,7 @@ async function extractFilesFromZip(data, rurl) {
 
     rightSection.append(imgElement, songDiffsView, downloadSong)
 
-    encoreTrack.append(rightSection);
+    encoreTrack.append(rightSection, imgElement2);
 
     document.getElementById('songs').appendChild(encoreTrack);
 
