@@ -79,7 +79,6 @@ async function extractFilesFromZip(data, rurl) {
 
     trackDetails.append(songTitle, songArtist, songAlbum, songCharters)
     leftSection.append(trackDetails)
-    encoreTrack.append(leftSection)
 
     let rightSection = document.createElement('div')
     rightSection.classList.add('right-section');
@@ -92,25 +91,22 @@ async function extractFilesFromZip(data, rurl) {
     imgElement2.src = imageUrl;
     imgElement2.classList.add('art-ghost')
 
+    encoreTrack.append(rightSection, imgElement2);
+    encoreTrack.append(leftSection)
+
     let songDiffsView = document.createElement('a');
     songDiffsView.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-override-fortnite-button', 'diffs-view', 'track-btn')
     songDiffsView.innerText = 'View more'
     songDiffsView.href = 'view/?' + data.id
-
-    let songDiffsPopup = document.createElement('div')
-    songDiffsPopup.classList.add('song-diffs-popup')
-    songDiffsView.append(songDiffsPopup);
 
     let downloadSong = document.createElement('a');
     downloadSong.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-override-fortnite-button', 'track-btn')
     downloadSong.innerText = 'Download'
     downloadSong.href = rurl + data.zip
 
-    songDiffsPopup.append(songDiffs);
+    leftSection.append(document.createElement('hr'), songDiffs);
 
     rightSection.append(imgElement, songDiffsView, downloadSong)
-
-    encoreTrack.append(rightSection, imgElement2);
 
     document.getElementById('songs').appendChild(encoreTrack);
 

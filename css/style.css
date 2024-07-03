@@ -3614,6 +3614,7 @@ jam-track {
 
 .encore-track .left-section {
     width: 70%;
+    padding-left: 1.5rem;
 }
 .encore-track .right-section {
     width: 30%;
@@ -3628,7 +3629,8 @@ jam-track {
 }
 
 .right-section .diffs-view {
-    position: relative;
+    background-color: #99D9EA;
+    color: black;
 }
 
 .diffs-view:hover .song-diffs-popup {
@@ -3664,10 +3666,11 @@ jam-track {
 .diff {
     display: flex;
     align-items: center;
-    width: 50%;
+    flex: 50%;
 }
 
 .diffbars {
+    padding-left: 1rem;
     display: flex;
 }
 
