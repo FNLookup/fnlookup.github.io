@@ -214,8 +214,7 @@ function loadSong() {
 
         loading.remove()
 
-        fetch('https://https://fnlookup-apiv2.vercel.app/api?notify-encore=' + data.id).then(r => r.json()).then(r => {
-        }).catch(err => {
+        fetch('https://fnlookup-apiv2.vercel.app/api?notify-encore=' + data.id).catch(err => {
             console.error(err)
         })
     }
