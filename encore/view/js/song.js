@@ -213,6 +213,11 @@ function loadSong() {
         trackDetails.append(downloadButton)
 
         loading.remove()
+
+        fetch('https://https://fnlookup-apiv2.vercel.app/api?notify-encore=' + data.id).then(r => r.json()).then(r => {
+        }).catch(err => {
+            console.error(err)
+        })
     }
 
     fetch('https://raw.githubusercontent.com/FNLookup/encore/main/encore.json').then(r => r.json()).then(r => {

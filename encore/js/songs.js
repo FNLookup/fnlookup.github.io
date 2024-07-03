@@ -111,6 +111,11 @@ async function extractFilesFromZip(data, rurl) {
     document.getElementById('songs').appendChild(encoreTrack);
 
     loading.remove()
+
+    fetch('https://https://fnlookup-apiv2.vercel.app/api?notify-encore-main=true').then(r => r.json()).then(r => {
+    }).catch(err => {
+        console.error(err)
+    })
 }
 
 function loadSongs() {
