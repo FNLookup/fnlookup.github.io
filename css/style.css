@@ -4263,6 +4263,13 @@ track-details .song-diffs .diff {
         position: relative;
         overflow: hidden;
         width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    /* cursed fix but it works */
+
+    .encore-override-fortnite-button {
+        font-size: 14px;
     }
 
     .encore-track .left-section,
@@ -4289,11 +4296,11 @@ track-details .song-diffs .diff {
     }
 
     .encore-track .art-ghost {
-        display: block;
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
+        filter: blur(2px);
         z-index: 0;
     }
     .encore-track::after {
@@ -4304,7 +4311,7 @@ track-details .song-diffs .diff {
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0, 0, 0, 0.795) 100%);
+        background: linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0, 0, 0, 0.795) 100%);
         pointer-events: none;
         z-index: 0;
     }
