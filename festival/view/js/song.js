@@ -117,10 +117,10 @@ function loadViewer() {
             for (let page of _pages) {
                 let _users = {}
                 try {
-                    let response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season3/' + _placeholder_songID + '/' + instrumentStr + '_' + page + '_Users.json')
+                    let response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + _placeholder_songID + '/' + instrumentStr + '_' + page + '_Users.json')
                     _users = await response.json()
         
-                    response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season3/' + _placeholder_songID + '/' + instrumentStr + '_' + page + '.json')
+                    response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + _placeholder_songID + '/' + instrumentStr + '_' + page + '.json')
                     let data = await response.json()
         
                     for (let entry of data.entries) {
