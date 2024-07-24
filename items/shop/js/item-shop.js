@@ -160,7 +160,7 @@ function createItems() {
                             item['width'] = count === 2 ? 0.75 : count > 3 ? 0.6 : 0.6;
                             item['height'] = 1.0;
                         } else if (tileSize === 'Size_5_x_2') { // Fortnite ISTG.
-                            item['width'] = 1.0;
+                            item['width'] = 0.5;
                             item['height'] = 1.0;
                         }
                     }
