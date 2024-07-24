@@ -34,21 +34,15 @@ var x = setInterval(function() {
 function createItems() {
     let requestData = getRequestData('shop');
     fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
-        // Dictionary to store items grouped by categories, groups, and sections
-        // let categories_dict = {};
-        // let section_counts = {};
 
         categories_final = { "categories": [] };
 
         let data = response
-
-        // Iterate over the "shop" array
         for (let item of data['shop']) {
             let category = item["section"]['category'];
             let group_name = item['section']['name'];
             let section_name = item['section']['name'];
             let section_id = item['section']['id'];
-            let section_items = 0;
             let item_details = {
                 'name': item['displayName'],
                 'id': item['mainId'],
@@ -56,7 +50,6 @@ function createItems() {
                 "tileSize": item["tileSize"],
                 "width": 0,
                 "height": 0
-                    // Add more item details here if needed
             };
 
             if (category === null) {
@@ -211,6 +204,8 @@ function createItems() {
                         sectionHeight = 615;
                     }
 
+                    if (section.id == 'JamTracks.98') continue;
+
                     shopContainer.innerHTML += `<div class="shop-section-section-container" style="display: flex; flex-direction: column; align-content: flex-start; flex-wrap: wrap; height: ${sectionHeight}px;" id="Section_${section.id}"></div>`
                 }
             }
@@ -311,6 +306,8 @@ function makeShopCard(item) {
     // } else {
     //     section_c = document.getElementsByName(section_name)[0];
     // }
+
+    if (item.section.id == 'JamTracks.98') return;
 
     let section_c = document.getElementById('Section_' + item.section.id)
 
