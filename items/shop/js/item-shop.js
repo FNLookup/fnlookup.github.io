@@ -1,4 +1,5 @@
 shopBasic = false;
+jamTracks = undefined;
 let registeredSections = [];
 // Set the date we're counting down to
 var today = new Date();
@@ -30,6 +31,14 @@ var x = setInterval(function() {
     }
 
 }, 500);
+
+function initShop() {
+    let jamTrackURL = 'https://raw.githubusercontent.com/FNLookup/data/main/festival/jam_tracks.json'
+    fetch(jamTrackURL).then(jts => jts.json()).then(jts => {
+        jamTracks = jts;
+        createItems();
+    })
+}
 
 function createItems() {
     let requestData = getRequestData('shop');
@@ -152,7 +161,7 @@ function createItems() {
                         } else if (tileSize === "Size_1_x_2" || tileSize === "Normal") {
                             item['width'] = ((count == 4 || count == 2) ? 0.25 : count > 5 ? 0.2 : 0.2);
                             item['height'] = 1.0;
-                            console.log(count, tileSize, item['name'])
+                            //console.log(count, tileSize, item['name'])
                         } else if (tileSize === "Size_2_x_2") {
                             item['width'] = count === 2 ? 0.5 : count > 4 ? 0.4 : 0.5;
                             item['height'] = 1.0;
@@ -168,7 +177,7 @@ function createItems() {
             }
         }
 
-        console.log(categories_final)
+        //console.log(categories_final)
 
         let shopContainer = document.getElementById('main')
 
@@ -328,7 +337,7 @@ function makeShopCard(item) {
         }
     }
 
-    console.log(item_props)
+    //console.log(item_props)
 
     let parent = document.createElement('a');
     parent.classList.add('item-card-parent');
@@ -392,7 +401,15 @@ function makeShopCard(item) {
     type.classList.add("item-type");
 
     let itype = item.displayType
-    if (item.mainId.startsWith('SID')) itype = 'Jam Track'
+    if (item.mainId.startsWith('SID')) {
+        itype = 'Jam Track'
+
+        viewTrack = jamTracks.tracks.find(track => track.item_id.toLowerCase().split(":")[1] == item.mainId.toLowerCase())
+        if (viewTrack != undefined) {
+            title.innerHTML = viewTrack.title;
+            itype = viewTrack.artist;
+        }
+    }
 
     type.innerHTML = itype;
     hold.appendChild(type);
