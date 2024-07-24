@@ -1,5 +1,8 @@
 let _jam_tracks_URL = 'https://raw.githubusercontent.com/FNLookup/data/main/festival/jam_tracks.json'
 canFetch = true
+allEntries = []
+entryOffset = 0;
+perPage = 25;
 
 function loadViewer() {
     let params = new URLSearchParams(window.location.search);
@@ -52,9 +55,9 @@ function loadViewer() {
         let songBpm = gne('p')
         songBpm.textContent = viewTrack.bpm + ' BPM'
 
-        let songESRB = gne('p')
-        songESRB.textContent = 'ESRB: ' + viewTrack.rating
-        songESRB.title = 'ISRC: ' + (viewTrack.isrc.length > 0 ? viewTrack.isrc : "None")
+        let songESRB = gne('img')
+        songESRB.src = 'https://www.globalratings.com/images/ESRB_' + viewTrack.rating + '_68.png'
+        //songESRB.title = 'ISRC: ' + (viewTrack.isrc.length > 0 ? viewTrack.isrc : "None")
 
         let genres = gne('p')
         if (viewTrack.genres.length > 0) {
@@ -131,6 +134,9 @@ function loadViewer() {
         ]
 
         async function fetchLeaderboardData(instrumentStr) {
+            allEntries = [];
+            entryOffset = 0;
+            leaderBoardEntries.innerHTML = '<h2 id="loading">Loading...</h2>'
             for (let page of _pages) {
                 let _users = {}
                 try {
@@ -139,7 +145,7 @@ function loadViewer() {
         
                     response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + viewTrack.id + '/' + instrumentStr + '_' + page + '.json')
                     let data = await response.json()
-        
+
                     for (let entry of data.entries) {
                         //console.log(entry)
         
@@ -266,12 +272,16 @@ function loadViewer() {
 
                         entryContainer.append(entryFirstInfo, entryRemainingInfo)
         
-                        leaderBoardEntries.append(entryContainer)
+                        allEntries.push(entryContainer)
                     }
                 } catch(e) {
                     console.error(e)
                 }
             }
+
+            if (document.getElementById("loading") != undefined) document.getElementById("loading").remove();
+
+            generateItems(allEntries.slice(0, perPage))
         }
         
         fetch('https://api.github.com/repos/FNLookup/festival/commits?path=leaderboards/season4/' + viewTrack.id + '/').then(r=>r.json()).then(r=> {
@@ -300,6 +310,34 @@ function loadViewer() {
             buttons.append(newbutton)
         }
 
-        console.log(viewTrack)
+        //console.log(viewTrack)
     })
+
+    window.onscroll = handleScroll
+}
+
+function getScrollPercent() {
+    const winHeight = window.innerHeight;
+    const docHeight = document.body.offsetHeight;
+    const scrollTop = window.scrollY;
+    const trackLength = docHeight - winHeight;
+    const percentScrolled = Math.floor((scrollTop / trackLength) * 100);
+    return percentScrolled;
+}
+
+function generateItems(itemsarg) {
+    for (let item of itemsarg)
+        document.getElementById('leaderboard-entries').append(item)
+    entryOffset += perPage
+}
+
+function handleScroll() {
+    console.log('scroll')
+    const currentScrollPercent = getScrollPercent();
+    // console.log(currentScrollPercent)
+    if (currentScrollPercent > 90) {
+        //console.log('im going crazh', offset)
+        const nextItems = allEntries.slice(entryOffset, entryOffset + perPage); // Extract the next 50 items
+        generateItems(nextItems);
+    }
 }
