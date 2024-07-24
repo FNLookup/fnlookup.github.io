@@ -36,7 +36,9 @@ function loadViewer() {
         songInfo.classList.add('festival-song-data')
 
         let songTop = gne('p')
-        songTop.textContent = viewTrack.year + ' • ' + Math.floor(viewTrack.duration / 60) + ':' + (viewTrack.duration % 60)
+        let secsWith0 = (viewTrack.duration % 60);
+        if (secsWith0 < 10) secsWith0 = '0' + secsWith0
+        songTop.textContent = viewTrack.year + ' • ' + Math.floor(viewTrack.duration / 60) + ':' + secsWith0
 
         let songName = gne('h2')
         songName.textContent = viewTrack.title
