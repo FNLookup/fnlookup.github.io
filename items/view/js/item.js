@@ -21,6 +21,11 @@ function init() {
 
             let item = data.item;
 
+            if (item.type.id == 'sparks_song') {
+                console.log('this is a jamtrack. redirecting you');
+                window.location.href = '/festival/view/?' + item.id;
+            }
+
             let mainObject = gne('div');
             mainObject.classList.add('item');
             mainObject.setAttribute('item', item.name);

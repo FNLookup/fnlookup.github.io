@@ -1,4 +1,5 @@
 let _jam_tracks_URL = 'https://raw.githubusercontent.com/FNLookup/data/main/festival/jam_tracks.json'
+canFetch = true
 
 function loadViewer() {
     let params = new URLSearchParams(window.location.search);
@@ -10,12 +11,26 @@ function loadViewer() {
 
     fetch(_jam_tracks_URL).then(r=>r.json()).then(r=> {
         viewTrack = r.tracks.find(track => track.id == _placeholder_songID)
+        if (viewTrack == undefined)
+            viewTrack = r.tracks.find(track => track.item_id.toLowerCase().split(":")[1] == _placeholder_songID.toLowerCase())
 
         let songInfoSection = document.getElementById('section-song-info')
 
-        let albumImage = gne('img')
-        albumImage.src = viewTrack.album_image
+        let albumImage = gne('a')
+        //albumImage.src = viewTrack.album_image
         albumImage.classList.add('festival-album-art')
+        albumImage.style = 'overflow: hidden;'
+        albumImage.innerHTML = '<img style="width: 100%; display:block;" src="' + viewTrack.album_image + '">';
+
+        if (viewTrack.isrc.length > 0) {
+            fetch('https://fnlookup-apiv2.vercel.app/api?isrc=' + viewTrack.isrc).then(L=>L.json()).then(L=> {
+                //console.log('SPOTIFY: ' + L.link);
+                albumImage.href = L.link;
+                albumImage.classList.add('fortnite-button-border');
+            }).catch(err => {
+                console.error(err)
+            })
+        }
 
         let songInfo = gne('div')
         songInfo.classList.add('festival-song-data')
@@ -117,10 +132,10 @@ function loadViewer() {
             for (let page of _pages) {
                 let _users = {}
                 try {
-                    let response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + _placeholder_songID + '/' + instrumentStr + '_' + page + '_Users.json')
+                    let response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + viewTrack.id + '/' + instrumentStr + '_' + page + '_Users.json')
                     _users = await response.json()
         
-                    response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + _placeholder_songID + '/' + instrumentStr + '_' + page + '.json')
+                    response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + viewTrack.id + '/' + instrumentStr + '_' + page + '.json')
                     let data = await response.json()
         
                     for (let entry of data.entries) {
@@ -257,7 +272,13 @@ function loadViewer() {
             }
         }
         
-        fetchLeaderboardData(_instruments[0])
+        fetch('https://api.github.com/repos/FNLookup/festival/commits?path=leaderboards/season4/' + viewTrack.id + '/').then(r=>r.json()).then(r=> {
+            if (r.length > 0) fetchLeaderboardData(_instruments[0])
+            else {
+                leaderBoardEntries.innerHTML = '<h2>Leaderboard not available</h2>'
+                canFetch=false
+            } 
+        })
 
         for (let instrument of _instruments) {
             let buttons = document.getElementById('instrument-buttons')
@@ -268,6 +289,7 @@ function loadViewer() {
             newbutton.innerHTML += ['Guitar', 'Bass', 'Vocals', 'Drums', 'Pro Guitar', 'Pro Bass'][_instruments.indexOf(instrument)]
 
             newbutton.onclick = function () {
+                if (!canFetch) return;
                 clearChildren(leaderBoardEntries)
 
                 fetchLeaderboardData(instrument)
