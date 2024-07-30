@@ -47,16 +47,16 @@ function loadSong() {
 
         let trackDetails = document.createElement('track-details')
         let songTitle = document.createElement('h1')
-        songTitle.innerText = data.title
+        songTitle.innerText = data.song.title
     
         let songArtist = document.createElement('h2')
-        songArtist.innerText = data.artist
+        songArtist.innerText = data.song.artist
     
         let songAlbum = document.createElement('h3')
-        songAlbum.innerText = `${data.album != undefined ? data.album + ' - ' : ''}${toTimeStr(data.secs)}`
+        songAlbum.innerText = `${data.song.album != undefined ? data.song.album + ' - ' : ''}${toTimeStr(data.song.secs)}`
     
         let songCharter = document.createElement('h3')
-        songCharter.innerText = `Charters: ${data.charters.length > 0 ? data.charters.join(', ') : 'Unknown'}`
+        songCharter.innerText = `Charters: ${data.song.charters.length > 0 ? data.song.charters.join(', ') : 'Unknown'}`
 
         document.title = info.title + ' (Encore) - FNLookup'
 
@@ -70,7 +70,7 @@ function loadSong() {
 
         let songDiffs = document.createElement('a')
         songDiffs.classList.add('song-diffs');
-        for (let diff of Object.keys(data.diffs)) 
+        for (let diff of Object.keys(data.song.diffs)) 
         {
             let diffContainer = document.createElement('div')
             diffContainer.classList.add('diff')
@@ -95,7 +95,7 @@ function loadSong() {
             let diffBarsContainer = document.createElement('div')
             diffBarsContainer.classList.add('diffbars')
     
-            let difficultyOfChart = data.diffs[diff] +1;
+            let difficultyOfChart = data.song.diffs[diff] +1;
     
             for (let i = 0; i<difficultyOfChart; i++) {
                 let diffThing = document.createElement('div')
@@ -217,7 +217,6 @@ function loadSong() {
 
     let data = getApiRequestData('https://fnlookup-apiv2.vercel.app/api?encore-songs=true&songid=' + firstKey);
     fetch(data.url, data.data).then(r => r.json()).then(r => {
-        console.log(r);
         extractFilesFromZip(r);
     }).catch(err => {
         console.error(err)
