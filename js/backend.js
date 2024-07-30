@@ -139,8 +139,17 @@ function getApiURL(endpoint) {
 function getRequestData(urlEndpoint) {
     return {
         url: geturllang(getApiURL(urlEndpoint), 1),
-        data: {}
+        data: {
+        }
     };
+}
+
+function getApiRequestData(url) {
+    return {
+        url: url,
+        data: {
+        }
+    }
 }
 
 function itemFetch(small = true) {

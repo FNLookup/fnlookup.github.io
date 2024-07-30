@@ -8,17 +8,17 @@ function loadSong() {
 
     async function extractFilesFromZip(data) {
         let loading = document.createElement('p')
-        loading.innerText = 'Downloading ' + data.zip + ', please wait...'
+        loading.innerText = 'Downloading ' + data.song.zip + ', please wait...'
         document.getElementById('song').append(loading)
 
-        let zipUrl = data.zip;
-        let response = await fetch('https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl);
+        let zipUrl = data.song.zip;
+        let response = await fetch(data.raw + zipUrl);
         let size = response.headers.get('Content-Length');
         let zipData = await response.arrayBuffer();
 
         let jszip = new JSZip();
         let zip = await jszip.loadAsync(zipData);
-        let root = data.isRootFirstDir ? '' : data.root + '/'
+        let root = data.song.isRootFirstDir ? '' : data.song.root + '/'
 
         //console.log(zip)
 
@@ -206,28 +206,19 @@ function loadSong() {
 
         downloadButton.title = 'Size: ' + mbs + ' MB'
 
-        downloadButton.href = 'https://raw.githubusercontent.com/Encore-Developers/songs/main/' + zipUrl
+        downloadButton.href = data.raw + zipUrl
 
         trackDetails.append(document.createElement('hr'), trackAnalysisTable)
 
         trackDetails.append(downloadButton)
 
         loading.remove()
-
-        fetch('https://fnlookup-apiv2.vercel.app/api?notify-encore=' + data.id).catch(err => {
-            console.error(err)
-        })
     }
 
-    fetch('https://raw.githubusercontent.com/FNLookup/encore/main/encore.json').then(r => r.json()).then(r => {
-        for (let song of r.songs) {
-            //console.log(song)
-
-            if (firstKey == song.id) {
-                //console.log('found song')
-                extractFilesFromZip(song)
-            }
-        }
+    let data = getApiRequestData('https://fnlookup-apiv2.vercel.app/api?encore-songs=true&songid=' + firstKey);
+    fetch(data.url, data.data).then(r => r.json()).then(r => {
+        console.log(r);
+        extractFilesFromZip(r);
     }).catch(err => {
         console.error(err)
     })

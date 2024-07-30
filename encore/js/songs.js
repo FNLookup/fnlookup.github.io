@@ -114,17 +114,14 @@ async function extractFilesFromZip(data, rurl) {
 }
 
 function loadSongs() {
-    songs = fetch('https://raw.githubusercontent.com/FNLookup/encore/main/encore.json').then(r => r.json()).then(r => {
+    let data = getApiRequestData('https://fnlookup-apiv2.vercel.app/api?encore-songs=true');
+    songs = fetch(data.url, data.data).then(r => r.json()).then(r => {
         for (let song of r.songs) {
             //console.log(song)
     
             extractFilesFromZip(song, r.RAW_path)
         }
     }).catch(err => {
-        console.error(err)
-    })
-
-    fetch('https://fnlookup-apiv2.vercel.app/api?notify-encore-main=true').catch(err => {
         console.error(err)
     })
 }

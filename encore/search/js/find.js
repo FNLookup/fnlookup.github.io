@@ -119,7 +119,8 @@ function loadSongs() {
     let keyword = new URLSearchParams(window.location.search).get('keyword')
     document.getElementById('resultsfor').innerText = 'Results for ' + keyword
 
-    songs = fetch('https://raw.githubusercontent.com/FNLookup/encore/main/encore.json').then(r => r.json()).then(r => {
+    let data = getApiRequestData('https://fnlookup-apiv2.vercel.app/api?encore-songs=true');
+    songs = fetch(data.url, data.data).then(r => r.json()).then(r => {
         let totalresults = 0
         for (let song of r.songs) {
             //console.log(song)
