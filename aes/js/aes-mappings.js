@@ -1,5 +1,6 @@
 function downloadHotfix() {
-    fetch('https://raw.githubusercontent.com/FNLookup/data/main/fncentral/hotfixes_en.json').then(r => r.json()).then(r => {
+    let data = getApiRequestData('https://fnlookup-apiv2.vercel.app/api?fncentral=true&type=hotfixes');
+    fetch(data.url, data.data).then(r => r.json()).then(r => {
         let table = document.getElementById('hotfix-table');
 
         hotfixTL = Object.getOwnPropertyNames(r)
@@ -21,7 +22,8 @@ function downloadHotfix() {
 }
 
 function downloadAes() {
-    fetch('https://raw.githubusercontent.com/FNLookup/data/main/fncentral/aes.json').then(r => r.json()).then(r => {
+    let data = getApiRequestData('https://fnlookup-apiv2.vercel.app/api?fncentral=true&type=aes');
+    fetch(data.url, data.data).then(r => r.json()).then(r => {
         console.log(r);
 
         document.getElementById('fn-version').innerHTML = 'Fortnite v' + r.version + ''
@@ -60,7 +62,8 @@ function downloadAes() {
 }
 
 function downloadMappings() {
-    fetch('https://raw.githubusercontent.com/FNLookup/data/main/fncentral/mappings.json').then(r => r.json()).then(r => {
+    let data = getApiRequestData('https://fnlookup-apiv2.vercel.app/api?fncentral=true&type=mappings');
+    fetch(data.url, data.data).then(r => r.json()).then(r => {
         console.log(r);
 
         let table = document.getElementById('mappings-table');
