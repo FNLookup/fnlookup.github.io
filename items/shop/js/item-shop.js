@@ -149,34 +149,48 @@ function createItems() {
                     let count = items.length;
                     for (let item of items) {
                         let tileSize = item['tileSize'];
-                        if (tileSize === "Size_2_x_2") {
+                        if (tileSize.startsWith("Size_2")) {
                             count += 1;
-                        } else if (tileSize === "Size_3_x_2" || tileSize === "TripleWide") {
+                        } else if (tileSize.startsWith("Size_3") || tileSize === "TripleWide") {
                             count += 2;
+                        } else if (tileSize.startsWith("Size_4")) {
+                            count += 3;
+                        } else if (tileSize.startsWith("Size_5")) {
+                            count += 4;
                         }
                     }
                     section['count'] = count
                     for (let item of items) {
                         let tileSize = item['tileSize'];
+                        // the place where tilesizes are created
                         if (tileSize === "Size_1_x_1") {
                             item['width'] = count in [4, 2] ? 0.25 : 0.2;
                             item['height'] = 0.5;
                         } else if (tileSize === "Size_1_x_2" || tileSize === "Normal") {
                             item['width'] = ((count == 4 || count == 2) ? 0.25 : count > 5 ? 0.2 : 0.2);
                             item['height'] = 1.0;
-                            //console.log(count, tileSize, item['name'])
+                        } else if (tileSize === "Size_2_x_1") { //Two by one.
+                            item['width'] = count === 2 ? 0.5 : count > 4 ? 0.4 : 0.5;
+                            item['height'] = 0.5;
                         } else if (tileSize === "Size_2_x_2") {
                             item['width'] = count === 2 ? 0.5 : count > 4 ? 0.4 : 0.5;
                             item['height'] = 1.0;
+                        } else if (tileSize === "Size_3_x_1") { // THREE BY ONE?!!?!?
+                            item['width'] = count === 2 ? 0.75 : count > 3 ? 0.6 : 0.6;
+                            item['height'] = 0.5;
                         } else if (tileSize === "Size_3_x_2" || tileSize === "TripleWide") {
                             item['width'] = count === 2 ? 0.75 : count > 3 ? 0.6 : 0.6;
                             item['height'] = 1.0;
+                        } else if (tileSize === "Size_4_x_1") { // FO URRR?!??
+                            item['width'] = count === 4 ? 1.0 : count > 4 ? 0.8 : 0.8;
+                            item['height'] = 0.5;
                         } else if (tileSize === 'Size_5_x_2') { // Fortnite ISTG.
                             item['width'] = 0.5;
                             item['height'] = 1.0;
                         } else { // THE SHOP BROKE???
                             item['width'] = 0.2;
                             item['height'] = 1.0;
+                            console.log('[TZ] Unknown tileSize ' + tileSize + ' for item ' + item.name);
                         }
                     }
                 }
