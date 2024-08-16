@@ -18,12 +18,12 @@ var x = setInterval(function() {
         minutes + "m " + seconds + "s";
     if (distance < 0) {
         clearInterval(x);
-        var secondsUntilRefresh = 5;
+        var secondsUntilRefresh = 10;
         document.title = "Item shop refreshed!";
-        document.getElementById("item-timer").innerHTML = 'ITEM SHOP - ' + "Refresh: 5s";
+        document.getElementById("item-timer").innerHTML = 'ITEM SHOP - ' + "Refresh: 10s";
         var y = setInterval(function() {
             secondsUntilRefresh -= 1;
-            if (secondsUntilRefresh == 0) {
+            if (secondsUntilRefresh <= 0) {
                 document.location.reload();
             }
             document.getElementById("item-timer").innerHTML = 'ITEM SHOP - ' + "Refresh: " + secondsUntilRefresh + "s";
@@ -37,6 +37,9 @@ function initShop() {
     fetch(jamTrackURL).then(jts => jts.json()).then(jts => {
         jamTracks = jts;
         createItems();
+    }).catch(e => {
+        console.log('Could not fetch Jam Tracks: '+e);
+        jamTracks = {tracks:[]}
     })
 }
 
@@ -408,6 +411,9 @@ function makeShopCard(item) {
         if (viewTrack != undefined) {
             title.innerHTML = viewTrack.title;
             itype = viewTrack.artist;
+        } else {
+            title.innerHTML = 'Unknown Jam Track';
+            itype = 'Jam Track';
         }
     }
 
