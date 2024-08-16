@@ -174,6 +174,9 @@ function createItems() {
                         } else if (tileSize === 'Size_5_x_2') { // Fortnite ISTG.
                             item['width'] = 0.5;
                             item['height'] = 1.0;
+                        } else { // THE SHOP BROKE???
+                            item['width'] = 0.2;
+                            item['height'] = 1.0;
                         }
                     }
                 }
