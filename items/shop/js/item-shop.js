@@ -40,11 +40,12 @@ function initShop() {
     }).catch(e => {
         console.log('Could not fetch Jam Tracks: '+e);
         jamTracks = {tracks:[]}
+        createItems();
     })
 }
 
 function createItems() {
-    let requestData = getRequestData('shop');
+    let requestData = getRequestData('shop?renderData=true');
     fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
 
         categories_final = { "categories": [] };
@@ -308,6 +309,14 @@ function createItems() {
     })
 }
 
+function hexToRgba(hexstr, alpha = 1) {
+    const hex = hexstr.replace('#','');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 function makeShopCard(item) {
     var shop_items = document.getElementById("shop-container");
 
@@ -375,6 +384,10 @@ function makeShopCard(item) {
 
     var hold = document.createElement("div");
     hold.classList.add("item-info");
+    if (item.colors.textBackgroundColor !== undefined) {
+        hold.style.setProperty('--text-background-color', hexToRgba(item.colors.textBackgroundColor, 0))
+        hold.style.setProperty('--text-background-color-a', hexToRgba(item.colors.textBackgroundColor, 0.65))
+    }
 
     var title = document.createElement('a');
     title.innerHTML = item.displayName;
@@ -463,11 +476,28 @@ function makeShopCard(item) {
             img_src = displayAsset.url + prefix;
         if (displayAsset.background !== null)
             img_src = displayAsset.background + prefix;
+        if (item.colors !== undefined && item.colors.color1 !== undefined) {
+            img_src = displayAsset.url + prefix;
+        }
 
         img_obj.src = img_src;
         img_obj.setAttribute("title", item.displayName + ' for ' + item.price.finalPrice + ' V-Bucks');
         img_obj.setAttribute('otype', item.mainType);
         img_obj.classList.add("shop-picture");
+
+        if (displayAsset.renderData != null) {
+            if (displayAsset.renderData.ZoomImage_Percent != undefined) {
+                let zoom = Math.abs(displayAsset.renderData.ZoomImage_Percent) / 100;
+                img_obj.classList.add('override-styles');
+                img_obj.style.setProperty('--floor-scale', 1 + zoom);
+            }
+
+            if (displayAsset.renderData.OffsetImage_Y != undefined) {
+                img_obj.classList.add('override-styles');
+                console.log(displayAsset.renderData.OffsetImage_Y + '' + item.displayName);
+                img_obj.style.setProperty('--y-off', displayAsset.renderData.OffsetImage_Y + 'px');
+            }
+        }
 
         images.push(img_obj);
         ic.appendChild(img_obj);
@@ -480,7 +510,7 @@ function makeShopCard(item) {
     }
     obj.append(ic);
 
-    let cycleSecs = 3
+    let cycleSecs = 5
 
     if (item.displayAssets.length > 1) {
         setInterval(function() {
@@ -532,6 +562,16 @@ function makeShopCard(item) {
     }
 
     parent.appendChild(obj);
+
+    if (item.colors !== undefined) {
+        let colArray = [];
+        if (item.colors.color1 != undefined) colArray.push(hexToRgba(item.colors.color1));
+        if (item.colors.color2 != undefined) colArray.push(hexToRgba(item.colors.color2));
+        if (item.colors.color3 != undefined) colArray.push(hexToRgba(item.colors.color3));
+
+        let stStr = 'linear-gradient(to bottom, ' + colArray.join(', ') + ')'
+        obj.style.background = stStr
+    }
 
     section_c.append(parent);
 }
