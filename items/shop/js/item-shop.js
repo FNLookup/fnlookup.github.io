@@ -164,26 +164,27 @@ function createItems() {
                         let tileSize = item['tileSize'];
                         // the place where tilesizes are created
                         if (tileSize === "Size_1_x_1") {
-                            item['width'] = count in [4, 2] ? 0.25 : 0.2;
-                            item['height'] = 0.5;
+                            //console.log(count, item['name']);
+                            item['width'] = count in [4, 2] ? 0.2 : 0.25;
+                            item['height'] = 1.0;
                         } else if (tileSize === "Size_1_x_2" || tileSize === "Normal") {
-                            item['width'] = ((count == 4 || count == 2) ? 0.25 : count > 5 ? 0.2 : 0.2);
+                            item['width'] = count in [4, 2] ? 0.2 : 0.25;
                             item['height'] = 1.0;
                         } else if (tileSize === "Size_2_x_1") { //Two by one.
                             item['width'] = count === 2 ? 0.5 : count > 4 ? 0.4 : 0.5;
-                            item['height'] = 0.5;
+                            item['height'] = 1.0;
                         } else if (tileSize === "Size_2_x_2") {
                             item['width'] = count === 2 ? 0.5 : count > 4 ? 0.4 : 0.5;
                             item['height'] = 1.0;
                         } else if (tileSize === "Size_3_x_1") { // THREE BY ONE?!!?!?
-                            item['width'] = count === 2 ? 0.75 : count > 3 ? 0.6 : 0.6;
-                            item['height'] = 0.5;
+                            item['width'] = count in [4, 2] ? 0.6 : 0.75;
+                            item['height'] = 1.0;
                         } else if (tileSize === "Size_3_x_2" || tileSize === "TripleWide") {
                             item['width'] = count === 2 ? 0.75 : count > 3 ? 0.6 : 0.6;
                             item['height'] = 1.0;
                         } else if (tileSize === "Size_4_x_1") { // FO URRR?!??
                             item['width'] = count === 4 ? 1.0 : count > 4 ? 0.8 : 0.8;
-                            item['height'] = 0.5;
+                            item['height'] = 1.0;
                         } else if (tileSize === 'Size_5_x_2') { // Fortnite ISTG.
                             item['width'] = 0.5;
                             item['height'] = 1.0;
@@ -227,15 +228,11 @@ function createItems() {
                 shopContainer.innerHTML += `<h2 style="text-transform: uppercase; scroll-margin-top: 10rem;" class="header-text-sequel header-text-italic" id="Group_${group.name}">${group.name}</h2>`
 
                 for (section of group.sections) {
-                    let sectionHeight = 525;
-
-                    if (section.count == 4 || section.count == 2) {
-                        sectionHeight = 615;
-                    }
+                    let sectionHeight = 425;
 
                     if (section.id == 'JamTracks.98') continue;
 
-                    shopContainer.innerHTML += `<div class="shop-section-section-container" style="display: flex; flex-direction: column; align-content: flex-start; flex-wrap: wrap; height: ${sectionHeight}px;" id="Section_${section.id}"></div>`
+                    shopContainer.innerHTML += `<div class="shop-section-section-container" style="display: flex; flex-direction: column; align-content: flex-start; flex-wrap: wrap; height: ${sectionHeight}px;" id="Section_${section.id}" count="${section.count}"></div>`
                 }
             }
         }
@@ -360,6 +357,7 @@ function makeShopCard(item) {
     //console.log(item_props)
 
     let parent = document.createElement('a');
+    parent.setAttribute('tile-size', item.tileSize);
     parent.classList.add('item-card-parent');
     parent.classList.add('fn-border-style');
 
