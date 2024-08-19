@@ -452,10 +452,6 @@ a.link-underline:hover {
     font-size: larger;
 }
 
-.nav-item:hover>.arrow {
-    transform: scaleY(-1);
-}
-
 .nav-dropdown-menu {
     position: absolute;
     padding: .5rem;
@@ -464,18 +460,6 @@ a.link-underline:hover {
     transition: .15s ease-in-out;
     transition-property: opacity;
     display: none;
-}
-
-.nav-dropdown-menu.side-drop-menu {
-    transform: translate(20%, -30px);
-}
-
-.dropdown-item {
-    margin: .5rem;
-}
-
-.nav-content {
-    font-weight: 700;
 }
 
 .arrow::after {
@@ -540,30 +524,28 @@ i.x-btn::before {
     border-radius: 50%;
 }
 
-input[type=text]:not(.sac-code-box):not(.cosmetic-search) {
+input[type=text] {
     border: 1px solid gray;
+    font: 15px headings-squash;
+    text-transform: uppercase;
     color: white;
-    background-color: black;
-    border-radius: 20px;
-    transition: background-color .3s;
-    font-family: var(--default-font-family)
-}
-
-input[type=text]:not(.sac-code-box):not(.cosmetic-search):focus {
-    background-color: rgb(50, 50, 50);
+    padding: .8rem;
+    margin: 0px 0.25rem;
+    background-color: var(--card-background-color);
+    border-radius: 15px;
+    border: none;
 }
 
 button {
-    border: 1px solid gray;
+    font: 15px headings-squash;
+    text-transform: uppercase;
     color: white;
-    background-color: black;
-    border-radius: 20px;
-    transition: background-color .3s;
-    font-family: var(--default-font-family)
-}
-
-button:hover {
-    background-color: rgb(50, 50, 50);
+    padding: .8rem;
+    margin: 0px 0.25rem;
+    background-color: #111213;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
 }
 
 button.fn-button {
@@ -576,58 +558,6 @@ button.fn-button {
     clip-path: polygon(0% 16%, 100% 6%, 98% 100%, 2% 90%);
     margin: 0px;
     padding: 0.9em 1em 0.6em;
-}
-
-.multilingual-btn svg {
-    margin-top: -3rem;
-    cursor: pointer;
-}
-
-.load-more-btn {
-    font-size: 18px;
-}
-
-.filter-container {
-    display: flex;
-}
-
-.filters-title {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.filter-class {
-    font-size: 17px;
-}
-
-.filter-class img {
-    height: 15px;
-}
-
-.filter-choice {
-    margin: 0 .25rem;
-}
-
-.filter-options .dropdown-menu {
-    max-height: 300px;
-    overflow-y: auto;
-    margin-top: 12px;
-}
-
-.filter-options .dropdown-menu .dropdown-choice:not(.group):not(:last-child) {
-    border-bottom: 1px solid #39416b;
-}
-
-.filter-options.float-right .dropdown-menu,
-.right-dmenu {
-    transform: translateX(-50%);
-}
-
-.cosmetic-search {
-    border-radius: 0;
-    width: 100%;
-    height: 3rem;
-    font-size: 17px;
 }
 
 .player-data input:not(:first-child),
@@ -655,25 +585,16 @@ button.fn-button {
     flex-direction: column;
 }
 
-body.purple {
-    background: var(--modes-purple);
-}
-
-.content-select {
-    width: 250px;
-}
-
-.content-input input,
-.content-select select {
+select {
     display: inline-block;
     width: 100%;
     cursor: pointer;
     margin: 10px;
     padding: 7px 10px;
-    border: 1px solid gray;
     border-radius: 10px;
-    background: black;
+    background: var(--card-background-color);
     color: white;
+    font-family: headings-squash;
 }
 
 .predictions {
@@ -704,6 +625,7 @@ body.purple {
     overflow: auto;
     gap: 1rem;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .account-season-level-card {
@@ -711,6 +633,7 @@ body.purple {
     max-width: 300px;
     background-color: var(--card-background-color);
     border-radius: 10px;
+    flex: 50%;
 }
 
 .account-season-level-card img {
@@ -729,11 +652,14 @@ body.purple {
     width: 100%;
     left: 0;
     top: 0;
+    
+    color: black;
+    font-family: headings-squash;
 }
 
 .progress-bar-bg {
     width: 100%;
-    background-color: rgb(16, 16, 16);
+    background-color: var(--card-background-color);
     border-radius: 10px;
     position: relative;
 }
@@ -743,8 +669,7 @@ body.purple {
     line-height: 2rem;
     text-align: center;
     width: 0%;
-    background-color: rgb(14, 28, 81);
-    color: white;
+    background-color: var(--season-accent-1);
     border-radius: 10px;
 }
 
@@ -2048,7 +1973,6 @@ body.purple {
 
 .stats-content h2,
 .stats-content h3 {
-    margin-top: .5rem;
     border-bottom: 1px solid gray;
     border-radius: 10px;
     background-color: rgb(59, 59, 59);
@@ -2094,6 +2018,7 @@ body.purple {
 }
 
 .looked-up-account {
+    font-family: headings-squash;
     position: relative;
     margin-left: calc(30px + 1rem);
     cursor: pointer;
@@ -2536,6 +2461,10 @@ i.account-type-icon[acctype=xbl] {
     font-family: headings-squash;
 }
 
+.region-dropdown {
+    width: 250px;
+}
+
 .tournament-stuff {
     margin-top: 5rem;
 }
@@ -2729,28 +2658,6 @@ tr .player-name {
     text-transform: uppercase;
 }
 
-.cosmetic-search-container button {
-    font: 15px headings-squash;
-    text-transform: uppercase;
-    color: white;
-    padding: .8rem;
-    margin: 0px 0.25rem;
-    background-color: #111213;
-    border-radius: 15px;
-    border: none;
-}
-
-.cosmetic-search-container input[type=text] {
-    font: 15px headings-squash;
-    text-transform: uppercase;
-    color: white;
-    padding: .8rem;
-    margin: 0px 0.25rem;
-    background-color: #111213;
-    border-radius: 15px;
-    border: none;
-}
-
 .filters-selected {
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -2813,6 +2720,29 @@ tr .player-name {
 .see-more-btn:hover {
     background-color: #6df5ff;
     color: white;
+}
+
+/*
+Dropdown Stuff
+Item search stuff
+*/
+
+.filter-class {
+    font-size: 17px;
+}
+
+.filter-class img {
+    height: 15px;
+}
+
+.filter-choice {
+    margin: 0 .25rem;
+}
+
+.filter-options .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 12px;
 }
 
 .filter-class-container {
@@ -3756,28 +3686,6 @@ track-details .song-diffs .diff {
 
 #search-function-encore {
     display: flex;
-}
-
-#search-function-encore .cosmetic-search {
-    font: 15px headings-squash;
-    text-transform: uppercase;
-    color: white;
-    padding: .8rem;
-    margin: 0px 0.25rem;
-    background-color: var(--card-background-color);
-    border-radius: 15px;
-    border: none;
-}
-
-#search-function-encore button {
-    font: 15px headings-squash;
-    text-transform: uppercase;
-    color: white;
-    padding: .8rem;
-    margin: 0px 0.25rem;
-    background-color: #111213;
-    border-radius: 15px;
-    border: none;
 }
 
 .blog-post {

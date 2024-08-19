@@ -296,7 +296,7 @@ function loadViewer() {
             let buttons = document.getElementById('instrument-buttons')
 
             let newbutton = gne('div')
-            newbutton.classList.add('festival-leaderboard-instrument-button')
+            newbutton.classList.add('festival-leaderboard-instrument-button', 'fortnite-button-border')
             newbutton.innerHTML += '<img src="/assets/icons/' + ['guitar', 'bass', 'voices', 'drums', 'guitar', 'bass'][_instruments.indexOf(instrument)] + '.webp">'
             newbutton.innerHTML += ['Guitar', 'Bass', 'Vocals', 'Drums', 'Pro Guitar', 'Pro Bass'][_instruments.indexOf(instrument)]
 

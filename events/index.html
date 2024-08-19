@@ -29,11 +29,10 @@
     <div class="content">
         <div>
             <div class="content-select">
-                <h1>Region</h1>
-                <select id="region-dropdown" onchange="reloadWithRegion()">
+                <h2 id="cur-reg" class="header-text-bold"></h2>
+                <select id="region-dropdown" class="float-right region-dropdown" onchange="reloadWithRegion()">
                     <script>createRegionSelector()</script>
                 </select>
-                <h2 id="cur-reg">Current: </h2>
             </div>
 
             <hr>

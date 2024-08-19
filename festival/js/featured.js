@@ -40,6 +40,7 @@ function getFeaturedJamTracks() {
                 const image = document.createElement("img");
                 image.src = album;
                 image.alt = songName;
+                image.loading = 'lazy';
                 jamShit.appendChild(image);
               
                 // Add description container
@@ -68,7 +69,7 @@ function getFeaturedJamTracks() {
                 document.getElementById('all-entries').innerHTML += `
                     <jam-track>
                         <a class="jam-track-item-card fortnite-button-border" href="view/?${id}">
-                            <img src="${album}" alt="Give Me Everything">
+                            <img src="${album}" alt="Give Me Everything" loading="lazy">
             
                             <div class="jam-track-description">
                                 <h2 class="header-text-bold">${songName}</h2>

@@ -6,14 +6,6 @@ function searchPlayer(ID) {
 
     let requestData = getRequestData('stats&account=' + uID);
     fetch(requestData.url, requestData.data).then(res => res.json()).then(res => {
-        content.innerHTML += '</h1><h1 class="header-text-bold">Level History</h1><hr>'
-        let cardContainerHTML = ''
-        for (let levelHistory of res.accountLevelHistory) {
-            cardContainerHTML += '<div class="account-season-level-card"><img src="/assets/images/seasons/' + levelHistory.season + '.jpg" alt="Season ' + levelHistory.season + '"><div class="account-level-card-details"><h3>Season ' + levelHistory.season + '</h3><div class="progress-bar-bg"><div class="progress-bar" style="width: ' + levelHistory.process_pct + '%;"><a class="percentage">Level ' + levelHistory.level + '</a></div></div></div></div>'
-        }
-
-        content.innerHTML += '<div id="level-history" class="account-level-history">' + cardContainerHTML + '</div>'
-
         content.innerHTML += '<h1 class="header-text-bold">Battle Pass</h1><hr> <div class="progress-bar-bg"><div class="progress-bar" style="width: ' + res.account.process_pct + '%;"><a class="percentage">Level ' + res.account.level + '</a></div></div>';
 
         content.innerHTML += '<h1 class="header-text-bold">Account Stats</h1><hr>'
@@ -26,7 +18,7 @@ function searchPlayer(ID) {
         ]
 
         for (let category of statCategories) {
-            if (!category) return;
+            if (!category) continue;
 
             let globalStats = category.stats
             let things = Object.getOwnPropertyNames(globalStats)
@@ -53,7 +45,7 @@ function searchPlayer(ID) {
                 title.innerHTML = getLabel(thing);
                 title.classList.add('links');
                 title.classList.add('pointer');
-                title.classList.add('header-text-light')
+                title.classList.add('header-text-bold')
 
                 let sa = document.createElement('i');
                 sa.classList.add('arrow');
@@ -65,13 +57,19 @@ function searchPlayer(ID) {
 
                 title.appendChild(sa);
 
-                title.addEventListener('click', function() {
-                    sa.classList.toggle('sideways');
-                    tab_contents.classList.toggle('hidden');
-                });
+                //console.log(title);
 
                 box.append(title, tab_contents)
                 globalBoxContent.append(box)
+
+                let FUCK = function() {
+                    sa.classList.toggle('sideways');
+                    tab_contents.classList.toggle('hidden');
+                    console.log('a')
+                }
+                //FUCK();
+
+                title.onclick = FUCK;
 
                 for (let thingy of thingsSequel) {
                     let value = thingsSequelThings[thingy];
@@ -81,6 +79,8 @@ function searchPlayer(ID) {
                     }
 
                     let label = getLabel(thingy);
+
+                    //console.log(value, label)
 
                     let containera = document.createElement('div');
                     containera.classList.add('stat-item');
@@ -104,6 +104,14 @@ function searchPlayer(ID) {
                 globalBoxContent.innerHTML = '<img src="' + marioDancing + '"><p>There\'s nothing to see here. Maybe invite this player to join the game?</p>';
             }
         }
+
+        content.innerHTML += '</h1><h1 class="header-text-bold">Level History</h1><hr>'
+        let cardContainerHTML = ''
+        for (let levelHistory of res.accountLevelHistory) {
+            cardContainerHTML += '<div class="account-season-level-card"><img src="/assets/images/seasons/' + levelHistory.season + '.jpg" alt="Season ' + levelHistory.season + '"><div class="account-level-card-details"><h3>Season ' + levelHistory.season + '</h3><div class="progress-bar-bg"><div class="progress-bar" style="width: ' + levelHistory.process_pct + '%;"><a class="percentage">Level ' + levelHistory.level + '</a></div></div></div></div>'
+        }
+
+        content.innerHTML += '<div id="level-history" class="account-level-history">' + cardContainerHTML + '</div>'
     }).catch(error => {
         let eText = document.createElement('h1');
         console.error(error);

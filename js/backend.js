@@ -87,6 +87,40 @@ function getAllowedTournamentDevice(device) {
     }
 }
 
+function detectDevice() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/android/i.test(userAgent)) {
+        return ["Android"];
+    }
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return ["iOS"];
+    }
+    if (/windows/i.test(userAgent)) {
+        return ["Windows"];
+    }
+    if (/Macintosh|MacIntel|MacPPC|Mac68K/.test(userAgent)) {
+        return ["Mac"];
+    }
+    if (/linux/i.test(userAgent)) {
+        return ["Linux"];
+    }
+    if (/Xbox/.test(userAgent)) {
+        return ["Xbox", "XB1", "XboxOne", "XSX", "HeliosMobile", "XCloudMobile", "XCloud", "Helios"];
+    }
+    if (/PlayStation 4/.test(userAgent)) {
+        return ["PS4"]; // xbox would scream
+    }
+    if (/PlayStation 5/.test(userAgent)) {
+        return ["PS5"]; // xbox would scream
+    }
+    if (/Nintendo Switch/.test(userAgent)) {
+        return ["Switch"];
+    }
+
+    return "Unknown";
+}
+
 function getDeviceLogo(device) {
     switch (device) {
         case 'XboxOneGDK':

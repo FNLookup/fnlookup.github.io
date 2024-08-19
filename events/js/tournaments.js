@@ -1,6 +1,6 @@
 function reloadWithRegion() {
     localStorage.eventRegion = document.getElementById('region-dropdown').value
-    window.location.href = 'tournaments.html?region=' + document.getElementById('region-dropdown').value;
+    window.location.href = '/events/?region=' + document.getElementById('region-dropdown').value;
 }
 
 function getRegionName(reg) {
@@ -27,7 +27,7 @@ function getRegionName(reg) {
 function createRegionSelector() {
     let regionDropdown = document.getElementById('region-dropdown');
 
-    for (let region of['NAE', 'NAC', 'NAW', 'EU', 'ME', 'OCE', 'BR', 'ASIA']) {
+    for (let region of ['NAC', 'EU', 'ME', 'OCE', 'BR', 'ASIA']) {
         let option = gne('option');
         option.value = region;
         option.innerText = getRegionName(region);
@@ -36,10 +36,6 @@ function createRegionSelector() {
 
         if (params.has('region')) {
             if (region === params.get('region')) {
-                option.selected = true;
-            }
-        } else {
-            if (region === 'NAE') {
                 option.selected = true;
             }
         }
@@ -56,7 +52,7 @@ function getcompetitive() {
         region = params.get('region');
     }
 
-    document.getElementById('cur-reg').innerHTML = 'Current region: ' + getRegionName(region);
+    document.getElementById('cur-reg').innerHTML = 'Events & Tournaments for ' + getRegionName(region);
     if (region === 'NAE' || region === 'NAW') { document.getElementById('cur-reg').innerHTML += 'warning this region might have cease and desisted' }
 
     let requestData = getRequestData('events&region=' + region);
@@ -80,7 +76,7 @@ function getcompetitive() {
             return eventDate >= currentDate;
         });
 
-        for (let event of filteredEvents) { //r.events.slice(-24)) {
+        for (let event of filteredEvents) { //r.events.slice(-24)) { -- dont use this!
 
             let parent = gne('a')
                 //parent.href = '#tournament-details';
@@ -117,11 +113,14 @@ function getcompetitive() {
 
             let platforms = gne('div')
             platforms.classList.add('flex', 'event-platforms-logos')
-            for (let plat of event.platforms) {
-                if (plat !== 'XB1') { // Bro
-                    platforms.innerHTML += '<img src="' + getDeviceLogo(plat) + '">'
-                }
-            }
+            // for (let plat of event.platforms) {
+            //     if (plat !== 'XB1') { // Bro
+            //         platforms.innerHTML += '<img src="' + getDeviceLogo(plat) + '">'
+            //     }
+            // }
+
+            let canPlayDevice = event.platforms.some(element => detectDevice().includes(element));
+            if (!canPlayDevice) platforms.innerHTML = '<h3 style="color: red;" class="header-text-bold">You can\'t play this tournament.</h3>'
 
             textholder.append(line1, line2, line3, line4, platforms);
             eventbox.append(textholder);

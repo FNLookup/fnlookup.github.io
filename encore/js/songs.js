@@ -44,10 +44,10 @@ async function extractFilesFromZip(data, rurl) {
         if (diff == 'ba' || diff == 'bass') icon = 'bass.webp'
         if (diff == 'vl' || diff == 'vocals') icon = 'voices.webp'
         if (diff == 'gr' || diff == 'guitar') icon = 'guitar.webp'
-        if (diff == 'plastic_drums') icon = 'pro-drums.png'
-        if (diff == 'plastic_bass') icon = 'pro-bass.png'
-        if (diff == 'plastic_guitar') icon = 'pro-guitar.png'
-        if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'THEvoicesARELOUDER.png'
+        if (diff == 'plastic_drums') icon = 'encore/pdrums.webp'
+        if (diff == 'plastic_bass') icon = 'encore/pbass.webp'
+        if (diff == 'plastic_guitar') icon = 'encore/ptar.webp'
+        if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'encore/pvox.webp'
 
         let imageIcon = document.createElement('img')
         imageIcon.classList.add('instrument-icon-encore')

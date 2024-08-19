@@ -23,6 +23,9 @@ function viewEvent() {
             }
         }
 
+        let canPlayDevice = relevantEvent.platforms.some(element => detectDevice().includes(element));
+        if (!canPlayDevice) document.getElementById('event-remarks').innerHTML += '<p style="color: red;" class="header-text-bold">You can\'t play this tournament.</p>'
+
         if (relevantEvent.cumulative)
             otherDetails.innerHTML += '<a class="item-type-label">Cumulative</a>'
 

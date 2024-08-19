@@ -506,40 +506,40 @@ function makeShopCard(item) {
         if (displayAssets.indexOf(displayAsset) == 0) {
             img_obj.classList.add('first-image', 'current-showcase-style');
             img_obj.setAttribute('Wideness', item_props.width)
-        }
+        } else continue;
         if (displayAssets.indexOf(displayAsset) == displayAssets.length - 1) img_obj.classList.add('last-image');
     }
     obj.append(ic);
 
     let cycleSecs = 5
 
-    if (item.displayAssets.length > 1) {
-        setInterval(function() {
-            // console.log(images.length)
+    // if (item.displayAssets.length > 1) {
+    //     setInterval(function() {
+    //         // console.log(images.length)
 
-            let lastImage = currentImage;
+    //         let lastImage = currentImage;
 
-            currentImage++;
-            if (currentImage > images.length - 1) currentImage = 0;
+    //         currentImage++;
+    //         if (currentImage > images.length - 1) currentImage = 0;
 
-            for (let image of images) {
-                let index = images.indexOf(image)
-                if (images.length >= 2) {
-                    if (index !== currentImage) image.classList.remove('current-showcase-style');
-                } else {
-                    if (index !== currentImage - 1 &&
-                        index != currentImage) image.classList.remove('current-showcase-style');
+    //         for (let image of images) {
+    //             let index = images.indexOf(image)
+    //             if (images.length >= 2) {
+    //                 if (index !== currentImage) image.classList.remove('current-showcase-style');
+    //             } else {
+    //                 if (index !== currentImage - 1 &&
+    //                     index != currentImage) image.classList.remove('current-showcase-style');
 
-                    image.classList.add('go-away-instantly');
-                    images[currentImage].classList.remove('go-away-instantly');
-                }
+    //                 image.classList.add('go-away-instantly');
+    //                 images[currentImage].classList.remove('go-away-instantly');
+    //             }
 
-                //images[i].classList.remove('current-showcase-style')
-            }
+    //             //images[i].classList.remove('current-showcase-style')
+    //         }
 
-            images[currentImage].classList.add('current-showcase-style');
-        }, (cycleSecs * 1000));
-    }
+    //         images[currentImage].classList.add('current-showcase-style');
+    //     }, (cycleSecs * 1000));
+    // }
 
     if (item.banner !== null) {
         let banner_object = document.createElement('i');
