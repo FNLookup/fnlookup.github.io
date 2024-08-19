@@ -231,7 +231,8 @@ function createItems() {
                 for (section of group.sections) {
                     let sectionHeight = 425;
 
-                    if (section.id == 'JamTracks.98') continue;
+                    //console.log(section.id)
+                    if (section.id == 'JamTracks0819.97') continue;
 
                     shopContainer.innerHTML += `<div class="shop-section-section-container" style="display: flex; flex-direction: column; align-content: flex-start; flex-wrap: wrap; height: ${sectionHeight}px;" id="Section_${section.id}" count="${section.count}"></div>`
                 }
@@ -342,7 +343,7 @@ function makeShopCard(item) {
     //     section_c = document.getElementsByName(section_name)[0];
     // }
 
-    if (item.section.id == 'JamTracks.98') return;
+    if (item.section.id == 'JamTracks0819.97') return;
 
     let section_c = document.getElementById('Section_' + item.section.id)
 
@@ -384,7 +385,7 @@ function makeShopCard(item) {
 
     var hold = document.createElement("div");
     hold.classList.add("item-info");
-    if (item.colors.textBackgroundColor !== undefined) {
+    if (item.colors.textBackgroundColor !== null) {
         hold.style.setProperty('--text-background-color', hexToRgba(item.colors.textBackgroundColor, 0))
         hold.style.setProperty('--text-background-color-a', hexToRgba(item.colors.textBackgroundColor, 0.65))
     }
