@@ -21,5 +21,11 @@ function loadBlogData() {
 
         }
     })
+
+    fetch('https://raw.githubusercontent.com/FNLookup/fnlookup-blog/main/' + blogId + '/info.json')
+    .then(response => response.json())
+    .then(r => {
+        document.getElementById('blog-banner').src = 'https://raw.githubusercontent.com/FNLookup/fnlookup-blog/main/' + blogId + '/' + r['header-image']
+    })
     .catch(error => console.error(error));
 }

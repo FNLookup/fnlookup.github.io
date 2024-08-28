@@ -3,7 +3,7 @@ function loadBlog() {
     fetch(data.url, data.data)
     .then(response => response.json())
     .then(json => {
-        for (blog of json.directory) {
+        for (let blog of json.directory) {
             async function createBlog() {
                 let information = await fetch('https://raw.githubusercontent.com/FNLookup/fnlookup-blog/main/' + blog.id + '/info.json')
                 let infofile = await information.json()
