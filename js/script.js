@@ -41,7 +41,7 @@ function i() {
                 <a href="/battle-pass/" class="navbar-button fortnite-button-border no-link" tkey="nav:battle-pass">BATTLE PASS</a>
                 <a href="/challenges/" class="navbar-button fortnite-button-border no-link" tkey="nav:quests">QUESTS</a>
                 <a href="/events/" class="navbar-button fortnite-button-border no-link" tkey="nav:compete">COMPETE</a>
-                ${(localStorage.accountId !== undefined ? '<a href="/statistics/" class="navbar-button fortnite-button-border no-link" tkey="nav:stats">STATS</a>' : '')}
+                ${(localStorage.accountId !== undefined ? '<a href="/stats/" class="navbar-button fortnite-button-border no-link" tkey="nav:stats">STATS</a>' : '')}
             </div>
         </div>
         <div class="navigation">
