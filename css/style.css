@@ -39,8 +39,8 @@
 }
 
 :root {
-    --season-accent-1: #6dc2ff;
-    --season-accent-2: #fff;
+    --season-accent-1: #69a452;
+    --season-accent-2: rgb(0, 49, 0);
     --crew-pack-position: 0;
     --theme-color: #101014;
     --border-color: #1b1b20;
@@ -653,7 +653,7 @@ select {
     left: 0;
     top: 0;
     
-    color: black;
+    color: white;
     font-family: headings-squash;
 }
 

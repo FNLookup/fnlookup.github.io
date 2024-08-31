@@ -6,15 +6,17 @@ function searchPlayer(ID) {
 
     let requestData = getRequestData('stats&account=' + uID);
     fetch(requestData.url, requestData.data).then(res => res.json()).then(res => {
-        content.innerHTML += '<h1 class="header-text-bold">Battle Pass</h1><hr> <div class="progress-bar-bg"><div class="progress-bar" style="width: ' + res.account.process_pct + '%;"><a class="percentage">Level ' + res.account.level + '</a></div></div>';
+        thestatsfrfr = document.createElement('div')
 
-        content.innerHTML += '<h1 class="header-text-bold">Account Stats</h1><hr>'
+        thestatsfrfr.innerHTML += '<h1 class="header-text-bold">Battle Pass</h1><hr> <div class="progress-bar-bg"><div class="progress-bar" style="width: ' + res.account.process_pct + '%;"><a class="percentage">Level ' + res.account.level + '</a></div></div>';
+
+        thestatsfrfr.innerHTML += '<h1 class="header-text-bold">Account Stats</h1><hr>'
 
         let statCategories = [
             { name: 'Global Stats', stats: res.global_stats },
-            (res.per_input.keyboardmouse ? { name: 'Keyboard & Mouse Stats', stats: res.per_input.keyboardmouse } : undefined),
-            (res.per_input.gamepad ? { name: 'Gamepad', stats: res.per_input.gamepad } : undefined),
-            (res.per_input.touch ? { name: 'Touch', stats: res.per_input.touch } : undefined)
+            { name: 'Keyboard & Mouse Stats', stats: res.per_input.keyboardmouse },
+            { name: 'Gamepad', stats: res.per_input.gamepad },
+            { name: 'Touch', stats: res.per_input.touch }
         ]
 
         for (let category of statCategories) {
@@ -28,24 +30,22 @@ function searchPlayer(ID) {
             let globalTitle = gne('h2');
             globalTitle.innerHTML = category.name;
             globalTitle.classList.add('header-text-bold');
-            let globalBoxContent = gne('div')
-            globalBoxContent.classList.add('stats-content');
 
-            globalBox.append(globalTitle, globalBoxContent)
+            globalBox.append(globalTitle)
 
-            content.appendChild(globalBox)
+            thestatsfrfr.appendChild(globalBox)
 
             for (let thing of things) {
                 let thingsSequelThings = category.stats[thing]
                 let thingsSequel = Object.getOwnPropertyNames(thingsSequelThings)
 
-                let box = gne('div')
+                let box = document.createElement('div')
 
-                let title = document.createElement('h3');
-                title.innerHTML = getLabel(thing);
-                title.classList.add('links');
-                title.classList.add('pointer');
-                title.classList.add('header-text-bold')
+                let stattitle = document.createElement('h3');
+                stattitle.innerHTML = getLabel(thing);
+                stattitle.classList.add('links');
+                stattitle.classList.add('pointer');
+                stattitle.classList.add('header-text-bold')
 
                 let sa = document.createElement('i');
                 sa.classList.add('arrow');
@@ -55,21 +55,16 @@ function searchPlayer(ID) {
                 tab_contents.classList.add('stats-content', 'stats-items');
                 tab_contents.classList.add('hidden');
 
-                title.appendChild(sa);
+                stattitle.appendChild(sa);
 
-                //console.log(title);
-
-                box.append(title, tab_contents)
-                globalBoxContent.append(box)
-
-                let FUCK = function() {
+                globalBox.append(box)
+                stattitle.onclick = function() {
                     sa.classList.toggle('sideways');
                     tab_contents.classList.toggle('hidden');
-                    console.log('a')
-                }
-                //FUCK();
+                };
 
-                title.onclick = FUCK;
+                box.appendChild(stattitle)
+                box.appendChild(tab_contents)
 
                 for (let thingy of thingsSequel) {
                     let value = thingsSequelThings[thingy];
@@ -100,18 +95,39 @@ function searchPlayer(ID) {
                 }
             }
 
-            if (globalBoxContent.children.length == 0) {
-                globalBoxContent.innerHTML = '<img src="' + marioDancing + '"><p>There\'s nothing to see here. Maybe invite this player to join the game?</p>';
+            if (globalBox.children.length == 0) {
+                globalBox.innerHTML = '<img src="' + marioDancing + '"><p>There\'s nothing to see here. Maybe invite this player to join the game?</p>';
             }
         }
 
-        content.innerHTML += '</h1><h1 class="header-text-bold">Level History</h1><hr>'
+        content.append(thestatsfrfr)
+
+        let levelHistoryBullshit = ''
         let cardContainerHTML = ''
         for (let levelHistory of res.accountLevelHistory) {
             cardContainerHTML += '<div class="account-season-level-card"><img src="/assets/images/seasons/' + levelHistory.season + '.jpg" alt="Season ' + levelHistory.season + '"><div class="account-level-card-details"><h3>Season ' + levelHistory.season + '</h3><div class="progress-bar-bg"><div class="progress-bar" style="width: ' + levelHistory.process_pct + '%;"><a class="percentage">Level ' + levelHistory.level + '</a></div></div></div></div>'
         }
 
-        content.innerHTML += '<div id="level-history" class="account-level-history">' + cardContainerHTML + '</div>'
+        levelHistoryBullshit += '<div id="level-history" class="account-level-history">' + cardContainerHTML + '</div>'
+
+        let lhtBS = document.createElement('h1')
+        lhtBS.innerText = 'Level History'
+        lhtBS.classList.add('header-text-bold')
+        lhtBS.classList.add('links');
+        lhtBS.classList.add('pointer');
+        let thh = document.createElement('i');
+        thh.classList.add('arrow');
+        thh.classList.add('sideways');
+        lhtBS.append(thh);
+        content.append(lhtBS)
+        let levelHistoryContainerBS = document.createElement('div')
+        levelHistoryContainerBS.innerHTML = levelHistoryBullshit
+        levelHistoryContainerBS.classList.add('hidden')
+        content.append(levelHistoryContainerBS)
+        lhtBS.onclick = function() {
+            thh.classList.toggle('sideways');
+            levelHistoryContainerBS.classList.toggle('hidden');
+        };
     }).catch(error => {
         let eText = document.createElement('h1');
         console.error(error);

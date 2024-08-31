@@ -140,17 +140,14 @@ function loadViewer() {
             for (let page of _pages) {
                 let _users = {}
                 try {
-                    let response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + viewTrack.id + '/' + instrumentStr + '_' + page + '_Users.json')
-                    _users = await response.json()
-        
-                    response = await fetch('https://raw.githubusercontent.com/FNLookup/festival/main/leaderboards/season4/' + viewTrack.id + '/' + instrumentStr + '_' + page + '.json')
+                    response = await fetch('https://raw.githubusercontent.com/FNLookup/festival-leaderboards/main/leaderboards/season5/' + viewTrack.id + '/' + instrumentStr + '_' + page + '.json')
                     let data = await response.json()
 
                     for (let entry of data.entries) {
                         //console.log(entry)
         
                         let entryContainer = gne('div')
-                        entryContainer.classList.add('festival-leaderboard-entry-parent')
+                        entryContainer.classList.add('festival-leaderboard-entry-parent', 'fortnite-button-border')
                         
                         let entryFirstInfo = gne('div')
                         entryFirstInfo.classList.add('flex', 'festival-leaderboard-entry')
@@ -161,12 +158,7 @@ function loadViewer() {
         
                         let name = gne('a')
                         name.classList.add('festival-entry-name')
-                        if (Object.keys(_users).includes(entry.teamId)) {
-                            //console.log('Yes')
-                            name.innerHTML += _users[entry.teamId].displayName
-                        } else {
-                            name.innerText = entry.teamId
-                        }
+                        name.innerText = entry.userName
     
                         let score = gne('a')
                         score.classList.add('festival-entry-score')
@@ -284,7 +276,7 @@ function loadViewer() {
             generateItems(allEntries.slice(0, perPage))
         }
         
-        fetch('https://api.github.com/repos/FNLookup/festival/commits?path=leaderboards/season4/' + viewTrack.id + '/').then(r=>r.json()).then(r=> {
+        fetch('https://api.github.com/repos/FNLookup/festival-leaderboards/commits?path=leaderboards/season5/' + viewTrack.id + '/').then(r=>r.json()).then(r=> {
             if (r.length > 0) fetchLeaderboardData(_instruments[0])
             else {
                 leaderBoardEntries.innerHTML = '<h2>Leaderboard not available</h2>'

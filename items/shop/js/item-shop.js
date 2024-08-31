@@ -65,6 +65,10 @@ function createItems() {
                 "height": 0
             };
 
+            if (section_name === null) {
+                section_name = 'Unknown_Category_Section_THIS IS USED AS FALLBACK'
+            }
+
             if (category === null) {
                 category = section_name;
             }
@@ -202,6 +206,7 @@ function createItems() {
         //console.log(categories_final)
 
         let shopContainer = document.getElementById('main')
+        let theJamTracksHaveBeenSkipped = false;
 
         let labelRight = document.getElementById('label-right')
         labelRight.onclick = () => {
@@ -214,6 +219,7 @@ function createItems() {
             let classContainer = gne('div')
             classContainer.classList.add('filter-class-container')
 
+            // console.log(category)
             classContainer.innerHTML += '<h2 class="filter-class-name" style="text-align: right;">' + category.name.toUpperCase() + '</h2>'
 
             let groupContainer = gne('div')
@@ -232,7 +238,13 @@ function createItems() {
                     let sectionHeight = 425;
 
                     //console.log(section.id)
-                    if (section.id == 'JamTracks0819.97') continue;
+                    if (section.id.includes('JamTracks')) {
+                        if (!theJamTracksHaveBeenSkipped) {
+                            shopContainer.innerHTML += '<br><a href="/festival/" class="fortnite-button fortnite-button-border">Go to Jam Tracks</a>'
+                            theJamTracksHaveBeenSkipped = true;
+                        }
+                        continue;
+                    }
 
                     shopContainer.innerHTML += `<div class="shop-section-section-container" style="display: flex; flex-direction: column; align-content: flex-start; flex-wrap: wrap; height: ${sectionHeight}px;" id="Section_${section.id}" count="${section.count}"></div>`
                 }
@@ -343,7 +355,7 @@ function makeShopCard(item) {
     //     section_c = document.getElementsByName(section_name)[0];
     // }
 
-    if (item.section.id == 'JamTracks0819.97') return;
+    if (item.section.id.includes('JamTracks')) return;
 
     let section_c = document.getElementById('Section_' + item.section.id)
 
@@ -495,7 +507,7 @@ function makeShopCard(item) {
 
             if (displayAsset.renderData.OffsetImage_Y != undefined) {
                 img_obj.classList.add('override-styles');
-                console.log(displayAsset.renderData.OffsetImage_Y + '' + item.displayName);
+                // console.log(displayAsset.renderData.OffsetImage_Y + '' + item.displayName);
                 img_obj.style.setProperty('--y-off', displayAsset.renderData.OffsetImage_Y + 'px');
             }
         }
