@@ -67,13 +67,9 @@
         }
 
         function resetAccounts() {
-            // BUT
-            let lang = localStorage.requestLanguage
-
-            localStorage.clear()
-
-            localStorage.requestLanguage = lang
-
+            localStorage.accountId = null
+            localStorage.accountName = null
+            localStorage.accounts = null
             window.location.reload()
 
             // MIGRATION NEEDED HERE!
@@ -82,7 +78,7 @@
         function loadSwitcher() {
             let modal = document.getElementById('account-change-modal')
 
-            if (localStorage.accounts === undefined || localStorage.accounts.length === 0) {
+            if (localStorage.accounts === undefined || (localStorage.accounts === 'null' || localStorage.accounts === null) || localStorage.accounts.length === 0) {
                 modal.innerHTML = `<h2 class="header-text-bold" tkey="account_change:link_new">Link your account</h2><div class="flex flex-wrap player-data">
                 <input type="text" placeholder="User Name" class="fortnite-button-border" id="player-name" title="Account Name">
                 <button id="discover" onclick="lookupPlayer()" class="fortnite-button-border" tkey="account_change:search">Search</button>
@@ -137,12 +133,14 @@
         </script>
 
         <script>
-            for (let paragraph of document.getElementById('accounts').children) {
-                paragraph.onclick = function() {
-                    changeAccount({
-                        accountId: paragraph.getAttribute('accountid'),
-                        accountName: paragraph.getAttribute('accountname')
-                    })
+            if (document.getElementById('accounts') != null) {
+                for (let paragraph of document.getElementById('accounts').children) {
+                    paragraph.onclick = function() {
+                        changeAccount({
+                            accountId: paragraph.getAttribute('accountid'),
+                            accountName: paragraph.getAttribute('accountname')
+                        })
+                    }
                 }
             }
         </script>

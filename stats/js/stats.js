@@ -78,7 +78,7 @@ function searchPlayer(ID) {
                     //console.log(value, label)
 
                     let containera = document.createElement('div');
-                    containera.classList.add('stat-item');
+                    containera.classList.add('stat-item', 'fortnite-button-border');
 
                     let code = document.createElement('p');
                     code.innerHTML = label;

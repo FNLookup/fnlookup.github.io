@@ -1988,7 +1988,7 @@ select {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(13rem, 2fr));
     grid-auto-rows: 5rem;
-    grid-gap: 2px;
+    grid-gap: 5px;
 }
 
 .stat-item {
@@ -1998,19 +1998,20 @@ select {
     justify-content: center;
     color: white;
     background-color: rgb(16, 16, 16);
-    transition: background-color .25s, scale .25s;
+    transition: all .25s;
+    border-radius: 15px;
 }
 
 .stat-item:hover {
     background-color: rgb(27, 26, 26);
     scale: 1.05;
-    cursor: default;
+    z-index: 100;
 }
 
 .stat-item-title {
     font-size: 18px;
     text-transform: uppercase;
-    font-family: burbank-bold;
+    font-family: headings-squash;
 }
 
 .stat-item-content {
