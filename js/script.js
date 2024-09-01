@@ -56,7 +56,7 @@ function i() {
             </div>
             <div class="navigation-part" id="navigation-3">
                 <a href="/encore/" class="part-button"><img src="https://raw.githubusercontent.com/Encore-Developers/Encore/main/Encore/Assets/encore_favicon-NEW.png" class="navigation-icon"></a>
-                ${(localStorage.popupVersion != '0.2' || localStorage.popupVersion == undefined ? `<popup>>>>> NEW! >>>> Encore Charts!</popup>` : '')}
+                ${(localStorage.popupVersion != '0.3' || localStorage.popupVersion == undefined ? `<popup>IMPORTANT: Stats have been fixed! Sorry for the inconvenience!</popup>` : '')}
             </div>
         </div>`;
 
