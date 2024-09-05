@@ -139,102 +139,267 @@ function initializeNav() {
     ];
     window.uiLangList = languages;
 }
+translations = {
+    "en": {
+        "home:welcome_back": "Welcome Back",
+        "home:your_ranked_stats": "Your Ranked Stats",
+        "home:br": "Battle Royale",
+        "home:zb": "Zero Build",
+        "home:rr": "Ranked Racing",
+
+        "home:not_linked": "You haven't linked an account yet.",
+        "home:link_account": "Link your account",
+
+        "nav:account": "ACCOUNT",
+        "nav:items": "ITEMS",
+        "nav:item-shop": "SHOP",
+        "nav:battle-pass": "BATTLE PASS",
+        "nav:quests": "QUESTS",
+        "nav:compete": "COMPETE",
+        "nav:stats": "STATS",
+
+        "navigation:home": "HOME",
+        "navigation:back": "BACK",
+        "navigation:broadcast": "BROADCAST",
+        "navigation:notifications": "NOTIFICATIONS",
+
+        "account:navigation_bar": "ACCOUNT",
+        "account:page_name": "Account",
+        "account:page": "Link or view your accounts",
+        "account:current_account": "Current Account",
+        "account:link_button": "LINK",
+        "account:switch_button": "SWITCH ACCOUNT",
+        "account:language": "Language",
+        "account:change_language": "CHANGE LANGUAGE",
+        "account:about_fnlookup": "About FNLookup",
+        "account:about": "VIEW",
+        "account:not_linked": "You haven't linked an account yet.",
+
+        "account_change:your_accounts": "Your accounts",
+        "account_change:add_another": "Add new account",
+        "account_change:search": "Search",
+        "account_change:reset_your_accounts": "Reset your accounts",
+        "account_change:link_new": "Link your account",
+
+        "language:language": "Language",
+        "language:desc": "Change the display language.",
+
+        "common:today": "today",
+        "common:today-upper": "Today",
+        "common:date-format": "[x0], [x1] [x2], [x3]",
+        "common:date-format-no-year": "[x0], [x1] [x2]",
+        "common:monday": "Monday",
+        "common:tuesday": "Tuesday",
+        "common:wednesday": "Wednesday",
+        "common:thursday": "Thursday",
+        "common:friday": "Friday",
+        "common:saturday": "Saturday",
+        "common:sunday": "Sunday",
+        "common:january": "jan",
+        "common:february": "feb",
+        "common:march": "mar",
+        "common:april": "apr",
+        "common:may": "may",
+        "common:june": "jun",
+        "common:july": "jul",
+        "common:august": "aug",
+        "common:september": "sep",
+        "common:october": "oct",
+        "common:november": "nov",
+        "common:december": "dec",
+
+        "item:please-wait": "Please wait...",
+        "item:searching-for": "Searching for [x0]",
+        "item:released": "Released [x0]",
+        "item:last-time-seen": "Last time seen [x0]",
+        "item:seen": "Seen [x0] times",
+        "item:wait": "Mean wait: [x0]d",
+        "item:table-date": "Date",
+        "item:table-days-since": "Days Since",
+        "item:styles": "Styles",
+        "item:gameplay-tags": "Gameplay Tags",
+        "item:upcoming": "Upcoming",
+        "item:copyright": "Copyrighted Audio",
+        "item:reactive": "Reactive",
+        "item:includes": "This item includes",
+        "item:listen": "Listen",
+        "item:granted": "Granted by",
+        "item:builtin": "Built-In Emote",
+        "item:not-found": "No items were found.",
+        "item:not-found-or-error": "No items were found, or there was an error.",
+        "item:help-search": "Are you looking for a cosmetic you don't know the name of? Go to [x0] and try again.",
+        "item:search-page": "items",
+        "item:no-params": "Looks like you specified no parameters!",
+        "item:no-params-help": "It looks like you're looking for no items. Use search to view one, or click on one somewhere else.",
+        "item:take-me-home": "Take me home",
+
+        "shop:item-shop": "ITEM SHOP",
+        "shop:jump": "JUMP TO CATEGORY",
+        "shop:back": "BACK TO TOP",
+        "shop:tooltip": "[x0] for [x1] V-Bucks",
+
+        "instruments:drums": "Drums",
+        "instruments:vocals": "Vocals",
+        "instruments:guitar": "Guitar",
+        "instruments:bass": "Bass",
+        "instruments:probass": "Pro Bass",
+        "instruments:proguitar": "Pro Guitar",
+        "instruments:prodrums": "Pro Drums",
+
+        "encore:all-charts": "All Charts",
+        "encore:search-charts": "Search Charts",
+        "encore:search": "Search",
+        "encore-card:view-more": "View more",
+        "encore-card:download": "Download",
+        "encore-card:charters": "Charters",
+        "encore-card:charters-unknown": "Unknown",
+        "encore:search-no-results": "Your search did not have any results.",
+
+        "encore-chart:downloading": "Downloading [x0], please wait...",
+        "encore-chart:download-chart": "Download Chart",
+        "encore-chart:charters": "Charters",
+        "encore-chart:charters-unknown": "Unknown",
+        "encore-chart:size": "Size: [x0]",
+        "encore-chart:genres": "Genres",
+        "encore-chart:genres-unknown": "Unknown",
+        "encore-chart:release-year": "Year",
+        "encore-chart:instrument": "Instrument"
+    },
+    "es-419": {
+        "home:welcome_back": "Bienvenido de vuelta",
+        "home:your_ranked_stats": "Tus estadísticas en Ranked",
+        "home:br": "Battle Royale",
+        "home:zb": "Sin construcción",
+        "home:rr": "Ranked Racing",
+
+        "home:not_linked": "Aún no has vinculado una cuenta.",
+        "home:link_account": "Vincula tu cuenta",
+
+        "nav:account": "CUENTA",
+        "nav:items": "OBJETOS",
+        "nav:item-shop": "TIENDA",
+        "nav:battle-pass": "PASE DE BATALLA",
+        "nav:quests": "MISIONES",
+        "nav:compete": "COMPETIR",
+        "nav:stats": "ESTADISTICAS",
+
+        "navigation:home": "INICIO",
+        "navigation:back": "ATRAS",
+        "navigation:broadcast": "BROADCAST",
+        "navigation:notifications": "NOTIFICACIONES",
+
+        "account:navigation_bar": "CUENTA",
+        "account:page_name": "Cuenta",
+        "account:page": "Vincular o ver tus cuentas",
+        "account:current_account": "CUENTA PRINCIPAL",
+        "account:link_button": "VINCULAR",
+        "account:switch_button": "CAMBIAR CUENTA",
+        "account:language": "Idioma",
+        "account:change_language": "CAMBIAR IDIOMA",
+        "account:about_fnlookup": "Sobre FNLookup",
+        "account:about": "VER",
+        "account:not_linked": "Aún no has vinculado una cuenta.",
+
+        "account_change:link_new": "Vincula tu cuenta",
+        "account_change:your_accounts": "Tus cuentas",
+        "account_change:add_another": "Añadir nueva cuenta",
+        "account_change:search": "Buscar",
+        "account_change:reset_your_accounts": "Restablecer tus cuentas",
+
+        "language:language": "Idioma",
+        "language:desc": "Cambia el idioma de visualización.",
+
+        "common:today": "hoy",
+        "common:today-upper": "Hoy",
+        "common:date-format": "[x0], [x2] de [x1] del [x3]",
+        "common:date-format-no-year": "[x0], [x2] de [x1]",
+        "common:monday": "Lunes",
+        "common:tuesday": "Martes",
+        "common:wednesday": "Miércoles",
+        "common:thursday": "Jueves",
+        "common:friday": "Viernes",
+        "common:saturday": "Sábado",
+        "common:sunday": "Domingo",
+        "common:january": "ene",
+        "common:february": "feb",
+        "common:march": "mar",
+        "common:april": "abr",
+        "common:may": "may",
+        "common:june": "jun",
+        "common:july": "jul",
+        "common:august": "ago",
+        "common:september": "sep",
+        "common:october": "oct",
+        "common:november": "nov",
+        "common:december": "dec",
+
+        "item:please-wait": "Por favor espere...",
+        "item:searching-for": "Buscando [x0]",
+        "item:released": "Lanzamiento: [x0]",
+        "item:last-time-seen": "Última vez visto [x0]",
+        "item:seen": "Visto [x0] veces",
+        "item:wait": "Espera promedio: [x0]d",
+        "item:table-date": "Fecha",
+        "item:table-days-since": "Tiempo",
+        "item:styles": "Estilos",
+        "item:gameplay-tags": "Etiquétas",
+        "item:upcoming": "Proximamente",
+        "item:copyright": "Audio con derechos de autor",
+        "item:reactive": "Reactivo",
+        "item:includes": "Este objeto incluye",
+        "item:listen": "Escuchar",
+        "item:granted": "Dado por",
+        "item:builtin": "Gesto Integrado",
+        "item:not-found": "No se encontraron objetos.",
+        "item:not-found-or-error": "No se encontraron objetos, o hubo un error.",
+        "item:help-search": "¿Estás buscando el nombre de un objeto del cuál no conoces su nombre? Ve a [x0] e intenta denuevo.",
+        "item:search-page": "objetos",
+        "item:no-params": "¡Parece que aquí no hay parametros!",
+        "item:no-params-help": "Parece que no estas buscando ningún objeto. Usa objetos para ver uno, o haz clic en uno en otro lugar.",
+        "item:take-me-home": "Llévame al inicio",
+
+        "shop:item-shop": "TIENDA DE OBJETOS",
+        "shop:jump": "SALTAR A CATEGORÍA",
+        "shop:back": "VOLVER AL INÍCIO",
+        "shop:tooltip": "[x0] por [x1] monedas V", // es = pavos
+        
+        "instruments:drums": "Percusión",
+        "instruments:vocals": "Voz",
+        "instruments:guitar": "Guitarra",
+        "instruments:bass": "Bajo",
+        "instruments:probass": "Bajo Pro",
+        "instruments:proguitar": "Guitarra Pro",
+        "instruments:prodrums": "Percusión Pro",
+
+        "encore:all-charts": "Charts de Encore",
+        "encore:search-charts": "Buscar Charts",
+        "encore:search": "Buscar",
+        "encore-card:view-more": "Ver más",
+        "encore-card:download": "Descargar",
+        "encore-card:charters": "Autores",
+        "encore-card:charters-unknown": "Desconocidos",
+
+        "encore:search-no-results": "Tu búsqueda no dió resultados.",
+        "encore-chart:downloading": "Descargando [x0], por favor espere...",
+        "encore-chart:download-chart": "Descargar Chart",
+        "encore-chart:charters": "Autores",
+        "encore-chart:charters-unknown": "Desconocidos",
+        "encore-chart:size": "Tamaño: [x0]",
+        "encore-chart:genres": "Géneros",
+        "encore-chart:genres-unknown": "Desconocidos",
+        "encore-chart:release-year": "Año",
+        "encore-chart:instrument": "Instrumento"
+    },
+}
 
 function getTranslationKey(key) {
-    let translations = {
-        "en": {
-            "home:welcome_back": "Welcome Back",
-            "home:your_ranked_stats": "Your Ranked Stats",
-            "home:br": "Battle Royale",
-            "home:zb": "Zero Build",
-            "home:rr": "Ranked Racing",
-
-            "home:not_linked": "You haven't linked an account yet.",
-            "home:link_account": "Link your account",
-
-            "nav:account": "ACCOUNT",
-            "nav:items": "ITEMS",
-            "nav:item-shop": "SHOP",
-            "nav:battle-pass": "BATTLE PASS",
-            "nav:quests": "QUESTS",
-            "nav:compete": "COMPETE",
-            "nav:stats": "STATS",
-
-            "navigation:home": "HOME",
-            "navigation:back": "BACK",
-            "navigation:broadcast": "BROADCAST",
-            "navigation:notifications": "NOTIFICATIONS",
-
-            "account:navigation_bar": "ACCOUNT",
-            "account:page_name": "Account",
-            "account:page": "Link or view your accounts",
-            "account:current_account": "Current Account",
-            "account:link_button": "LINK",
-            "account:switch_button": "SWITCH ACCOUNT",
-            "account:language": "Language",
-            "account:change_language": "CHANGE LANGUAGE",
-            "account:about_fnlookup": "About FNLookup",
-            "account:about": "VIEW",
-            "account:not_linked": "You haven't linked an account yet.",
-
-            "account_change:your_accounts": "Your accounts",
-            "account_change:add_another": "Add new account",
-            "account_change:search": "Search",
-            "account_change:reset_your_accounts": "Reset your accounts",
-            "account_change:link_new": "Link your account",
-
-            "language:language": "Language",
-            "language:desc": "Change the display language."
-        },
-        "es-419": {
-            "home:welcome_back": "Bienvenido de vuelta",
-            "home:your_ranked_stats": "Tus estadísticas en Ranked",
-            "home:br": "Battle Royale",
-            "home:zb": "Sin construcción",
-            "home:rr": "Ranked Racing",
-
-            "home:not_linked": "Aún no has vinculado una cuenta.",
-            "home:link_account": "Vincula tu cuenta",
-
-            "nav:account": "CUENTA",
-            "nav:items": "OBJETOS",
-            "nav:item-shop": "TIENDA",
-            "nav:battle-pass": "PASE DE BATALLA",
-            "nav:quests": "MISIONES",
-            "nav:compete": "COMPETIR",
-            "nav:stats": "ESTADISTICAS",
-
-            "navigation:home": "INICIO",
-            "navigation:back": "ATRAS",
-            "navigation:broadcast": "BROADCAST",
-            "navigation:notifications": "NOTIFICACIONES",
-
-            "account:navigation_bar": "CUENTA",
-            "account:page_name": "Cuenta",
-            "account:page": "Vincular o ver tus cuentas",
-            "account:current_account": "CUENTA PRINCIPAL",
-            "account:link_button": "VINCULAR",
-            "account:switch_button": "CAMBIAR CUENTA",
-            "account:language": "Idioma",
-            "account:change_language": "CAMBIAR IDIOMA",
-            "account:about_fnlookup": "Sobre FNLookup",
-            "account:about": "VER",
-            "account:not_linked": "Aún no has vinculado una cuenta.",
-
-            "account_change:link_new": "Vincula tu cuenta",
-            "account_change:your_accounts": "Tus cuentas",
-            "account_change:add_another": "Añadir nueva cuenta",
-            "account_change:search": "Buscar",
-            "account_change:reset_your_accounts": "Restablecer tus cuentas",
-
-            "language:language": "Idioma",
-            "language:desc": "Cambia el idioma de visualización."
-        },
-    }
-
     let lang = localStorage.requestLanguage
     if (lang === 'es') lang = 'es-419' // Perdon espanioles oleEEEE
-    return translations[lang][key]
+    if (Object.keys(translations).includes(lang)) {
+        return translations[lang][key]
+    } else {
+        return translations['en'][key]
+    }
 }
 
 function callTranslate() {
@@ -288,19 +453,34 @@ function sameDayUTC(day, now) {
 
 function getFormatDate(date, relative = false, justToday = false) {
     if (!relative) {
-        var weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        var months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+        var weekDaysIDs = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        var monthsIDs = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+        let weekDays = []
+        let months = []
+        for (let day of weekDaysIDs) {
+            weekDays.push(getTranslationKey('common:' + day))
+        }
+        for (let month of monthsIDs) {
+            months.push(getTranslationKey('common:' + month))
+        }
         var currentDate = new Date();
         var currentYear = currentDate.getUTCFullYear();
         var currentMonth = currentDate.getUTCMonth();
         var currentDay = currentDate.getUTCDate();
 
         if (date.getUTCFullYear() === currentYear && date.getUTCMonth() === currentMonth && date.getUTCDate() === currentDay && justToday) {
-            return "Today";
+            return getTranslationKey('common:today');
         } else if (date.getUTCFullYear() === currentYear) {
-            return weekDays[date.getUTCDay()] + ', ' + months[date.getUTCMonth()] + ' ' + date.getUTCDate();
+            return getTranslationKey('common:date-format-no-year')
+            .replace('[x0]', weekDays[date.getUTCDay()])
+            .replace('[x1]', months[date.getUTCMonth()])
+            .replace('[x2]', date.getUTCDate())
         } else {
-            return weekDays[date.getUTCDay()] + ', ' + months[date.getUTCMonth()] + ' ' + date.getUTCDate() + ', ' + date.getUTCFullYear();
+            return getTranslationKey('common:date-format')
+            .replace('[x0]', weekDays[date.getUTCDay()])
+            .replace('[x1]', months[date.getUTCMonth()])
+            .replace('[x2]', date.getUTCDate())
+            .replace('[x3]', date.getUTCFullYear())
         }
     } else {
         var currentDate = new Date();
@@ -308,7 +488,7 @@ function getFormatDate(date, relative = false, justToday = false) {
         var currentMonth = currentDate.getUTCMonth();
         var currentDay = currentDate.getUTCDate();
         if (date.getUTCFullYear() === currentYear && date.getUTCMonth() === currentMonth && date.getUTCDate() === currentDay && justToday) {
-            return "Today";
+            return getTranslationKey('common:today');
         }
 
         var units = {
@@ -320,7 +500,10 @@ function getFormatDate(date, relative = false, justToday = false) {
             second: 1000
         }
 
-        var rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
+        lang = 'en'
+        if (localStorage.requestLanguage !== undefined) lang = localStorage.requestLanguage
+
+        var rtf = new Intl.RelativeTimeFormat(lang, { numeric: 'auto' })
 
         var getRelativeTime = (date, date2 = new Date()) => {
             var elapsed = date - date2

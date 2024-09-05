@@ -11,7 +11,7 @@ function init() {
         }
 
         let loading = document.getElementById('loading')
-        loading.innerHTML = '<h1>Please wait...</h1><h3>Searching for ' + itemID + '</h3><img src="/assets/images/loading.gif">';
+        loading.innerHTML = `<h1>${getTranslationKey('item:please-wait')}</h1><h3>${getTranslationKey('item:searching-for').replace('[x0]', itemID)}</h3><img src="/assets/images/loading.gif">`;
 
         let requestData = getRequestData('item&id=' + itemID);
         fetch(requestData.url, requestData.data).then(data => data.json()).then(data => {
@@ -20,6 +20,14 @@ function init() {
             let setItems = [];
 
             let item = data.item;
+
+            if (item == null) {
+                let eText = document.createElement('h1');
+                eText.classList.add('header-text-bold')
+                eText.innerText = getTranslationKey('item:not-found');
+                content.append(eText);
+                return;
+            }
 
             if (item.type.id == 'sparks_song') {
                 console.log('this is a jamtrack. redirecting you');
@@ -125,33 +133,6 @@ function init() {
             //we need the english name tho
             FNAPICOMDATA = undefined
 
-            fetch('https://fortnite-api.com/v2/cosmetics/br/' + item.id).then(data => data.json()).then(data => {
-                // console.log(data);
-                FNAPICOMDATA = data
-                const hasFNGG = Items.some(item => item.name === data.data.name);
-                // console.log(hasFNGG)
-                if (hasFNGG) {
-                    fnggItem = Items.find(item => item.name === data.data.name);
-                    // console.log(fnggItem)
-                    let vidURL = 'https://fnggcdn.com/items-download/' + fnggItem.id + '/video.mp4?2' // apparently built in transform emote videos with ?2 make them both sides
-                    if (item.type.id == 'music') {
-                        vidURL = 'https://fortnite.gg/img/items/' + fnggItem.id + '/audio.mp3?1'
-                    }
-
-                    imageSources.splice(1, 0, vidURL)
-
-                    // demoVideo.onerror = function() {
-                    //     //demoVideo.remove();
-                    //     //videoContainer.remove();
-                    //     console.log("VIDEO ERROR!")
-                    // };
-                }
-
-                fortNut()
-            }).catch(e => { //Even if the fortnite-api.com doesnt have it 
-                fortNut()
-            })
-
             function fortNut() {
                 for (let img of imageSources) {
                     if (img.includes('video.mp4')) {
@@ -219,6 +200,33 @@ function init() {
                 }
             }
 
+            fetch('https://fortnite-api.com/v2/cosmetics/br/' + item.id).then(data => data.json()).then(data => {
+                // console.log(data);
+                FNAPICOMDATA = data
+                const hasFNGG = Items.some(item => item.name === data.data.name);
+                // console.log(hasFNGG)
+                if (hasFNGG) {
+                    fnggItem = Items.find(item => item.name === data.data.name);
+                    // console.log(fnggItem)
+                    let vidURL = 'https://fnggcdn.com/items-download/' + fnggItem.id + '/video.mp4?2' // apparently built in transform emote videos with ?2 make them both sides
+                    if (item.type.id == 'music') {
+                        vidURL = 'https://fortnite.gg/img/items/' + fnggItem.id + '/audio.mp3?1'
+                    }
+
+                    imageSources.splice(1, 0, vidURL)
+
+                    // demoVideo.onerror = function() {
+                    //     //demoVideo.remove();
+                    //     //videoContainer.remove();
+                    //     console.log("VIDEO ERROR!")
+                    // };
+                }
+
+                fortNut()
+            }).catch(e => { //Even if the fortnite-api.com doesnt have it 
+                fortNut()
+            })
+
             left.append(carrousel)
                 // end of image part
 
@@ -239,7 +247,7 @@ function init() {
             if (item.type != null) {
                 let item_type = document.createElement('a');
                 item_type.classList.add('item-type-label');
-                item_type.innerHTML = item.type.name;
+                item_type.innerText = item.type.name;
                 tags.appendChild(item_type);
             }
 
@@ -247,14 +255,14 @@ function init() {
                 let rarity = document.createElement('a');
                 rarity.classList.add('rarity-label');
                 rarity.setAttribute('data-rarity', item.rarity.id.toLowerCase());
-                rarity.innerHTML = item.rarity.name;
+                rarity.innerText = item.rarity.name;
                 tags.appendChild(rarity);
 
                 if (item.series != null) {
                     let series = document.createElement('a');
                     series.classList.add('rarity-label');
                     series.setAttribute('data-rarity', item.series.id.toLowerCase());
-                    series.innerHTML = item.series.name;
+                    series.innerText = item.series.name;
                     tags.appendChild(series);
                 }
             }
@@ -262,14 +270,14 @@ function init() {
             if (item.copyrightedAudio) {
                 let caudio = document.createElement('a');
                 caudio.classList.add('item-type-label', 'copyrighted-audio-warning');
-                caudio.innerHTML = 'Copyrighted Audio';
+                caudio.innerText = getTranslationKey('item:copyright');
                 tags.appendChild(caudio);
             }
 
             if (item.reactive) {
                 let remodal = document.createElement('a');
                 remodal.classList.add('item-type-label');
-                remodal.innerHTML = 'Reactive';
+                remodal.innerText = getTranslationKey('item:reactive');
                 tags.appendChild(remodal);
             }
 
@@ -286,7 +294,7 @@ function init() {
             if (item.upcoming) {
                 let item_type = document.createElement('a');
                 item_type.classList.add('item-type-label', 'upcoming-notice');
-                item_type.innerHTML = 'Upcoming';
+                item_type.innerText = getTranslationKey('item:upcoming');
                 tags.appendChild(item_type);
             }
 
@@ -294,21 +302,20 @@ function init() {
 
             if (item.description !== null) {
                 let description = document.createElement('h2');
-                description.innerHTML = item.description;
+                description.innerText = item.description;
                 right.append(description);
             }
 
             if (item.battlepass != null) {
                 let pass = document.createElement('a');
                 let bp = item.battlepass;
-                pass.innerHTML = bp.displayText.chapterSeason + ': ' + bp.battlePassName + (bp.page !== null ? ' - ' + bp.page : '') + ' (' + bp.type + ')';
+                pass.innerText = bp.displayText.chapterSeason + ': ' + bp.battlePassName + (bp.page !== null ? ' - ' + bp.page : '') + ' (' + bp.type + ')';
                 right.appendChild(pass);
             }
 
             if (item.introduction !== null) {
                 let introduction = document.createElement('h3');
-                introduction.innerHTML = item.introduction.text;
-                introduction.title = 'Introduced in Season ' + item.introduction.backendValue;
+                introduction.innerText = item.introduction.text;
                 right.append(introduction);
             }
 
@@ -321,19 +328,19 @@ function init() {
 
             if (item.releaseDate != null) {
                 let release = document.createElement('p');
-                release.innerHTML = 'Released ' + getFormatDate(new Date(item.releaseDate), true);
+                release.innerText = getTranslationKey('item:released').replace('[x0]', getFormatDate(new Date(item.releaseDate), true));
                 right.appendChild(release);
             }
 
             if (item.lastAppearance != null) {
                 let lastSeen = document.createElement('p');
-                lastSeen.innerHTML = 'Last time seen ' + getFormatDate(new Date(item.lastAppearance), true, true).toLowerCase();
+                lastSeen.innerHTML = getTranslationKey('item:last-time-seen').replace('[x0]', getFormatDate(new Date(item.lastAppearance), true, true).toLowerCase())
                 right.appendChild(lastSeen);
             }
 
             if (item.shopHistory !== null) {
                 let ocurrences = document.createElement('p');
-                ocurrences.innerHTML = 'Seen ' + item.shopHistory.length + ' times';
+                ocurrences.innerHTML = getTranslationKey('item:seen').replace('[x0]', item.shopHistory.length)
                 right.appendChild(ocurrences);
 
                 let hlist = document.createElement('div');
@@ -345,8 +352,8 @@ function init() {
                 tableHeader.classList.add('flex');
                 leftRow.classList.add('d-70');
                 rightRow.classList.add('d-30', 'flex', 'flex-center', 'flex-hcenter');
-                leftRow.innerHTML = '<h4>Date</h4>';
-                rightRow.innerHTML = '<h4>Days Since</h4>';
+                leftRow.innerHTML = `<h4>${getTranslationKey('item:table-date')}</h4>`;
+                rightRow.innerHTML = `<h4>${getTranslationKey('item:table-days-since')}</h4>`;
                 tableHeader.append(leftRow, rightRow);
                 hlist.append(tableHeader);
 
@@ -378,7 +385,7 @@ function init() {
                     let ds = gne('a');
                     ds.innerText = rSince;
 
-                    if (dsince == 0) ds.innerHTML = '<a href="/items/shop/">Today</a>';
+                    if (dsince == 0) ds.innerHTML = `<a href="/items/shop/">${getTranslationKey('common:today')}</a>`;
 
                     right.append(ds);
 
@@ -399,7 +406,7 @@ function init() {
 
                 if (item.shopHistory.length > 1) {
                     let avgWaitPerA = document.createElement('p');
-                    avgWaitPerA.innerHTML = 'Mean wait: ' + avg + 'd';
+                    avgWaitPerA.innerHTML = getTranslationKey('item:wait').replace('[x0]', avg.toFixed(2)) ;
                     right.append(avgWaitPerA);
                 }
             }
@@ -416,7 +423,7 @@ function init() {
 
             if (item.gameplayTags.length > 0) {
                 let gt = document.createElement('p');
-                gt.innerHTML = 'Gameplay Tags';
+                gt.innerText = getTranslationKey('item:gameplay-tags');
                 right.append(gt);
 
                 let gtcode = document.createElement('div');
@@ -431,7 +438,7 @@ function init() {
             }
 
             if (item.audio !== null) {
-                right.innerHTML += '<h3>Listen</h3>';
+                right.innerHTML += `<h3>${getTranslationKey('item:listen')}</h3>`;
 
                 let audio = gne('audio');
                 audio.controls = true;
@@ -463,7 +470,7 @@ function init() {
                     bottom.append(styleContainer);
 
                     let parttitle = document.createElement('h1');
-                    parttitle.innerHTML = 'Styles';
+                    parttitle.innerText = getTranslationKey('item:styles');
                     styleContainer.append(parttitle);
 
                     let rStyleTabs = [];
@@ -585,7 +592,7 @@ function init() {
 
             if (item.grants.length > 0) {
                 let title = gne('h1');
-                title.innerHTML = 'This item includes';
+                title.innerText = getTranslationKey('item:includes')
                 bottom1.append(title);
 
                 let grantModal = document.createElement('div');
@@ -615,7 +622,7 @@ function init() {
 
             if (item.grantedBy.length > 0) {
                 let title = gne('h1');
-                title.innerHTML = 'Granted by';
+                title.innerText = getTranslationKey('item:granted');
                 bottom2.append(title);
 
                 let grantModal = document.createElement('div');
@@ -631,7 +638,7 @@ function init() {
                     let image = document.createElement('img');
                     image.src = granted.images.icon + '?width=100';
                     image.title = granted.name;
-                    parent.innerHTML = granted.name;
+                    parent.innerText = granted.name;
                     parent.append(image);
 
                     parent.href = getItemLinkByID(granted.id)
@@ -644,7 +651,7 @@ function init() {
                 let emote = item.builtInEmote;
 
                 let title = gne('h1');
-                title.innerHTML = 'Built-In Emote';
+                title.innerText = getTranslationKey('item:builtin');
                 bottom2.append(title);
 
                 let grantModal = document.createElement('div');
@@ -659,7 +666,7 @@ function init() {
                 let image = document.createElement('img');
                 image.src = emote.images.icon + '?width=100';
                 image.title = emote.name;
-                parent.innerHTML = emote.name;
+                parent.innerText = emote.name;
                 parent.append(image);
                 parent.href = getItemLinkByID(emote.id)
                 grantModal.append(parent);
@@ -667,7 +674,7 @@ function init() {
 
             if (setItems.length > 0) {
                 let title = gne('h1');
-                title.innerHTML = item.set.partOf;
+                title.innerText = item.set.partOf;
                 bottom2.append(title);
 
                 let grantModal = document.createElement('div');
@@ -683,7 +690,7 @@ function init() {
                     let image = document.createElement('img');
                     image.src = setItem.images.icon + '?width=100';
                     image.title = setItem.name;
-                    parent.innerHTML = setItem.name;
+                    parent.innerText = setItem.name;
                     parent.append(image);
 
                     parent.href = getItemLinkByID(setItem.id)
@@ -763,8 +770,16 @@ function init() {
             clearChildren(content);
 
             let eText = document.createElement('h1');
-            eText.innerHTML = 'No cosmetics were found, or an error has occurred.<br>' + err;
+            eText.classList.add('header-text-bold')
+
+            let eText2 = document.createElement('h2');
+            eText2.classList.add('header-text-light')
+
+            eText2.innerText = err
+            eText.innerText = getTranslationKey('item:not-found-or-error');
+
             let tipText = document.createElement('h3');
+            tipText.classList.add('header-text-bold')
 
             let value = ''
             if (params.has('q')) value = params.get('q');
@@ -772,16 +787,17 @@ function init() {
 
             console.error(err)
 
-
-            tipText.innerHTML = 'Are you looking for a cosmetic you don\'t know the name of? Go to <a class="green" href="search.html?name=' + value + '">cosmetic search</a> and try again.';
-            content.append(eText, tipText);
+            tipText.innerHTML = getTranslationKey('item:help-search').replace('[x0]', '<a href="search.html?name=' + value + '">' + getTranslationKey('item:search-page') + '</a>');
+            content.append(eText, eText2, tipText);
         })
     } else {
         let eText = document.createElement('h1');
-        eText.innerHTML = 'Looks like you specified no parameters!';
+        eText.classList.add('header-text-bold')
+        eText.innerText = getTranslationKey('item:no-params');
         let tipText = document.createElement('h3');
-        tipText.innerHTML = 'It looks like you\'re looking for no items. Use the search bar to view one, or click on one somewhere else.';
+        tipText.innerText = getTranslationKey('item:no-params-help');
+        tipText.classList.add('header-text-bold')
         document.getElementById('page-content').append(eText, tipText);
-        document.getElementById('page-content').innerHTML += '<a href="index.html" class="gray-link">Take me home <i class="arrow sideways"></i></a>'
+        document.getElementById('page-content').innerHTML += '<a href="/" class="gray-link">' + getTranslationKey('item:take-me-home') + ' <i class="arrow sideways"></i></a>'
     }
 }

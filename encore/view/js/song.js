@@ -8,7 +8,7 @@ function loadSong() {
 
     async function extractFilesFromZip(data) {
         let loading = document.createElement('p')
-        loading.innerText = 'Downloading ' + data.song.zip + ', please wait...'
+        loading.innerText = getTranslationKey('encore-chart:downloading').replace('[x0]', data.song.zip)
         document.getElementById('song').append(loading)
 
         let zipUrl = data.song.zip;
@@ -56,17 +56,20 @@ function loadSong() {
         songAlbum.innerText = `${data.song.album != undefined ? data.song.album + ' - ' : ''}${toTimeStr(data.song.secs)}`
     
         let songCharter = document.createElement('h3')
-        songCharter.innerText = `Charters: ${data.song.charters.length > 0 ? data.song.charters.join(', ') : 'Unknown'}`
+        songCharter.innerText = `${getTranslationKey('encore-chart:charters')}: ${data.song.charters.length > 0 ? data.song.charters.join(', ') : getTranslationKey('encore-chart:charters-unknown')}`
 
         document.title = info.title + ' (Encore) - FNLookup'
 
         let songGenre = document.createElement('h3')
-        let genrestr = 'Genres: Unknown'
+        let genrestr = getTranslationKey('encore-chart:genres') + ': ' + getTranslationKey('encore-chart:genres-unknown')
         if (info.genres != undefined) {
-            genrestr = 'Genres: ' + info.genres.join(', ') + ' - ' + info.release_year
+            genrestr = getTranslationKey('encore-chart:genres') + ': ' + info.genres.join(', ')
         }
 
         songGenre.innerText = genrestr
+
+        let songYear = document.createElement('h3')
+        songYear.innerText = getTranslationKey('encore-chart:release-year') + ': ' + info.release_year
 
         let songDiffs = document.createElement('a')
         songDiffs.classList.add('song-diffs');
@@ -81,10 +84,10 @@ function loadSong() {
             if (diff == 'ba' || diff == 'bass') icon = 'bass.webp'
             if (diff == 'vl' || diff == 'vocals') icon = 'voices.webp'
             if (diff == 'gr' || diff == 'guitar') icon = 'guitar.webp'
-            if (diff == 'plastic_drums') icon = 'pro-drums.png'
-            if (diff == 'plastic_bass') icon = 'pro-bass.png'
-            if (diff == 'plastic_guitar') icon = 'pro-guitar.png'
-            if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'THEvoicesARELOUDER.png'
+            if (diff == 'plastic_drums') icon = 'encore/pdrums.webp'
+            if (diff == 'plastic_bass') icon = 'encore/pbass.webp'
+            if (diff == 'plastic_guitar') icon = 'encore/ptar.webp'
+            if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'encore/pvox.webp'
     
             let imageIcon = document.createElement('img')
             imageIcon.classList.add('instrument-icon-encore')
@@ -114,7 +117,7 @@ function loadSong() {
             songDiffs.append(diffContainer)
         }
 
-        trackDetails.append(songTitle, songArtist, songAlbum, songCharter, songGenre, document.createElement('hr'), songDiffs)
+        trackDetails.append(songTitle, songArtist, songAlbum, songCharter, songGenre, songYear, document.createElement('hr'), songDiffs)
         encoreTrack.append(trackDetails)
 
         document.getElementById('song').appendChild(encoreTrack);
@@ -139,13 +142,13 @@ function loadSong() {
         }
 
         let tracks = {
-            'Drums': 'PART DRUMS',
-            'Bass': 'PART BASS',
-            'Guitar': 'PART GUITAR',
-            'Vocals': 'PART VOCALS',
-            'Pro Drums': 'PLASTIC DRUMS',
-            'Pro Bass': 'PLASTIC BASS',
-            'Pro Guitar': 'PLASTIC GUITAR'
+            'instruments:drums': 'PART DRUMS',
+            'instruments:bass': 'PART BASS',
+            'instruments:guitar': 'PART GUITAR',
+            'instruments:vocals': 'PART VOCALS',
+            'instruments:prodrums': 'PLASTIC DRUMS',
+            'instruments:probass': 'PLASTIC BASS',
+            'instruments:proguitar': 'PLASTIC GUITAR'
         }
 
         let difficulties = {
@@ -158,7 +161,7 @@ function loadSong() {
         let trackAnalysisTable = document.createElement('track-midi-notes')
         tablefullhtml = `            <table>
                 <tr>
-                    <th>Instrument</th>
+                    <th>${getTranslationKey('encore-chart:instrument')}</th>
                     <th>E</th>
                     <th>M</th>
                     <th>H</th>
@@ -170,7 +173,7 @@ function loadSong() {
             // trackAnalysisName.innerText = track
 
             let tablehtml = `<tr>
-                    <td>${track}</td>`
+                    <td>${getTranslationKey(track)}</td>`
 
             let trackNotes = document.createElement('div')
 
@@ -199,12 +202,12 @@ function loadSong() {
 
         let downloadButton = document.createElement('a')
         downloadButton.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-download')
-        downloadButton.innerText = 'Download Chart'
+        downloadButton.innerText = getTranslationKey('encore-chart:download-chart')
 
         let mbsize = size / 1024 / 1024
         let mbs = mbsize.toFixed(2)
 
-        downloadButton.title = 'Size: ' + mbs + ' MB'
+        downloadButton.title = getTranslationKey('encore-chart:size').replace('[x0]', mbs + ' MB')
 
         downloadButton.href = data.raw + zipUrl
 

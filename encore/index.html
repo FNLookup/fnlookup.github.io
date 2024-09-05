@@ -30,22 +30,24 @@
         <a href="https://www.github.com/Encore-Developers/Encore/" class="fortnite-button-border" style="border-radius: 15px;"><img src="https://raw.githubusercontent.com/Encore-Developers/Encore/main/Encore/Assets/encore-white.png" alt="Encore" style="width: 100%; max-width: 500px;"></a>
 
         <hr>
-        <h2 class="header-text-bold">Search Tracks</h2>
+        <h2 class="header-text-bold" tkey="encore:search-charts">Search Tracks</h2>
 
         <div id="search-function-encore">
             <input type="text" id="iname" class="fortnite-button-border" autocomplete="off" placeholder="Name">
 
-            <button class="fortnite-button-border" onclick="searchForSong()">Search</button>
+            <button class="fortnite-button-border" onclick="searchForSong()" tkey="encore:search">Search</button>
         </div>
 
         <br>
 
-        <h2 class="header-text-bold">All Charts</h2>
+        <h2 class="header-text-bold" tkey="encore:all-charts">All Charts</h2>
         
         <div id="songs" class="encore-songs"></div>
 
         <script>
             loadSongs()
+
+            callTranslate()
         </script>
     </div>
 </body>

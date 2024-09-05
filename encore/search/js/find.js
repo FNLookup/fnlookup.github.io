@@ -5,10 +5,6 @@ function toTimeStr(secs) {
 async function extractFilesFromZip(data, rurl) {
     //let zipUrl = data.zip;
 
-    let loading = document.createElement('p')
-    loading.innerText = 'Downloading ' + data.id + ', please wait...'
-    document.getElementById('songs').append(loading)
-
     let imageUrl = 'https://raw.githubusercontent.com/FNLookup/encore/main/covers/'+data.id +'/'+data.art;
     let encoreTrack = document.createElement('a')
     encoreTrack.classList.add('encore-track', 'flex-media')
@@ -27,7 +23,7 @@ async function extractFilesFromZip(data, rurl) {
     songAlbum.innerText = `${data.album != undefined ? data.album + ' - ' : ''}${toTimeStr(data.secs)}`
 
     let songCharters = document.createElement('h3')
-    songCharters.innerText = `Charters: ${data.charters.length > 0 ? data.charters.join(', ') : 'Unknown'}`
+    songCharters.innerText = `${getTranslationKey('encore-card:charters')}: ${data.charters.length > 0 ? data.charters.join(', ') : getTranslationKey('encore-card:charters-unknown')}`
 
     //console.log(piss)
 
@@ -44,10 +40,10 @@ async function extractFilesFromZip(data, rurl) {
         if (diff == 'ba' || diff == 'bass') icon = 'bass.webp'
         if (diff == 'vl' || diff == 'vocals') icon = 'voices.webp'
         if (diff == 'gr' || diff == 'guitar') icon = 'guitar.webp'
-        if (diff == 'plastic_drums') icon = 'pro-drums.png'
-        if (diff == 'plastic_bass') icon = 'pro-bass.png'
-        if (diff == 'plastic_guitar') icon = 'pro-guitar.png'
-        if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'THEvoicesARELOUDER.png'
+        if (diff == 'plastic_drums') icon = 'encore/pdrums.webp'
+        if (diff == 'plastic_bass') icon = 'encore/pbass.webp'
+        if (diff == 'plastic_guitar') icon = 'encore/ptar.webp'
+        if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'encore/pvox.webp'
 
         let imageIcon = document.createElement('img')
         imageIcon.classList.add('instrument-icon-encore')
@@ -96,12 +92,12 @@ async function extractFilesFromZip(data, rurl) {
 
     let songDiffsView = document.createElement('a');
     songDiffsView.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-override-fortnite-button', 'diffs-view', 'track-btn')
-    songDiffsView.innerText = 'View more'
+    songDiffsView.innerText = getTranslationKey('encore-card:view-more')
     songDiffsView.href = '/encore/view/?' + data.id
 
     let downloadSong = document.createElement('a');
     downloadSong.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-override-fortnite-button', 'track-btn')
-    downloadSong.innerText = 'Download'
+    downloadSong.innerText = getTranslationKey('encore-card:download')
     downloadSong.href = rurl + data.zip
 
     leftSection.append(document.createElement('hr'), songDiffs);
@@ -111,8 +107,6 @@ async function extractFilesFromZip(data, rurl) {
     //encoreTrack.append(rightSection, imgElement2);
 
     document.getElementById('songs').appendChild(encoreTrack);
-
-    loading.remove()
 }
 
 function loadSongs() {
@@ -131,7 +125,7 @@ function loadSongs() {
             }
         }
 
-        if (totalresults < 1) document.getElementById('resultsfor').innerText = 'Your search did not have any results.'
+        if (totalresults < 1) document.getElementById('resultsfor').innerText = getTranslationKey('encore:search-no-results')
     }).catch(err => {
         console.error(err)
     })

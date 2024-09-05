@@ -494,7 +494,7 @@ function makeShopCard(item) {
         }
 
         img_obj.src = img_src;
-        img_obj.setAttribute("title", item.displayName + ' for ' + item.price.finalPrice + ' V-Bucks');
+        img_obj.setAttribute("title", getTranslationKey('shop:tooltip').replace('[x0]', item.displayName).replace('[x1]', item.price.finalPrice));
         img_obj.setAttribute('otype', item.mainType);
         img_obj.classList.add("shop-picture");
 

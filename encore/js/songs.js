@@ -27,7 +27,7 @@ async function extractFilesFromZip(data, rurl) {
     songAlbum.innerText = `${data.album != undefined ? data.album + ' - ' : ''}${toTimeStr(data.secs)}`
 
     let songCharters = document.createElement('h3')
-    songCharters.innerText = `Charters: ${data.charters.length > 0 ? data.charters.join(', ') : 'Unknown'}`
+    songCharters.innerText = `${getTranslationKey('encore-card:charters')}: ${data.charters.length > 0 ? data.charters.join(', ') : getTranslationKey('encore-card:charters-unknown')}`
 
     //console.log(piss)
 
@@ -96,12 +96,12 @@ async function extractFilesFromZip(data, rurl) {
 
     let songDiffsView = document.createElement('a');
     songDiffsView.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-override-fortnite-button', 'diffs-view', 'track-btn')
-    songDiffsView.innerText = 'View more'
+    songDiffsView.innerText = getTranslationKey('encore-card:view-more')
     songDiffsView.href = 'view/?' + data.id
 
     let downloadSong = document.createElement('a');
     downloadSong.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-override-fortnite-button', 'track-btn')
-    downloadSong.innerText = 'Download'
+    downloadSong.innerText = getTranslationKey('encore-card:download')
     downloadSong.href = rurl + data.zip
 
     leftSection.append(document.createElement('hr'), songDiffs);
