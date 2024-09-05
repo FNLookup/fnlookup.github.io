@@ -1,3 +1,4 @@
+// this is peak programming i DO NOT CARE what you say
 function getRankedStats() {
     let accountId = localStorage.accountId
 

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="fortnite item shop, fortnite shop, fortnite store">
-    <meta name="description" content="FNLookup is an easy browsing interface for most Fortnite related content. See today's full Item Shop.">
+    <meta name="description" content="See today's Fortnite Shop.">
     <meta name="author" content="tposejank">
     <title>Item Shop - FNLookup</title>
     <link rel="icon" href="/assets/icons/logo.png">
@@ -25,26 +25,24 @@
 </head>
 
 <body>
-    <div class="season-video">
-        <video autoplay loop playsinline class="fn-season-video" id="fn-video"></video>
-        <div class="fn-dot-mask"></div>
-    </div>
 
     <div class="nav-container">
     </div>
 
     <script>
-        i()
+        initializeNav()
     </script>
 
     <div class="content">
+        <h1 class="text-center header-text-bold">ITEM SHOP</h1>
+
         <div class="shop-bar">
-            <div class="navigation-part part-center" id="navigation-center">
-                <a class="part-button not-button flex" id="label-center">ITEM SHOP<p id="item-timer" class="shop-reset-timer"></p>
+            <div class="shop-part part-center" id="navigation-center">
+                <a class="shop-button not-button flex" id="label-center">ITEM SHOP<p id="item-timer" class="shop-reset-timer"></p>
                 </a>
             </div>
-            <div class="navigation-part part-right" id="navigation-right">
-                <a class="no-link part-button" id="label-right">JUMP TO CATEGORY</a>
+            <div class="shop-part part-right" id="navigation-right">
+                <a class="pointer shop-button" id="label-right">JUMP TO CATEGORY</a>
                 <div class="dropdown-menu hidden-dropdown" style="max-height: 300px; overflow-y: auto;" id="dropdown-menu-sections">
                 </div>
             </div>

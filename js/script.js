@@ -18,7 +18,7 @@ function cero(integer) {
     return integer < 10 ? '0' + integer : integer
 }
 
-function i() {
+function initializeNav() {
     document.getElementsByClassName('nav-container')[0].innerHTML = `
         <div class="navbar-top" id="main-nav">
             <a class="navbar-button fortnite-button-border no-link">
@@ -33,21 +33,17 @@ function i() {
             <a href="/" class="navbar-button no-link fortnite-button-border mini-logo-container">
                 <img class="mini-logo" src="/assets/logo_nobg.png" title="FNLookup">
             </a>
-            <a href="/" class="nav-logo">FNLookup</a>
             <div class="nav-buttons-items">
                 <a href="/account/" class="navbar-button fortnite-button-border no-link" tkey="nav:account">ACCOUNT</a>
                 <a href="/items/" class="navbar-button fortnite-button-border no-link" tkey="nav:items">ITEMS</a>
-                <a href="/items/shop/" class="navbar-button fortnite-button-border no-link" tkey="nav:item-shop">ITEM SHOP</a>
+                <a href="/items/shop/" class="navbar-button fortnite-button-border no-link" tkey="nav:item-shop">SHOP</a>
                 <a href="/battle-pass/" class="navbar-button fortnite-button-border no-link" tkey="nav:battle-pass">BATTLE PASS</a>
                 <a href="/challenges/" class="navbar-button fortnite-button-border no-link" tkey="nav:quests">QUESTS</a>
                 <a href="/events/" class="navbar-button fortnite-button-border no-link" tkey="nav:compete">COMPETE</a>
-                ${(localStorage.accountId !== undefined ? '<a href="/stats/" class="navbar-button fortnite-button-border no-link" tkey="nav:stats">STATS</a>' : '')}
+                ${(localStorage.accountId !== null ? '<a href="/stats/" class="navbar-button fortnite-button-border no-link" tkey="nav:stats">STATS</a>' : '')}
             </div>
         </div>
         <div class="navigation">
-            <div class="navigation-part" id="navigation-1">
-                <a class="part-button"><img src="/assets/icons/home.png" class="navigation-icon"></a>
-            </div>
             <div class="navigation-part" id="navigation-2">
                 <a href="/broadcast/" class="part-button"><img src="/assets/icons/broadcast.png" class="navigation-icon"></a>
             </div>
@@ -59,16 +55,6 @@ function i() {
                 ${(localStorage.popupVersion != '0.3' || localStorage.popupVersion == undefined ? `<popup>IMPORTANT: Stats have been fixed! Sorry for the inconvenience!</popup>` : '')}
             </div>
         </div>`;
-
-    if (window.location.pathname !== '/' && history.length > 1) {
-        let buttonOne = document.getElementById('navigation-1')
-        buttonOne.children[0].children[0].src = '/assets/icons/back.png' //icon
-        buttonOne.children[0].onclick = function() { // a
-            history.back()
-        }
-    } else {
-        document.getElementById('navigation-1').remove()
-    }
 
     document.getElementById('menu-btn').addEventListener('click', function() {
         //document.getElementById('nav-elements').classList.toggle('hidden-nav');
@@ -168,7 +154,7 @@ function getTranslationKey(key) {
 
             "nav:account": "ACCOUNT",
             "nav:items": "ITEMS",
-            "nav:item-shop": "ITEM SHOP",
+            "nav:item-shop": "SHOP",
             "nav:battle-pass": "BATTLE PASS",
             "nav:quests": "QUESTS",
             "nav:compete": "COMPETE",
@@ -198,7 +184,7 @@ function getTranslationKey(key) {
             "account_change:link_new": "Link your account",
 
             "language:language": "Language",
-            "language:desc": "Change your display language."
+            "language:desc": "Change the display language."
         },
         "es-419": {
             "home:welcome_back": "Bienvenido de vuelta",
@@ -433,23 +419,5 @@ function loadPayloads() {
 
     if (anyPayloadTriggered) {
         payloadTriggered();
-    }
-}
-
-function iS() {
-    var section = document.getElementById("shop-section-dropdown").value;
-
-    var shop_row = document.getElementById("item-shop-section");
-    clearChildren(shop_row);
-
-    var sectionItems = [];
-    for (let item of shopItems) {
-        if (item.section.name == section) sectionItems.push(item);
-    }
-
-    for (let i = 0; i < sectionItems.length; i++) {
-        let item = sectionItems[i];
-
-        makeCard(item);
     }
 }

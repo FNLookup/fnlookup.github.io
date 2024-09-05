@@ -14,7 +14,7 @@ var x = setInterval(function() {
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById("label-center").innerText = 'ITEM SHOP - ' + hours + "h " +
+    document.getElementById("label-center").innerText = hours + "h " +
         minutes + "m " + seconds + "s";
     if (distance < 0) {
         clearInterval(x);

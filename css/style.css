@@ -230,6 +230,10 @@ a.link-underline:hover {
     margin-bottom: 1rem;
 }
 
+.real-language {
+    padding-left: 1rem;
+    color: gray;
+}
 
 /*Top navbar*/
 
@@ -260,6 +264,15 @@ a.link-underline:hover {
     display: flex;
 }
 
+.navigation {
+    position: fixed;
+    right: 0;
+    top: 6rem;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: var(--nav-color);
+}
+
 .navigation-part {
     position: relative;
 }
@@ -275,20 +288,50 @@ a.link-underline:hover {
 }
 
 .navbar-button,
-.part-button {
+.part-button, .shop-button {
     padding: .8rem 1rem;
     font-family: headings-variable;
     font-variation-settings: "wdth" 668, "wght" 700;
     font-size: 19px;
     margin: .2rem;
-    background-color: none;
     transition: background-color .1s ease-out;
     border-radius: 10px;
     white-space: nowrap;
 }
 
+.part-button {
+    padding: 0 .5rem;
+}
+
 .navigation-part .dropdown-menu {
     top: 4rem;
+}
+
+.navigation-icon {
+    width: 30px;
+    margin-top: 5px;
+}
+
+.navigation-part {
+    padding: .7rem 0;
+}
+
+.shop-bar {
+    display: flex; justify-content: center; align-items: center;
+}
+
+.navigation {
+    position: fixed;
+    right: 0;
+    top: var(--top-margin);
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: var(--nav-color);
+    margin: 2rem 0;
+}
+
+.shop-part {
+    padding: 1rem 0;
 }
 
 .navbar-button:hover,
@@ -350,7 +393,7 @@ a.link-underline:hover {
 }
 
 .fortnite-button-border,
-.part-button {
+.part-button, .shop-button {
     --outline-width-hover: .25rem;
     outline-width: 0;
     outline-color: transparent;
@@ -362,7 +405,7 @@ a.link-underline:hover {
 }
 
 .fortnite-button-border:hover,
-.part-button:hover {
+.part-button:hover, .shop-button:hover {
     outline-color: #fffc;
     outline-offset: .1875rem;
     outline-width: var(--outline-width-hover);
@@ -1472,28 +1515,6 @@ select {
     -webkit-box-flex: 0;
     -ms-flex: 0 1 100%;
     flex: 0 1 100%;
-}
-
-.navigation {
-    position: fixed;
-    right: 0;
-    top: var(--top-margin);
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-    background-color: var(--nav-color);
-    margin: 2rem 0;
-}
-
-.navigation-icon {
-    width: 30px;
-}
-
-.navigation-part {
-    padding: 1rem 0;
-}
-
-.shop-bar {
-    display: flex; justify-content: center; align-items: center;
 }
 
 .achievements {
@@ -4008,12 +4029,6 @@ track-details .song-diffs .diff {
         border-radius: 0;
         width: 100%;
     }
-    .mini-logo-container {
-        display: none;
-    }
-    .nav-logo {
-        display: block;
-    }
     .nav-buttons-items {
         flex-direction: column;
         top: 3.75rem;
@@ -4043,12 +4058,6 @@ track-details .song-diffs .diff {
 }
 
 @media (min-width: 1280px) {
-    .mini-logo {
-        display: block;
-    }
-    .nav-logo {
-        display: none;
-    }
     .festival-leaderboard-entries {
         min-width: 960px;
         max-width: 1280px;
@@ -4066,9 +4075,6 @@ track-details .song-diffs .diff {
         --bottom-margin: 0;
         --side-margin: 0;
         width: 100%;
-    }
-    .nav-logo {
-        margin-left: 1rem;
     }
     .nav-container {
         left: 0;
@@ -4242,6 +4248,18 @@ track-details .song-diffs .diff {
         background: linear-gradient(to bottom, rgba(0,0,0,.5) 0%, rgba(0, 0, 0, 0.795) 100%);
         pointer-events: none;
         z-index: 0;
+    }
+
+    .navbar-button {
+        padding: .8rem .7rem;
+    }
+
+    .navigation {
+        top: 0;
+        bottom: 0;
+        display: flex;
+        height: 4rem;
+        margin: 0;
     }
 }
 
