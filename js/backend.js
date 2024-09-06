@@ -188,7 +188,7 @@ function getApiRequestData(url) {
 
 function itemFetch(small = true) {
     return {
-        url: `https://raw.githubusercontent.com/FNLookup/data/main/fnapiio/items_${small ? 'smaller' : 'all'}_${getLang()}.json`,
+        url: `https://raw.githubusercontent.com/FNLookup/items/main/fnapiio/items_${small ? 'smaller' : 'all'}_${getLang()}.json`,
         data: {}
     };
 }
