@@ -5,44 +5,61 @@ function getchs() {
         document.getElementById('quest-selector-options').classList.toggle('displaynone')
     }
 
+    params = new URLSearchParams(window.location.search)
+
     let requestData = getRequestData('challenges&season=current');
     fetch(requestData.url, requestData.data).then(response => response.json()).then(response => {
 
         for (let bundle of response.bundles) {
-            if (bundle.tag === null) continue
+            //if (bundle.tag === null) bundle.tag = 'Unknown'
+            if (bundle.name === null) bundle.name = 'Unknown'
 
             let img = document.getElementById('quest-category-image');
+            let bg = document.getElementById('quest-current-category');
             let title = document.getElementById('quest-category-title');
 
-            let questNum = 0;
-            for (let questbundle of bundle.bundles) {
-                for (let quest of questbundle.quests) {
-                    questNum += 1;
-                }
-            }
+            // let questNum = 0;
+            // for (let questbundle of bundle.bundles) {
+            //     for (let quest of questbundle.quests) {
+            //         questNum += 1;
+            //     }
+            // }
 
             //<div class="quest-section"><a>SURVIVOR MEDALS <a class="quest-count">3 quests</a></a></div>
-            let container = gne('div')
-            container.classList.add('quest-section');
-            container.innerHTML = `<a>${bundle.name} <a class="quest-count">${questNum} quests</a></a>`;
-            document.getElementById('quest-selector-options').append(container);
+            
             //main.appendChild(c);
 
             /////////////////
-            container.addEventListener('click', function() {
-                clean();
-                title.innerHTML = bundle.name;
-                img.src = bundle.image;
+            for (let questbundle of bundle.bundles) {
+                
+                let container = gne('div')
+                container.classList.add('quest-section');
+                container.innerHTML = `<a>${questbundle.name || 'Unknown'} <a class="quest-count">${questbundle.quests.length} quests</a></a>`;
+                document.getElementById('quest-selector-options').append(container);
 
-                if (bundle.colorData !== null) {
-                    let colorThing = '#' + bundle.colorData.RGB1.substring(3, bundle.colorData.RGB1.length) + ', ' + '#' + bundle.colorData.RGB2.substring(3, bundle.colorData.RGB2.length)
-                    let cssThing = 'linear-gradient(to bottom, ' + colorThing + ')';
-                    img.style.background = cssThing;
-                }
+                container.addEventListener('click', function() {
+                    clean();
+                    title.innerHTML = questbundle.header || questbundle.name;
+                    img.src = bundle.image || '/assets/logo_nobg.png';
+    
+                    if (questbundle.colors !== null) {
+                        console.log(questbundle.colors)
+                        let colors = questbundle.colors
+                        console.log('a')
+                        let colorThing = colors['AccentColor'] + ', ' + colors['Context_BaseColor']
+                        console.log(colorThing)
+                        console.log('a')
+                        let cssThing = 'linear-gradient(to bottom, ' + colorThing + ')'
+                        console.log('a')
+                        console.log(cssThing)
+                        bg.style.background = cssThing;
+                        console.log('a')
+                        console.log(bg.style.background)
+                        console.log(bg)
+                    }
+    
+                    let right = document.getElementById('quests-viewer');
 
-                let right = document.getElementById('quests-viewer');
-
-                for (let questbundle of bundle.bundles) {
                     let mainBundle = gne('div');
 
                     let bundleTitle = gne('div');
@@ -87,11 +104,8 @@ function getchs() {
                         questObject.append(questInfo)
 
                         if (quest.description == quest.name) questDesc.remove();
-                        console.log(quest.description == quest.name, quest.description, quest.name);
-                        console.log('removed');
-
                         if (quest.shortDescription == quest.description || quest.shortDescription == quest.name) questShortDesc.remove();
-                        console.log(quest.shortDescription == quest.description || quest.shortDescription == quest.name, quest.shortDescription, quest.description);
+                        // console.log(quest.shortDescription == quest.description || quest.shortDescription == quest.name, quest.shortDescription, quest.description);
 
                         ////////////// right part of the quest rewards
 
@@ -169,11 +183,12 @@ function getchs() {
                         }
 
                         mainBundle.append(questObject);
+                        right.append(mainBundle);
                     }
+                });
 
-                    right.append(mainBundle);
-                }
-            });
+                if (params?.get('tab') == 'Weekly' && questbundle.id.toString().includes('Week')) container.click()
+            }
         }
 
     }).catch(err => {

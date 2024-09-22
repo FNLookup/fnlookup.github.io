@@ -1811,8 +1811,9 @@ select {
 }
 
 .quest-current-category img {
-    width: 50%;
+    width: 80px;
     position: absolute;
+    bottom: 0;
     z-index: 2;
     right: 0;
     top: 0;
@@ -1822,7 +1823,6 @@ select {
 .quest-section-selector {
     position: relative;
     z-index: 23;
-    margin-top: 2rem;
     background-color: rgb(12, 12, 12);
     padding: 0.5rem 1rem;
 }
@@ -1911,7 +1911,6 @@ select {
     transition: color .15s;
     font-family: headings-squash;
     font-size: 16px;
-    letter-spacing: 1px;
     margin: .25rem 0;
 }
 
