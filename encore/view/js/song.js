@@ -80,13 +80,15 @@ function loadSong() {
             
             icon = ''
     
-            if (diff == 'ds' || diff == 'drums') icon = 'drums.webp'
-            if (diff == 'ba' || diff == 'bass') icon = 'bass.webp'
-            if (diff == 'vl' || diff == 'vocals') icon = 'voices.webp'
-            if (diff == 'gr' || diff == 'guitar') icon = 'guitar.webp'
+            if (diff == 'ds' || diff == 'drums') icon = 'encore/drums.webp'
+            if (diff == 'ba' || diff == 'bass') icon = 'encore/bass.webp'
+            if (diff == 'vl' || diff == 'vocals') icon = 'encore/vox.webp'
+            if (diff == 'gr' || diff == 'guitar') icon = 'encore/tar.webp'
+            if (diff == 'ks' || diff == 'keys') icon = 'encore/keys.webp'
             if (diff == 'plastic_drums') icon = 'encore/pdrums.webp'
             if (diff == 'plastic_bass') icon = 'encore/pbass.webp'
             if (diff == 'plastic_guitar') icon = 'encore/ptar.webp'
+            if (diff == 'plastic_keys') icon = 'encore/pkeys.webp'
             if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'encore/pvox.webp'
     
             let imageIcon = document.createElement('img')
