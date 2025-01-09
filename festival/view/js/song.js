@@ -140,7 +140,7 @@ function loadViewer() {
             for (let page of _pages) {
                 let _users = {}
                 try {
-                    response = await fetch('https://raw.githubusercontent.com/FNLookup/festival-leaderboards/main/leaderboards/season5/' + viewTrack.id + '/' + instrumentStr + '_' + page + '.json')
+                    response = await fetch('https://raw.githubusercontent.com/FNLookup/festival-leaderboards/main/leaderboards/season6/' + viewTrack.id + '/' + instrumentStr + '_' + page + '.json')
                     let data = await response.json()
 
                     for (let entry of data.entries) {
