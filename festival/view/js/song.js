@@ -276,7 +276,7 @@ function loadViewer() {
             generateItems(allEntries.slice(0, perPage))
         }
         
-        fetch('https://api.github.com/repos/FNLookup/festival-leaderboards/commits?path=leaderboards/season5/' + viewTrack.id + '/').then(r=>r.json()).then(r=> {
+        fetch('https://api.github.com/repos/FNLookup/festival-leaderboards/commits?path=leaderboards/season6/' + viewTrack.id + '/').then(r=>r.json()).then(r=> {
             if (r.length > 0) fetchLeaderboardData(_instruments[0])
             else {
                 leaderBoardEntries.innerHTML = '<h2>Leaderboard not available</h2>'
