@@ -233,6 +233,74 @@ translations = {
         "item:no-params-help": "It looks like you're looking for no items. Use search to view one, or click on one somewhere else.",
         "item:take-me-home": "Take me home",
 
+        "search:search": "Search",
+        "search:search-desc": "Search all available items in Fortnite.",
+        "search:items": "Items",
+
+        "search-filters:type": "Type",
+        "search-filters:type-main": "Main",
+        "search-filters:type-main-outfit": "Outfit",
+        "search-filters:type-main-backbling": "Backbling",
+        "search-filters:type-main-glider": "Glider",
+        "search-filters:type-main-loadingscreen": "Loading Screen",
+        "search-filters:type-main-pickaxe": "Pickaxe",
+        "search-filters:type-main-style": "Style",
+        "search-filters:type-main-contrail": "Contrail",
+        "search-filters:type-main-music": "Music Pack",
+        "search-filters:type-main-bundle": "Bundle",
+
+        "search-filters:type-interacting": "Interacting",
+        "search-filters:type-interacting-emote": "Emote",
+        "search-filters:type-interacting-emoji": "Emoji",
+        "search-filters:type-interacting-spray": "Spray",
+        "search-filters:type-interacting-toy": "Toy",
+        "search-filters:type-interacting-pet": "Pet",
+        "search-filters:type-interacting-wrap": "Wrap",
+        "search-filters:type-interacting-banner": "Banner",
+
+        "search-filters:type-rr-vehicle": "Vehicle",
+        "search-filters:type-rr-vehicle-skin": "Vehicle Skin",
+        "search-filters:type-rr-vehicle-style": "Vehicle Style",
+        "search-filters:type-rr-vehicle-trail": "Vehicle Trail",
+        "search-filters:type-rr-wheel": "Wheel",
+        "search-filters:type-rr-booster": "Booster FX",
+
+        "search-filters:type-ff-bass": "Basses",
+        "search-filters:type-ff-drum": "Drumkits",
+        "search-filters:type-ff-lead": "Guitars",
+        "search-filters:type-ff-keys": "Keyboards",
+        "search-filters:type-ff-mics": "Microphones",
+        "search-filters:type-ff-aura": "Aura",
+        "search-filters:type-ff-jamtrack": "Jam Track",
+
+        "search-filters:type-lf-kit": "LEGO® Kit",
+        "search-filters:type-lf-dec": "Decor",
+
+        "search-filters:type-additional": "Adittional",
+        "search-filters:type-additional-battlebus": "Battle Bus",
+        "search-filters:type-additional-itemaccess": "Item Access",
+
+        "search-filters:rarityseries": "Rarity/Series",
+        "search-filters:rarityseries-rarity": "Rarity",
+        "search-filters:rarityseries-series": "Series",
+
+        "search-filters:rarityseries": "Rareza/Serie",
+        "search-filters:rarityseries-rarity": "Rareza",
+        "search-filters:rarityseries-series": "Serie",
+
+        "search-filters:introduction": "Introducción",
+        "search-filters:introduction-chapter": "Capítulo [x0]",
+        "search-filters:introduction-chapter-cs": "C[x0]T[x1]",
+
+        "search-filters:delete-all": "Delete all",
+
+        "quests:select": "Select a category",
+        "quests:quests": "quests",
+        "quests:unknown": "Unknown",
+        "quests:view-more": "View more",
+        "quests:to-do": "[x0] to do",
+        "quests:no-reward": "No reward.",
+
         "shop:item-shop": "ITEM SHOP",
         "shop:jump": "JUMP TO CATEGORY",
         "shop:back": "BACK TO TOP",
@@ -357,6 +425,70 @@ translations = {
         "item:no-params": "¡Parece que aquí no hay parametros!",
         "item:no-params-help": "Parece que no estas buscando ningún objeto. Usa objetos para ver uno, o haz clic en uno en otro lugar.",
         "item:take-me-home": "Llévame al inicio",
+
+        "search:search": "Buscar",
+        "search:search-desc": "Buscar todos los objetos disponibles en Fortnite.",
+        "search:items": "Objetos",
+
+        "search-filters:type": "Tipo",
+        "search-filters:type-main": "Principales",
+        "search-filters:type-main-outfit": "Atuendo",
+        "search-filters:type-main-backbling": "Mochila",
+        "search-filters:type-main-glider": "Planeador",
+        "search-filters:type-main-loadingscreen": "Pantalla de carga",
+        "search-filters:type-main-pickaxe": "Herramienta de recolección",
+        "search-filters:type-main-style": "Estilo",
+        "search-filters:type-main-contrail": "Estela",
+        "search-filters:type-main-music": "Música",
+        "search-filters:type-main-bundle": "Lote",
+
+        "search-filters:type-interacting": "Interacción",
+        "search-filters:type-interacting-emote": "Gesto",
+        "search-filters:type-interacting-emoji": "Emoticono",
+        "search-filters:type-interacting-spray": "Grafiti",
+        "search-filters:type-interacting-toy": "Juguete",
+        "search-filters:type-interacting-pet": "Mascota",
+        "search-filters:type-interacting-wrap": "Papel",
+        "search-filters:type-interacting-banner": "Estandarte",
+
+        "search-filters:type-rr-vehicle": "Vehículo",
+        "search-filters:type-rr-vehicle-skin": "Atuendo de vehículo",
+        "search-filters:type-rr-vehicle-style": "Estílo de vehículo",
+        "search-filters:type-rr-vehicle-trail": "Marca de vehículo",
+        "search-filters:type-rr-wheel": "Rueda",
+        "search-filters:type-rr-booster": "Efecto de turbo",
+
+        "search-filters:type-ff-bass": "Bajos",
+        "search-filters:type-ff-drum": "Batería",
+        "search-filters:type-ff-lead": "Guitarras",
+        "search-filters:type-ff-keys": "Teclados",
+        "search-filters:type-ff-mics": "Micrófonos",
+        "search-filters:type-ff-aura": "Aura",
+        "search-filters:type-ff-jamtrack": "Pista de improvisación",
+
+        "search-filters:type-lf-kit": "Kit de LEGO®",
+        "search-filters:type-lf-dec": "Decoración",
+
+        "search-filters:type-additional": "Adicional",
+        "search-filters:type-additional-battlebus": "Autobús de batalla",
+        "search-filters:type-additional-itemaccess": "Acceso a objeto",
+
+        "search-filters:rarityseries": "Rareza/Serie",
+        "search-filters:rarityseries-rarity": "Rareza",
+        "search-filters:rarityseries-series": "Serie",
+
+        "search-filters:introduction": "Introducción",
+        "search-filters:introduction-chapter": "Capítulo [x0]",
+        "search-filters:introduction-chapter-cs": "C[x0]T[x1]",
+
+        "search-filters:delete-all": "Borrar todos",
+
+        "quests:select": "Selecciona una categoría",
+        "quests:quests": "misiones",
+        "quests:unknown": "Desconocido",
+        "quests:view-more": "Ver más",
+        "quests:to-do": "[x0] por hacer",
+        "quests:no-reward": "Sin recompensa.",
 
         "shop:item-shop": "TIENDA DE OBJETOS",
         "shop:jump": "SALTAR A CATEGORÍA",
@@ -539,7 +671,7 @@ function marqueeCheck(obj) {
 function payloadTriggered() {
     const styleSheet = document.createElement('link');
     styleSheet.rel = 'stylesheet';
-    styleSheet.href = 'css/payload.css';
+    styleSheet.href = '/css/payload.css';
     document.head.append(styleSheet);
 }
 

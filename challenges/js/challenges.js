@@ -12,7 +12,7 @@ function getchs() {
 
         for (let bundle of response.bundles) {
             //if (bundle.tag === null) bundle.tag = 'Unknown'
-            if (bundle.name === null) bundle.name = 'Unknown'
+            // if (bundle.name === null) bundle.name = 'Unknown'
 
             let img = document.getElementById('quest-category-image');
             let bg = document.getElementById('quest-current-category');
@@ -34,7 +34,7 @@ function getchs() {
                 
                 let container = gne('div')
                 container.classList.add('quest-section');
-                container.innerHTML = `<a>${questbundle.name || 'Unknown'} <a class="quest-count">${questbundle.quests.length} quests</a></a>`;
+                container.innerHTML = `<a>${questbundle.name || getTranslationKey('quests:unknown')} <a class="quest-count">${questbundle.quests.length} ${getTranslationKey('quests:quests')}</a></a>`;
                 document.getElementById('quest-selector-options').append(container);
 
                 container.addEventListener('click', function() {
@@ -43,19 +43,10 @@ function getchs() {
                     img.src = bundle.image || '/assets/logo_nobg.png';
     
                     if (questbundle.colors !== null) {
-                        console.log(questbundle.colors)
                         let colors = questbundle.colors
-                        console.log('a')
                         let colorThing = colors['AccentColor'] + ', ' + colors['Context_BaseColor']
-                        console.log(colorThing)
-                        console.log('a')
                         let cssThing = 'linear-gradient(to bottom, ' + colorThing + ')'
-                        console.log('a')
-                        console.log(cssThing)
                         bg.style.background = cssThing;
-                        console.log('a')
-                        console.log(bg.style.background)
-                        console.log(bg)
                     }
     
                     let right = document.getElementById('quests-viewer');
@@ -94,7 +85,8 @@ function getchs() {
                         questShortDesc.classList.add('challenge-description');
 
                         let questProgress = gne('a');
-                        questProgress.innerHTML = ' ' + quest.progressTotal + ' to do';
+                        
+                        questProgress.innerHTML = ' ' + getTranslationKey('quests:to-do').replace('[x0]', quest.progressTotal);
                         questProgress.classList.add('challenge-description', 'challenge-small-progress');
 
                         questInfo.append(questName);
@@ -172,9 +164,9 @@ function getchs() {
                                 rewardobj.append(rewardicon, rewardquantity);
                                 questRewards.append(rewardobj);
                                 */
-                                let text = 'No reward';
+                                let text = getTranslationKey('quests:no-reward');
                                 if (questProgress.innerHTML.length > 1) {
-                                    text = ' - No reward.'
+                                    text = ' - ' + getTranslationKey('quests:no-reward')
                                 }
                                 questProgress.innerHTML += text;
                                 questRewards.remove();

@@ -120,7 +120,7 @@ function getcompetitive() {
             // }
 
             let canPlayDevice = event.platforms.some(element => detectDevice().includes(element));
-            if (!canPlayDevice) platforms.innerHTML = '<h3 style="color: red;" class="header-text-bold">You can\'t play this tournament.</h3>'
+            if (!canPlayDevice) platforms.innerHTML = '<h3 style="color: red;" class="header-text-bold">You can\'t play this tournament in the current platform</h3>'
 
             textholder.append(line1, line2, line3, line4, platforms);
             eventbox.append(textholder);

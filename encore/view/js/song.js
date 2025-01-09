@@ -1,3 +1,34 @@
+// https://stackoverflow.com/questions/55409195/reading-ini-file-using-javascript
+function parseINIString(data) {
+    var regex = {
+        section: /^\s*\[\s*([^\]]*)\s*\]\s*$/,
+        param: /^\s*([^=]+?)\s*=\s*(.*?)\s*$/,
+        comment: /^\s*;.*$/
+    };
+    var value = {};
+    var lines = data.split(/[\r\n]+/);
+    var section = null;
+    lines.forEach(function (line) {
+        if (regex.comment.test(line)) {
+            return;
+        } else if (regex.param.test(line)) {
+            var match = line.match(regex.param);
+            if (section) {
+                value[section][match[1]] = match[2];
+            } else {
+                value[match[1]] = match[2];
+            }
+        } else if (regex.section.test(line)) {
+            var match = line.match(regex.section);
+            value[match[1]] = {};
+            section = match[1];
+        } else if (line.length == 0 && section) {
+            section = null;
+        };
+    });
+    return value;
+}
+
 function loadSong() {
     let params = new URLSearchParams(window.location.search);
     let firstKey = params.keys().next().value;
@@ -22,9 +53,26 @@ function loadSong() {
 
         //console.log(zip)
 
-        let infoFile = zip.file(root + 'info.json');
-        let infoContent = await infoFile.async('text');
-        let info = JSON.parse(infoContent)
+        let infoFile = zip.file(root + 'info.json')
+        let iniFile = zip.file(root + 'song.ini')
+        let isIni = iniFile != null && infoFile == null
+        let info
+        if (!isIni) {
+            let infoContent = await infoFile.async('text');
+            info = JSON.parse(infoContent)
+        } else {
+            let infoContent = parseINIString(await iniFile.async('text'))
+            console.log(infoContent)
+            let artFile = 'album.jpg'
+            if (zip.file(root + 'album.png') != null) artFile = 'album.png';
+            info = {
+                art: artFile,
+                title: infoContent.song.name,
+                genres: [infoContent.song.genre],
+                midi: 'notes.mid',
+                release_year: infoContent.song.year
+            }
+        }
         //console.log(info)
 
         // Extract the .ogg file
@@ -48,13 +96,13 @@ function loadSong() {
         let trackDetails = document.createElement('track-details')
         let songTitle = document.createElement('h1')
         songTitle.innerText = data.song.title
-    
+
         let songArtist = document.createElement('h2')
         songArtist.innerText = data.song.artist
-    
+
         let songAlbum = document.createElement('h3')
         songAlbum.innerText = `${data.song.album != undefined ? data.song.album + ' - ' : ''}${toTimeStr(data.song.secs)}`
-    
+
         let songCharter = document.createElement('h3')
         songCharter.innerText = `${getTranslationKey('encore-chart:charters')}: ${data.song.charters.length > 0 ? data.song.charters.join(', ') : getTranslationKey('encore-chart:charters-unknown')}`
 
@@ -73,13 +121,12 @@ function loadSong() {
 
         let songDiffs = document.createElement('a')
         songDiffs.classList.add('song-diffs');
-        for (let diff of Object.keys(data.song.diffs)) 
-        {
+        for (let diff of Object.keys(data.song.diffs)) {
             let diffContainer = document.createElement('div')
             diffContainer.classList.add('diff')
-            
+
             icon = ''
-    
+
             if (diff == 'ds' || diff == 'drums') icon = 'drums.webp'
             if (diff == 'ba' || diff == 'bass') icon = 'bass.webp'
             if (diff == 'vl' || diff == 'vocals') icon = 'voices.webp'
@@ -87,33 +134,33 @@ function loadSong() {
             if (diff == 'plastic_drums') icon = 'encore/pdrums.webp'
             if (diff == 'plastic_bass') icon = 'encore/pbass.webp'
             if (diff == 'plastic_guitar') icon = 'encore/ptar.webp'
-            if (diff == 'plastic_vocals' || diff=='pitched_vocals') icon = 'encore/pvox.webp'
-    
+            if (diff == 'plastic_vocals' || diff == 'pitched_vocals') icon = 'encore/pvox.webp'
+
             let imageIcon = document.createElement('img')
             imageIcon.classList.add('instrument-icon-encore')
             imageIcon.src = '/assets/icons/' + icon
-    
+
             diffContainer.append(imageIcon)
-    
+
             let diffBarsContainer = document.createElement('div')
             diffBarsContainer.classList.add('diffbars')
-    
-            let difficultyOfChart = data.song.diffs[diff] +1;
-    
-            for (let i = 0; i<difficultyOfChart; i++) {
+
+            let difficultyOfChart = data.song.diffs[diff] + 1;
+
+            for (let i = 0; i < difficultyOfChart; i++) {
                 let diffThing = document.createElement('div')
                 diffThing.classList.add('diffbar')
                 diffBarsContainer.append(diffThing);
             }
-    
-            for (let i = 0; i<7-difficultyOfChart; i++) {
+
+            for (let i = 0; i < 7 - difficultyOfChart; i++) {
                 let diffThing = document.createElement('div')
                 diffThing.classList.add('diffbar', 'empty')
                 diffBarsContainer.append(diffThing);
             }
-    
+
             diffContainer.append(diffBarsContainer)
-    
+
             songDiffs.append(diffContainer)
         }
 
@@ -125,12 +172,14 @@ function loadSong() {
         let midiFileData = await zip.file(root + info.midi).async('uint8array');
         let midi = new Midi(midiFileData);
 
+        console.log(midi.tracks)
+
         function trackAnalysis(trackName, minPitch, maxPitch) {
-            let trackIndex = midi.tracks.indexOf(midi.tracks.find(track => {
+            let track = midi.tracks.find(track => {
                 return track.name == trackName
-            }))
-            if (trackIndex < 0) return 0
-            let track = midi.tracks[trackIndex];
+            })
+            console.log(track)
+            if (track == null) return 0
             let noteCount = 0;
             for (let note of track.notes) {
                 if (note.midi >= minPitch && note.midi <= maxPitch) {
@@ -142,13 +191,13 @@ function loadSong() {
         }
 
         let tracks = {
-            'instruments:drums': 'PART DRUMS',
-            'instruments:bass': 'PART BASS',
-            'instruments:guitar': 'PART GUITAR',
-            'instruments:vocals': 'PART VOCALS',
-            'instruments:prodrums': 'PLASTIC DRUMS',
-            'instruments:probass': 'PLASTIC BASS',
-            'instruments:proguitar': 'PLASTIC GUITAR'
+            'instruments:drums': (isIni ? 'PAD DRUMS' : 'PART DRUMS'),
+            'instruments:bass': (isIni ? 'PAD BASS' : 'PART BASS'),
+            'instruments:guitar': (isIni ? 'PAD GUITAR' : 'PART GUITAR'),
+            'instruments:vocals': (isIni ? 'PAD VOCALS' : 'PART VOCALS'),
+            'instruments:prodrums': (isIni ? 'PART DRUMS' : 'PLASTIC DRUMS'),
+            'instruments:probass': (isIni ? 'PART BASS' : 'PLASTIC BASS'),
+            'instruments:proguitar': (isIni ? 'PART GUITAR' : 'PLASTIC GUITAR')
         }
 
         let difficulties = {
@@ -187,7 +236,7 @@ function loadSong() {
                 //if (trackNotesTotal < 1) continue
                 let item = Object.keys(difficulties).indexOf(diff)
 
-                tablehtml += `<td>${trackNotesTotal > 0 ? trackNotesTotal : 'N/A'}</td>`
+                tablehtml += `<td>${trackNotesTotal > 0 ? trackNotesTotal : ''}</td>`
 
                 //diffAnalysis.innerText += `${diff}: ${trackNotesTotal} ${shouldAddDash ? '- ' : ''}` 
             }
@@ -202,7 +251,7 @@ function loadSong() {
 
         let downloadButton = document.createElement('a')
         downloadButton.classList.add('fortnite-button', 'fortnite-button-border', 'no-link', 'encore-download')
-        downloadButton.innerText = getTranslationKey('encore-chart:download-chart')
+        downloadButton.innerText = getTranslationKey('encore-chart:download-chart') + (isIni ? ' (INI)' : '')
 
         let mbsize = size / 1024 / 1024
         let mbs = mbsize.toFixed(2)

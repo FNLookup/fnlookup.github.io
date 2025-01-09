@@ -138,12 +138,13 @@ function downloadItems() {
             let curChapter;
             for (let ss of r.seasons) {
                 curChapter = ss.chapter;
-                if (seasons['Chapter ' + curChapter] === undefined) {
-                    seasons['Chapter ' + curChapter] = []
-                    allowedSeasons.push('Chapter ' + curChapter)
+                let chapText = getTranslationKey('search-filters:introduction-chapter').replace('[x0]', curChapter)
+                if (seasons[chapText] === undefined) {
+                    seasons[chapText] = []
+                    allowedSeasons.push(chapText)
                 }
-                seasons['Chapter ' + curChapter].push({
-                    text: 'C' + ss.chapter + 'S' + ss.seasonInChapter,
+                seasons[chapText].push({
+                    text: getTranslationKey('search-filters:introduction-chapter-cs').replace('[x0]', ss.chapter).replace('[x1]', ss.seasonInChapter),
                     season: ss.seasonInChapter,
                     gameplayTag: 'Cosmetics.Filter.Season.' + ss.season
                 })
@@ -164,7 +165,7 @@ function downloadItems() {
                 })
             }
             makeFilterAdvancedClass({
-                name: 'Introduction',
+                name: getTranslationKey('search-filters:introduction'),
                 classes: classes
             });
 
@@ -326,63 +327,63 @@ function downloadItems() {
 
 function mainFilters() {
     var filters = {
-        name: 'Type',
+        name: getTranslationKey('search-filters:type'),
         classes: [{
-            className: 'Main',
+            className: getTranslationKey('search-filters:type-main'),
             objects: [
-                { name: 'Back Bling', type: 'backpack', class: 'Type' },
-                { name: 'Glider', type: 'glider', class: 'Type' },
-                { name: 'Loading Screen', type: 'loadingscreen', class: 'Type' },
-                { name: 'Outfit', type: 'outfit', class: 'Type' },
-                { name: 'Pickaxe', type: 'pickaxe', class: 'Type' },
-                { name: 'Contrail', type: 'contrail', class: 'Type' },
-                { name: 'Style', type: 'cosmeticvariant', class: 'Type' },
-                { name: 'Bundle', type: 'bundle', class: 'Type' },
-                { name: 'Music Pack', type: 'music', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-backbling'), type: 'backpack', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-glider'), type: 'glider', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-loadingscreen'), type: 'loadingscreen', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-outfit'), type: 'outfit', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-pickaxe'), type: 'pickaxe', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-contrail'), type: 'contrail', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-style'), type: 'cosmeticvariant', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-bundle'), type: 'bundle', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-main-music'), type: 'music', class: 'Type' },
             ]
         }, {
-            className: 'Interacting',
+            className: getTranslationKey('search-filters:type-interacting'),
             objects: [
-                { name: 'Emote', type: 'emote', class: 'Type' },
-                { name: 'Emoji', type: 'emoji', class: 'Type' },
-                { name: 'Spray', type: 'spray', class: 'Type' },
-                { name: 'Toy', type: 'toy', class: 'Type' },
-                { name: 'Pet', type: 'pet', class: 'Type' },
-                { name: 'Wrap', type: 'wrap', class: 'Type' },
-                { name: 'Banner', type: 'bannertoken', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-interacting-emote'), type: 'emote', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-interacting-emoji'), type: 'emoji', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-interacting-spray'), type: 'spray', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-interacting-toy'), type: 'toy', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-interacting-pet'), type: 'pet', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-interacting-wrap'), type: 'wrap', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-interacting-banner'), type: 'bannertoken', class: 'Type' },
             ]
         }, {
             className: 'Rocket Racing',
             objects: [
-                { name: 'Vehicle', type: 'vehicle_body', class: 'Type' },
-                { name: 'Vehicle Skin', type: 'vehicle_skin', class: 'Type' },
-                { name: 'Vehicle Style', type: 'vehicle_cosmeticvariant', class: 'Type' },
-                { name: 'Vehicle Trail', type: 'vehicle_drifttrail', class: 'Type' },
-                { name: 'Wheel', type: 'vehicle_wheel', class: 'Type' },
-                { name: 'Booster FX', type: 'vehicle_booster', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-rr-vehicle'), type: 'vehicle_body', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-rr-vehicle-skin'), type: 'vehicle_skin', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-rr-vehicle-style'), type: 'vehicle_cosmeticvariant', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-rr-vehicle-trail'), type: 'vehicle_drifttrail', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-rr-wheel'), type: 'vehicle_wheel', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-rr-booster'), type: 'vehicle_booster', class: 'Type' },
             ]
         }, {
             className: 'Fortnite Festival',
             objects: [
-                { name: 'Basses', type: 'sparks_bass', class: 'Type' },
-                { name: 'Drumkits', type: 'sparks_drum', class: 'Type' },
-                { name: 'Guitars', type: 'sparks_guitar', class: 'Type' },
-                { name: 'Keyboards', type: 'sparks_keyboard', class: 'Type' },
-                { name: 'Microphones', type: 'sparks_microphone', class: 'Type' },
-                { name: 'Aura', type: 'sparks_aura', class: 'Type' },
-                { name: 'Jam Track', type: 'sparks_song', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-ff-bass'), type: 'sparks_bass', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-ff-drum'), type: 'sparks_drum', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-ff-lead'), type: 'sparks_guitar', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-ff-keys'), type: 'sparks_keyboard', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-ff-mics'), type: 'sparks_microphone', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-ff-aura'), type: 'sparks_aura', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-ff-jamtrack'), type: 'sparks_song', class: 'Type' },
             ]
         }, {
             className: 'LEGO® Fortnite',
             objects: [
-                { name: 'LEGO® Kit', type: 'building_set', class: 'Type' },
-                { name: 'Decor', type: 'building_prop', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-lf-kit'), type: 'building_set', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-lf-dec'), type: 'building_prop', class: 'Type' },
             ]
         }, {
-            className: 'Additional',
+            className: getTranslationKey('search-filters:type-additional'),
             objects: [
-                { name: 'Battle Bus', type: 'battlebus', class: 'Type' },
-                { name: 'Item Access', type: 'itemaccess', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-additional-battlebus'), type: 'battlebus', class: 'Type' },
+                { name: getTranslationKey('search-filters:type-additional-itemaccess'), type: 'itemaccess', class: 'Type' },
             ]
         }]
     }
@@ -401,7 +402,7 @@ function mainFilters() {
             })
         }
         classes.push({
-            className: 'Rarity',
+            className: getTranslationKey('search-filters:rarityseries-rarity'),
             objects: classObjects
         })
         classObjects = []
@@ -413,12 +414,12 @@ function mainFilters() {
             })
         }
         classes.push({
-            className: 'Series',
+            className: getTranslationKey('search-filters:rarityseries-series'),
             objects: classObjects
         })
 
         makeFilterAdvancedClass({
-            name: 'Rarity/Series',
+            name: getTranslationKey('search-filters:rarityseries'),
             classes: classes
         });
     }).catch(error => {

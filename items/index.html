@@ -32,12 +32,12 @@
         <div>
             <div class="flex flex-wrap">
                 <div class="d-70-media">
-                    <h1 class="header-text-bold">Search</h1>
-                    <p class="header-text-bold">Search all available items in Fortnite.</p>
+                    <h1 class="header-text-bold" tkey="search:search">Search</h1>
+                    <p class="header-text-bold" tkey="search:search-desc">Search all available items in Fortnite.</p>
                 </div>
                 <div class="d-30-media text-center">
                     <h1 class="header-text-bold" id="item-search-count"></h1>
-                    <p class="header-text-light">Items</p>
+                    <p class="header-text-light" tkey="search:items">Items</p>
                 </div>
             </div>
             <hr>
@@ -45,12 +45,12 @@
             <div class="flex flex-center flex-wrap">
                 <div class="flex flex-center cosmetic-search-container">
                     <input type="text" id="iname" class="fortnite-button-border" oninput="searchItems()" autocomplete="off" placeholder="Name/ID">
-                    <button class="fortnite-button-border" onclick="searchItems()">Search</button>
+                    <button class="fortnite-button-border" onclick="searchItems()" tkey="search:search">Search</button>
                 </div>
                 <div class="filter-options flex flex-wrap" id="dropdown-object"></div>
             </div>
             <div class="filter-options filters-selected flex overflow-auto" id="selected-filters">
-                <button class="filters-delete-btn">Delete All</button>
+                <button class="filters-delete-btn" tkey="search-filters:delete-all">Delete All</button>
             </div>
 
             <div class="search-objects" id="objects">
@@ -65,6 +65,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        callTranslate()
+    </script>
 </body>
 
 </html>

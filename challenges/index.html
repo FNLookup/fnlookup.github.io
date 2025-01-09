@@ -31,11 +31,16 @@
         <div class="flex">
             <div class="quests-section-dropdown">
                 <div class="quest-current-category" id="quest-current-category">
-                    <h2 class="challenge-title" id="quest-category-title">Select a category</h2><img id="quest-category-image" src="">
+                    <h2 class="challenge-title" id="quest-category-title" tkey="quests:select">Select a category</h2><img id="quest-category-image" src="">
                 </div>
 
                 <div class="quest-section-selector">
-                    <a class="quest-dropdown-expand-txt link-underline" id="quest-selector-toggler"><i class="arrow sideways" id="quest-selector-arrow"></i> View more</a>
+                    <a class="quest-dropdown-expand-txt link-underline" >
+                        <i class="arrow sideways" id="quest-selector-arrow"></i> 
+                        <a tkey="quests:view-more" class="pointer" id="quest-selector-toggler">
+                            View more
+                        </a>
+                    </a>
                     <div class="quest-section-selector-options displaynone" id="quest-selector-options">
                     </div>
                 </div>
@@ -47,6 +52,10 @@
             </script>
         </div>
     </div>
+
+    <script>
+        callTranslate()
+    </script>
 </body>
 
 </html>
